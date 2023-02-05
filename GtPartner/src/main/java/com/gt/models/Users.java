@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @Table(name="T_users")
 public class Users {
 
-	 @Id
+	 	@Id
 	    @GeneratedValue
 	    private Long id;
 	     
@@ -30,6 +30,9 @@ public class Users {
 	    
 	    @Column(name="mobile")
 	    private String mobile;
+	    
+	    @Column(name="DILIGENCE_ID", nullable=false, length=20)
+	    private String diligenceId;
 
 		public Long getId() {
 			return id;
@@ -79,11 +82,37 @@ public class Users {
 			this.mobile = mobile;
 		}
 
+		public String getDiligenceId() {
+			return diligenceId;
+		}
+
+		public void setDiligenceId(String diligenceId) {
+			this.diligenceId = diligenceId;
+		}
+
+		public Users() {
+			super();
+		}
+
+		public Users(Long id, String name, String username, String password, String email, String mobile,
+				String diligenceId) {
+			super();
+			this.id = id;
+			this.name = name;
+			this.username = username;
+			this.password = password;
+			this.email = email;
+			this.mobile = mobile;
+			this.diligenceId = diligenceId;
+		}
+
 		@Override
 		public String toString() {
 			return "Users [id=" + id + ", name=" + name + ", username=" + username + ", password=" + password
-					+ ", email=" + email + ", mobile=" + mobile + "]";
+					+ ", email=" + email + ", mobile=" + mobile + ", diligenceId=" + diligenceId + "]";
 		}
+
+		
 	    
 	    
 	    
