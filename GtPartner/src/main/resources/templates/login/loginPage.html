@@ -1,46 +1,63 @@
 <!doctype html>
-<html>
-    <head>
-        <meta charset='utf-8'>
-        <meta name='viewport' content='width=device-width, initial-scale=1'>
-        <title>Snippet - GoSNippets</title>
-        <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' rel='stylesheet'>
-        <link href='https://use.fontawesome.com/releases/v5.7.2/css/all.css' rel='stylesheet'>
-        
-	    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-	    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
-	    <script type='text/javascript' src='https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js'></script>
-	    <link th:href="@{/css/style.css}" rel="stylesheet" />
-	    
-	</head>
-	<body oncontextmenu='return false' class='snippet-body'>
-        <div class="container">
-	    <div class="row">
-	        <div class="offset-md-2 col-lg-6 col-md-2 offset-lg-3 offset-md-2">
-	            <div class="panel border bg-white">
-	                <div class="panel-heading">
-	                    <h3 class="pt-3 font-weight-bold">Login</h3>
-	                </div>
-	                <div class="panel-body p-3">
-	                    <form method="POST" th:action="@{/login}" >
-	                        <div class="form-group py-2">
-	                            <div class="input-field"> <span class="far fa-user p-2"></span> <input type="text" placeholder="Username or Email" id="username" name="username" required> </div>
-	                        </div>
-	                        <div class="form-group py-1 pb-2">
-	                            <div class="input-field"> <span class="fas fa-lock px-2"></span> <input type="password" placeholder="Enter your Password" id="password" name="password" required></div>
-	                        </div>
-	                        <div class="form-inline"> <input type="checkbox" name="remember" id="remember"> <label for="remember" class="text-muted">Remember me</label> <a href="#" id="forgot" class="font-weight-bold">Forgot password?</a> </div>
-	                        <!-- <div class="btn btn-primary btn-block mt-3"><button type="submit">Login</button></div> -->
-	                        <div class="col-12">
-                                <button class="btn btn-primary w-100" type="submit">Login</button>
-                            </div>
-	                        <div class="text-center pt-4 text-muted">Don't have an account? <a href="#">Sign up</a> </div>
-	                    </form>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-	</div>
-    <script type='text/javascript'></script>
-    </body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+    
+    <link th:href="@{/fonts/icomoon/style.css}" rel="stylesheet" />
+    <link th:href="@{/css/owl.carousel.min.css}" rel="stylesheet" />
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+
+    <title>Login</title>
+  </head>
+  <body>
+  
+
+  <div class="d-lg-flex half">
+    <div class="bg order-1 order-md-2" style="background-image: url('images/bg_1.jpg');"></div>
+    <div class="contents order-2 order-md-1">
+
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-7">
+	         	<div  class="center-align">
+	          		<img class="logo-size" th:src="@{/images/company-logo.png}"><br><br>
+	            	<h1><strong>Login</strong></h1>
+	           	</div>
+	            
+	            <form method="post" th:action="@{/login}" >
+	              <div class="form-group first">
+	                <label for="username">Username</label>
+	                <input type="text" class="form-control" placeholder="your-email@gmail.com" id="username" name="username" required>
+	              </div>
+	              <div class="form-group last mb-3">
+	                <label for="password">Password</label>
+	                <input type="password" class="form-control" placeholder="Your Password" id="password" name="password" required>
+	              </div>
+	              <div class="d-flex mb-5 align-items-center">
+	                <label class="control control--checkbox mb-0"><span class="caption">Remember me</span>
+	                  <input type="checkbox" checked="checked"/>
+	                  <div class="control__indicator"></div>
+	                </label>
+	                <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span> 
+	              </div>
+	              <input type="submit" value="Login" class="btn btn-block btn-primary">
+	            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+  </div>
+    
+    
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
 </html>
