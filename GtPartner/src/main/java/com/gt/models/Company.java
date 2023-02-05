@@ -3,7 +3,6 @@ package com.gt.models;
 
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -16,8 +15,8 @@ import javax.persistence.Table;
 @Table(name="T_company")
 public class Company {
 	
-	List<Bod> getBod = new ArrayList<Bod>();
-    List<Owner> getOwner = new ArrayList<Owner>();
+	private List<Bod> getBod;
+    private List<Owner> getOwner;
 	
 	@Id
     @GeneratedValue
@@ -355,22 +354,6 @@ public class Company {
 		this.website = website;
 	}
 
-	@Override
-	public String toString() {
-		return "Company [getBod=" + getBod + ", getOwner=" + getOwner + ", id=" + id + ", accountStatus="
-				+ accountStatus + ", address=" + address + ", ownerName=" + ownerName + ", ownerSecondName="
-				+ ownerSecondName + ", country=" + country + ", createdBy=" + createdBy + ", diligenceId=" + diligenceId
-				+ ", ethical1=" + ethical1 + ", ethical2=" + ethical2 + ", export1=" + export1 + ", export2=" + export2
-				+ ", incorporation_date=" + incorporation_date + ", isGov=" + isGov + ", isGovCon=" + isGovCon
-				+ ", noOfBod=" + noOfBod + ", noOfEmployees=" + noOfEmployees + ", parentCompanyGlobalLocation="
-				+ parentCompanyGlobalLocation + ", parentCompanyGlobalName=" + parentCompanyGlobalName
-				+ ", parentCompanyLocation=" + parentCompanyLocation + ", parentCompanyName=" + parentCompanyName
-				+ ", parentCompanySecondGlobalName=" + parentCompanySecondGlobalName + ", parentCompanySecondName="
-				+ parentCompanySecondName + ", personalConnection=" + personalConnection + ", province=" + province
-				+ ", secondAddress=" + secondAddress + ", taxId=" + taxId + ", telephone=" + telephone + ", website="
-				+ website + "]";
-	}
-
 	public Company() {
 		super();
 	}
@@ -415,7 +398,24 @@ public class Company {
 		this.telephone = telephone;
 		this.website = website;
 	}
-    
+
+	@Override
+	public String toString() {
+		return "Company [getBod=" + getBod + ", getOwner=" + getOwner + ", id=" + id + ", accountStatus="
+				+ accountStatus + ", address=" + address + ", ownerName=" + ownerName + ", ownerSecondName="
+				+ ownerSecondName + ", country=" + country + ", createdBy=" + createdBy + ", diligenceId=" + diligenceId
+				+ ", ethical1=" + ethical1 + ", ethical2=" + ethical2 + ", export1=" + export1 + ", export2=" + export2
+				+ ", incorporation_date=" + incorporation_date + ", isGov=" + isGov + ", isGovCon=" + isGovCon
+				+ ", noOfBod=" + noOfBod + ", noOfEmployees=" + noOfEmployees + ", parentCompanyGlobalLocation="
+				+ parentCompanyGlobalLocation + ", parentCompanyGlobalName=" + parentCompanyGlobalName
+				+ ", parentCompanyLocation=" + parentCompanyLocation + ", parentCompanyName=" + parentCompanyName
+				+ ", parentCompanySecondGlobalName=" + parentCompanySecondGlobalName + ", parentCompanySecondName="
+				+ parentCompanySecondName + ", personalConnection=" + personalConnection + ", province=" + province
+				+ ", secondAddress=" + secondAddress + ", taxId=" + taxId + ", telephone=" + telephone + ", website="
+				+ website + "]";
+	}
+
+	
     
     
     
