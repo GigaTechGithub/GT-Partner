@@ -13,7 +13,7 @@ import com.gt.models.Users;
 import com.gt.services.UserService;
 
 @Controller
-public class MainController {
+public class AuthController {
 	
 	@Autowired
 	UserService userService;
