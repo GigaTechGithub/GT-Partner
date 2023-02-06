@@ -12,7 +12,7 @@ public class HomeController {
 	
 	@GetMapping({"/home"})
     public String getHomePage(Model m, @ModelAttribute("UserLogin") Users request) {
-    	return "pages/home";
+    	return "view/home";
     }
 	
 }
