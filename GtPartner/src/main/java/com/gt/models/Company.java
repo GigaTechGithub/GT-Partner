@@ -15,8 +15,8 @@ import javax.persistence.Table;
 @Table(name="T_company")
 public class Company {
 	
-	private List<Bod> getBod;
-    private List<Owner> getOwner;
+//	private List<Bod> getBod;
+//    private List<Owner> getOwner;
 	
 	@Id
     @GeneratedValue
@@ -106,22 +106,7 @@ public class Company {
     @Column(name="WEBSITE", nullable=true, length=50)
     private String website;
 
-	public List<Bod> getGetBod() {
-		return getBod;
-	}
-
-	public void setGetBod(List<Bod> getBod) {
-		this.getBod = getBod;
-	}
-
-	public List<Owner> getGetOwner() {
-		return getOwner;
-	}
-
-	public void setGetOwner(List<Owner> getOwner) {
-		this.getOwner = getOwner;
-	}
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -358,63 +343,7 @@ public class Company {
 		super();
 	}
 
-	public Company(List<Bod> getBod, List<Owner> getOwner, Long id, Integer accountStatus, String address,
-			String ownerName, String ownerSecondName, float country, Integer createdBy, Integer diligenceId,
-			String ethical1, String ethical2, String export1, String export2, Timestamp incorporation_date,
-			String isGov, String isGovCon, Integer noOfBod, String noOfEmployees, String parentCompanyGlobalLocation,
-			String parentCompanyGlobalName, String parentCompanyLocation, String parentCompanyName,
-			String parentCompanySecondGlobalName, String parentCompanySecondName, String personalConnection,
-			String province, String secondAddress, String taxId, String telephone, String website) {
-		super();
-		this.getBod = getBod;
-		this.getOwner = getOwner;
-		this.id = id;
-		this.accountStatus = accountStatus;
-		this.address = address;
-		this.ownerName = ownerName;
-		this.ownerSecondName = ownerSecondName;
-		this.country = country;
-		this.createdBy = createdBy;
-		this.diligenceId = diligenceId;
-		this.ethical1 = ethical1;
-		this.ethical2 = ethical2;
-		this.export1 = export1;
-		this.export2 = export2;
-		this.incorporation_date = incorporation_date;
-		this.isGov = isGov;
-		this.isGovCon = isGovCon;
-		this.noOfBod = noOfBod;
-		this.noOfEmployees = noOfEmployees;
-		this.parentCompanyGlobalLocation = parentCompanyGlobalLocation;
-		this.parentCompanyGlobalName = parentCompanyGlobalName;
-		this.parentCompanyLocation = parentCompanyLocation;
-		this.parentCompanyName = parentCompanyName;
-		this.parentCompanySecondGlobalName = parentCompanySecondGlobalName;
-		this.parentCompanySecondName = parentCompanySecondName;
-		this.personalConnection = personalConnection;
-		this.province = province;
-		this.secondAddress = secondAddress;
-		this.taxId = taxId;
-		this.telephone = telephone;
-		this.website = website;
-	}
-
-	@Override
-	public String toString() {
-		return "Company [getBod=" + getBod + ", getOwner=" + getOwner + ", id=" + id + ", accountStatus="
-				+ accountStatus + ", address=" + address + ", ownerName=" + ownerName + ", ownerSecondName="
-				+ ownerSecondName + ", country=" + country + ", createdBy=" + createdBy + ", diligenceId=" + diligenceId
-				+ ", ethical1=" + ethical1 + ", ethical2=" + ethical2 + ", export1=" + export1 + ", export2=" + export2
-				+ ", incorporation_date=" + incorporation_date + ", isGov=" + isGov + ", isGovCon=" + isGovCon
-				+ ", noOfBod=" + noOfBod + ", noOfEmployees=" + noOfEmployees + ", parentCompanyGlobalLocation="
-				+ parentCompanyGlobalLocation + ", parentCompanyGlobalName=" + parentCompanyGlobalName
-				+ ", parentCompanyLocation=" + parentCompanyLocation + ", parentCompanyName=" + parentCompanyName
-				+ ", parentCompanySecondGlobalName=" + parentCompanySecondGlobalName + ", parentCompanySecondName="
-				+ parentCompanySecondName + ", personalConnection=" + personalConnection + ", province=" + province
-				+ ", secondAddress=" + secondAddress + ", taxId=" + taxId + ", telephone=" + telephone + ", website="
-				+ website + "]";
-	}
-
+	
 	
     
     
