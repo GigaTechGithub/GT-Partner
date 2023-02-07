@@ -241,6 +241,7 @@ public class ProfileFormController {
 		try {
 			Legal legal = new Legal();
 			
+			legal.setId(request.getId());
 			legal.setCreatedBy(createdById());
 			legal.setDiligenceId(diligenceId());
 			legal.setLegal1(request.getLegal1());
@@ -253,6 +254,12 @@ public class ProfileFormController {
 			legal.setLegal8(request.getLegal8());
 			legal.setLegal9(request.getLegal9());
 			legal.setLegal10(request.getLegal10());
+			legal.setLegal11(request.getLegal11());
+			legal.setLegal12(request.getLegal12());
+			legal.setLegal13(request.getLegal13());
+			legal.setLegal14(request.getLegal14());
+			legal.setLegal15(request.getLegal15());
+			legal.setLegal16(request.getLegal16());
 			
 	    	String result = legalService.saveLegal(legal);
 	    	
@@ -275,6 +282,7 @@ public class ProfileFormController {
 		try {
 			Contracts contracts = new Contracts();
 			
+			contracts.setId(request.getId());
 			contracts.setCreatedBy(createdById());
 			contracts.setDiligenceId(diligenceId());
 			contracts.setFileName(request.getFileName());
@@ -301,6 +309,7 @@ public class ProfileFormController {
 		try {
 			Revenue revenue = new Revenue();
 			
+			revenue.setId(request.getId());
 			revenue.setCreatedBy(createdById());
 			revenue.setDiligenceId(diligenceId());
 			revenue.setRevenue1(request.getRevenue1());
@@ -329,6 +338,7 @@ public class ProfileFormController {
 		try {
 			Technology technology = new Technology();
 			
+			technology.setId(request.getId());
 			technology.setCreatedBy(createdById());
 			technology.setDiligenceId(diligenceId());
 			technology.setTech1(request.getTech1());
@@ -422,6 +432,7 @@ public class ProfileFormController {
 		try {
 			Ip ip = new Ip();
 			
+			ip.setId(request.getId());
 			ip.setCreatedBy(createdById());
 			ip.setDiligenceId(diligenceId());
 			ip.setIp1(request.getIp1());
@@ -510,6 +521,7 @@ public class ProfileFormController {
 		try {
 			It it = new It();
 			
+			it.setId(request.getId());
 			it.setCreatedBy(createdById());
 			it.setDiligenceId(diligenceId());
 			it.setIt1(request.getIt1());
@@ -521,6 +533,7 @@ public class ProfileFormController {
 			it.setIt7(request.getIt7());
 			it.setIt8(request.getIt8());
 			it.setIt9(request.getIt9());
+			it.setIt10(request.getIt10());
 			
 	    	String result = itService.saveIt(it);
 	    	

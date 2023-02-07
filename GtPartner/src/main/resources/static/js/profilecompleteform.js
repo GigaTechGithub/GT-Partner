@@ -154,65 +154,102 @@ $(document).ready(function(){
 	$(".nextFromSecondStep").click(function(){
 		
 		var legId = document.getElementById("rowId2").value;
-		var leg1 = document.getElementById("leg1").value;
-		var leg2 = document.getElementById("leg1").value;
-		var leg3 = document.getElementById("leg1").value;
-		var leg4 = document.getElementById("leg1").value;
-		var leg5 = document.getElementById("leg1").value;
-		var leg6 = document.getElementById("leg1").value;
-		var leg7 = document.getElementById("leg1").value;
-		var leg8 = document.getElementById("leg1").value;
-		var leg9 = document.getElementById("leg1").value;
-		var leg10 = document.getElementById("leg1").value;
-		var leg11 = document.getElementById("leg1").value;
-		var leg12 = document.getElementById("leg1").value;
-		var leg13 = document.getElementById("leg1").value;
-		var leg14 = document.getElementById("leg1").value;
-		var leg15 = document.getElementById("leg1").value;
-		var leg16 = document.getElementById("leg1").value;
+		var leg1 = document.getElementById("legal1").value;
+		var leg2 = document.getElementById("legal2").value;
+		var leg3 = document.getElementById("legal3").value;
+		var leg4 = document.getElementById("legal4").value;
+		var leg5 = document.getElementById("legal5").value;
+		var leg6 = document.getElementById("legal6").value;
+		var leg7 = document.getElementById("legal7").value;
+		var leg8 = document.getElementById("legal8").value;
+		var leg9 = document.getElementById("legal9").value;
+		var leg10 = document.getElementById("legal10").value;
+		var leg11 = document.getElementById("legal11").value;
+		var leg12 = document.getElementById("legal12").value;
+		var leg13 = document.getElementById("legal13").value;
+		var leg14 = document.getElementById("legal14").value;
+		var leg15 = document.getElementById("legal15").value;
+		var leg16 = document.getElementById("legal16").value;
 		
 		var legal = {};
 		legal["id"]= legId;
-		legal["leg1"] = leg1;
-		legal["leg2"] = leg2;
-		legal["leg3"] = leg3;
-		legal["leg4"] = leg4;
-		legal["leg5"] = leg5;
-		legal["leg6"] = leg6;
-		legal["leg7"] = leg7;
-		legal["leg8"] = leg8;
-		legal["leg9"] = leg9;
-		legal["leg10"] = leg10;
-		legal["leg11"] = leg11;
-		legal["leg12"] = leg12;
-		legal["leg13"] = leg13;
-		legal["leg14"] = leg14;
-		legal["leg15"] = leg15;
-		legal["leg16"] = leg16;
-	        
-        current_fs = $(this).parent();
-        next_fs = $(this).parent().next();
-        
-        //Add Class Active
-        $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-        
-        //show the next fieldset
-        next_fs.show(); 
-        //hide the current fieldset with style
-        current_fs.animate({opacity: 0}, {
-            step: function(now) {
-                // for making fielset appear animation
-                opacity = 1 - now;
-    
-                current_fs.css({
-                    'display': 'none',
-                    'position': 'relative'
-                });
-                next_fs.css({'opacity': opacity});
-            }, 
-            duration: 500
+		legal["legal1"] = leg1;
+		legal["legal2"] = leg2;
+		legal["legal3"] = leg3;
+		legal["legal4"] = leg4;
+		legal["legal5"] = leg5;
+		legal["legal6"] = leg6;
+		legal["legal7"] = leg7;
+		legal["legal8"] = leg8;
+		legal["legal9"] = leg9;
+		legal["legal10"] = leg10;
+		legal["legal11"] = leg11;
+		legal["legal12"] = leg12;
+		legal["legal13"] = leg13;
+		legal["legal14"] = leg14;
+		legal["legal15"] = leg15;
+		legal["legal16"] = leg16;
+		
+		$.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "/addLegal",
+            data: JSON.stringify(legal),
+            dataType: 'json',
+            cache: false,
+            timeout: 600000,
+            success: function (data) {
+                console.log(data["message"]);
+                if(data["message"]=="Failed"){
+                	alert("Failed to save data. Please try again");
+                	result = data["message"];
+                }
+                
+                else{
+                	result = data["message"];
+                }
+
+            },
+            error: function (e) {
+
+                alert("Failed to save data. Please try again");
+                result = e;
+
+            },
+            async: false
         });
-        setProgressBar(++current);
+        
+        if(result == "Failed"){
+        	
+        }
+        
+        else{
+        	document.getElementById("rowId2").value = result;
+        	current_fs = $(this).parent();
+			next_fs = $(this).parent().next();
+			
+			//Add Class Active
+			$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+			
+			//show the next fieldset
+			next_fs.show(); 
+			//hide the current fieldset with style
+			current_fs.animate({opacity: 0}, {
+				step: function(now) {
+					// for making fielset appear animation
+					opacity = 1 - now;
+		
+					current_fs.css({
+						'display': 'none',
+						'position': 'relative'
+					});
+					next_fs.css({'opacity': opacity});
+				}, 
+				duration: 500
+			});
+			setProgressBar(++current);
+        }
+	        
     });
 	
 	$(".nextFromThirdStep").click(function(){
@@ -257,29 +294,65 @@ $(document).ready(function(){
 		revenue["revenue3"]= revenue3;
 		revenue["revenue4"]= revenue4;
         
-        current_fs = $(this).parent();
-        next_fs = $(this).parent().next();
-        
-        //Add Class Active
-        $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-        
-        //show the next fieldset
-        next_fs.show(); 
-        //hide the current fieldset with style
-        current_fs.animate({opacity: 0}, {
-            step: function(now) {
-                // for making fielset appear animation
-                opacity = 1 - now;
-    
-                current_fs.css({
-                    'display': 'none',
-                    'position': 'relative'
-                });
-                next_fs.css({'opacity': opacity});
-            }, 
-            duration: 500
+		$.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "/addRevenue",
+            data: JSON.stringify(revenue),
+            dataType: 'json',
+            cache: false,
+            timeout: 600000,
+            success: function (data) {
+                console.log(data["message"]);
+                if(data["message"]=="Failed"){
+                	alert("Failed to save data. Please try again");
+                	result = data["message"];
+                }
+                
+                else{
+                	result = data["message"];
+                }
+
+            },
+            error: function (e) {
+
+                alert("Failed to save data. Please try again");
+                result = e;
+
+            },
+            async: false
         });
-        setProgressBar(++current);
+        
+        if(result == "Failed"){
+        	
+        }
+        
+        else{
+        	document.getElementById("rowId4").value = result;
+        	current_fs = $(this).parent();
+			next_fs = $(this).parent().next();
+			
+			//Add Class Active
+			$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+			
+			//show the next fieldset
+			next_fs.show(); 
+			//hide the current fieldset with style
+			current_fs.animate({opacity: 0}, {
+				step: function(now) {
+					// for making fielset appear animation
+					opacity = 1 - now;
+		
+					current_fs.css({
+						'display': 'none',
+						'position': 'relative'
+					});
+					next_fs.css({'opacity': opacity});
+				}, 
+				duration: 500
+			});
+			setProgressBar(++current);
+        }
     });
 	
 	$(".nextFromFifthStep").click(function(){
@@ -373,29 +446,65 @@ $(document).ready(function(){
 		tech["tech41"] = tech41;
 		tech["tech42"] = tech42;
 		
-        current_fs = $(this).parent();
-        next_fs = $(this).parent().next();
-        
-        //Add Class Active
-        $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-        
-        //show the next fieldset
-        next_fs.show(); 
-        //hide the current fieldset with style
-        current_fs.animate({opacity: 0}, {
-            step: function(now) {
-                // for making fielset appear animation
-                opacity = 1 - now;
-    
-                current_fs.css({
-                    'display': 'none',
-                    'position': 'relative'
-                });
-                next_fs.css({'opacity': opacity});
-            }, 
-            duration: 500
+		$.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "/addTechnology",
+            data: JSON.stringify(tech),
+            dataType: 'json',
+            cache: false,
+            timeout: 600000,
+            success: function (data) {
+                console.log(data["message"]);
+                if(data["message"]=="Failed"){
+                	alert("Failed to save data. Please try again");
+                	result = data["message"];
+                }
+                
+                else{
+                	result = data["message"];
+                }
+
+            },
+            error: function (e) {
+
+                alert("Failed to save data. Please try again");
+                result = e;
+
+            },
+            async: false
         });
-        setProgressBar(++current);
+        
+        if(result == "Failed"){
+        	
+        }
+        
+        else{
+        	document.getElementById("rowId5").value = result;
+        	current_fs = $(this).parent();
+			next_fs = $(this).parent().next();
+			
+			//Add Class Active
+			$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+			
+			//show the next fieldset
+			next_fs.show(); 
+			//hide the current fieldset with style
+			current_fs.animate({opacity: 0}, {
+				step: function(now) {
+					// for making fielset appear animation
+					opacity = 1 - now;
+		
+					current_fs.css({
+						'display': 'none',
+						'position': 'relative'
+					});
+					next_fs.css({'opacity': opacity});
+				}, 
+				duration: 500
+			});
+			setProgressBar(++current);
+        }
     });
 	
 	$(".nextFromSixthStep").click(function(){
@@ -423,29 +532,65 @@ $(document).ready(function(){
 		ip["ip8"]= ip8;
 		ip["ip9"]= ip9;
         
-        current_fs = $(this).parent();
-        next_fs = $(this).parent().next();
-        
-        //Add Class Active
-        $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-        
-        //show the next fieldset
-        next_fs.show(); 
-        //hide the current fieldset with style
-        current_fs.animate({opacity: 0}, {
-            step: function(now) {
-                // for making fielset appear animation
-                opacity = 1 - now;
-    
-                current_fs.css({
-                    'display': 'none',
-                    'position': 'relative'
-                });
-                next_fs.css({'opacity': opacity});
-            }, 
-            duration: 500
+		$.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "/addIp",
+            data: JSON.stringify(ip),
+            dataType: 'json',
+            cache: false,
+            timeout: 600000,
+            success: function (data) {
+                console.log(data["message"]);
+                if(data["message"]=="Failed"){
+                	alert("Failed to save data. Please try again");
+                	result = data["message"];
+                }
+                
+                else{
+                	result = data["message"];
+                }
+
+            },
+            error: function (e) {
+
+                alert("Failed to save data. Please try again");
+                result = e;
+
+            },
+            async: false
         });
-        setProgressBar(++current);
+        
+        if(result == "Failed"){
+        	
+        }
+        
+        else{
+        	document.getElementById("rowId6").value = result;
+        	current_fs = $(this).parent();
+			next_fs = $(this).parent().next();
+			
+			//Add Class Active
+			$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+			
+			//show the next fieldset
+			next_fs.show(); 
+			//hide the current fieldset with style
+			current_fs.animate({opacity: 0}, {
+				step: function(now) {
+					// for making fielset appear animation
+					opacity = 1 - now;
+		
+					current_fs.css({
+						'display': 'none',
+						'position': 'relative'
+					});
+					next_fs.css({'opacity': opacity});
+				}, 
+				duration: 500
+			});
+			setProgressBar(++current);
+        }
     });
 	
 	$(".nextFromSeventhStep").click(function(){
@@ -475,29 +620,65 @@ $(document).ready(function(){
 		it["it9"]= it9;
 		it["it10"]= it10;
         
-        current_fs = $(this).parent();
-        next_fs = $(this).parent().next();
-        
-        //Add Class Active
-        $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-        
-        //show the next fieldset
-        next_fs.show(); 
-        //hide the current fieldset with style
-        current_fs.animate({opacity: 0}, {
-            step: function(now) {
-                // for making fielset appear animation
-                opacity = 1 - now;
-    
-                current_fs.css({
-                    'display': 'none',
-                    'position': 'relative'
-                });
-                next_fs.css({'opacity': opacity});
-            }, 
-            duration: 500
+		$.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "/addIt",
+            data: JSON.stringify(it),
+            dataType: 'json',
+            cache: false,
+            timeout: 600000,
+            success: function (data) {
+                console.log(data["message"]);
+                if(data["message"]=="Failed"){
+                	alert("Failed to save data. Please try again");
+                	result = data["message"];
+                }
+                
+                else{
+                	result = data["message"];
+                }
+
+            },
+            error: function (e) {
+
+                alert("Failed to save data. Please try again");
+                result = e;
+
+            },
+            async: false
         });
-        setProgressBar(++current);
+        
+        if(result == "Failed"){
+        	
+        }
+        
+        else{
+        	document.getElementById("rowId7").value = result;
+        	current_fs = $(this).parent();
+			next_fs = $(this).parent().next();
+			
+			//Add Class Active
+			$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+			
+			//show the next fieldset
+			next_fs.show(); 
+			//hide the current fieldset with style
+			current_fs.animate({opacity: 0}, {
+				step: function(now) {
+					// for making fielset appear animation
+					opacity = 1 - now;
+		
+					current_fs.css({
+						'display': 'none',
+						'position': 'relative'
+					});
+					next_fs.css({'opacity': opacity});
+				}, 
+				duration: 500
+			});
+			setProgressBar(++current);
+        }
     });
 	
 	$(".next").click(function(){
