@@ -34,21 +34,26 @@ public class AuthController {
 				.getRequestAttributes()).getRequest();
 		HttpSession session = servRequest.getSession(true);
 
-		session.setAttribute("id", request.getId()); 
-		session.setAttribute("name", request.getName()); 
-		session.setAttribute("username", request.getUsername()); 
-		session.setAttribute("password", request.getPassword()); 
-		session.setAttribute("email", request.getEmail()); 
-		session.setAttribute("mobile", request.getMobile());
-		session.setAttribute("diligenceId", request.getDiligenceId());
-		
     	Users users = userService.findByusername(request.getUsername().toString());
-    	if (users.getPassword().equals(request.getPassword())) {
-    		return "redirect:/home";
-		}else {
+    	if(users !=null) {
+    		session.setAttribute("id", users.getId()); 
+    		session.setAttribute("name", users.getName()); 
+    		session.setAttribute("username", users.getUsername()); 
+    		session.setAttribute("email", users.getEmail()); 
+    		session.setAttribute("mobile", users.getMobile());
+    		session.setAttribute("diligenceId", users.getDiligenceId());
+    		
+    		if (users.getPassword().equals(request.getPassword())) {
+        		return "redirect:/home";
+    		}else {
+    			redirectAttributes.addFlashAttribute("message", "Invalid Username or Password");
+    			return "redirect:/";
+    		}
+    	}else {
 			redirectAttributes.addFlashAttribute("message", "Invalid Username or Password");
 			return "redirect:/";
 		}
+    	
     }
     
     @GetMapping("/index")
