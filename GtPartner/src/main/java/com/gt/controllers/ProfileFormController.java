@@ -1,27 +1,21 @@
 package com.gt.controllers;
 
-import java.util.List;
-import java.util.stream.Collectors;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.jackson.JsonObjectSerializer;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import com.fasterxml.jackson.annotation.JsonAlias;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import com.gt.models.AjaxResponse;
 import com.gt.models.Bod;
 import com.gt.models.Company;
 import com.gt.models.Owner;
-import com.gt.models.Users;
 import com.gt.services.BodService;
 import com.gt.services.CompanyService;
 import com.gt.services.OwnerService;
@@ -38,6 +32,21 @@ public class ProfileFormController {
 	@Autowired
 	OwnerService ownerService;
 	
+	public HttpSession getSession() {
+		HttpServletRequest servRequest = ((ServletRequestAttributes) RequestContextHolder
+				.getRequestAttributes()).getRequest();
+		HttpSession session = servRequest.getSession(true);
+		return session;
+	}
+	
+	public Integer createdById () {
+		return Integer.parseInt(getSession().getAttribute("id").toString());
+	}
+	
+	public Integer diligenceId () {
+		return Integer.parseInt(getSession().getAttribute("diligenceId").toString());
+	}
+	
 	@PostMapping({"/addOwner"})
     public ResponseEntity<?> addOwner(@RequestBody Owner request, Errors errors) {
 		AjaxResponse response = new AjaxResponse();
@@ -46,8 +55,8 @@ public class ProfileFormController {
 	    	owner.setOwnerName(request.getOwnerName());
 	    	owner.setOwnerSecondName(request.getOwnerSecondName());
 	    	owner.setOwnerPercent(request.getOwnerPercent());
-	    	owner.setCreatedBy("1");
-	    	owner.setDiligenceId("1");
+	    	owner.setCreatedBy(createdById());
+	    	owner.setDiligenceId(diligenceId());
 	    	
 	    	String result = ownerService.saveOwner(owner);
 	    	
@@ -92,8 +101,8 @@ public class ProfileFormController {
 			bod.setBodName(request.getBodName());
 			bod.setBodSecondName(request.getBodSecondName());
 			bod.setTile(request.getTile());
-			bod.setCreatedBy("1");
-			bod.setDiligenceId("1");
+			bod.setCreatedBy(createdById());
+			bod.setDiligenceId(diligenceId());
 	    	
 	    	String result = bodService.saveBod(bod);
 	    	
@@ -142,8 +151,8 @@ public class ProfileFormController {
 			company.setCompanyName(request.getCompanyName());
 			company.setCompanySecondName(request.getCompanySecondName());
 			company.setCountry(request.getCountry());			
-			company.setCreatedBy(1);
-			company.setDiligenceId(1);
+			company.setCreatedBy(createdById());
+			company.setDiligenceId(diligenceId());
 			company.setEthical1(request.getEthical1());
 			company.setEthical2(request.getEthical2());
 			company.setExport1(request.getExport1());
@@ -180,4 +189,7 @@ public class ProfileFormController {
 			
 		}
     }
+	
+	
+	
 }
