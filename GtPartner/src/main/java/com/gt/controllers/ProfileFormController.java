@@ -16,6 +16,11 @@ import com.gt.models.AjaxResponse;
 import com.gt.models.Bod;
 import com.gt.models.Company;
 import com.gt.models.Contracts;
+import com.gt.models.IncorporationDoc;
+import com.gt.models.Ip;
+import com.gt.models.IpDoc1;
+import com.gt.models.IpDoc2;
+import com.gt.models.It;
 import com.gt.models.Legal;
 import com.gt.models.Owner;
 import com.gt.models.Revenue;
@@ -384,4 +389,153 @@ public class ProfileFormController {
 			
 		}
     }
+	
+	@PostMapping({"/addIncorporationDoc"})
+    public ResponseEntity<?> addIncorporationDoc(@RequestBody IncorporationDoc request, Errors errors) {
+		AjaxResponse response = new AjaxResponse();
+		try {
+			IncorporationDoc incorporationDoc = new IncorporationDoc();
+			
+			incorporationDoc.setCreatedBy(createdById());
+			incorporationDoc.setDiligenceId(diligenceId());
+			incorporationDoc.setFileName(request.getFileName());
+			incorporationDoc.setFilePath(request.getFilePath());
+			
+	    	String result = incorporationDocService.saveIncorporationDoc(incorporationDoc);
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+    }
+	
+	@PostMapping({"/addIp"})
+    public ResponseEntity<?> addIp(@RequestBody Ip request, Errors errors) {
+		AjaxResponse response = new AjaxResponse();
+		try {
+			Ip ip = new Ip();
+			
+			ip.setCreatedBy(createdById());
+			ip.setDiligenceId(diligenceId());
+			ip.setIp1(request.getIp1());
+			ip.setIp2(request.getIp2());
+			ip.setIp3(request.getIp3());
+			ip.setIp4(request.getIp4());
+			ip.setIp5(request.getIp5());
+			ip.setIp6(request.getIp6());
+			ip.setIp7(request.getIp7());
+			ip.setIp8(request.getIp8());
+			ip.setIp9(request.getIp9());
+			
+	    	String result = ipService.saveIp(ip);
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+    }
+	
+	
+	@PostMapping({"/addIpDoc1"})
+    public ResponseEntity<?> addIp(@RequestBody IpDoc1 request, Errors errors) {
+		AjaxResponse response = new AjaxResponse();
+		try {
+			IpDoc1 ipDoc1 = new IpDoc1();
+			
+			ipDoc1.setCreatedBy(createdById());
+			ipDoc1.setDiligenceId(diligenceId());
+			ipDoc1.setFileName(request.getFileName());
+			ipDoc1.setFilePath(request.getFilePath());
+			ipDoc1.setFileType(request.getFileType());
+			
+	    	String result = ipDoc1Service.saveIpDoc1(ipDoc1);
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+    }
+	
+	@PostMapping({"/addIpDoc2"})
+    public ResponseEntity<?> addIp(@RequestBody IpDoc2 request, Errors errors) {
+		AjaxResponse response = new AjaxResponse();
+		try {
+			IpDoc2 ipDoc2 = new IpDoc2();
+			
+			ipDoc2.setCreatedBy(createdById());
+			ipDoc2.setDiligenceId(diligenceId());
+			ipDoc2.setFileName(request.getFileName());
+			ipDoc2.setFilePath(request.getFilePath());
+			ipDoc2.setFileType(request.getFileType());
+			
+	    	String result = ipDoc2Service.saveIpDoc2(ipDoc2);
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+    }
+	
+	@PostMapping({"/addIt"})
+    public ResponseEntity<?> addIt(@RequestBody It request, Errors errors) {
+		AjaxResponse response = new AjaxResponse();
+		try {
+			It it = new It();
+			
+			it.setCreatedBy(createdById());
+			it.setDiligenceId(diligenceId());
+			it.setIt1(request.getIt1());
+			it.setIt2(request.getIt2());
+			it.setIt3(request.getIt3());
+			it.setIt4(request.getIt4());
+			it.setIt5(request.getIt5());
+			it.setIt6(request.getIt6());
+			it.setIt7(request.getIt7());
+			it.setIt8(request.getIt8());
+			it.setIt9(request.getIt9());
+			
+	    	String result = itService.saveIt(it);
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+    }
+	
+	
 }
