@@ -15,10 +15,23 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import com.gt.models.AjaxResponse;
 import com.gt.models.Bod;
 import com.gt.models.Company;
+import com.gt.models.Contracts;
+import com.gt.models.Legal;
 import com.gt.models.Owner;
+import com.gt.models.Revenue;
+import com.gt.models.Technology;
 import com.gt.services.BodService;
 import com.gt.services.CompanyService;
+import com.gt.services.ContractsService;
+import com.gt.services.IncorporationDocService;
+import com.gt.services.IpDoc1Service;
+import com.gt.services.IpDoc2Service;
+import com.gt.services.IpService;
+import com.gt.services.ItService;
+import com.gt.services.LegalService;
 import com.gt.services.OwnerService;
+import com.gt.services.RevenueService;
+import com.gt.services.TechnologyService;
 
 @RestController
 public class ProfileFormController {
@@ -28,6 +41,33 @@ public class ProfileFormController {
 	
 	@Autowired
 	CompanyService companyService;
+	
+	@Autowired
+	LegalService legalService;
+	
+	@Autowired
+	ContractsService contractsService;
+	
+	@Autowired
+	RevenueService revenueService;
+	
+	@Autowired
+	TechnologyService technologyService;
+	
+	@Autowired
+	IncorporationDocService incorporationDocService;
+	
+	@Autowired
+	IpService ipService;
+	
+	@Autowired
+	IpDoc1Service ipDoc1Service;
+	
+	@Autowired
+	IpDoc2Service ipDoc2Service;
+	
+	@Autowired
+	ItService itService;
 	
 	@Autowired
 	OwnerService ownerService;
@@ -190,6 +230,158 @@ public class ProfileFormController {
 		}
     }
 	
+	@PostMapping({"/addLegal"})
+    public ResponseEntity<?> addLegal(@RequestBody Legal request, Errors errors) {
+		AjaxResponse response = new AjaxResponse();
+		try {
+			Legal legal = new Legal();
+			
+			legal.setCreatedBy(createdById());
+			legal.setDiligenceId(diligenceId());
+			legal.setLegal1(request.getLegal1());
+			legal.setLegal2(request.getLegal2());
+			legal.setLegal3(request.getLegal3());
+			legal.setLegal4(request.getLegal4());
+			legal.setLegal5(request.getLegal5());
+			legal.setLegal6(request.getLegal6());
+			legal.setLegal7(request.getLegal7());
+			legal.setLegal8(request.getLegal8());
+			legal.setLegal9(request.getLegal9());
+			legal.setLegal10(request.getLegal10());
+			
+	    	String result = legalService.saveLegal(legal);
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+    }
 	
+	@PostMapping({"/addContracts"})
+    public ResponseEntity<?> addLegal(@RequestBody Contracts request, Errors errors) {
+		AjaxResponse response = new AjaxResponse();
+		try {
+			Contracts contracts = new Contracts();
+			
+			contracts.setCreatedBy(createdById());
+			contracts.setDiligenceId(diligenceId());
+			contracts.setFileName(request.getFileName());
+			contracts.setFilePath(request.getFilePath());
+			
+	    	String result = contractsService.saveContacts(contracts);
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+    }
 	
+	@PostMapping({"/addRevenue"})
+    public ResponseEntity<?> addRevenue(@RequestBody Revenue request, Errors errors) {
+		AjaxResponse response = new AjaxResponse();
+		try {
+			Revenue revenue = new Revenue();
+			
+			revenue.setCreatedBy(createdById());
+			revenue.setDiligenceId(diligenceId());
+			revenue.setRevenue1(request.getRevenue1());
+			revenue.setRevenue2(request.getRevenue2());
+			revenue.setRevenue3(request.getRevenue3());
+			revenue.setRevenue4(request.getRevenue4());
+			
+	    	String result = revenueService.saveRevenue(revenue);
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+    }
+	
+	@PostMapping({"/addTechnology"})
+    public ResponseEntity<?> addTechnology(@RequestBody Technology request, Errors errors) {
+		AjaxResponse response = new AjaxResponse();
+		try {
+			Technology technology = new Technology();
+			
+			technology.setCreatedBy(createdById());
+			technology.setDiligenceId(diligenceId());
+			technology.setTech1(request.getTech1());
+			technology.setTech2(request.getTech2());
+			technology.setTech3(request.getTech3());
+			technology.setTech4(request.getTech4());
+			technology.setTech5(request.getTech5());
+			technology.setTech6(request.getTech6());
+			technology.setTech7(request.getTech7());
+			technology.setTech8(request.getTech8());
+			technology.setTech9(request.getTech9());
+			technology.setTech10(request.getTech10());
+			technology.setTech11(request.getTech11());
+			technology.setTech12(request.getTech12());
+			technology.setTech13(request.getTech13());
+			technology.setTech14(request.getTech14());
+			technology.setTech15(request.getTech15());
+			technology.setTech16(request.getTech16());
+			technology.setTech17(request.getTech17());
+			technology.setTech18(request.getTech18());
+			technology.setTech19(request.getTech19());
+			technology.setTech20(request.getTech20());
+			technology.setTech21(request.getTech21());
+			technology.setTech22(request.getTech22());
+			technology.setTech23(request.getTech23());
+			technology.setTech24(request.getTech24());
+			technology.setTech25(request.getTech25());
+			technology.setTech26(request.getTech26());
+			technology.setTech27(request.getTech27());
+			technology.setTech28(request.getTech28());
+			technology.setTech29(request.getTech29());
+			technology.setTech30(request.getTech30());
+			technology.setTech31(request.getTech31());
+			technology.setTech32(request.getTech32());
+			technology.setTech33(request.getTech33());
+			technology.setTech34(request.getTech34());
+			technology.setTech35(request.getTech35());
+			technology.setTech36(request.getTech36());
+			technology.setTech37(request.getTech37());
+			technology.setTech38(request.getTech38());
+			technology.setTech39(request.getTech39());
+			technology.setTech40(request.getTech40());
+			technology.setTech41(request.getTech41());
+			technology.setTech42(request.getTech42());
+			
+			
+	    	String result = technologyService.saveTechnology(technology);
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+    }
 }
