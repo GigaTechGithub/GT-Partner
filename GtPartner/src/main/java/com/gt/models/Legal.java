@@ -15,7 +15,10 @@ public class Legal {
  	@Column(name="ID")
  	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-     
+	
+	@Column(name="CREATED_BY", nullable=false, length=20)
+  	private Integer createdBy;
+	
     @Column(name="DILIGENCE_ID")
     private Integer diligenceId;
      
@@ -73,6 +76,14 @@ public class Legal {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Integer getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	public Integer getDiligenceId() {
@@ -215,11 +226,12 @@ public class Legal {
 		super();
 	}
 
-	public Legal(Long id, Integer diligenceId, String legal1, String legal2, String legal3, String legal4,
-			String legal5, String legal6, String legal7, String legal8, String legal9, String legal10, String legal11,
-			String legal12, String legal13, String legal14, String legal15, String legal16) {
+	public Legal(Long id, Integer createdBy, Integer diligenceId, String legal1, String legal2, String legal3,
+			String legal4, String legal5, String legal6, String legal7, String legal8, String legal9, String legal10,
+			String legal11, String legal12, String legal13, String legal14, String legal15, String legal16) {
 		super();
 		this.id = id;
+		this.createdBy = createdBy;
 		this.diligenceId = diligenceId;
 		this.legal1 = legal1;
 		this.legal2 = legal2;
@@ -241,13 +253,14 @@ public class Legal {
 
 	@Override
 	public String toString() {
-		return "Legal [id=" + id + ", diligenceId=" + diligenceId + ", legal1=" + legal1 + ", legal2=" + legal2
-				+ ", legal3=" + legal3 + ", legal4=" + legal4 + ", legal5=" + legal5 + ", legal6=" + legal6
-				+ ", legal7=" + legal7 + ", legal8=" + legal8 + ", legal9=" + legal9 + ", legal10=" + legal10
-				+ ", legal11=" + legal11 + ", legal12=" + legal12 + ", legal13=" + legal13 + ", legal14=" + legal14
-				+ ", legal15=" + legal15 + ", legal16=" + legal16 + "]";
+		return "Legal [id=" + id + ", createdBy=" + createdBy + ", diligenceId=" + diligenceId + ", legal1=" + legal1
+				+ ", legal2=" + legal2 + ", legal3=" + legal3 + ", legal4=" + legal4 + ", legal5=" + legal5
+				+ ", legal6=" + legal6 + ", legal7=" + legal7 + ", legal8=" + legal8 + ", legal9=" + legal9
+				+ ", legal10=" + legal10 + ", legal11=" + legal11 + ", legal12=" + legal12 + ", legal13=" + legal13
+				+ ", legal14=" + legal14 + ", legal15=" + legal15 + ", legal16=" + legal16 + "]";
 	}
-    
+
+	
     
     
 }
