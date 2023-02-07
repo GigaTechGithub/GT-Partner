@@ -26,4 +26,15 @@ public class UserServiceImpl implements UserService{
             return new ArrayList<Users>();
         }
 	}
+
+	@Override
+	public Users findByusername(String userName) {
+		Users usersList = userRepository.findByusername(userName);
+		
+		if(usersList  != null) {
+            return usersList;
+        } else {
+            return null;
+        }
+	}
 }

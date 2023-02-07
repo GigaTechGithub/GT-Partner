@@ -7,5 +7,6 @@ import com.gt.models.Users;
 
 @Repository
 public interface UserRepository extends JpaRepository<Users, Long>{
-	
+
+	Users findByusername(String userName);
 }

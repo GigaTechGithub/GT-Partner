@@ -13,5 +13,5 @@ public interface UserService {
 	List<Users> usersList();
 //	void updateUser(Users userModel);
 //	void deleteUser(long id);
-//	Users findByuserName(String userName);
+	Users findByusername(String userName);
 }
