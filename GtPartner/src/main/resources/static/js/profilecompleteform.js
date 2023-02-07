@@ -8,29 +8,6 @@ $(document).ready(function(){
     setProgressBar(current);
     
     $(".nextFromFirstStep").click(function(){
-//    	current_fs = $(this).parent();
-//		next_fs = $(this).parent().next();
-//		
-//		//Add Class Active
-//		$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-//		
-//		//show the next fieldset
-//		next_fs.show(); 
-//		//hide the current fieldset with style
-//		current_fs.animate({opacity: 0}, {
-//			step: function(now) {
-//				// for making fielset appear animation
-//				opacity = 1 - now;
-//	
-//				current_fs.css({
-//					'display': 'none',
-//					'position': 'relative'
-//				});
-//				next_fs.css({'opacity': opacity});
-//			}, 
-//			duration: 500
-//		});
-//		setProgressBar(++current);
 
     	var comId = document.getElementById("rowId").value;
     	var comLegalName = document.getElementById("comLegalName").value;
@@ -124,29 +101,6 @@ $(document).ready(function(){
                         }
                         
                         else{
-//                        	current_fs = $(this).parent();
-//                			next_fs = $(this).parent().next();
-//                			
-//                			//Add Class Active
-//                			$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-//                			
-//                			//show the next fieldset
-//                			next_fs.show(); 
-//                			//hide the current fieldset with style
-//                			current_fs.animate({opacity: 0}, {
-//                				step: function(now) {
-//                					// for making fielset appear animation
-//                					opacity = 1 - now;
-//                		
-//                					current_fs.css({
-//                						'display': 'none',
-//                						'position': 'relative'
-//                					});
-//                					next_fs.css({'opacity': opacity});
-//                				}, 
-//                				duration: 500
-//                			});
-//                			setProgressBar(++current);
                         	result = data["message"];
                         }
 
@@ -195,6 +149,355 @@ $(document).ready(function(){
     		}
     		
     	}
+    });
+    
+	$(".nextFromSecondStep").click(function(){
+		
+		var legId = document.getElementById("rowId2").value;
+		var leg1 = document.getElementById("leg1").value;
+		var leg2 = document.getElementById("leg1").value;
+		var leg3 = document.getElementById("leg1").value;
+		var leg4 = document.getElementById("leg1").value;
+		var leg5 = document.getElementById("leg1").value;
+		var leg6 = document.getElementById("leg1").value;
+		var leg7 = document.getElementById("leg1").value;
+		var leg8 = document.getElementById("leg1").value;
+		var leg9 = document.getElementById("leg1").value;
+		var leg10 = document.getElementById("leg1").value;
+		var leg11 = document.getElementById("leg1").value;
+		var leg12 = document.getElementById("leg1").value;
+		var leg13 = document.getElementById("leg1").value;
+		var leg14 = document.getElementById("leg1").value;
+		var leg15 = document.getElementById("leg1").value;
+		var leg16 = document.getElementById("leg1").value;
+		
+		var legal = {};
+		legal["id"]= legId;
+		legal["leg1"] = leg1;
+		legal["leg2"] = leg2;
+		legal["leg3"] = leg3;
+		legal["leg4"] = leg4;
+		legal["leg5"] = leg5;
+		legal["leg6"] = leg6;
+		legal["leg7"] = leg7;
+		legal["leg8"] = leg8;
+		legal["leg9"] = leg9;
+		legal["leg10"] = leg10;
+		legal["leg11"] = leg11;
+		legal["leg12"] = leg12;
+		legal["leg13"] = leg13;
+		legal["leg14"] = leg14;
+		legal["leg15"] = leg15;
+		legal["leg16"] = leg16;
+	        
+        current_fs = $(this).parent();
+        next_fs = $(this).parent().next();
+        
+        //Add Class Active
+        $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+        
+        //show the next fieldset
+        next_fs.show(); 
+        //hide the current fieldset with style
+        current_fs.animate({opacity: 0}, {
+            step: function(now) {
+                // for making fielset appear animation
+                opacity = 1 - now;
+    
+                current_fs.css({
+                    'display': 'none',
+                    'position': 'relative'
+                });
+                next_fs.css({'opacity': opacity});
+            }, 
+            duration: 500
+        });
+        setProgressBar(++current);
+    });
+	
+	$(".nextFromThirdStep").click(function(){
+        
+        current_fs = $(this).parent();
+        next_fs = $(this).parent().next();
+        
+        //Add Class Active
+        $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+        
+        //show the next fieldset
+        next_fs.show(); 
+        //hide the current fieldset with style
+        current_fs.animate({opacity: 0}, {
+            step: function(now) {
+                // for making fielset appear animation
+                opacity = 1 - now;
+    
+                current_fs.css({
+                    'display': 'none',
+                    'position': 'relative'
+                });
+                next_fs.css({'opacity': opacity});
+            }, 
+            duration: 500
+        });
+        setProgressBar(++current);
+    });
+	
+	$(".nextFromFourthStep").click(function(){
+		
+		var revId = document.getElementById("rowId4").value;
+		var revenue1 = document.getElementById("revenue1").value;
+		var revenue2 = document.getElementById("revenue2").value;
+		var revenue3 = document.getElementById("revenue3").value;
+		var revenue4 = document.getElementById("revenue4").value;
+		
+		var revenue = {};
+		revenue["id"]= revId;
+		revenue["revenue1"]= revenue1;
+		revenue["revenue2"]= revenue2;
+		revenue["revenue3"]= revenue3;
+		revenue["revenue4"]= revenue4;
+        
+        current_fs = $(this).parent();
+        next_fs = $(this).parent().next();
+        
+        //Add Class Active
+        $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+        
+        //show the next fieldset
+        next_fs.show(); 
+        //hide the current fieldset with style
+        current_fs.animate({opacity: 0}, {
+            step: function(now) {
+                // for making fielset appear animation
+                opacity = 1 - now;
+    
+                current_fs.css({
+                    'display': 'none',
+                    'position': 'relative'
+                });
+                next_fs.css({'opacity': opacity});
+            }, 
+            duration: 500
+        });
+        setProgressBar(++current);
+    });
+	
+	$(".nextFromFifthStep").click(function(){
+		var techId = document.getElementById("rowId5").value;
+		var tech1 = document.getElementById("tech1").value;
+		var tech2 = document.getElementById("tech2").value;
+		var tech3 = document.getElementById("tech3").value;
+		var tech4 = document.getElementById("tech4").value;
+		var tech5 = document.getElementById("tech5").value;
+		var tech6 = document.getElementById("tech6").value;
+		var tech7 = document.getElementById("tech7").value;
+		var tech8 = document.getElementById("tech8").value;
+		var tech9 = document.getElementById("tech9").value;
+		var tech10 = document.getElementById("tech10").value;
+		var tech11 = document.getElementById("tech11").value;
+		var tech12 = document.getElementById("tech12").value;
+		var tech13 = document.getElementById("tech13").value;
+		var tech14 = document.getElementById("tech14").value;
+		var tech15 = document.getElementById("tech15").value;
+		var tech16 = document.getElementById("tech16").value;
+		var tech17 = document.getElementById("tech17").value;
+		var tech18 = document.getElementById("tech18").value;
+		var tech19 = document.getElementById("tech19").value;
+		var tech20 = document.getElementById("tech20").value;
+		var tech21 = document.getElementById("tech21").value;
+		var tech22 = document.getElementById("tech22").value;
+		var tech23 = document.getElementById("tech23").value;
+		var tech24 = document.getElementById("tech24").value;
+		var tech25 = document.getElementById("tech25").value;
+		var tech26 = document.getElementById("tech26").value;
+		var tech27 = document.getElementById("tech27").value;
+		var tech28 = document.getElementById("tech28").value;
+		var tech29 = document.getElementById("tech29").value;
+		var tech30 = document.getElementById("tech30").value;
+		var tech31 = document.getElementById("tech31").value;
+		var tech32 = document.getElementById("tech32").value;
+		var tech33 = document.getElementById("tech33").value;
+		var tech34 = document.getElementById("tech34").value;
+		var tech35 = document.getElementById("tech35").value;
+		var tech36 = document.getElementById("tech36").value;
+		var tech37 = document.getElementById("tech37").value;
+		var tech38 = document.getElementById("tech38").value;
+		var tech39 = document.getElementById("tech39").value;
+		var tech40 = document.getElementById("tech40").value;
+		var tech41 = document.getElementById("tech41").value;
+		var tech42 = document.getElementById("tech42").value;
+		
+		var tech = {};
+		tech["id"]= techId;
+		tech["tech1"] = tech1;
+		tech["tech2"] = tech2;
+		tech["tech3"] = tech3;
+		tech["tech4"] = tech4;
+		tech["tech5"] = tech5;
+		tech["tech6"] = tech6;
+		tech["tech7"] = tech7;
+		tech["tech8"] = tech8;
+		tech["tech9"] = tech9;
+		tech["tech10"] = tech10;
+		tech["tech11"] = tech11;
+		tech["tech12"] = tech12;
+		tech["tech13"] = tech13;
+		tech["tech14"] = tech14;
+		tech["tech15"] = tech15;
+		tech["tech16"] = tech16;
+		tech["tech17"] = tech17;
+		tech["tech18"] = tech18;
+		tech["tech19"] = tech19;
+		tech["tech20"] = tech20;
+		tech["tech21"] = tech21;
+		tech["tech22"] = tech22;
+		tech["tech23"] = tech23;
+		tech["tech24"] = tech24;
+		tech["tech25"] = tech25;
+		tech["tech26"] = tech26;
+		tech["tech27"] = tech27;
+		tech["tech28"] = tech28;
+		tech["tech29"] = tech29;
+		tech["tech30"] = tech30;
+		tech["tech31"] = tech31;
+		tech["tech32"] = tech32;
+		tech["tech33"] = tech33;
+		tech["tech34"] = tech34;
+		tech["tech35"] = tech35;
+		tech["tech36"] = tech36;
+		tech["tech37"] = tech37;
+		tech["tech38"] = tech38;
+		tech["tech3"] = tech3;
+		tech["tech39"] = tech39;
+		tech["tech40"] = tech40;
+		tech["tech41"] = tech41;
+		tech["tech42"] = tech42;
+		
+        current_fs = $(this).parent();
+        next_fs = $(this).parent().next();
+        
+        //Add Class Active
+        $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+        
+        //show the next fieldset
+        next_fs.show(); 
+        //hide the current fieldset with style
+        current_fs.animate({opacity: 0}, {
+            step: function(now) {
+                // for making fielset appear animation
+                opacity = 1 - now;
+    
+                current_fs.css({
+                    'display': 'none',
+                    'position': 'relative'
+                });
+                next_fs.css({'opacity': opacity});
+            }, 
+            duration: 500
+        });
+        setProgressBar(++current);
+    });
+	
+	$(".nextFromSixthStep").click(function(){
+		
+		var ipId = document.getElementById("rowId6").value;
+		var ip1 = document.getElementById("ip1").value;
+		var ip2 = document.getElementById("ip2").value;
+		var ip3 = document.getElementById("ip3").value;
+		var ip4 = document.getElementById("ip4").value;
+		var ip5 = document.getElementById("ip5").value;
+		var ip6 = document.getElementById("ip6").value;
+		var ip7 = document.getElementById("ip7").value;
+		var ip8 = document.getElementById("ip8").value;
+		var ip9 = document.getElementById("ip9").value;	
+		
+		var ip = {};
+		ip["id"]= ipId;
+		ip["ip1"]= ip1;
+		ip["ip2"]= ip2;
+		ip["ip3"]= ip3;
+		ip["ip4"]= ip4;
+		ip["ip5"]= ip5;
+		ip["ip6"]= ip6;
+		ip["ip7"]= ip7;
+		ip["ip8"]= ip8;
+		ip["ip9"]= ip9;
+        
+        current_fs = $(this).parent();
+        next_fs = $(this).parent().next();
+        
+        //Add Class Active
+        $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+        
+        //show the next fieldset
+        next_fs.show(); 
+        //hide the current fieldset with style
+        current_fs.animate({opacity: 0}, {
+            step: function(now) {
+                // for making fielset appear animation
+                opacity = 1 - now;
+    
+                current_fs.css({
+                    'display': 'none',
+                    'position': 'relative'
+                });
+                next_fs.css({'opacity': opacity});
+            }, 
+            duration: 500
+        });
+        setProgressBar(++current);
+    });
+	
+	$(".nextFromSeventhStep").click(function(){
+		
+		var itId = document.getElementById("rowId7").value;
+		var it1 = document.getElementById("it1").value;
+		var it2 = document.getElementById("it2").value;
+		var it3 = document.getElementById("it3").value;
+		var it4 = document.getElementById("it4").value;
+		var it5 = document.getElementById("it5").value;
+		var it6 = document.getElementById("it6").value;
+		var it7 = document.getElementById("it7").value;
+		var it8 = document.getElementById("it8").value;
+		var it9 = document.getElementById("it9").value;
+		var it10 = document.getElementById("it10").value;
+		
+		var it = {};
+		it["id"]= itId;
+		it["it1"]= it1;
+		it["it2"]= it2;
+		it["it3"]= it3;
+		it["it4"]= it4;
+		it["it5"]= it5;
+		it["it6"]= it6;
+		it["it7"]= it7;
+		it["it8"]= it8;
+		it["it9"]= it9;
+		it["it10"]= it10;
+        
+        current_fs = $(this).parent();
+        next_fs = $(this).parent().next();
+        
+        //Add Class Active
+        $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+        
+        //show the next fieldset
+        next_fs.show(); 
+        //hide the current fieldset with style
+        current_fs.animate({opacity: 0}, {
+            step: function(now) {
+                // for making fielset appear animation
+                opacity = 1 - now;
+    
+                current_fs.css({
+                    'display': 'none',
+                    'position': 'relative'
+                });
+                next_fs.css({'opacity': opacity});
+            }, 
+            duration: 500
+        });
+        setProgressBar(++current);
     });
 	
 	$(".next").click(function(){
