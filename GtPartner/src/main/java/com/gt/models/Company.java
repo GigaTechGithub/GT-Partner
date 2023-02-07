@@ -8,6 +8,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -19,7 +20,8 @@ public class Company {
 //    private List<Owner> getOwner;
 	
 	@Id
-    @GeneratedValue
+ 	@Column(name="ID")
+ 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
 	@Column(name="ACCOUNT_STATUS", nullable=false)
@@ -29,13 +31,13 @@ public class Company {
     private String address;
      
     @Column(name="COMPANY_NAME", nullable=false, length=255)
-    private String ownerName;
+    private String companyName;
     
     @Column(name="COMPANY_SECOND_NAME", nullable=true, length=255)
-    private String ownerSecondName;
+    private String companySecondName;
     
     @Column(name="COUNTRY", nullable=false, length=50)
-    private float country;
+    private String country;
     
     @Column(name="CREATED_BY", nullable=false, length=20)
     private Integer createdBy;
@@ -106,7 +108,50 @@ public class Company {
     @Column(name="WEBSITE", nullable=true, length=50)
     private String website;
 
-	
+	public Company() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Company(Long id, Integer accountStatus, String address, String companyName, String companySecondName,
+			String country, Integer createdBy, Integer diligenceId, String ethical1, String ethical2, String export1,
+			String export2, Timestamp incorporation_date, String isGov, String isGovCon, Integer noOfBod,
+			String noOfEmployees, String parentCompanyGlobalLocation, String parentCompanyGlobalName,
+			String parentCompanyLocation, String parentCompanyName, String parentCompanySecondGlobalName,
+			String parentCompanySecondName, String personalConnection, String province, String secondAddress,
+			String taxId, String telephone, String website) {
+		super();
+		this.id = id;
+		this.accountStatus = accountStatus;
+		this.address = address;
+		this.companyName = companyName;
+		this.companySecondName = companySecondName;
+		this.country = country;
+		this.createdBy = createdBy;
+		this.diligenceId = diligenceId;
+		this.ethical1 = ethical1;
+		this.ethical2 = ethical2;
+		this.export1 = export1;
+		this.export2 = export2;
+		this.incorporation_date = incorporation_date;
+		this.isGov = isGov;
+		this.isGovCon = isGovCon;
+		this.noOfBod = noOfBod;
+		this.noOfEmployees = noOfEmployees;
+		this.parentCompanyGlobalLocation = parentCompanyGlobalLocation;
+		this.parentCompanyGlobalName = parentCompanyGlobalName;
+		this.parentCompanyLocation = parentCompanyLocation;
+		this.parentCompanyName = parentCompanyName;
+		this.parentCompanySecondGlobalName = parentCompanySecondGlobalName;
+		this.parentCompanySecondName = parentCompanySecondName;
+		this.personalConnection = personalConnection;
+		this.province = province;
+		this.secondAddress = secondAddress;
+		this.taxId = taxId;
+		this.telephone = telephone;
+		this.website = website;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -131,27 +176,27 @@ public class Company {
 		this.address = address;
 	}
 
-	public String getOwnerName() {
-		return ownerName;
+	public String getCompanyName() {
+		return companyName;
 	}
 
-	public void setOwnerName(String ownerName) {
-		this.ownerName = ownerName;
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
 	}
 
-	public String getOwnerSecondName() {
-		return ownerSecondName;
+	public String getCompanySecondName() {
+		return companySecondName;
 	}
 
-	public void setOwnerSecondName(String ownerSecondName) {
-		this.ownerSecondName = ownerSecondName;
+	public void setCompanySecondName(String companySecondName) {
+		this.companySecondName = companySecondName;
 	}
 
-	public float getCountry() {
+	public String getCountry() {
 		return country;
 	}
 
-	public void setCountry(float country) {
+	public void setCountry(String country) {
 		this.country = country;
 	}
 
@@ -339,13 +384,8 @@ public class Company {
 		this.website = website;
 	}
 
-	public Company() {
-		super();
-	}
+	
 
 	
 	
-    
-    
-    
 }

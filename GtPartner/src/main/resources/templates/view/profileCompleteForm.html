@@ -14,8 +14,8 @@
       
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script> 
-    
     <script src="js/profilecompleteform.js"></script>
+    
 </head>
 <body>
     <div class="container-fluid">
@@ -156,6 +156,7 @@
                                 <table id="ownerTable" class="display" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
+                                        	<th>ID</th>
                                             <th>Full Name</th>
                                             <th>Alternate Name</th>
                                             <th>Ownership %</th>
@@ -182,6 +183,7 @@
                                 <table id="bodTable" class="display" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
+                                        	<th>ID</th>
                                             <th>Full Name</th>
                                             <th>Alternate Name</th>
                                             <th>Title/Position</th>
@@ -246,6 +248,7 @@
                                 <label class="fieldlabels">b) had any operations in, done business with, or shipped, transferred or supplied any goods, technology, software, or services, either directly or indirectly, to Crimea, Cuba, Iran, North Korea or Syria ("Restricted Territories")? NOTE: This includes products/services to a customer in another country that does business using GT/BCL products/services in a Restricted Territory. *</label>  
                                 <input type="text" id="export2"/>
                                 <br>
+                                <input type="hidden" id="rowId"/>
                             </div>
                             <hr>
                             <input type="button" name="firsStep" id="firsStep" class="nextFromFirstStep action-button" value="Next"/>
@@ -444,7 +447,7 @@
                     </div>
                     <div class="modal-footer">					
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <input type="button" class="btn btn-success" id="addBODBtn" value="Add" data-dismiss="modal">
+                        <input type="button" class="btn btn-success" id="addBODBtn" value="Add">
                     </div>
                 </form>
             </div>
@@ -452,138 +455,273 @@
     </div>
 
     <script>
-        var t = $('#ownerTable').DataTable({searching: false, paging: false, info: false, sorting: false});
-        var t1 = $('#bodTable').DataTable({searching: false, paging: false, info: false, sorting: false});
-        $(document).ready(function(){
-            $("#secondComName").hide();
-            $("#secondAddr").hide();
-            $("#parentSecondName").hide();
-            $("#secondGlobalName").hide();
-            $("#oAltName").hide();
-            $("#bodAltName").hide();
+    var t = $('#ownerTable').DataTable({searching: false, paging: false, info: false, sorting: false});
+    var t1 = $('#bodTable').DataTable({searching: false, paging: false, info: false, sorting: false});
+    $(document).ready(function(){
+    	t.column(0).visible(false);
+    	t1.column(0).visible(false);
+        $("#secondComName").hide();
+        $("#secondAddr").hide();
+        $("#parentSecondName").hide();
+        $("#secondGlobalName").hide();
+        $("#oAltName").hide();
+        $("#bodAltName").hide();
 
-            $('#addOwner').click(function() {
-                $('#modelWindow').modal('show');
-            });
+        $('#addOwner').click(function() {
+            $('#modelWindow').modal('show');
+        });
 
-            $('#addBOD').click(function() {
-                $('#modelWindow1').modal('show');
-            });
+        $('#addBOD').click(function() {
+            $('#modelWindow1').modal('show');
+        });
 
-            $('#addBtn').click(function () {
+        $('#addBtn').click(function () {
 
-                var ownerName = $("#oName").val();
-                var altName = $("#oAltName").val();
-                var ownPercent = $("#ownPercent").val();
-                var mRadio1 = document.querySelector('input[name = "mRadio1"]:checked') == null ? "" : document.querySelector('input[name = "mRadio1"]:checked').value;
+            var ownerName = $("#oName").val();
+            var altName = $("#oAltName").val();
+            var ownPercent = $("#ownPercent").val();
+            var mRadio1 = document.querySelector('input[name = "mRadio1"]:checked') == null ? "" : document.querySelector('input[name = "mRadio1"]:checked').value;
 
-                if (ownerName == "" || ownPercent == "" || mRadio1 == "") {
+            if (ownerName == "" || ownPercent == "" || mRadio1 == "") {
+                alert("Please fill up mandatory fields");
+            }
+
+            else {
+                if (mRadio1 == "yes" && altName == "") {
                     alert("Please fill up mandatory fields");
                 }
 
                 else {
-                    if (mRadio1 == "yes" && altName == "") {
-                        alert("Please fill up mandatory fields");
-                    }
+                	var owner = {};
+                	owner["ownerName"] = ownerName;
+                	owner["ownerSecondName"] = altName;
+                	owner["ownerPercent"] = ownPercent;                       
+                    
+                    $.ajax({
+                        type: "POST",
+                        contentType: "application/json",
+                        url: "/addOwner",
+                        data: JSON.stringify(owner),
+                        dataType: 'json',
+                        cache: false,
+                        timeout: 600000,
+                        success: function (data) {
+                            console.log(data["message"]);
+                            if(data["message"]=="Failed"){
+                            	alert("Failed to save data. Please try again");
+                            }
+                            
+                            else{
+                                var rowId = data["message"];                   	
+                            	$("#oName").val("");
+                                $("#oAltName").val("");
+                                $("#ownPercent").val("");
 
-                    else {
-                        $("#oName").val("");
-                        $("#oAltName").val("");
-                        $("#ownPercent").val("");
+                                t.row.add([rowId, ownerName, altName, ownPercent, '<input type=' + 'button' + ' name =' + 'oRmBtn' + ' value =' + 'Remove' + ' id = ' + 'oRmBtn' + ' />']).draw();
 
-                        t.row.add([ownerName, altName, ownPercent, '<input type=' + 'button' + ' name =' + 'oRmBtn' + ' value =' + 'Remove' + ' id = ' + 'oRmBtn' + ' />']).draw();
+                                $('#modelWindow').modal('hide');
+                            }
 
-                        $('#modelWindow').modal('hide');
-                    }
-                }               
+                        },
+                        error: function (e) {
 
-            });
+                            alert("Failed to save data. Please try again");
 
-            $('#addBODBtn').click(function() {
-                var bodName = $("#bodName").val();
-                var bodAltName = $("#bodAltName").val();
-                var bodPosition = $("#bodPosition").val();
-                var mRadio2 = document.querySelector('input[name = "mRadio2"]:checked') == null ? "" : document.querySelector('input[name = "mRadio2"]:checked').value;
+                        }
+                    });
+                }
+            }               
 
-                $("#bodName").val("");
-                $("#bodAltName").val("");
-                $("#bodPosition").val("");
-
-                t1.row.add([bodName, bodAltName, bodPosition, '<input type=' + 'button' +' name ='+ 'dRmBtn' + ' value =' + 'Remove' + ' id = '+'dRmBtn'+' />']).draw();
-
-            });
-
-            $("#r1").click(function () {
-                $("#secondComName").show();
-            });
-            $("#r2").click(function () {
-                $("#secondComName").hide();
-            });
-
-            $("#r3").click(function () {
-                $("#secondAddr").show();
-            });
-            $("#r4").click(function () {
-                $("#secondAddr").hide();
-            });
-
-            $("#r5").click(function () {
-                $("#parentSecondName").show();
-            });
-            $("#r6").click(function () {
-                $("#parentSecondName").hide();
-            });
-
-            $("#r7").click(function () {
-                $("#secondGlobalName").show();
-            });
-            $("#r8").click(function () {
-                $("#secondGlobalName").hide();
-            });
-
-            $("#r9").click(function () {
-                $("#oAltName").show();
-            });
-            $("#r10").click(function () {
-                $("#oAltName").hide();
-            });
-
-            $("#r11").click(function () {
-                $("#bodAltName").show();
-            });
-            $("#r12").click(function () {
-                $("#bodAltName").hide();
-            });
-            
         });
 
-        $('#ownerTable tbody').on( 'click', '#oRmBtn', function () {
-            var r=confirm("Are you sure want to remove?");
-            if (r==true)
-            {
-                t.row( $(this).parents('tr') ).remove().draw();
-            }
-            else
-            {
-                
-            }
+        $('#addBODBtn').click(function() {
+            var bodName = $("#bodName").val();
+            var bodAltName = $("#bodAltName").val();
+            var bodPosition = $("#bodPosition").val();
+            var mRadio2 = document.querySelector('input[name = "mRadio2"]:checked') == null ? "" : document.querySelector('input[name = "mRadio2"]:checked').value;               
             
-        } );
+            var bod = {};
+        	bod["bodName"] = bodName;
+        	bod["BodSecondName"] = bodAltName;
+        	bod["tile"] = bodPosition;                       
+            
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                url: "/addBod",
+                data: JSON.stringify(bod),
+                dataType: 'json',
+                cache: false,
+                timeout: 600000,
+                success: function (data) {
+                    console.log(data["message"]);
+                    if(data["message"]=="Failed"){
+                    	alert("Failed to save data. Please try again");
+                    }
+                    
+                    else{
+                        var rowId = data["message"];
+                        
+                        $("#bodName").val("");
+                        $("#bodAltName").val("");
+                        $("#bodPosition").val("");
 
-        $('#bodTable tbody').on( 'click', '#dRmBtn', function () {
-            var r=confirm("Are you sure want to remove?");            
-            if (r==true)
-            {
-                t1.row( $(this).parents('tr') ).remove().draw();
-            }
-            else
-            {
-                
-            }
-        } );
+                        t1.row.add([rowId, bodName, bodAltName, bodPosition, '<input type=' + 'button' +' name ='+ 'dRmBtn' + ' value =' + 'Remove' + ' id = '+'dRmBtn'+' />']).draw();
+                        
+                        $('#modelWindow1').modal('hide');
+                    }
+
+                },
+                error: function (e) {
+
+                    alert("Failed to save data. Please try again");
+
+                }
+            });
+
+        });
+
+        $("#r1").click(function () {
+            $("#secondComName").show();
+        });
+        $("#r2").click(function () {
+            $("#secondComName").hide();
+        });
+
+        $("#r3").click(function () {
+            $("#secondAddr").show();
+        });
+        $("#r4").click(function () {
+            $("#secondAddr").hide();
+        });
+
+        $("#r5").click(function () {
+            $("#parentSecondName").show();
+        });
+        $("#r6").click(function () {
+            $("#parentSecondName").hide();
+        });
+
+        $("#r7").click(function () {
+            $("#secondGlobalName").show();
+        });
+        $("#r8").click(function () {
+            $("#secondGlobalName").hide();
+        });
+
+        $("#r9").click(function () {
+            $("#oAltName").show();
+        });
+        $("#r10").click(function () {
+            $("#oAltName").hide();
+        });
+
+        $("#r11").click(function () {
+            $("#bodAltName").show();
+        });
+        $("#r12").click(function () {
+            $("#bodAltName").hide();
+        });
+        
+    });
+
+    $('#ownerTable tbody').on( 'click', '#oRmBtn', function () {
+        var r=confirm("Are you sure want to remove?");
+        if (r==true)
+        {
+        	//t.row( $(this).parents('tr') ).remove().draw();
+        	
+      		var row = t.row( $(this).closest('tr') );                
+            var owner = {};
+            var rowData = row.data();
+            console.log(rowData);
+            owner['id'] = rowData[0];
+            
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                url: "/deleteOwner",
+                data: JSON.stringify(owner),
+                dataType: 'json',
+                cache: false,
+                timeout: 600000,
+                success: function (data) {
+                    console.log(data["message"]);
+                    
+                    if(data["message"]=="Failed"){
+                    	alert("Failed to delete data. Please try again");
+                    }
+                    
+                    else{
+                    	//t.row( $(this).parents('tr') ).remove().draw();
+                    	row.remove().draw();
+                    }
+
+                },
+                error: function (e) {
+
+                    alert("Failed to delete data. Please try again");
+
+                }
+            });
+            
+        }
+        else
+        {
+            
+        }
+        
+    } );
+
+    $('#bodTable tbody').on( 'click', '#dRmBtn', function () {
+        var r=confirm("Are you sure want to remove?");            
+        if (r==true)
+        {
+            //t1.row( $(this).parents('tr') ).remove().draw();
+            
+        	var row = t1.row( $(this).closest('tr') );                
+            var bod = {};
+            var rowData = row.data();
+            console.log(rowData);
+            bod['id'] = rowData[0];
+            
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                url: "/deleteBod",
+                data: JSON.stringify(bod),
+                dataType: 'json',
+                cache: false,
+                timeout: 600000,
+                success: function (data) {
+                    console.log(data["message"]);
+                    
+                    if(data["message"]=="Failed"){
+                    	alert("Failed to delete data. Please try again");
+                    }
+                    
+                    else{
+                    	//t.row( $(this).parents('tr') ).remove().draw();
+                    	row.remove().draw();
+                    }
+
+                },
+                error: function (e) {
+
+                    alert("Failed to delete data. Please try again");
+
+                }
+            });
+        }
+        else
+        {
+            
+        }
+    } );
 		
         
     </script>
+    
     
 </body>
 </html>
