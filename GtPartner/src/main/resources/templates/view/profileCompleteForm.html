@@ -266,16 +266,16 @@
                                 </div>
                                 <label class="fieldlabels">In the last ten years has a court, in your country or elsewhere, given any judgement against you about a debt?
                                     If so, give particulars: *</label>
-                                <input type="text"/>
+                                <input type="text" id="legal1"/>
                                 <label class="fieldlabels">In the last ten years have you made any compromise arrangement with your creditors?
                                     If so, give particulars: *</label>
-                                <input type="text"/>
+                                <input type="text" id="legal2"/>
                                 <label class="fieldlabels">Have you ever been declared bankrupt or been the subject of a bankruptcy court order in your country or elsewhere, or has a bankruptcy petition ever been served on you?
                                     If so, give particulars: *</label>
-                                <input type="text"/>
+                                <input type="text" id="legal3"/>
                                 <label class="fieldlabels">Have you ever signed a trust deed for a creditor, made an assignment for the benefit of creditors or made any arrangements for the payment of a composition to creditors?
                                     If so, give particulars: *</label>
-                                <input type="text"/>
+                                <input type="text" id="legal4"/>
                             </div>
                             <div class="form-card">
                                 <div class="row">
@@ -286,13 +286,13 @@
                                 </div>
                                 <label class="fieldlabels">Have you at any time pleaded guilty to or been found guilty of any offence?
                                     If so, give details of the court which convicted you, the offence, the penalty imposed and date of conviction: *</label>
-                                <input type="text"/>
+                                <input type="text" id="legal5"/>
                                 <label class="fieldlabels">In the last five years have you, in your country or elsewhere, been the subject of any civil action relating to your professional or business activities which has resulted in a finding against you by a court, or a settlement being agreed?
                                     If so, give particulars: *</label>
-                                <input type="text"/>
+                                <input type="text" id="legal6"/>
                                 <label class="fieldlabels">Have you ever been disqualified by a court from being a director, or from acting in the management or conduct of the affairs of any company?
                                     If so, give particulars: *</label>
-                                <input type="text"/>
+                                <input type="text" id="legal7"/>
                             </div>
                             <div class="form-card">
                                 <div class="row">
@@ -302,73 +302,328 @@
                                 </div>
                                 <label class="fieldlabels">Have you, in your country or elsewhere, ever been refused the right or been restricted in the right to carry on any trade, business or profession for which a specific licence, registration or other authority is required?
                                     If so, give particulars: *</label>
-                                <input type="text"/>
+                                <input type="text" id="legal8"/>
                                 <label class="fieldlabels">Have you, in your country or elsewhere, ever been investigated about allegations of misconduct or malpractice in connection with your professional activities which resulted in a formal complaint being proved but no disciplinary order being made?
                                     If so, give particulars: *</label>
-                                <input type="text"/>
+                                <input type="text" id="legal9"/>
                                 <label class="fieldlabels">Have you, in your country or elsewhere, ever been the subject of disciplinary procedures by a professional body or employer resulting in a finding against you?
                                     If so, give particulars: *</label>
-                                <input type="text"/>
+                                <input type="text" id="legal10"/>
                                 <label class="fieldlabels">Have you, in your country or elsewhere, ever been reprimanded, excluded, disciplined or publicly criticised by any professional body which you belong or have belonged to?
                                     If so, give particulars: *</label>
-                                <input type="text"/>
+                                <input type="text" id="legal11"/>
                                 <label class="fieldlabels">Have you, in your country or elsewhere, ever been refused entry to or excluded from membership of any profession or vocation?
                                     If so, give details.</label>
-                                <input type="text"/>
+                                <input type="text" id="legal12"/>
                                 <label class="fieldlabels">Have you, in your country or elsewhere, ever been dismissed from any office (other than as auditor) or employment or requested to resign from any office, employment or partnership?
                                     If so, give particulars. *</label>
-                                <input type="text"/>
+                                <input type="text" id="legal13"/>
                                 <label class="fieldlabels">Have you, in your country or elsewhere, ever been reprimanded, warned about future conduct, disciplined, or publicly criticised by any regulatory body, or any officially appointed enquiry concerned with the regulation of a financial, professional or other business activity?
                                     If so, give particulars. *</label>
-                                <input type="text"/>
+                                <input type="text" id="legal14"/>
                                 <label class="fieldlabels">Have you, in your country or elsewhere, ever been the subject of a court order at the instigation of any regulatory body or any officially appointed enquiry concerned with the regulation of a financial, professional or other business activity?
                                     If so, give particulars. *</label>
-                                <input type="text"/>
+                                <input type="text" id="legal15"/>
                                 <label class="fieldlabels">Are you currently undergoing any investigation or disciplinary procedure as described in 8-15 above?
                                     If so, give particulars. *</label>
-                                <input type="text"/>
+                                <input type="text" id="legal16"/>
+                                <br>
+                                <input type="hidden" id="rowId2"/>
                             </div>
-                            <input type="button" name="next" class="next action-button" value="Next"/>
+                            <input type="button" id="secondStep" name="secondStep" class="nextFromSecondStep action-button" value="Next"/>
                             <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
                         </fieldset>
                         <fieldset>
                             <div class="form-card">
                                 <div class="row">
                                     <div class="col-7">
-                                        <h2 class="fs-title">Image Upload:</h2>
+                                        <h2 class="fs-title">FINANCIAL</h2>
                                     </div>
                                     <div class="col-5">
                                         <h2 class="steps">Step 3 - 8</h2>
                                     </div>
                                 </div>
-                                <label class="fieldlabels">Upload Your Photo:</label>
-                                <input type="file" name="pic" accept="image/*">
-                                <label class="fieldlabels">Upload Signature Photo:</label>
-                                <input type="file" name="pic" accept="image/*">
+                                <label class="fieldlabels">Annual and quarterly financial and bank statements</label>
+                                <input type="text"/>
+                                <label class="fieldlabels">Investment and hedging policies</label>
+                                <input type="text"/>
+                                <label class="fieldlabels">Sales and profits by product, channel and geography</label>
+                                <input type="text"/>
+                                <label class="fieldlabels">Accounts receivable</label>
+                                <input type="text"/>
+                                <label class="fieldlabels">Capital structure</label>
+                                <input type="text"/>
+                                <label class="fieldlabels">Summary of debt instruments</label>
+                                <input type="text"/>
+                                <label class="fieldlabels">Financial projections</label>
+                                <input type="text"/>
+                                <label class="fieldlabels">Revenue by product type, customers and channel</label>
+                                <input type="text"/>
+                                <label class="fieldlabels">Major growth drivers and prospects</label>
+                                <input type="text"/>
+								<label class="fieldlabels">Industry and company pricing policies</label>
+                                <input type="text"/>
+                                <label class="fieldlabels">Summary of current tax positions</label>
+                                <input type="text"/>
+                                <label class="fieldlabels">Accounting policies</label>
+                                <input type="text"/>
+                                <label class="fieldlabels">Financing history for equity, warrants and debt</label>
+                                <input type="text"/>
+                                <br>
+                                <input type="hidden" id="rowId3"/>
                             </div>
-                            <input type="button" name="next" class="next action-button" value="Submit"/>
+                            <input type="button" id="thirdStep" name="thirdStep" class="nextFromThirdStep action-button" value="Next"/>
                             <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
                         </fieldset>
                         <fieldset>
                             <div class="form-card">
                                 <div class="row">
                                     <div class="col-7">
-                                        <h2 class="fs-title">Finish:</h2>
+                                        <h2 class="fs-title">Revenue</h2>
                                     </div>
                                     <div class="col-5">
                                         <h2 class="steps">Step 4 - 8</h2>
                                     </div>
                                 </div>
-                                <br><br>
+								<label class="fieldlabels">Copies of the 5 largest contracts for the current year.</label>
+                                <input type="button" id="uploadContracts" value="Upload Files"/>
+								<table id="revTable">
+									<tr>
+										<td style="display: none">ID</td>
+										<td>FileName</td>
+										<td><button id="revBtn" type='button'>X</button></td>
+									<tr>
+								</table>
+								<br>
+                                <label class="fieldlabels">Description of the procedures for contracting and billing maintenance.</label>
+                                <input type="text" id="revenue1"/>
+                                <label class="fieldlabels">Detail of revenue for last 12 months.</label>
+                                <input type="text" id="revenue2"/>
+                                <label class="fieldlabels">Pipeline information.</label>
+                                <input type="text" id="revenue3"/>
+                                <label class="fieldlabels">List of any customers with annual revenue > 10%</label>
+                                <input type="text" id="revenue4"/>
+                                <br>
+                                <input type="hidden" id="rowId4"/>
+                            </div>
+                            <input type="button" id="fourthStep" name="fourthStep" class="nextFromFourthStep action-button" value="Next"/>
+                            <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                        </fieldset>
+						<fieldset>
+                            <div class="form-card">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title">TECHNOLOGY</h2>
+                                    </div>
+                                    <div class="col-5">
+                                        <h2 class="steps">Step 5 - 8</h2>
+                                    </div>
+                                </div>
+								<label class="fieldlabels">Help Desk approach & Change Management processes</label>
+                                <input type="text" id="tech1"/>
+								<label class="fieldlabels">Incorporation Documents of the Company</label>
+                                <input type="file" name="pic" accept="image/*">
+                                <label class="fieldlabels">IT Organization chart & Client structure (quantity, type, location)</label>
+                                <input type="text" id="tech2"/>
+                                <label class="fieldlabels">Key support issues & challenges</label>
+                                <input type="text" id="tech3"/>
+                                <label class="fieldlabels">Audited and unaudited consolidated financial statements of the business</label>
+                                <input type="text" id="tech4"/>
+                                <label class="fieldlabels">Budget projections and business plans</label>
+                                <input type="text" id="tech5"/>
+								<label class="fieldlabels">Compared past budgets with actual experience to check accuracy of projections</label>
+                                <input type="text" id="tech6"/>
+                                <label class="fieldlabels">CPU’s & location</label>
+                                <input type="text" id="tech7"/>
+                                <label class="fieldlabels">Database</label>
+                                <input type="text" id="tech8"/>
+                                <label class="fieldlabels">Networks by location (LAN/WAN)</label>
+                                <input type="text" id="tech9"/>
+								<label class="fieldlabels">Stability? Life expectancy? Replacement/upgrade strategy?</label>
+                                <input type="text" id="tech10"/>
+                                <label class="fieldlabels">Telecommunications/connectivity approach</label>
+                                <input type="text" id="tech11"/>
+                                <label class="fieldlabels">Application systems development software</label>
+                                <input type="text" id="tech12"/>
+                                <label class="fieldlabels">Current technology? Life expectancy? Replacement/upgrade strategy?</label>
+                                <input type="text" id="tech13"/>
+								<label class="fieldlabels">Database Management systems</label>
+                                <input type="text" id="tech14"/>
+                                <label class="fieldlabels">Operating systems</label>
+                                <input type="text" id="tech15"/>
+                                <label class="fieldlabels">Security</label>
+                                <input type="text" id="tech16"/>
+                                <label class="fieldlabels">Architecture Review</label>
+                                <input type="text" id="tech17"/>
+								<label class="fieldlabels">Code Quality</label>
+                                <input type="text" id="tech18"/>
+                                <label class="fieldlabels">Legacy Components</label>
+                                <input type="text" id="tech19"/>
+                                <label class="fieldlabels">Third-party/open source components</label>
+                                <input type="text" id="tech20"/>
+                                <label class="fieldlabels">Application systems (Quantify all in use)</label>
+                                <input type="text" id="tech21"/>
+								<label class="fieldlabels">Approach to release management</label>
+                                <input type="text" id="tech22"/>
+                                <label class="fieldlabels">Electronic interfaces</label>
+                                <input type="text" id="tech23"/>
+                                <label class="fieldlabels">Report Writing capabilities</label>
+                                <input type="text" id="tech24"/>
+                                <label class="fieldlabels">Special processes</label>
+                                <input type="text" id="tech25"/>
+								<label class="fieldlabels">Stability? Life expectancy? Replacement/upgrade strategy?</label>
+                                <input type="text" id="tech26"/>
+                                <label class="fieldlabels">Standard across the network?</label>
+                                <input type="text" id="tech27"/>
+                                <label class="fieldlabels">Support approach & known issues</label>
+                                <input type="text" id="tech28"/>
+                                <label class="fieldlabels">Client requirements</label>
+                                <input type="text" id="tech29"/>
+								<label class="fieldlabels">Consulting and/or contractor needs anticipated (next 12 months)</label>
+                                <input type="text" id="tech30"/>
+                                <label class="fieldlabels">Large scale projects – i.e., reengineering, new systems, SW development</label>
+                                <input type="text" id="tech31"/>
+                                <label class="fieldlabels">Mid-range enhancements</label>
+                                <input type="text" id="tech32"/>
+                                <label class="fieldlabels">New business development needs</label>
+                                <input type="text" id="tech33"/>
+								<label class="fieldlabels">New technology R&D</label>
+                                <input type="text" id="tech34"/>
+                                <label class="fieldlabels">Productivity enhancements</label>
+                                <input type="text" id="tech35"/>
+                                <label class="fieldlabels">Software support backlog</label>
+                                <input type="text" id="tech36"/>
+                                <label class="fieldlabels">Consulting/contractors</label>
+                                <input type="text" id="tech37"/>
+								<label class="fieldlabels">Data Communications</label>
+                                <input type="text" id="tech38"/>
+                                <label class="fieldlabels">Equipment leases & rental</label>
+                                <input type="text" id="tech39"/>
+                                <label class="fieldlabels">Hardware maintenance</label>
+                                <input type="text" id="tech40"/>
+                                <label class="fieldlabels">Material technology-related expenses due to the company’s industry</label>
+                                <input type="text" id="tech41"/>
+								<label class="fieldlabels">Outside contractors</label>
+                                <input type="text" id="tech42"/>
+                                <br>
+                                <input type="hidden" id="rowId5"/>
+                            </div>
+                            <input type="button" id="fifthStep" name="fifthStep" class="nextFromFifthStep action-button" value="Next"/>
+                            <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                        </fieldset>
+						<fieldset>
+                            <div class="form-card">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title">IP</h2>
+                                    </div>
+                                    <div class="col-5">
+                                        <h2 class="steps">Step 6 - 8</h2>
+                                    </div>
+                                </div>
+								
+                                <label class="fieldlabels">Schedule of owned or proprietary technology (including software, databases, and systems).</label>
+                                <input type="text" id="ip1"/>
+                                <label class="fieldlabels">Schedule and copies (if applicable) of the following (common law, registered and issued, and foreign and domestic):
+								i. tradenames, brand names, trademarks, service marks, logos, and slogans;
+								ii. internet domain names (including lower-level domain names);
+								iii. patents, patent rights, innovations, and designs;
+								iv. copyrights;
+								v. trade secrets and other industrial property rights, including all processes, know-how, technical data, and shop rights; and
+								vi. registrations, issuances, applications, additions, affidavits, continuations, divisions and other filings related to the foregoing items. </label>
+                                <input type="file" name="pic" accept="image/*">
+                                <label class="fieldlabels">Copies of searches, counsel’s opinion letters, and application file histories (or file wrappers) for the items requested in the preceding</label>
+                                <input type="file" name="pic" accept="image/*">
+                                <label class="fieldlabels">Schedule of all material ongoing or planned software, databases, and/or network development projects.</label>
+                                <input type="text" id="ip2"/>
+								<label class="fieldlabels">Schedule of third-party intellectual property sold, licensed, or otherwise distributed by the Company.</label>
+                                <input type="text" id="ip3"/>
+								<label class="fieldlabels">Schedule of third-party software and other intellectual property incorporated in, embedded in, or otherwise necessary for the use of the Company’s intellectual property.</label>
+                                <input type="text" id="ip4"/>
+								<label class="fieldlabels">Product documentation and manuals for the Company’s software, databases, and networks (or other description of primary capabilities).</label>
+                                <input type="text" id="ip5"/>
+								<label class="fieldlabels">Schedule of third-party intellectual property necessary for the Company to conduct business in the ordinary course.</label>
+                                <input type="text" id="ip6"/>
+								<label class="fieldlabels">Schedule of software authors and other creators of the Company’s software products and other intellectual property, with a notation next to each name indicating whether such author/creator made his/her contribution 
+								(a) as an employee within the scope of his/her employment, 
+								(b) outside his/her scope of employment or 
+								(c) as a consultant or other independent contractor.</label>
+                                <input type="text" id="ip7"/>
+								<label class="fieldlabels">The name(s), address(es), and phone number(s) of counsel and any other person(s) responsible for the application, maintenance, and protection of trademarks, copyrights, patents, and other intellectual property rights.</label>
+                                <input type="text" id="ip8"/>
+								<label class="fieldlabels">Internal memoranda, correspondence, and other documentation setting forth or relating to the Year 2000 compliance of the operating codes, programs, and other software, database, hardware, and systems sold or licensed by or to the Company, or otherwise used by the Company in its business.</label>
+                                <input type="text" id="ip9"/>
+                                <br>
+                                <input type="hidden" id="rowId6"/>
+                            </div>
+                            <input type="button" id="sixthStep" name="sixthStep" class="nextFromSixthStep action-button" value="Next"/>
+                            <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                        </fieldset>
+						<fieldset>
+                            <div class="form-card">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title">IT Security</h2>
+                                    </div>
+                                    <div class="col-5">
+                                        <h2 class="steps">Step 7 - 8</h2>
+                                    </div>
+                                </div>
+                                <label class="fieldlabels">What is the level of detail of IT documentation?</label>
+                                <input type="text" id="it1"/>
+                                <label class="fieldlabels">Is the IT documentation available to the necessary people?</label>
+                                <input type="text" id="it2"/>
+                                <label class="fieldlabels">Have penetration tests been carried out?</label>
+                                <input type="text" id="it3"/>
+                                <label class="fieldlabels">Has FOSS scanning been carried out?</label>
+                                <input type="text" id="it4"/>
+								<label class="fieldlabels">Is real-time monitoring available?</label>
+                                <input type="text" id="it5"/>
+                            </div>
+							<hr>
+							<div class="form-card">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title">IT Process</h2>
+                                    </div>
+                                </div>
+                                <label class="fieldlabels">What are the procedures for handling personal data? Are they GDPR compliant on all levels?</label>
+                                <input type="text" id="it6"/>
+                                <label class="fieldlabels">Who has access to backups and the production environment?</label>
+                                <input type="text" id="it7"/>
+                                <label class="fieldlabels">What is the incident response plan?</label>
+                                <input type="text" id="it8"/>
+                                <label class="fieldlabels">What disaster recovery procedures are in place?</label>
+                                <input type="text" id="it9"/>
+								<label class="fieldlabels" >What is the procedure/cadence for backups/read-backs?</label>
+                                <input type="text" id="it10"/>
+                                <br>
+                                <input type="hidden" id="rowId7"/>
+                            </div>
+                            <input type="button" id="seventhStep" name="seventhStep" class="nextFromSeventhStep action-button" value="Submit"/>
+                            <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                        </fieldset>
+						<fieldset>
+                            <div class="form-card">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title">Completed</h2>
+                                    </div>
+                                    <div class="col-5">
+                                        <h2 class="steps">Step 8 - 8</h2>
+                                    </div>
+                                </div>
+								<br><br>
                                 <h2 class="purple-text text-center"><strong>SUCCESS !</strong></h2>
                                 <br>
                                 <br><br>
                                 <div class="row justify-content-center">
                                     <div class="col-7 text-center">
-                                        <h5 class="purple-text text-center">You Have Successfully Signed Up</h5>
+                                        <h5 class="purple-text text-center">Your response recorded successfully!</h5>
                                     </div>
                                 </div>
                             </div>
+                            <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
                         </fieldset>
                     </form>
                 </div>
