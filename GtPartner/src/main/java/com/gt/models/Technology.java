@@ -147,9 +147,6 @@ public class Technology {
     
     @Column(name="TECH42")
     private String tech42;
-    
-    @Column(name="TECH43")
-    private String tech43;
 
 	public Technology() {
 		super();
@@ -208,7 +205,6 @@ public class Technology {
 		this.tech40 = tech40;
 		this.tech41 = tech41;
 		this.tech42 = tech42;
-		this.tech43 = tech43;
 	}
 
 	public Long getId() {
@@ -571,14 +567,6 @@ public class Technology {
 		this.tech42 = tech42;
 	}
 
-	public String getTech43() {
-		return tech43;
-	}
-
-	public void setTech43(String tech43) {
-		this.tech43 = tech43;
-	}
-
 	@Override
 	public String toString() {
 		return "Technology [id=" + id + ", createdBy=" + createdBy + ", diligenceId=" + diligenceId + ", tech1=" + tech1
@@ -591,7 +579,7 @@ public class Technology {
 				+ ", tech28=" + tech28 + ", tech29=" + tech29 + ", tech30=" + tech30 + ", tech31=" + tech31
 				+ ", tech32=" + tech32 + ", tech33=" + tech33 + ", tech34=" + tech34 + ", tech35=" + tech35
 				+ ", tech36=" + tech36 + ", tech37=" + tech37 + ", tech38=" + tech38 + ", tech39=" + tech39
-				+ ", tech40=" + tech40 + ", tech41=" + tech41 + ", tech42=" + tech42 + ", tech43=" + tech43 + "]";
+				+ ", tech40=" + tech40 + ", tech41=" + tech41 + ", tech42=" + tech42 + ", tech43=" +  "]";
 	}
     
 

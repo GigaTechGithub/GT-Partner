@@ -9,10 +9,17 @@ import com.gt.models.Users;
 
 @Controller
 public class HomeController {
+//	
+//	@Value("${spring.datasource.url}")
+//    private String dbUser;
+	
+	
 	
 	@GetMapping({"/home"})
     public String getHomePage(Model m, @ModelAttribute("UserLogin") Users request) {
     	return "view/profileCompleteForm";
     }
+	
+	
 	
 }

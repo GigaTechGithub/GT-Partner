@@ -17,10 +17,10 @@ public class Owner {
     private Long id;
      
     @Column(name="DILIGENCE_ID", nullable=false, length=20)
-    private String diligenceId;
+    private Integer diligenceId;
     
     @Column(name="CREATED_BY", nullable=false, length=20)
-    private String createdBy;
+    private Integer createdBy;
      
     @Column(name="OWNER_NAME", nullable=false, length=100)
     private String ownerName;
@@ -39,19 +39,19 @@ public class Owner {
 		this.id = id;
 	}
 
-	public String getDiligenceId() {
+	public Integer getDiligenceId() {
 		return diligenceId;
 	}
 
-	public void setDiligenceId(String diligenceId) {
+	public void setDiligenceId(Integer diligenceId) {
 		this.diligenceId = diligenceId;
 	}
 
-	public String getCreatedBy() {
+	public Integer getCreatedBy() {
 		return createdBy;
 	}
 
-	public void setCreatedBy(String createdBy) {
+	public void setCreatedBy(Integer createdBy) {
 		this.createdBy = createdBy;
 	}
 
@@ -83,7 +83,7 @@ public class Owner {
 		super();
 	}
 
-	public Owner(Long id, String diligenceId, String createdBy, String ownerName, String ownerSecondName,
+	public Owner(Long id, Integer diligenceId, Integer createdBy, String ownerName, String ownerSecondName,
 			float ownerPercent) {
 		super();
 		this.id = id;

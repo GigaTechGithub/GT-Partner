@@ -23,10 +23,10 @@ public class Bod {
 	    private String BodSecondName;
 	    
 	    @Column(name="CREATED_BY", nullable=false, length=20)
-	    private String createdBy;
+	    private Integer createdBy;
 	     
 	    @Column(name="DILIGENCE_ID", nullable=false, length=20)
-	    private String diligenceId;
+	    private Integer diligenceId;
 	    
 	    @Column(name="TILE", nullable=false, length=100)
 	    private String tile;
@@ -55,19 +55,19 @@ public class Bod {
 			BodSecondName = bodSecondName;
 		}
 
-		public String getCreatedBy() {
+		public Integer getCreatedBy() {
 			return createdBy;
 		}
 
-		public void setCreatedBy(String createdBy) {
+		public void setCreatedBy(Integer createdBy) {
 			this.createdBy = createdBy;
 		}
 
-		public String getDiligenceId() {
+		public Integer getDiligenceId() {
 			return diligenceId;
 		}
 
-		public void setDiligenceId(String diligenceId) {
+		public void setDiligenceId(Integer diligenceId) {
 			this.diligenceId = diligenceId;
 		}
 
@@ -83,7 +83,8 @@ public class Bod {
 			super();
 		}
 
-		public Bod(Long id, String bodName, String bodSecondName, String createdBy, String diligenceId, String tile) {
+		
+		public Bod(Long id, String bodName, String bodSecondName, Integer createdBy, Integer diligenceId, String tile) {
 			super();
 			this.id = id;
 			this.bodName = bodName;
