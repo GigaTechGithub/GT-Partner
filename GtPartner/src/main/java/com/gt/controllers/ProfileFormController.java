@@ -16,6 +16,7 @@ import com.gt.models.AjaxResponse;
 import com.gt.models.Bod;
 import com.gt.models.Company;
 import com.gt.models.Contracts;
+import com.gt.models.Diligence;
 import com.gt.models.IncorporationDoc;
 import com.gt.models.Ip;
 import com.gt.models.IpDoc1;
@@ -28,6 +29,7 @@ import com.gt.models.Technology;
 import com.gt.services.BodService;
 import com.gt.services.CompanyService;
 import com.gt.services.ContractsService;
+import com.gt.services.DiligenceService;
 import com.gt.services.IncorporationDocService;
 import com.gt.services.IpDoc1Service;
 import com.gt.services.IpDoc2Service;
@@ -40,6 +42,8 @@ import com.gt.services.TechnologyService;
 
 @RestController
 public class ProfileFormController {
+	@Autowired
+	DiligenceService diligenceService;
 	
 	@Autowired
 	BodService bodService;
@@ -218,6 +222,11 @@ public class ProfileFormController {
 			company.setTaxId(request.getTaxId());
 			company.setTelephone(request.getTelephone());
 			company.setWebsite(request.getWebsite());
+			
+			Diligence diligence = new Diligence();
+			long diligenceId = diligenceId();
+			diligence.setId(diligenceId);
+			diligence.setProfileStatus(10);
 	    	
 	    	String result = companyService.saveCompany(company);
 	    	
@@ -261,6 +270,11 @@ public class ProfileFormController {
 			legal.setLegal16(request.getLegal16());
 			
 	    	String result = legalService.saveLegal(legal);
+	    	
+	    	Diligence diligence = new Diligence();
+			long diligenceId = diligenceId();
+			diligence.setId(diligenceId);
+			diligence.setProfileStatus(20);
 	    	
 	    	response.setMessage(result);
 	    	
@@ -317,6 +331,11 @@ public class ProfileFormController {
 			revenue.setRevenue4(request.getRevenue4());
 			
 	    	String result = revenueService.saveRevenue(revenue);
+	    	
+	    	Diligence diligence = new Diligence();
+			long diligenceId = diligenceId();
+			diligence.setId(diligenceId);
+			diligence.setProfileStatus(40);
 	    	
 	    	response.setMessage(result);
 	    	
@@ -386,6 +405,11 @@ public class ProfileFormController {
 			
 	    	String result = technologyService.saveTechnology(technology);
 	    	
+	    	Diligence diligence = new Diligence();
+			long diligenceId = diligenceId();
+			diligence.setId(diligenceId);
+			diligence.setProfileStatus(50);
+	    	
 	    	response.setMessage(result);
 	    	
 	    	return ResponseEntity.ok(response);
@@ -445,6 +469,11 @@ public class ProfileFormController {
 			ip.setIp9(request.getIp9());
 			
 	    	String result = ipService.saveIp(ip);
+	    	
+	    	Diligence diligence = new Diligence();
+			long diligenceId = diligenceId();
+			diligence.setId(diligenceId);
+			diligence.setProfileStatus(60);
 	    	
 	    	response.setMessage(result);
 	    	
@@ -535,6 +564,11 @@ public class ProfileFormController {
 			it.setIt10(request.getIt10());
 			
 	    	String result = itService.saveIt(it);
+	    	
+	    	Diligence diligence = new Diligence();
+			long diligenceId = diligenceId();
+			diligence.setId(diligenceId);
+			diligence.setProfileStatus(99);
 	    	
 	    	response.setMessage(result);
 	    	
