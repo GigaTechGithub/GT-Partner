@@ -221,14 +221,15 @@ public class ProfileFormController {
 			company.setSecondAddress(request.getSecondAddress());
 			company.setTaxId(request.getTaxId());
 			company.setTelephone(request.getTelephone());
-			company.setWebsite(request.getWebsite());
-			
-			Diligence diligence = new Diligence();
-			long diligenceId = diligenceId();
-			diligence.setId(diligenceId);
-			diligence.setProfileStatus(10);
+			company.setWebsite(request.getWebsite());			
 	    	
 	    	String result = companyService.saveCompany(company);
+	    	
+	    	Diligence diligence = diligenceService.findById(diligenceId()).get(0);
+
+			diligence.setProfileStatus(10);
+	    	
+	    	diligenceService.saveDiligence(diligence);
 	    	
 	    	response.setMessage(result);
 	    	
@@ -271,10 +272,11 @@ public class ProfileFormController {
 			
 	    	String result = legalService.saveLegal(legal);
 	    	
-	    	Diligence diligence = new Diligence();
-			long diligenceId = diligenceId();
-			diligence.setId(diligenceId);
+	    	Diligence diligence = diligenceService.findById(diligenceId()).get(0);
+
 			diligence.setProfileStatus(20);
+	    	
+	    	diligenceService.saveDiligence(diligence);
 	    	
 	    	response.setMessage(result);
 	    	
@@ -332,10 +334,11 @@ public class ProfileFormController {
 			
 	    	String result = revenueService.saveRevenue(revenue);
 	    	
-	    	Diligence diligence = new Diligence();
-			long diligenceId = diligenceId();
-			diligence.setId(diligenceId);
+	    	Diligence diligence = diligenceService.findById(diligenceId()).get(0);
+
 			diligence.setProfileStatus(40);
+	    	
+	    	diligenceService.saveDiligence(diligence);
 	    	
 	    	response.setMessage(result);
 	    	
@@ -405,10 +408,11 @@ public class ProfileFormController {
 			
 	    	String result = technologyService.saveTechnology(technology);
 	    	
-	    	Diligence diligence = new Diligence();
-			long diligenceId = diligenceId();
-			diligence.setId(diligenceId);
+	    	Diligence diligence = diligenceService.findById(diligenceId()).get(0);
+
 			diligence.setProfileStatus(50);
+	    	
+	    	diligenceService.saveDiligence(diligence);
 	    	
 	    	response.setMessage(result);
 	    	
@@ -470,10 +474,11 @@ public class ProfileFormController {
 			
 	    	String result = ipService.saveIp(ip);
 	    	
-	    	Diligence diligence = new Diligence();
-			long diligenceId = diligenceId();
-			diligence.setId(diligenceId);
+	    	Diligence diligence = diligenceService.findById(diligenceId()).get(0);
+
 			diligence.setProfileStatus(60);
+	    	
+	    	diligenceService.saveDiligence(diligence);
 	    	
 	    	response.setMessage(result);
 	    	
@@ -565,10 +570,11 @@ public class ProfileFormController {
 			
 	    	String result = itService.saveIt(it);
 	    	
-	    	Diligence diligence = new Diligence();
-			long diligenceId = diligenceId();
-			diligence.setId(diligenceId);
-			diligence.setProfileStatus(99);
+	    	Diligence diligence = diligenceService.findById(diligenceId()).get(0);
+
+			diligence.setProfileStatus(90);
+	    	
+	    	diligenceService.saveDiligence(diligence);
 	    	
 	    	response.setMessage(result);
 	    	

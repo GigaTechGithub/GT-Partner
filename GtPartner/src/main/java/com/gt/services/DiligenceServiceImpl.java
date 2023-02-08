@@ -1,5 +1,8 @@
 package com.gt.services;
 
+import java.util.List;
+import java.util.Optional;
+
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,5 +27,10 @@ public class DiligenceServiceImpl implements DiligenceService{
 		catch (Exception e) {
 			return "Failed";
 		}
+	}
+	
+	@Override
+	public List<Diligence> findById(long id){
+		return diligenceRepository.findById(id); 
 	}
 }
