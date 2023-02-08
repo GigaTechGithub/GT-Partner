@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+    th:fragment="main-fragment (title, otherStaticResources, header, nav, mainContent, footer)">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+		
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="nav-css/style.css">
+	
+</head>
+<body>
+    
+    <header th:insert="${header} ?: ~{}"></header>
+    <section>
+        <nav th:insert="${nav} ?: ~{}"> </nav>
+        <article th:insert="${mainContent} ?: ~{}"></article>
+    </section>
+    <footer th:insert="${footer} ?: ~{}"></footer>
+    
+    
+    
+    
+    <script src="nav-js/jquery.min.js"></script>
+    <script src="nav-js/popper.js"></script>
+    <script src="nav-js/bootstrap.min.js"></script>
+    <script src="nav-js/main.js"></script>
+</body>
+</html>

@@ -56,9 +56,12 @@ public class AuthController {
     	
     }
     
-    @GetMapping("/index")
-    String getIndex(Model model) {
-        return "html/index";
+    @GetMapping("/products")
+    public String products() {
+        return "layouts/products";
     }
-    
+    @GetMapping("/about")
+    public String about() {
+        return "layouts/about";
+    }
 }

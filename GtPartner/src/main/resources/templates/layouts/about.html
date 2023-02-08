@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--  main-fragment (title, otherStaticResources, header, nav, mainContent, footer)  -->
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layouts/main-layout :: main-fragment(  
+                                                ~{::title},
+                                                ~{:: #products-static-resources},
+                                                ~{:: #products-header},
+                                                ~{:: #products-nav},
+                                                ~{:: #products-main-content},  
+                                                ~{:: #products-footer}
+                                               )}">
+                                              
+<head>
+    <title>Title of About Page</title>
+    
+</head>
+<body>
+    <div id="products-header" th:replace="~{/layouts/_header :: top-header}"></div>
+    <div id="products-nav" th:replace="~{/layouts/_sideNavbar :: left-side-nav-bar}"></div>
+    <div id="products-main-content">
+        <div id="content" class="p-4 p-md-5">
+	        <h2 class="mb-4">About Page</h2>
+	        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	      </div>
+	</div>
+    <div id="products-footer" th:replace="~{/layouts/_footer :: bottom-footer}"></div>
+    
+    
+    <script src="nav-js/jquery.min.js"></script>
+    <script src="nav-js/popper.js"></script>
+    <script src="nav-js/bootstrap.min.js"></script>
+    <script src="nav-js/main.js"></script>
+</body>
+</html>
