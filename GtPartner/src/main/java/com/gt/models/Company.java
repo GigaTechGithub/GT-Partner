@@ -23,9 +23,6 @@ public class Company {
  	@Column(name="ID")
  	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-	
-	@Column(name="ACCOUNT_STATUS", nullable=false)
-    private Integer accountStatus;
     
     @Column(name="ADDRESS", nullable=false, length=100)
     private String address;
@@ -113,16 +110,15 @@ public class Company {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Company(Long id, Integer accountStatus, String address, String companyName, String companySecondName,
-			String country, Integer createdBy, Integer diligenceId, String ethical1, String ethical2, String export1,
-			String export2, Timestamp incorporation_date, String isGov, String isGovCon, Integer noOfBod,
-			String noOfEmployees, String parentCompanyGlobalLocation, String parentCompanyGlobalName,
-			String parentCompanyLocation, String parentCompanyName, String parentCompanySecondGlobalName,
-			String parentCompanySecondName, String personalConnection, String province, String secondAddress,
-			String taxId, String telephone, String website) {
+	public Company(Long id, String address, String companyName, String companySecondName, String country,
+			Integer createdBy, Integer diligenceId, String ethical1, String ethical2, String export1, String export2,
+			Timestamp incorporation_date, String isGov, String isGovCon, Integer noOfBod, String noOfEmployees,
+			String parentCompanyGlobalLocation, String parentCompanyGlobalName, String parentCompanyLocation,
+			String parentCompanyName, String parentCompanySecondGlobalName, String parentCompanySecondName,
+			String personalConnection, String province, String secondAddress, String taxId, String telephone,
+			String website) {
 		super();
 		this.id = id;
-		this.accountStatus = accountStatus;
 		this.address = address;
 		this.companyName = companyName;
 		this.companySecondName = companySecondName;
@@ -158,14 +154,6 @@ public class Company {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public Integer getAccountStatus() {
-		return accountStatus;
-	}
-
-	public void setAccountStatus(Integer accountStatus) {
-		this.accountStatus = accountStatus;
 	}
 
 	public String getAddress() {
@@ -383,9 +371,5 @@ public class Company {
 	public void setWebsite(String website) {
 		this.website = website;
 	}
-
-	
-
-	
 	
 }

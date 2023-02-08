@@ -191,7 +191,6 @@ public class ProfileFormController {
 			Company company = new Company();
 			
 			company.setId(request.getId());
-			company.setAccountStatus(10);
 			company.setAddress(request.getAddress());
 			company.setCompanyName(request.getCompanyName());
 			company.setCompanySecondName(request.getCompanySecondName());
