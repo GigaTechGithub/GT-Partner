@@ -23,23 +23,23 @@ public class Revenue {
     private Integer diligenceId;
 
     @Column(name="REVENUE1")
-    private Integer revenue1;
+    private String revenue1;
     
     @Column(name="REVENUE2")
-    private Integer revenue2;
+    private String revenue2;
     
     @Column(name="REVENUE3")
-    private Integer revenue3;
+    private String revenue3;
     
     @Column(name="REVENUE4")
-    private Integer revenue4;
+    private String revenue4;
 
 	public Revenue() {
 		super();
 	}
 
-	public Revenue(Long id, Integer createdBy, Integer diligenceId, Integer revenue1, Integer revenue2,
-			Integer revenue3, Integer revenue4) {
+	public Revenue(Long id, Integer createdBy, Integer diligenceId, String revenue1, String revenue2, String revenue3,
+			String revenue4) {
 		super();
 		this.id = id;
 		this.createdBy = createdBy;
@@ -74,44 +74,37 @@ public class Revenue {
 		this.diligenceId = diligenceId;
 	}
 
-	public Integer getRevenue1() {
+	public String getRevenue1() {
 		return revenue1;
 	}
 
-	public void setRevenue1(Integer revenue1) {
+	public void setRevenue1(String revenue1) {
 		this.revenue1 = revenue1;
 	}
 
-	public Integer getRevenue2() {
+	public String getRevenue2() {
 		return revenue2;
 	}
 
-	public void setRevenue2(Integer revenue2) {
+	public void setRevenue2(String revenue2) {
 		this.revenue2 = revenue2;
 	}
 
-	public Integer getRevenue3() {
+	public String getRevenue3() {
 		return revenue3;
 	}
 
-	public void setRevenue3(Integer revenue3) {
+	public void setRevenue3(String revenue3) {
 		this.revenue3 = revenue3;
 	}
 
-	public Integer getRevenue4() {
+	public String getRevenue4() {
 		return revenue4;
 	}
 
-	public void setRevenue4(Integer revenue4) {
+	public void setRevenue4(String revenue4) {
 		this.revenue4 = revenue4;
-	}
-
-	@Override
-	public String toString() {
-		return "Revenue [id=" + id + ", createdBy=" + createdBy + ", diligenceId=" + diligenceId + ", revenue1="
-				+ revenue1 + ", revenue2=" + revenue2 + ", revenue3=" + revenue3 + ", revenue4=" + revenue4 + "]";
-	}
-    
+	}    
     
     
 }
