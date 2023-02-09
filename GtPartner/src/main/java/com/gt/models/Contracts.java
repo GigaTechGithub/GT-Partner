@@ -27,18 +27,23 @@ public class Contracts {
     
     @Column(name="FILE_PATH")
     private String filePath;
+    
+    @Column(name="FILE_TYPE")
+    private String fileType;
 
 	public Contracts() {
 		super();
 	}
 
-	public Contracts(Long id, Integer createdBy, Integer diligenceId, String fileName, String filePath) {
+	public Contracts(Long id, Integer createdBy, Integer diligenceId, String fileName, String filePath,
+			String fileType) {
 		super();
 		this.id = id;
 		this.createdBy = createdBy;
 		this.diligenceId = diligenceId;
 		this.fileName = fileName;
 		this.filePath = filePath;
+		this.fileType = fileType;
 	}
 
 	public Long getId() {
@@ -81,11 +86,15 @@ public class Contracts {
 		this.filePath = filePath;
 	}
 
-	@Override
-	public String toString() {
-		return "Contracts [id=" + id + ", createdBy=" + createdBy + ", diligenceId=" + diligenceId + ", fileName="
-				+ fileName + ", filePath=" + filePath + "]";
+	public String getFileType() {
+		return fileType;
 	}
+
+	public void setFileType(String fileType) {
+		this.fileType = fileType;
+	}
+
+	
 	     
     
     

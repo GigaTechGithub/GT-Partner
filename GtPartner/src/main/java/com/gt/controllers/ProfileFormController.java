@@ -1,17 +1,26 @@
 package com.gt.controllers;
 
 
+import java.io.File;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.gt.models.AjaxResponse;
 import com.gt.models.Bod;
 import com.gt.models.Company;
@@ -291,17 +300,22 @@ public class ProfileFormController {
 		}
     }
 	
-	@PostMapping({"/addContracts"})
-    public ResponseEntity<?> addLegal(@RequestBody Contracts request, Errors errors) {
+	@RequestMapping(value = "/addContracts", headers = ("content-type=multipart/*"), method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<?> addLegal(@RequestParam("selectFile") MultipartFile selectFile, @RequestParam("docType") String docType) {
 		AjaxResponse response = new AjaxResponse();
+		String fileName = selectFile.getOriginalFilename();
+		String filePath = "C:\\upload\\"+ diligenceId()+"-"+fileName;
+		
 		try {
+			selectFile.transferTo( new File(filePath));
+			
 			Contracts contracts = new Contracts();
 			
-			contracts.setId(request.getId());
 			contracts.setCreatedBy(createdById());
 			contracts.setDiligenceId(diligenceId());
-			contracts.setFileName(request.getFileName());
-			contracts.setFilePath(request.getFilePath());
+			contracts.setFileName(fileName);
+			contracts.setFilePath(filePath);
+			contracts.setFileType(docType);
 			
 	    	String result = contractsService.saveContacts(contracts);
 	    	
