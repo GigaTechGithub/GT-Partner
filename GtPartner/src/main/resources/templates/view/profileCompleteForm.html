@@ -985,13 +985,13 @@
         	e.preventDefault(); 
         	var form = document.getElementById("contactForm");
         	var formData = new FormData(form);
-        	console.log(formData);
+
         	$.ajax({ 
         		type:"POST", 
-        		url:"/addContracts", 
+        		url:"/addContracts",
         		data:formData, 
-        		cache:false, 
-        		dataType:"json", 
+        		cache:false,
+        		enctype:"multipart/form-data",
         		contentType: false, 
         		processData:false, 
         		success:function(data) { 

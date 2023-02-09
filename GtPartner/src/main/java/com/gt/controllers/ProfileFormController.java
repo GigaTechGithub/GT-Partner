@@ -3,10 +3,12 @@ package com.gt.controllers;
 
 import java.io.File;
 
+import javax.servlet.MultipartConfigElement;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartResolver;
 
 import com.gt.models.AjaxResponse;
 import com.gt.models.Bod;
@@ -88,6 +91,18 @@ public class ProfileFormController {
 	
 	@Autowired
 	OwnerService ownerService;
+	
+	@Bean
+    public MultipartConfigElement multipartConfigElement() {
+        return new MultipartConfigElement("");
+    }
+
+    @Bean
+    public MultipartResolver multipartResolver() {
+        org.springframework.web.multipart.commons.CommonsMultipartResolver multipartResolver = new org.springframework.web.multipart.commons.CommonsMultipartResolver();
+        multipartResolver.setMaxUploadSize(1000000);
+        return multipartResolver;
+    }
 	
 	public HttpSession getSession() {
 		HttpServletRequest servRequest = ((ServletRequestAttributes) RequestContextHolder
@@ -299,21 +314,21 @@ public class ProfileFormController {
 		}
     }
 	
-	@RequestMapping(value = "/addContracts", headers = ("content-type=multipart/*"), method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	@RequestMapping(value = "/addContracts", method = RequestMethod.POST)
     public ResponseEntity<?> addLegal(@RequestParam("selectFile") MultipartFile selectFile, @RequestParam("docType") String docType) {
 		AjaxResponse response = new AjaxResponse();
-		String fileName = selectFile.getOriginalFilename();
-		String filePath = "C:\\upload\\"+ diligenceId()+"-"+fileName;
+		//String fileName = selectFile.getOriginalFilename();
+		//String filePath = "C:\\upload\\"+ diligenceId()+"-"+fileName;
 		
 		try {
-			selectFile.transferTo( new File(filePath));
+			//selectFile.transferTo( new File(filePath));
 			
 			Contracts contracts = new Contracts();
 			
 			contracts.setCreatedBy(createdById());
 			contracts.setDiligenceId(diligenceId());
-			contracts.setFileName(fileName);
-			contracts.setFilePath(filePath);
+			//contracts.setFileName(fileName);
+			//contracts.setFilePath(filePath);
 			contracts.setFileType(docType);
 			
 	    	String result = contractsService.saveContacts(contracts);
