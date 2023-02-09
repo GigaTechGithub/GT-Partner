@@ -46,20 +46,21 @@ html {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
-article, aside, figcaption, figure,  header, hgroup, main, nav, section {
+article, aside, figcaption, figure, header, hgroup, main, nav, section {
   display: block; }
   
   
-footer {
+.footer-cls {
    position: fixed;
    left: 0;
    bottom: 0;
    height: 30px;
    width: 100%;
-   background-color: grey;
+   background-color: darkcyan;
    color: white;
    text-align: center;
 }
+
 
 body {
   margin: 0;
@@ -3464,6 +3465,7 @@ input[type="button"].btn-block {
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between; }
+    
 
 .navbar-brand {
   display: inline-block;
@@ -8227,7 +8229,7 @@ h1, h2, h3, h4, h5,
 #sidebar {
   min-width: 300px;
   max-width: 300px;
-  background: #1d1919;
+  background: teal;
   color: #fff;
   -webkit-transition: all 0.3s;
   -o-transition: all 0.3s;
