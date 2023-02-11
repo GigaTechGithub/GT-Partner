@@ -1,35 +1,49 @@
-<!DOCTYPE html>
-<!--  main-fragment (title, otherStaticResources, header, nav, mainContent, footer)  -->
-<html xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{layouts/main-layout :: main-fragment(  
-                                                ~{::title},
-                                                ~{:: #products-static-resources},
-                                                ~{:: #products-header},
-                                                ~{:: #products-nav},
-                                                ~{:: #products-main-content},  
-                                                ~{:: #products-footer}
-                                               )}">
-                                              
-<head>
-    <title>Title of About Page</title>
+<!doctype html>
+<html lang="en">
+  <head>
+	<title>Partner Form</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
     
-</head>
-<body>
-    <div id="products-header" th:replace="~{/layouts/_header :: top-header}"></div>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" th:href="@{/css/profilecompleteform.css}">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script> 
+    <script src="js/profilecompleteform.js"></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+		
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="nav-css/style.css">
+  </head>
+  <body>
+  <div class="wrapper d-flex align-items-stretch">
+  	
     <div id="products-nav" th:replace="~{/layouts/_sideNavbar :: left-side-nav-bar}"></div>
-    <div id="products-main-content">
-        <div id="content" class="p-4 p-md-5">
-	        <h2 class="mb-4">About Page</h2>
-	        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	      </div>
-	</div>
-    <div id="products-footer" th:replace="~{/layouts/_footer :: bottom-footer}"></div>
     
-    
+	    <div class="p-3 ms-5 mt-0 me-5">
+		    <div id="products-header" th:replace="~{/layouts/_header :: top-header}"></div>
+	    
+	      <div id="content" >
+	       <!-- Write HIML code here -->
+	      
+	      
+		  
+		  </div>
+		   <div id="products-footer" th:replace="~{/layouts/_footer :: bottom-footer}"></div>
+	   </div>
+   </div>
+
     <script src="nav-js/jquery.min.js"></script>
     <script src="nav-js/popper.js"></script>
     <script src="nav-js/bootstrap.min.js"></script>
     <script src="nav-js/main.js"></script>
-</body>
+  </body>
 </html>
