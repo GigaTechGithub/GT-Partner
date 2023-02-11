@@ -28,4 +28,16 @@ public class IncorporationDocServiceImpl implements IncorporationDocService{
 		}
 	}
 
+	@Override
+	public String deleteIncorporationDoc(long id) {
+		try {
+			incorporationDocRepository.deleteById(id);
+			return "Success";
+		}
+		
+		catch (Exception e) {
+			return "Failed";
+		}
+	}
+
 }

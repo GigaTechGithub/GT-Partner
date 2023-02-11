@@ -26,4 +26,16 @@ public class IpDoc1ServiceImpl implements IpDoc1Service{
 		}
 	}
 
+	@Override
+	public String deleteIpDoc1(long id) {
+		try {
+			ipDoc1Repository.deleteById(id);
+			return "Success";
+		}
+		
+		catch (Exception e) {
+			return "Failed";
+		}
+	}
+
 }

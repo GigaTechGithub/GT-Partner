@@ -92,18 +92,6 @@ public class ProfileFormController {
 	@Autowired
 	OwnerService ownerService;
 	
-	@Bean
-    public MultipartConfigElement multipartConfigElement() {
-        return new MultipartConfigElement("");
-    }
-
-    @Bean
-    public MultipartResolver multipartResolver() {
-        org.springframework.web.multipart.commons.CommonsMultipartResolver multipartResolver = new org.springframework.web.multipart.commons.CommonsMultipartResolver();
-        multipartResolver.setMaxUploadSize(1000000);
-        return multipartResolver;
-    }
-	
 	public HttpSession getSession() {
 		HttpServletRequest servRequest = ((ServletRequestAttributes) RequestContextHolder
 				.getRequestAttributes()).getRequest();
@@ -315,23 +303,43 @@ public class ProfileFormController {
     }
 	
 	@RequestMapping(value = "/addContracts", method = RequestMethod.POST)
-    public ResponseEntity<?> addLegal(@RequestParam("selectFile") MultipartFile selectFile, @RequestParam("docType") String docType) {
+    public ResponseEntity<?> addContracts(@RequestParam("selectFile") MultipartFile selectFile, @RequestParam("docType") String docType) {
 		AjaxResponse response = new AjaxResponse();
-		//String fileName = selectFile.getOriginalFilename();
-		//String filePath = "C:\\upload\\"+ diligenceId()+"-"+fileName;
+		String fileName = selectFile.getOriginalFilename();
+		String filePath = "C:\\upload\\"+ diligenceId()+"-"+fileName;
 		
 		try {
-			//selectFile.transferTo( new File(filePath));
+			selectFile.transferTo( new File(filePath));
 			
 			Contracts contracts = new Contracts();
 			
 			contracts.setCreatedBy(createdById());
 			contracts.setDiligenceId(diligenceId());
-			//contracts.setFileName(fileName);
-			//contracts.setFilePath(filePath);
+			contracts.setFileName(fileName);
+			contracts.setFilePath(filePath);
 			contracts.setFileType(docType);
 			
 	    	String result = contractsService.saveContacts(contracts);
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+    }
+	
+	@PostMapping({"/deleteContracts"})
+    public ResponseEntity<?> deleteContracts(@RequestBody Contracts request, Errors errors) {
+		AjaxResponse response = new AjaxResponse();
+		try {
+	    	
+	    	String result = contractsService.deleteContracts(request.getId());
 	    	
 	    	response.setMessage(result);
 	    	
@@ -456,17 +464,43 @@ public class ProfileFormController {
     }
 	
 	@PostMapping({"/addIncorporationDoc"})
-    public ResponseEntity<?> addIncorporationDoc(@RequestBody IncorporationDoc request, Errors errors) {
+    public ResponseEntity<?> addIncorporationDoc(@RequestParam("selectFile") MultipartFile selectFile, @RequestParam("docType") String docType) {
 		AjaxResponse response = new AjaxResponse();
+		String fileName = selectFile.getOriginalFilename();
+		String filePath = "C:\\upload\\"+ diligenceId()+"-"+fileName;
 		try {
+			selectFile.transferTo( new File(filePath));
+			
 			IncorporationDoc incorporationDoc = new IncorporationDoc();
 			
 			incorporationDoc.setCreatedBy(createdById());
 			incorporationDoc.setDiligenceId(diligenceId());
-			incorporationDoc.setFileName(request.getFileName());
-			incorporationDoc.setFilePath(request.getFilePath());
+			incorporationDoc.setFileName(fileName);
+			incorporationDoc.setFilePath(filePath);
+			incorporationDoc.setFileType(docType);
 			
 	    	String result = incorporationDocService.saveIncorporationDoc(incorporationDoc);
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+		
+    }
+	
+	@PostMapping({"/deleteIncorporationDoc"})
+    public ResponseEntity<?> deleteIncorporationDoc(@RequestBody IncorporationDoc request, Errors errors) {
+		AjaxResponse response = new AjaxResponse();
+		try {
+	    	
+	    	String result = incorporationDocService.deleteIncorporationDoc(request.getId());
 	    	
 	    	response.setMessage(result);
 	    	
@@ -523,16 +557,18 @@ public class ProfileFormController {
 	
 	
 	@PostMapping({"/addIpDoc1"})
-    public ResponseEntity<?> addIp(@RequestBody IpDoc1 request, Errors errors) {
+    public ResponseEntity<?> addIpDoc1(@RequestParam("selectFile") MultipartFile selectFile, @RequestParam("docType") String docType) {
 		AjaxResponse response = new AjaxResponse();
+		String fileName = selectFile.getOriginalFilename();
+		String filePath = "C:\\upload\\"+ diligenceId()+"-"+fileName;
 		try {
 			IpDoc1 ipDoc1 = new IpDoc1();
 			
 			ipDoc1.setCreatedBy(createdById());
 			ipDoc1.setDiligenceId(diligenceId());
-			ipDoc1.setFileName(request.getFileName());
-			ipDoc1.setFilePath(request.getFilePath());
-			ipDoc1.setFileType(request.getFileType());
+			ipDoc1.setFileName(fileName);
+			ipDoc1.setFilePath(filePath);
+			ipDoc1.setFileType(docType);
 			
 	    	String result = ipDoc1Service.saveIpDoc1(ipDoc1);
 	    	
@@ -549,19 +585,62 @@ public class ProfileFormController {
 		}
     }
 	
-	@PostMapping({"/addIpDoc2"})
-    public ResponseEntity<?> addIp(@RequestBody IpDoc2 request, Errors errors) {
+	@PostMapping({"/deleteIpDoc1"})
+    public ResponseEntity<?> deleteIpDoc1(@RequestBody IncorporationDoc request, Errors errors) {
 		AjaxResponse response = new AjaxResponse();
+		try {
+	    	
+	    	String result = ipDoc1Service.deleteIpDoc1(request.getId());
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+    }
+	
+	@PostMapping({"/addIpDoc2"})
+    public ResponseEntity<?> addIpDoc2(@RequestParam("selectFile") MultipartFile selectFile, @RequestParam("docType") String docType) {
+		AjaxResponse response = new AjaxResponse();
+		String fileName = selectFile.getOriginalFilename();
+		String filePath = "C:\\upload\\"+ diligenceId()+"-"+fileName;
+		
 		try {
 			IpDoc2 ipDoc2 = new IpDoc2();
 			
 			ipDoc2.setCreatedBy(createdById());
 			ipDoc2.setDiligenceId(diligenceId());
-			ipDoc2.setFileName(request.getFileName());
-			ipDoc2.setFilePath(request.getFilePath());
-			ipDoc2.setFileType(request.getFileType());
+			ipDoc2.setFileName(fileName);
+			ipDoc2.setFilePath(filePath);
+			ipDoc2.setFileType(docType);
 			
 	    	String result = ipDoc2Service.saveIpDoc2(ipDoc2);
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+    }
+	
+	@PostMapping({"/deleteIpDoc2"})
+    public ResponseEntity<?> deleteIpDoc2(@RequestBody IncorporationDoc request, Errors errors) {
+		AjaxResponse response = new AjaxResponse();
+		try {
+	    	
+	    	String result = ipDoc2Service.deleteIpDoc2(request.getId());
 	    	
 	    	response.setMessage(result);
 	    	

@@ -388,9 +388,7 @@
 								<label class="fieldlabels">Copies of the 5 largest contracts for the current year.</label>
                                 <input type="button" id="uploadContracts" value="Upload Files"/>
 								<table id="revTable">
-									<tr>
-										
-									<tr>
+									
 								</table>
 								<br>
                                 <label class="fieldlabels">Description of the procedures for contracting and billing maintenance.</label>
@@ -422,9 +420,7 @@
 								<label class="fieldlabels">Incorporation Documents of the Company</label>
                                 <input type="button" id="uploadIncorporation" value="Upload Files"/>
 								<table id="techTable">
-									<tr>
-										
-									<tr>
+									
 								</table>
 								<br>
                                 <label class="fieldlabels">IT Organization chart & Client structure (quantity, type, location)</label>
@@ -537,17 +533,13 @@
 								vi. registrations, issuances, applications, additions, affidavits, continuations, divisions and other filings related to the foregoing items. </label>
                                 <input type="button" id="uploadIP" value="Upload Files"/>
 								<table id="ipTable">
-									<tr>
-										
-									<tr>
+									
 								</table>
 								<br>
                                 <label class="fieldlabels">Copies of searches, counsel’s opinion letters, and application file histories (or file wrappers) for the items requested in the preceding</label>
                                 <input type="button" id="uploadIP2" value="Upload Files"/>
 								<table id="ipTable2">
-									<tr>
-										
-									<tr>
+									
 								</table>
 								<br>
                                 <label class="fieldlabels">Schedule of all material ongoing or planned software, databases, and/or network development projects.</label>
@@ -837,10 +829,11 @@
     <script>
     var t = $('#ownerTable').DataTable({searching: false, paging: false, info: false, sorting: false});
     var t1 = $('#bodTable').DataTable({searching: false, paging: false, info: false, sorting: false});
-    var table = document.getElementById("revTable");
+    var table0 = document.getElementById("revTable");
 	var table1 = document.getElementById("techTable");
 	var table2 = document.getElementById("ipTable");
 	var table3 = document.getElementById("ipTable2");
+	
     $(document).ready(function(){
     	t.column(0).visible(false);
     	t1.column(0).visible(false);
@@ -954,7 +947,7 @@
                 cache: false,
                 timeout: 600000,
                 success: function (data) {
-                    console.log(data["message"]);
+
                     if(data["message"]=="Failed"){
                     	alert("Failed to save data. Please try again");
                     }
@@ -982,47 +975,46 @@
         });
         
         $("#uploadRev").click(function(e) { 
-        	e.preventDefault(); 
-        	var form = document.getElementById("contactForm");
-        	var formData = new FormData(form);
+        	        	
+        	var formData = new FormData();
+        	var docType = $("#docType").val();
+        	formData.append('docType', docType);
+        	formData.append('selectFile', $('#selectFile')[0].files[0])
+        	//console.log(docType);
+        	//console.log($('#selectFile')[0].files[0]);
 
         	$.ajax({ 
         		type:"POST", 
         		url:"/addContracts",
         		data:formData, 
         		cache:false,
-        		enctype:"multipart/form-data",
         		contentType: false, 
         		processData:false, 
-        		success:function(data) { 
-        			if(data.status == "success") { 
-        				if(data["message"]=="Failed"){
-                        	alert("Failed to save data. Please try again");
-                        }
-                        
-                        else{
-                        	var rowId = data["message"];
-                        	var docType = $("#docType").val();
-                            var selectFile = $("#selectFile").val().split(/(\\|\/)/g).pop();
+        		success:function(data) {
+    				if(data["message"]=="Failed"){
+                    	alert("Failed to save data. Please try again");
+                    }
+                    
+                    else{
+                    	var rowId = data["message"];
+                    	var docType = $("#docType").val();
+                        var selectFile = $("#selectFile").val().split(/(\\|\/)/g).pop();
 
-                            $("#docType").val("");
-                			$("#selectFile").val("");
-                			
-                			var row = table.insertRow(0);
-                			var cell1 = row.insertCell(0);
-                			var cell2 = row.insertCell(1);
-                			var cell3 = row.insertCell(2);
-                			 cell1.innerHTML = rowId;
-                			 cell2.innerHTML = selectFile;
-                			 cell3.innerHTML = "<button id="+"revBtn" +" type="+"button"+" style="+"border:none"+">X</button>";
-                			 
-                			$("td:nth-child(1)").hide();
-                			
-                			$('#modelWindow2').modal('hide');
-                        } 
-        			} else { 
-        				alert("Failed to save data. Please try again"); 
-        			}
+                        $("#docType").val("");
+            			$("#selectFile").val("");
+            			
+            			var row = table0.insertRow(0);
+            			var cell1 = row.insertCell(0);
+            			var cell2 = row.insertCell(1);
+            			var cell3 = row.insertCell(2);
+            			 cell1.innerHTML = rowId;
+            			 cell2.innerHTML = selectFile;
+            			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'revBtn' + ' id = ' + 'revBtn' + ' style= ' + 'border:none'+ '>X</button>';
+            			
+            			 $("td:nth-child(1)").hide();
+            			
+            			$('#modelWindow2').modal('hide');
+                    } 
         		},
         		
         		error: function (e) {
@@ -1035,65 +1027,158 @@
         });
 		
 		$('#uploadTech').click(function() {
-            var docType = $("#docType1").val();
-            var selectFile = $("#selectFile1").val().split(/(\\|\/)/g).pop();
+			var formData = new FormData();
+        	var docType = $("#docType1").val();
+        	formData.append('docType', docType);
+        	formData.append('selectFile', $('#selectFile1')[0].files[0])
+        	//console.log(docType);
+        	//console.log($('#selectFile')[0].files[0]);
 
-            $("#docType1").val("");
-			$("#selectFile1").val("");
-			
-			var row = table1.insertRow(0);
-			var cell1 = row.insertCell(0);
-			var cell2 = row.insertCell(1);
-			var cell3 = row.insertCell(2);
-			 cell1.innerHTML = 100;
-			 cell2.innerHTML = selectFile;
-			 cell3.innerHTML = "<button id="+"revBtn" +" type="+"button"+" style="+"border:none"+">X</button>";
-			 
-			$("td:nth-child(1)").hide();
-			
-			$('#modelWindow3').modal('hide');
+        	$.ajax({ 
+        		type:"POST", 
+        		url:"/addIncorporationDoc",
+        		data:formData, 
+        		cache:false,
+        		contentType: false, 
+        		processData:false, 
+        		success:function(data) {
+    				if(data["message"]=="Failed"){
+                    	alert("Failed to save data. Please try again");
+                    }
+                    
+                    else{
+                    	var rowId = data["message"];
+                    	var docType = $("#docType1").val();
+                        var selectFile = $("#selectFile1").val().split(/(\\|\/)/g).pop();
+
+                        $("#docType1").val("");
+            			$("#selectFile1").val("");
+            			
+            			var row = table1.insertRow(0);
+            			var cell1 = row.insertCell(0);
+            			var cell2 = row.insertCell(1);
+            			var cell3 = row.insertCell(2);
+            			 cell1.innerHTML = rowId;
+            			 cell2.innerHTML = selectFile;
+            			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'techBtn' + ' id = ' + 'techBtn' + ' style= ' + 'border:none'+ '>X</button>';
+            			
+            			 $("td:nth-child(1)").hide();
+            			
+            			$('#modelWindow3').modal('hide');
+                    } 
+        		},
+        		
+        		error: function (e) {
+
+                    alert("Failed to save data. Please try again");
+
+                }
+        		
+        	});
 
         });
 		
 		$('#uploadIp1').click(function() {
-            var docType = $("#docType2").val();
-            var selectFile = $("#selectFile2").val().split(/(\\|\/)/g).pop();
+			var formData = new FormData();
+        	var docType = $("#docType2").val();
+        	formData.append('docType', docType);
+        	formData.append('selectFile', $('#selectFile2')[0].files[0])
+        	//console.log(docType);
+        	//console.log($('#selectFile')[0].files[0]);
 
-            $("#docType2").val("");
-			$("#selectFile2").val("");
-			
-			var row = table2.insertRow(0);
-			var cell1 = row.insertCell(0);
-			var cell2 = row.insertCell(1);
-			var cell3 = row.insertCell(2);
-			 cell1.innerHTML = 100;
-			 cell2.innerHTML = selectFile;
-			 cell3.innerHTML = "<button id="+"revBtn" +" type="+"button"+" style="+"border:none"+">X</button>";
-			 
-			$("td:nth-child(1)").hide();
-			
-			$('#modelWindow4').modal('hide');
+        	$.ajax({ 
+        		type:"POST", 
+        		url:"/addIpDoc1",
+        		data:formData, 
+        		cache:false,
+        		contentType: false, 
+        		processData:false, 
+        		success:function(data) {
+    				if(data["message"]=="Failed"){
+                    	alert("Failed to save data. Please try again");
+                    }
+                    
+                    else{
+                    	var rowId = data["message"];
+                    	var docType = $("#docType2").val();
+                        var selectFile = $("#selectFile2").val().split(/(\\|\/)/g).pop();
+
+                        $("#docType2").val("");
+            			$("#selectFile2").val("");
+            			
+            			var row = table2.insertRow(0);
+            			var cell1 = row.insertCell(0);
+            			var cell2 = row.insertCell(1);
+            			var cell3 = row.insertCell(2);
+            			 cell1.innerHTML = rowId;
+            			 cell2.innerHTML = selectFile;
+            			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'ipBtn1' + ' id = ' + 'ipBtn1' + ' style= ' + 'border:none'+ '>X</button>';
+            			
+            			 $("td:nth-child(1)").hide();
+            			
+            			$('#modelWindow4').modal('hide');
+                    } 
+        		},
+        		
+        		error: function (e) {
+
+                    alert("Failed to save data. Please try again");
+
+                }
+        		
+        	});
 
         });
 		
 		$('#uploadIp2').click(function() {
-            var docType = $("#docType3").val();
-            var selectFile = $("#selectFile3").val().split(/(\\|\/)/g).pop();
+			var formData = new FormData();
+        	var docType = $("#docType3").val();
+        	formData.append('docType', docType);
+        	formData.append('selectFile', $('#selectFile3')[0].files[0])
+        	//console.log(docType);
+        	//console.log($('#selectFile')[0].files[0]);
 
-            $("#docType3").val("");
-			$("#selectFile3").val("");
-			
-			var row = table3.insertRow(0);
-			var cell1 = row.insertCell(0);
-			var cell2 = row.insertCell(1);
-			var cell3 = row.insertCell(2);
-			 cell1.innerHTML = 100;
-			 cell2.innerHTML = selectFile;
-			 cell3.innerHTML = "<button id="+"revBtn" +" type="+"button"+" style="+"border:none"+">X</button>";
-			 
-			$("td:nth-child(1)").hide();
-			
-			$('#modelWindow5').modal('hide');
+        	$.ajax({ 
+        		type:"POST", 
+        		url:"/addIpDoc2",
+        		data:formData, 
+        		cache:false,
+        		contentType: false, 
+        		processData:false, 
+        		success:function(data) {
+    				if(data["message"]=="Failed"){
+                    	alert("Failed to save data. Please try again");
+                    }
+                    
+                    else{
+                    	var rowId = data["message"];
+                    	var docType = $("#docType3").val();
+                        var selectFile = $("#selectFile3").val().split(/(\\|\/)/g).pop();
+
+                        $("#docType3").val("");
+            			$("#selectFile3").val("");
+            			
+            			var row = table3.insertRow(0);
+            			var cell1 = row.insertCell(0);
+            			var cell2 = row.insertCell(1);
+            			var cell3 = row.insertCell(2);
+            			 cell1.innerHTML = rowId;
+            			 cell2.innerHTML = selectFile;
+            			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'ipBtn2' + ' id = ' + 'ipBtn2' + ' style= ' + 'border:none'+ '>X</button>';
+            			
+            			 $("td:nth-child(1)").hide();
+            			
+            			$('#modelWindow5').modal('hide');
+                    } 
+        		},
+        		
+        		error: function (e) {
+
+                    alert("Failed to save data. Please try again");
+
+                }
+        		
+        	});
 
         });
 
@@ -1101,6 +1186,7 @@
             $("#secondComName").show();
         });
         $("#r2").click(function () {
+        	$("#secondComName").value("");
             $("#secondComName").hide();
         });
 
@@ -1108,6 +1194,7 @@
             $("#secondAddr").show();
         });
         $("#r4").click(function () {
+        	$("#secondAddr").value("");
             $("#secondAddr").hide();
         });
 
@@ -1115,6 +1202,7 @@
             $("#parentSecondName").show();
         });
         $("#r6").click(function () {
+        	$("#parentSecondName").value("");
             $("#parentSecondName").hide();
         });
 
@@ -1122,6 +1210,7 @@
             $("#secondGlobalName").show();
         });
         $("#r8").click(function () {
+        	$("#secondGlobalName").value("");
             $("#secondGlobalName").hide();
         });
 
@@ -1129,6 +1218,7 @@
             $("#oAltName").show();
         });
         $("#r10").click(function () {
+        	$("#oAltName").value("");
             $("#oAltName").hide();
         });
 
@@ -1136,6 +1226,7 @@
             $("#bodAltName").show();
         });
         $("#r12").click(function () {
+        	$("#bodAltName").value("");
             $("#bodAltName").hide();
         });
         
@@ -1235,27 +1326,91 @@
         }
     } );
     
-    $('table').on('click', '#revBtn', function(e){
-		   
-		   
-		   var r=confirm("Are you sure want to remove?");            
-			if (r==true)
-			{
-				$(this).closest('tr').remove();
-			}
-			else
-			{
-				
-			}
-		});
+    $(document).on( 'click', '#revBtn', function(){
+ 			  
+	    var r=confirm("Are you sure want to remove?");
+		if (r==true)
+		{				
+		var row = $(this).parents('tr');      
+           var contracts = {};
+           var rowData = row.data();
+           contracts['id'] = row.find('td:eq(0)').text();
+           
+           $.ajax({
+               type: "POST",
+               contentType: "application/json",
+               url: "/deleteContracts",
+               data: JSON.stringify(contracts),
+               dataType: 'json',
+               cache: false,
+               timeout: 600000,
+               success: function (data) {
+                   console.log(data["message"]);
+                   
+                   if(data["message"]=="Failed"){
+                   	alert("Failed to delete data. Please try again");
+                   }
+                   
+                   else{
+                   	//t.row( $(this).parents('tr') ).remove().draw();
+                   	//row.remove().draw();
+                   	row.remove();
+                   }
+
+               },
+               error: function (e) {
+
+                   alert("Failed to delete data. Please try again");
+
+               }
+           });
+		}
+		else
+		{
+			
+		}
+	});
+    
+
 		
-	$('table1').on('click', '#revBtn', function(e){
+	$(document).on('click', '#techBtn', function(e){
 	   
-	   
-	   var r=confirm("Are you sure want to remove?");            
+		var r=confirm("Are you sure want to remove?");
 		if (r==true)
-		{
-			$(this).closest('tr').remove();
+		{				
+		var row = $(this).parents('tr');      
+           var contracts = {};
+           var rowData = row.data();
+           contracts['id'] = row.find('td:eq(0)').text();
+           
+           $.ajax({
+               type: "POST",
+               contentType: "application/json",
+               url: "/deleteIncorporationDoc",
+               data: JSON.stringify(contracts),
+               dataType: 'json',
+               cache: false,
+               timeout: 600000,
+               success: function (data) {
+                   console.log(data["message"]);
+                   
+                   if(data["message"]=="Failed"){
+                   	alert("Failed to delete data. Please try again");
+                   }
+                   
+                   else{
+                   	//t.row( $(this).parents('tr') ).remove().draw();
+                   	//row.remove().draw();
+                   	row.remove();
+                   }
+
+               },
+               error: function (e) {
+
+                   alert("Failed to delete data. Please try again");
+
+               }
+           });
 		}
 		else
 		{
@@ -1263,13 +1418,45 @@
 		}
 	});
 	
-	$('table2').on('click', '#revBtn', function(e){
+	$(document).on('click', '#ipBtn1', function(e){
 	   
 	   
-	   var r=confirm("Are you sure want to remove?");            
+		var r=confirm("Are you sure want to remove?");
 		if (r==true)
-		{
-			$(this).closest('tr').remove();
+		{				
+		var row = $(this).parents('tr');      
+           var contracts = {};
+           var rowData = row.data();
+           contracts['id'] = row.find('td:eq(0)').text();
+           
+           $.ajax({
+               type: "POST",
+               contentType: "application/json",
+               url: "/deleteIpDoc1",
+               data: JSON.stringify(contracts),
+               dataType: 'json',
+               cache: false,
+               timeout: 600000,
+               success: function (data) {
+                   console.log(data["message"]);
+                   
+                   if(data["message"]=="Failed"){
+                   	alert("Failed to delete data. Please try again");
+                   }
+                   
+                   else{
+                   	//t.row( $(this).parents('tr') ).remove().draw();
+                   	//row.remove().draw();
+                   	row.remove();
+                   }
+
+               },
+               error: function (e) {
+
+                   alert("Failed to delete data. Please try again");
+
+               }
+           });
 		}
 		else
 		{
@@ -1277,13 +1464,45 @@
 		}
 	});
 	
-	$('table3').on('click', '#revBtn', function(e){
+	$(document).on('click', '#ipBtn2', function(){
 	   
 	   
-	   var r=confirm("Are you sure want to remove?");            
+		var r=confirm("Are you sure want to remove?");
 		if (r==true)
-		{
-			$(this).closest('tr').remove();
+		{				
+		var row = $(this).parents('tr');      
+           var contracts = {};
+           var rowData = row.data();
+           contracts['id'] = row.find('td:eq(0)').text();
+           
+           $.ajax({
+               type: "POST",
+               contentType: "application/json",
+               url: "/deleteIpDoc2",
+               data: JSON.stringify(contracts),
+               dataType: 'json',
+               cache: false,
+               timeout: 600000,
+               success: function (data) {
+                   console.log(data["message"]);
+                   
+                   if(data["message"]=="Failed"){
+                   	alert("Failed to delete data. Please try again");
+                   }
+                   
+                   else{
+                   	//t.row( $(this).parents('tr') ).remove().draw();
+                   	//row.remove().draw();
+                   	row.remove();
+                   }
+
+               },
+               error: function (e) {
+
+                   alert("Failed to delete data. Please try again");
+
+               }
+           });
 		}
 		else
 		{

@@ -1,9 +1,6 @@
 package com.gt.models;
 
-
-
-import java.sql.Timestamp;
-import java.util.List;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -55,7 +52,7 @@ public class Company {
     private String export2;
     
     @Column(name="INCORPORATION_DATE", nullable=false, length=6)
-    private Timestamp incorporation_date;
+    private LocalDate incorporation_date;
     
     @Column(name="IS_GOV", nullable=false, length=100)
     private String isGov;
@@ -112,7 +109,7 @@ public class Company {
 
 	public Company(Long id, String address, String companyName, String companySecondName, String country,
 			Integer createdBy, Integer diligenceId, String ethical1, String ethical2, String export1, String export2,
-			Timestamp incorporation_date, String isGov, String isGovCon, Integer noOfBod, String noOfEmployees,
+			LocalDate incorporation_date, String isGov, String isGovCon, Integer noOfBod, String noOfEmployees,
 			String parentCompanyGlobalLocation, String parentCompanyGlobalName, String parentCompanyLocation,
 			String parentCompanyName, String parentCompanySecondGlobalName, String parentCompanySecondName,
 			String personalConnection, String province, String secondAddress, String taxId, String telephone,
@@ -236,11 +233,11 @@ public class Company {
 		this.export2 = export2;
 	}
 
-	public Timestamp getIncorporation_date() {
+	public LocalDate getIncorporation_date() {
 		return incorporation_date;
 	}
 
-	public void setIncorporation_date(Timestamp incorporation_date) {
+	public void setIncorporation_date(LocalDate incorporation_date) {
 		this.incorporation_date = incorporation_date;
 	}
 

@@ -28,4 +28,16 @@ public class ContractsServiceImpl implements ContractsService{
 		
 	}
 
+	@Override
+	public String deleteContracts(long id) {
+		try {
+			contractsRepository.deleteById(id);
+			return "Success";
+		}
+		
+		catch (Exception e) {
+			return "Failed";
+		}
+	}
+
 }
