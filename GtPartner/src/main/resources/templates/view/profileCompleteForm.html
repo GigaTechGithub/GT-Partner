@@ -22,7 +22,7 @@
         <div class="row justify-content-center">
             <div class="col-11 col-sm-9 col-md-7 col-lg-6 col-xl-5 text-center p-0 mt-3 mb-2">
                 <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
-    				<h3>Please complete your profile</h3>
+    				<h3>Please complete your company profile</h3>
 					<br>
                     <form id="msform">
                         <!-- progressbar -->
@@ -67,8 +67,12 @@
                                 <input id="secondComName" type="text" placeholder="Please specify *" th:value="${company.companySecondName}"/>
                                 
                                 <br>                          
-                                <label class="fieldlabels">Country of Registration: *</label>
-                                <input type="text" id="countryOfReg" th:value="${company.country}"/>
+                                <label class="fieldlabels">Country of Registration: *</label><br>                                
+                                <select th:field="${company.country}" id="countryOfReg" style="width: 100%">
+						             <option value=""> -- </option>
+						             <option th:each="country : ${getCountries}" th:value="${country.value}" th:text="${country.value}"></option>
+						        </select>
+                                <br>
                                 <br>
                                 <label class="fieldlabels">State or Province of Registration, if applicable: </label>
                                 <input type="text" id="state" th:value="${company.province}"/>
@@ -124,8 +128,12 @@
                                 <br>
                                 <input type="text" id="parentSecondName" placeholder="Please specify *" th:value="${company.parentCompanySecondName}"/>
                                 <br>                          
-                                <label class="fieldlabels">Location of Parent Company (Country): *</label>
-                                <input type="text" id="parentLocation" th:value="${company.parentCompanyLocation}"/>
+                                <label class="fieldlabels">Location of Parent Company (Country): </label><br>
+                                <select th:field="${company.parentCompanyLocation}" id="parentLocation" style="width: 100%">
+						             <option value=""> -- </option>
+						             <option th:each="country : ${getCountries}" th:value="${country.value}" th:text="${country.value}"></option>
+						        </select>
+						        <br>
                                 <br>
                                 <label class="fieldlabels">Global Ultimate Name: </label>
                                 <input type="text" id="globalName" th:value="${company.parentCompanyGlobalName}"/>

@@ -1,6 +1,9 @@
 package com.gt.controllers;
 
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.TreeMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -91,6 +94,21 @@ public class HomeController {
 		return Integer.parseInt(getSession().getAttribute("diligenceId").toString());
 	}
 	
+	public Map<String, String> getCountries(){
+		String[] countryCodes = Locale.getISOCountries();
+		 
+        Map<String, String> mapCountries = new TreeMap<>();
+ 
+        for (String countryCode : countryCodes) {
+            Locale locale = new Locale("", countryCode);
+            String code = locale.getCountry();
+            String name = locale.getDisplayCountry();
+            mapCountries.put(code, name);
+        }
+        
+        return mapCountries;
+	}
+	
 	@GetMapping({"/home"})
     public String getHomePage(Model model) {
 
@@ -121,6 +139,7 @@ public class HomeController {
 		model.addAttribute("incorporationDocList", incorporationDocList);
 		model.addAttribute("ipDoc1List", ipDoc1List);
 		model.addAttribute("ipDoc2List", ipDoc2List);
+		model.addAttribute("getCountries", getCountries());
 		
     	return "view/profileCompleteForm";
     }
