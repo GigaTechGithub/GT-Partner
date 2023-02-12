@@ -141,7 +141,9 @@ public class HomeController {
 		model.addAttribute("ipDoc2List", ipDoc2List);
 		model.addAttribute("getCountries", getCountries());
 		
-    	return "view/profileCompleteForm";
+    	//return "view/profileCompleteForm";
+		
+		return "view/CompanyInfoForm";
     }
 	
 	

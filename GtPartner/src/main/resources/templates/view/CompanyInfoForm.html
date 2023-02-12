@@ -1,0 +1,1620 @@
+<!DOCTYPE html>
+<html layout:decorator="layouts/layout" lang="en" xmlns:layout="http://www.w3.org/1999/xhtml">
+ <head>
+   <title>Partner Form</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" th:href="@{/css/profilecompleteform.css}">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script> 
+    <script src="js/profilecompleteform.js"></script>
+</head>
+
+<body>
+
+<div layout:fragment="content">
+	<div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-11 col-sm-9 col-md-7 col-lg-6 col-xl-5 text-center p-0 mt-3 mb-2">
+                <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+    				<h3>Please complete your company profile</h3>
+					<br>
+                    <form id="msform">
+                        <!-- progressbar -->
+                        <ul id="progressbar">
+                            <li class="active" id="comInfo"><strong>Company</strong></li>
+                            <li id="legal"><strong>Legal</strong></li>
+                            <li id="financial"><strong>Financial</strong></li>
+                            <li id="revenue"><strong>Revenue</strong></li>
+                            <li id="technology"><strong>Technology</strong></li>
+                            <li id="ip"><strong>IP</strong></li>
+                            <li id="it"><strong>IT</strong></li>
+                            <li id="completed"><strong>Completed</strong></li>
+                        </ul>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <br>
+                        <!-- fieldsets -->
+                        <fieldset>
+                            <div class="form-card">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title">01. Company Information:</h2>
+                                    </div>
+                                    <div class="col-5">
+                                        <h2 class="steps">Step 1 - 8</h2>
+                                    </div>
+                                </div>
+                                <label class="fieldlabels">Company Legal Name: *</label>
+                                <input type="text" name="comLegalName" id="comLegalName" th:value="${company.companyName}"/>
+                                <br>
+                                <label class="fieldlabels">Does the Company have other Trading/Business Name or name in another language?: *</label>           
+                                <br>
+                                <div class="d-flex align-items-center col-md-12">
+                                    <input class="col-md-1" type="radio" name="radio1" id="r1" value="yes">
+                                    <label class="col-md-1" for="inlineRadio1">Yes</label>
+                                    <input class="col-md-1" type="radio" name="radio1" id="r2" value="no">
+                                    <label class="col-md-1" for="inlineRadio1">No</label>
+                                </div>
+                                
+                                <br>
+                                <input id="secondComName" type="text" placeholder="Please specify *" th:value="${company.companySecondName}"/>
+                                
+                                <br>                          
+                                <label class="fieldlabels">Country of Registration: *</label><br>                                
+                                <select th:field="${company.country}" id="countryOfReg" style="width: 100%">
+						             <option value=""> -- </option>
+						             <option th:each="country : ${getCountries}" th:value="${country.value}" th:text="${country.value}"></option>
+						        </select>
+                                <br>
+                                <br>
+                                <label class="fieldlabels">State or Province of Registration, if applicable: </label>
+                                <input type="text" id="state" th:value="${company.province}"/>
+                                <br>
+                                <label class="fieldlabels">Date of Incorporation or Registration with local authorities: *</label>
+                                <input type="date" id="regDate" th:value="${company.incorporation_date}"/>
+                                <br>
+                                <label class="fieldlabels">Tax ID Number: *</label>
+                                <input type="text" id="taxId" th:value="${company.taxId}"/>
+                                <br>
+                                <label class="fieldlabels">Legal Address: *</label>
+                                <input type="text" id="legalAddr" th:value="${company.address}"/>
+                                <br>
+                                <label class="fieldlabels">Does the Company have other Business Address or Place of Business? *</label>
+                                <br>
+                                <div class="d-flex align-items-center col-md-12">
+                                    <input class="col-md-1" type="radio" name="radio2" id="r3" value="yes">
+                                    <label class="col-md-1" for="inlineRadio1">Yes</label>
+                                    <input class="col-md-1" type="radio" name="radio2" id="r4" value="no">
+                                    <label class="col-md-1" for="inlineRadio1">No</label>
+                                </div>
+                                <br>
+                                <input id="secondAddr" type="text" placeholder="Please specify *" th:value="${company.secondAddress}"/>                              
+                                <br>
+                                <label class="fieldlabels">Business Telephone: *</label>
+                                <input type="text" id="telephone" th:value="${company.telephone}"/>
+                                <br>
+                                <label class="fieldlabels">Business Website: *</label>
+                                <input type="text" id="website" th:value="${company.website}"/>
+                                <br>
+                                <label class="fieldlabels">Number of full-time Employees locally employed by the Company.: *</label>
+                                <input type="text" id="employeeCount" th:value="${company.noOfEmployees}"/>
+                                <br>
+                            </div>
+                            <hr>
+                            <div class="form-card">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title">02. Parent Company Information: </h2>
+                                    </div>
+                                </div>
+                                <label class="fieldlabels">Parent Company Legal Name: </label>
+                                <input type="text" name="pComLegalName" id="pComLegalName" th:value="${company.parentCompanyName}"/>
+                                <br>
+                                <label class="fieldlabels">Does the Parent Company have an alternate legal name in another language?: </label>  
+                                <br>
+                                <div class="d-flex align-items-center col-md-12">
+                                    <input class="col-md-1" type="radio" name="radio3" id="r5" value="yes">
+                                    <label class="col-md-1" for="inlineRadio1">Yes</label>
+                                    <input class="col-md-1" type="radio" name="radio3" id="r6" value="no">
+                                    <label class="col-md-1" for="inlineRadio1">No</label>
+                                </div>
+                                <br>
+                                <input type="text" id="parentSecondName" placeholder="Please specify *" th:value="${company.parentCompanySecondName}"/>
+                                <br>                          
+                                <label class="fieldlabels">Location of Parent Company (Country): </label><br>
+                                <select th:field="${company.parentCompanyLocation}" id="parentLocation" style="width: 100%">
+						             <option value=""> -- </option>
+						             <option th:each="country : ${getCountries}" th:value="${country.value}" th:text="${country.value}"></option>
+						        </select>
+						        <br>
+                                <br>
+                                <label class="fieldlabels">Global Ultimate Name: </label>
+                                <input type="text" id="globalName" th:value="${company.parentCompanyGlobalName}"/>
+                                <br>
+                                <label class="fieldlabels">Does the Global Ultimate have an alternate legal name in another language?: </label>
+                                <br>
+                                <div class="d-flex align-items-center col-md-12">
+                                    <input class="col-md-1" type="radio" name="radio4" id="r7" value="yes">
+                                    <label class="col-md-1" for="inlineRadio1">Yes</label>
+                                    <input class="col-md-1" type="radio" name="radio4" id="r8" value="no">
+                                    <label class="col-md-1" for="inlineRadio1">No</label>
+                                </div>
+                                <br>
+                                <input type="text" id="secondGlobalName" placeholder="Please specify *" th:value="${company.parentCompanySecondGlobalName}"/>
+                                <br>
+                                <label class="fieldlabels">Location of Global Ultimate (Country): </label>
+                                <input type="text" id="globalLocation" th:value="${company.parentCompanyGlobalLocation}"/>
+                                <br>
+                            </div>
+                            <hr>
+                            <div class="form-card">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title">03. Direct Ownership & Control</h2>
+                                    </div>
+                                </div>
+                                <label class="fieldlabels">Are there any Owners or Shareholders that directly own or control 10% or more of the Company or have the right to appoint Board members? Please note that you will have to enter each individual’s or entity’s information below:</label>
+                                <br>
+                                <table id="ownerTable" class="display" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                        	<th>ID</th>
+                                            <th>Full Name</th>
+                                            <th>Alternate Name</th>
+                                            <th>Ownership %</th>
+                                            <th>Action</th>
+                                        </tr>                                        
+                                    </thead>
+                                    <tbody id="tableBody">
+                                        <tr th:each="owner : ${ownerList}">
+									      <td th:text="${owner.id}"></td>
+									      <td th:text="${owner.ownerName}"></td>
+									      <td th:text="${owner.ownerSecondName}"></td>
+									      <td th:text="${owner.ownerPercent}"></td>
+									      <td>
+									      	<input type= "button" name = "oRmBtn" value = "Remove" id = "oRmBtn" />
+									      </td>
+									    </tr>
+                                    </tbody>
+                                </table>
+                                <input type="button" name="addOwner" class="addOwner" id="addOwner" value="Add Owner or Shareholder"/>
+                                <br>
+                            </div>
+                            <hr>
+                            <div class="form-card">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title">04. Company Governance - Board of Directors</h2>
+                                    </div>
+                                </div>
+                                <label class="fieldlabels">How many members of the Board of Directors or key decision makers does the Company have? Please note that you will have to enter their information below one by one. *</label>  
+                                <input type="text" id="bodCount" th:value="${company.noOfBod}"/>
+                                <br>
+                                <table id="bodTable" class="display" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                        	<th>ID</th>
+                                            <th>Full Name</th>
+                                            <th>Alternate Name</th>
+                                            <th>Title/Position</th>
+                                            <th>Action</th>
+                                        </tr>                                        
+                                    </thead>
+                                    <tbody id="tableBody">
+                                        <tr th:each="bod : ${bodList}">
+									      <td th:text="${bod.id}"></td>
+									      <td th:text="${bod.bodName}"></td>
+									      <td th:text="${bod.BodSecondName}"></td>
+									      <td th:text="${bod.tile}"></td>
+									      <td>
+									      	<input type= "button" name = "dRmBtn" value = "Remove" id = "dRmBtn" />
+									      </td>
+									    </tr>
+                                    </tbody>
+                                </table>
+                                <input type="button" name="addBOD" class="addBOD" id="addBOD" value="Add Board of Director"/>
+                                <br>
+                            </div>
+                            <hr>
+                            <div class="form-card">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title">05. Personal Connections</h2>
+                                    </div>
+                                </div>
+                                <label class="fieldlabels">To the best of your knowledge, do any of the individuals or entities named in Section 2 to 4 or any employees of your company or your affiliates or subsidiaries, have a financial interest (i.e. ownership interest, partnership arrangement, any agreement or obligation to make a payment, finder's fee, commission etc.) or personal connection (i.e. marriage, family) with any officer, director or employee of the GT / BCL? *</label>  
+                                <input type="text" id="personalConnection" th:value="${company.personalConnection}"/>
+                                <br>
+                            </div>
+                            <hr>
+                            <div class="form-card">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title">06. Government Connections</h2>
+                                    </div>
+                                </div>
+                                <label class="fieldlabels">To the best of your knowledge, are any of the individuals named in Sections 2 to 4 government officials or public sector employees, or do they have connections (family, business or otherwise) with government officials or public sector employees? *</label>  
+                                <input type="text" id="isGovCon" th:value="${company.isGovCon}"/>
+                                <br>
+                                <label class="fieldlabels">Is the Company directly or indirectly owned or controlled, in whole or in part, by the government or is it a public sector entity? *</label>  
+                                <input type="text" id="isGov" th:value="${company.isGov}"/>
+                                <br>
+                            </div>
+                            <hr>
+                            <div class="form-card">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title">07. Ethical Considerations</h2>
+                                    </div>
+                                </div>
+                                <label class="fieldlabels">To the best of your knowledge, during the last five years, has the Company or any of the individuals named in Sections 2 to 4 been accused, investigated, prosecuted by law enforcement or any government agency, or entered into any agreements to avoid prosecution from law enforcement for any government regarding alleged violations of anti-corruption laws? *</label>  
+                                <input type="text" id="ethical1" th:value="${company.ethical1}"/>
+                                <br>
+                                <label class="fieldlabels">To the best of your knowledge, during the last five (5) years, has the Company or any of the individuals named in Sections 2 to 4 been debarred from competing for or bidding on government contracts? *</label>  
+                                <input type="text" id="ethical2" th:value="${company.ethical2}"/>
+                                <br>
+                            </div>
+                            <div class="form-card">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title">08. Export Controls</h2>
+                                    </div>
+                                </div>
+                                <label class="fieldlabels">To the best of your knowledge, during the last five (5) years, has the Company or Parent Company: a) been fined, or subject to any other enforcement action, including a no action letter or warning/cautionary letter, by any government agency in relation to the import, export or supply of goods, technology, software or services (e.g., under export controls, customs laws or sanctions/embargoes)? *</label>  
+                                <input type="text" id="export1" th:value="${company.export1}"/>
+                                <br>
+                                <label class="fieldlabels">b) had any operations in, done business with, or shipped, transferred or supplied any goods, technology, software, or services, either directly or indirectly, to Crimea, Cuba, Iran, North Korea or Syria ("Restricted Territories")? NOTE: This includes products/services to a customer in another country that does business using GT/BCL products/services in a Restricted Territory. *</label>  
+                                <input type="text" id="export2" th:value="${company.export2}"/>
+                                <br>
+                                <input type="hidden" id="rowId" th:value="${company.id}"/>
+                            </div>
+                            <hr>
+                            <input type="button" name="firsStep" id="firsStep" class="nextFromFirstStep action-button" value="Next"/>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-card">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title">Financial Integrity and Reliability:</h2>
+                                    </div>
+                                    <div class="col-5">
+                                        <h2 class="steps">Step 2 - 8</h2>
+                                    </div>
+                                </div>
+                                <label class="fieldlabels">In the last ten years has a court, in your country or elsewhere, given any judgement against you about a debt?
+                                    If so, give particulars: *</label>
+                                <input type="text" id="legal1" th:value="${legal.legal1}"/>
+                                <label class="fieldlabels">In the last ten years have you made any compromise arrangement with your creditors?
+                                    If so, give particulars: *</label>
+                                <input type="text" id="legal2" th:value="${legal.legal2}"/>
+                                <label class="fieldlabels">Have you ever been declared bankrupt or been the subject of a bankruptcy court order in your country or elsewhere, or has a bankruptcy petition ever been served on you?
+                                    If so, give particulars: *</label>
+                                <input type="text" id="legal3" th:value="${legal.legal3}"/>
+                                <label class="fieldlabels">Have you ever signed a trust deed for a creditor, made an assignment for the benefit of creditors or made any arrangements for the payment of a composition to creditors?
+                                    If so, give particulars: *</label>
+                                <input type="text" id="legal4" th:value="${legal.legal4}"/>
+                            </div>
+                            <div class="form-card">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title">Convictions or Civil Liabilities: </h2>
+                                        <h2 class="fs-title">Note: offenders committed before the age of 17, unless committed within the last 10 years, and any road traffic offence that did not lead to a disqualification or prison sentence, may be excluded</h2>
+                                    </div>
+                                </div>
+                                <label class="fieldlabels">Have you at any time pleaded guilty to or been found guilty of any offence?
+                                    If so, give details of the court which convicted you, the offence, the penalty imposed and date of conviction: *</label>
+                                <input type="text" id="legal5" th:value="${legal.legal5}"/>
+                                <label class="fieldlabels">In the last five years have you, in your country or elsewhere, been the subject of any civil action relating to your professional or business activities which has resulted in a finding against you by a court, or a settlement being agreed?
+                                    If so, give particulars: *</label>
+                                <input type="text" id="legal6" th:value="${legal.legal6}"/>
+                                <label class="fieldlabels">Have you ever been disqualified by a court from being a director, or from acting in the management or conduct of the affairs of any company?
+                                    If so, give particulars: *</label>
+                                <input type="text" id="legal7" th:value="${legal.legal7}"/>
+                            </div>
+                            <div class="form-card">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title">Good Reputation and Character:</h2>
+                                    </div>
+                                </div>
+                                <label class="fieldlabels">Have you, in your country or elsewhere, ever been refused the right or been restricted in the right to carry on any trade, business or profession for which a specific licence, registration or other authority is required?
+                                    If so, give particulars: *</label>
+                                <input type="text" id="legal8" th:value="${legal.legal8}"/>
+                                <label class="fieldlabels">Have you, in your country or elsewhere, ever been investigated about allegations of misconduct or malpractice in connection with your professional activities which resulted in a formal complaint being proved but no disciplinary order being made?
+                                    If so, give particulars: *</label>
+                                <input type="text" id="legal9" th:value="${legal.legal9}"/>
+                                <label class="fieldlabels">Have you, in your country or elsewhere, ever been the subject of disciplinary procedures by a professional body or employer resulting in a finding against you?
+                                    If so, give particulars: *</label>
+                                <input type="text" id="legal10" th:value="${legal.legal10}"/>
+                                <label class="fieldlabels">Have you, in your country or elsewhere, ever been reprimanded, excluded, disciplined or publicly criticised by any professional body which you belong or have belonged to?
+                                    If so, give particulars: *</label>
+                                <input type="text" id="legal11" th:value="${legal.legal11}"/>
+                                <label class="fieldlabels">Have you, in your country or elsewhere, ever been refused entry to or excluded from membership of any profession or vocation?
+                                    If so, give details.</label>
+                                <input type="text" id="legal12" th:value="${legal.legal12}"/>
+                                <label class="fieldlabels">Have you, in your country or elsewhere, ever been dismissed from any office (other than as auditor) or employment or requested to resign from any office, employment or partnership?
+                                    If so, give particulars. *</label>
+                                <input type="text" id="legal13" th:value="${legal.legal13}"/>
+                                <label class="fieldlabels">Have you, in your country or elsewhere, ever been reprimanded, warned about future conduct, disciplined, or publicly criticised by any regulatory body, or any officially appointed enquiry concerned with the regulation of a financial, professional or other business activity?
+                                    If so, give particulars. *</label>
+                                <input type="text" id="legal14" th:value="${legal.legal14}"/>
+                                <label class="fieldlabels">Have you, in your country or elsewhere, ever been the subject of a court order at the instigation of any regulatory body or any officially appointed enquiry concerned with the regulation of a financial, professional or other business activity?
+                                    If so, give particulars. *</label>
+                                <input type="text" id="legal15" th:value="${legal.legal15}"/>
+                                <label class="fieldlabels">Are you currently undergoing any investigation or disciplinary procedure as described in 8-15 above?
+                                    If so, give particulars. *</label>
+                                <input type="text" id="legal16" th:value="${legal.legal16}"/>
+                                <br>
+                                <input type="hidden" id="rowId2" th:value="${legal.id}"/>
+                            </div>
+                            <input type="button" id="secondStep" name="secondStep" class="nextFromSecondStep action-button" value="Next"/>
+                            <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-card">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title">FINANCIAL</h2>
+                                    </div>
+                                    <div class="col-5">
+                                        <h2 class="steps">Step 3 - 8</h2>
+                                    </div>
+                                </div>
+                                <label class="fieldlabels">Annual and quarterly financial and bank statements</label>
+                                <input type="text"/>
+                                <label class="fieldlabels">Investment and hedging policies</label>
+                                <input type="text"/>
+                                <label class="fieldlabels">Sales and profits by product, channel and geography</label>
+                                <input type="text"/>
+                                <label class="fieldlabels">Accounts receivable</label>
+                                <input type="text"/>
+                                <label class="fieldlabels">Capital structure</label>
+                                <input type="text"/>
+                                <label class="fieldlabels">Summary of debt instruments</label>
+                                <input type="text"/>
+                                <label class="fieldlabels">Financial projections</label>
+                                <input type="text"/>
+                                <label class="fieldlabels">Revenue by product type, customers and channel</label>
+                                <input type="text"/>
+                                <label class="fieldlabels">Major growth drivers and prospects</label>
+                                <input type="text"/>
+								<label class="fieldlabels">Industry and company pricing policies</label>
+                                <input type="text"/>
+                                <label class="fieldlabels">Summary of current tax positions</label>
+                                <input type="text"/>
+                                <label class="fieldlabels">Accounting policies</label>
+                                <input type="text"/>
+                                <label class="fieldlabels">Financing history for equity, warrants and debt</label>
+                                <input type="text"/>
+                                <br>
+                                <input type="hidden" id="rowId3"/>
+                            </div>
+                            <input type="button" id="thirdStep" name="thirdStep" class="nextFromThirdStep action-button" value="Next"/>
+                            <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-card">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title">Revenue</h2>
+                                    </div>
+                                    <div class="col-5">
+                                        <h2 class="steps">Step 4 - 8</h2>
+                                    </div>
+                                </div>
+								<label class="fieldlabels">Copies of the 5 largest contracts for the current year.</label>
+                                <input type="button" id="uploadContracts" value="Upload Files"/>
+								<table id="revTable">
+									<tr th:each="contracts : ${contractsList}">
+								      <td th:text="${contracts.id}" style="display: none"></td>
+								      <td th:text="${contracts.fileName}"></td>
+								      <td>
+								      	<button type="button" name ="revBtn" id ="revBtn" style= "border:none">X</button>
+								      </td>
+								    </tr>
+								</table>
+								<br>
+                                <label class="fieldlabels">Description of the procedures for contracting and billing maintenance.</label>
+                                <input type="text" id="revenue1" th:value="${revenue.revenue1}"/>
+                                <label class="fieldlabels">Detail of revenue for last 12 months.</label>
+                                <input type="text" id="revenue2" th:value="${revenue.revenue2}"/>
+                                <label class="fieldlabels">Pipeline information.</label>
+                                <input type="text" id="revenue3" th:value="${revenue.revenue3}"/>
+                                <label class="fieldlabels">List of any customers with annual revenue > 10%</label>
+                                <input type="text" id="revenue4" th:value="${revenue.revenue4}"/>
+                                <br>
+                                <input type="hidden" id="rowId4" th:value="${revenue.id}"/>
+                            </div>
+                            <input type="button" id="fourthStep" name="fourthStep" class="nextFromFourthStep action-button" value="Next"/>
+                            <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                        </fieldset>
+						<fieldset>
+                            <div class="form-card">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title">TECHNOLOGY</h2>
+                                    </div>
+                                    <div class="col-5">
+                                        <h2 class="steps">Step 5 - 8</h2>
+                                    </div>
+                                </div>
+								<label class="fieldlabels">Help Desk approach & Change Management processes</label>
+                                <input type="text" id="tech1" th:value="${technology.tech1}"/>
+								<label class="fieldlabels">Incorporation Documents of the Company</label>
+                                <input type="button" id="uploadIncorporation" value="Upload Files"/>
+								<table id="techTable">
+									<tr th:each="incorporationDoc : ${incorporationDocList}">
+								      <td th:text="${incorporationDoc.id}" style="display: none"></td>
+								      <td th:text="${incorporationDoc.fileName}"></td>
+								      <td>
+								      	<button type="button" name ="techBtn" id ="techBtn" style= "border:none">X</button>
+								      </td>
+								    </tr>
+								</table>
+								<br>
+                                <label class="fieldlabels">IT Organization chart & Client structure (quantity, type, location)</label>
+                                <input type="text" id="tech2" th:value="${technology.tech2}"/>
+                                <label class="fieldlabels">Key support issues & challenges</label>
+                                <input type="text" id="tech3" th:value="${technology.tech3}"/>
+                                <label class="fieldlabels">Audited and unaudited consolidated financial statements of the business</label>
+                                <input type="text" id="tech4" th:value="${technology.tech4}"/>
+                                <label class="fieldlabels">Budget projections and business plans</label>
+                                <input type="text" id="tech5" th:value="${technology.tech5}"/>
+								<label class="fieldlabels">Compared past budgets with actual experience to check accuracy of projections</label>
+                                <input type="text" id="tech6" th:value="${technology.tech6}"/>
+                                <label class="fieldlabels">CPU’s & location</label>
+                                <input type="text" id="tech7" th:value="${technology.tech7}"/>
+                                <label class="fieldlabels">Database</label>
+                                <input type="text" id="tech8" th:value="${technology.tech8}"/>
+                                <label class="fieldlabels">Networks by location (LAN/WAN)</label>
+                                <input type="text" id="tech9" th:value="${technology.tech9}"/>
+								<label class="fieldlabels">Stability? Life expectancy? Replacement/upgrade strategy?</label>
+                                <input type="text" id="tech10" th:value="${technology.tech10}"/>
+                                <label class="fieldlabels">Telecommunications/connectivity approach</label>
+                                <input type="text" id="tech11" th:value="${technology.tech11}"/>
+                                <label class="fieldlabels">Application systems development software</label>
+                                <input type="text" id="tech12" th:value="${technology.tech12}"/>
+                                <label class="fieldlabels">Current technology? Life expectancy? Replacement/upgrade strategy?</label>
+                                <input type="text" id="tech13" th:value="${technology.tech13}"/>
+								<label class="fieldlabels">Database Management systems</label>
+                                <input type="text" id="tech14" th:value="${technology.tech14}"/>
+                                <label class="fieldlabels">Operating systems</label>
+                                <input type="text" id="tech15" th:value="${technology.tech15}"/>
+                                <label class="fieldlabels">Security</label>
+                                <input type="text" id="tech16" th:value="${technology.tech16}"/>
+                                <label class="fieldlabels">Architecture Review</label>
+                                <input type="text" id="tech17" th:value="${technology.tech17}"/>
+								<label class="fieldlabels">Code Quality</label>
+                                <input type="text" id="tech18" th:value="${technology.tech18}"/>
+                                <label class="fieldlabels">Legacy Components</label>
+                                <input type="text" id="tech19" th:value="${technology.tech19}"/>
+                                <label class="fieldlabels">Third-party/open source components</label>
+                                <input type="text" id="tech20" th:value="${technology.tech20}"/>
+                                <label class="fieldlabels">Application systems (Quantify all in use)</label>
+                                <input type="text" id="tech21" th:value="${technology.tech21}"/>
+								<label class="fieldlabels">Approach to release management</label>
+                                <input type="text" id="tech22" th:value="${technology.tech22}"/>
+                                <label class="fieldlabels">Electronic interfaces</label>
+                                <input type="text" id="tech23" th:value="${technology.tech23}"/>
+                                <label class="fieldlabels">Report Writing capabilities</label>
+                                <input type="text" id="tech24" th:value="${technology.tech24}"/>
+                                <label class="fieldlabels">Special processes</label>
+                                <input type="text" id="tech25" th:value="${technology.tech25}"/>
+								<label class="fieldlabels">Stability? Life expectancy? Replacement/upgrade strategy?</label>
+                                <input type="text" id="tech26" th:value="${technology.tech26}"/>
+                                <label class="fieldlabels">Standard across the network?</label>
+                                <input type="text" id="tech27" th:value="${technology.tech27}"/>
+                                <label class="fieldlabels">Support approach & known issues</label>
+                                <input type="text" id="tech28" th:value="${technology.tech28}"/>
+                                <label class="fieldlabels">Client requirements</label>
+                                <input type="text" id="tech29" th:value="${technology.tech29}"/>
+								<label class="fieldlabels">Consulting and/or contractor needs anticipated (next 12 months)</label>
+                                <input type="text" id="tech30" th:value="${technology.tech30}"/>
+                                <label class="fieldlabels">Large scale projects – i.e., reengineering, new systems, SW development</label>
+                                <input type="text" id="tech31" th:value="${technology.tech31}"/>
+                                <label class="fieldlabels">Mid-range enhancements</label>
+                                <input type="text" id="tech32" th:value="${technology.tech32}"/>
+                                <label class="fieldlabels">New business development needs</label>
+                                <input type="text" id="tech33" th:value="${technology.tech33}"/>
+								<label class="fieldlabels">New technology R&D</label>
+                                <input type="text" id="tech34" th:value="${technology.tech34}"/>
+                                <label class="fieldlabels">Productivity enhancements</label>
+                                <input type="text" id="tech35" th:value="${technology.tech35}"/>
+                                <label class="fieldlabels">Software support backlog</label>
+                                <input type="text" id="tech36" th:value="${technology.tech36}"/>
+                                <label class="fieldlabels">Consulting/contractors</label>
+                                <input type="text" id="tech37" th:value="${technology.tech37}"/>
+								<label class="fieldlabels">Data Communications</label>
+                                <input type="text" id="tech38" th:value="${technology.tech38}"/>
+                                <label class="fieldlabels">Equipment leases & rental</label>
+                                <input type="text" id="tech39" th:value="${technology.tech39}"/>
+                                <label class="fieldlabels">Hardware maintenance</label>
+                                <input type="text" id="tech40" th:value="${technology.tech40}"/>
+                                <label class="fieldlabels">Material technology-related expenses due to the company’s industry</label>
+                                <input type="text" id="tech41" th:value="${technology.tech41}"/>
+								<label class="fieldlabels">Outside contractors</label>
+                                <input type="text" id="tech42" th:value="${technology.tech42}"/>
+                                <br>
+                                <input type="hidden" id="rowId5" th:value="${technology.id}"/>
+                            </div>
+                            <input type="button" id="fifthStep" name="fifthStep" class="nextFromFifthStep action-button" value="Next"/>
+                            <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                        </fieldset>
+						<fieldset>
+                            <div class="form-card">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title">IP</h2>
+                                    </div>
+                                    <div class="col-5">
+                                        <h2 class="steps">Step 6 - 8</h2>
+                                    </div>
+                                </div>
+								
+                                <label class="fieldlabels">Schedule of owned or proprietary technology (including software, databases, and systems).</label>
+                                <input type="text" id="ip1" th:value="${ip.ip1}"/>
+                                <label class="fieldlabels">Schedule and copies (if applicable) of the following (common law, registered and issued, and foreign and domestic):
+								i. tradenames, brand names, trademarks, service marks, logos, and slogans;
+								ii. internet domain names (including lower-level domain names);
+								iii. patents, patent rights, innovations, and designs;
+								iv. copyrights;
+								v. trade secrets and other industrial property rights, including all processes, know-how, technical data, and shop rights; and
+								vi. registrations, issuances, applications, additions, affidavits, continuations, divisions and other filings related to the foregoing items. </label>
+                                <input type="button" id="uploadIP" value="Upload Files"/>
+								<table id="ipTable">
+									<tr th:each="ipDoc1 : ${ipDoc1List}">
+								      <td th:text="${ipDoc1.id}" style="display: none"></td>
+								      <td th:text="${ipDoc1.fileName}"></td>
+								      <td>
+								      	<button type="button" name ="ipBtn1" id ="ipBtn1" style= "border:none">X</button>
+								      </td>
+								    </tr>
+								</table>
+								<br>
+                                <label class="fieldlabels">Copies of searches, counsel’s opinion letters, and application file histories (or file wrappers) for the items requested in the preceding</label>
+                                <input type="button" id="uploadIP2" value="Upload Files"/>
+								<table id="ipTable2">
+									<tr th:each="ipDoc2 : ${ipDoc2List}">
+								      <td th:text="${ipDoc2.id}" style="display: none"></td>
+								      <td th:text="${ipDoc2.fileName}"></td>
+								      <td>
+								      	<button type="button" name ="ipBtn2" id ="ipBtn2" style= "border:none">X</button>
+								      </td>
+								    </tr>
+								</table>
+								<br>
+                                <label class="fieldlabels">Schedule of all material ongoing or planned software, databases, and/or network development projects.</label>
+                                <input type="text" id="ip2" th:value="${ip.ip2}"/>
+								<label class="fieldlabels">Schedule of third-party intellectual property sold, licensed, or otherwise distributed by the Company.</label>
+                                <input type="text" id="ip3" th:value="${ip.ip3}"/>
+								<label class="fieldlabels">Schedule of third-party software and other intellectual property incorporated in, embedded in, or otherwise necessary for the use of the Company’s intellectual property.</label>
+                                <input type="text" id="ip4" th:value="${ip.ip4}"/>
+								<label class="fieldlabels">Product documentation and manuals for the Company’s software, databases, and networks (or other description of primary capabilities).</label>
+                                <input type="text" id="ip5" th:value="${ip.ip5}"/>
+								<label class="fieldlabels">Schedule of third-party intellectual property necessary for the Company to conduct business in the ordinary course.</label>
+                                <input type="text" id="ip6" th:value="${ip.ip6}"/>
+								<label class="fieldlabels">Schedule of software authors and other creators of the Company’s software products and other intellectual property, with a notation next to each name indicating whether such author/creator made his/her contribution 
+								(a) as an employee within the scope of his/her employment, 
+								(b) outside his/her scope of employment or 
+								(c) as a consultant or other independent contractor.</label>
+                                <input type="text" id="ip7" th:value="${ip.ip7}"/>
+								<label class="fieldlabels">The name(s), address(es), and phone number(s) of counsel and any other person(s) responsible for the application, maintenance, and protection of trademarks, copyrights, patents, and other intellectual property rights.</label>
+                                <input type="text" id="ip8" th:value="${ip.ip8}"/>
+								<label class="fieldlabels">Internal memoranda, correspondence, and other documentation setting forth or relating to the Year 2000 compliance of the operating codes, programs, and other software, database, hardware, and systems sold or licensed by or to the Company, or otherwise used by the Company in its business.</label>
+                                <input type="text" id="ip9" th:value="${ip.ip9}"/>
+                                <br>
+                                <input type="hidden" id="rowId6" th:value="${ip.id}"/>
+                            </div>
+                            <input type="button" id="sixthStep" name="sixthStep" class="nextFromSixthStep action-button" value="Next"/>
+                            <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                        </fieldset>
+						<fieldset>
+                            <div class="form-card">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title">IT Security</h2>
+                                    </div>
+                                    <div class="col-5">
+                                        <h2 class="steps">Step 7 - 8</h2>
+                                    </div>
+                                </div>
+                                <label class="fieldlabels">What is the level of detail of IT documentation?</label>
+                                <input type="text" id="it1" th:value="${it.it1}"/>
+                                <label class="fieldlabels">Is the IT documentation available to the necessary people?</label>
+                                <input type="text" id="it2" th:value="${it.it2}"/>
+                                <label class="fieldlabels">Have penetration tests been carried out?</label>
+                                <input type="text" id="it3" th:value="${it.it3}"/>
+                                <label class="fieldlabels">Has FOSS scanning been carried out?</label>
+                                <input type="text" id="it4" th:value="${it.it4}"/>
+								<label class="fieldlabels">Is real-time monitoring available?</label>
+                                <input type="text" id="it5" th:value="${it.it5}"/>
+                            </div>
+							<hr>
+							<div class="form-card">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title">IT Process</h2>
+                                    </div>
+                                </div>
+                                <label class="fieldlabels">What are the procedures for handling personal data? Are they GDPR compliant on all levels?</label>
+                                <input type="text" id="it6" th:value="${it.it6}"/>
+                                <label class="fieldlabels">Who has access to backups and the production environment?</label>
+                                <input type="text" id="it7" th:value="${it.it7}"/>
+                                <label class="fieldlabels">What is the incident response plan?</label>
+                                <input type="text" id="it8" th:value="${it.it8}"/>
+                                <label class="fieldlabels">What disaster recovery procedures are in place?</label>
+                                <input type="text" id="it9" th:value="${it.it9}"/>
+								<label class="fieldlabels" >What is the procedure/cadence for backups/read-backs?</label>
+                                <input type="text" id="it10" th:value="${it.it10}"/>
+                                <br>
+                                <input type="hidden" id="rowId7" th:value="${it.id}"/>
+                            </div>
+                            <input type="button" id="seventhStep" name="seventhStep" class="nextFromSeventhStep action-button" value="Submit"/>
+                            <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                        </fieldset>
+						<fieldset>
+                            <div class="form-card">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title">Completed</h2>
+                                    </div>
+                                    <div class="col-5">
+                                        <h2 class="steps">Step 8 - 8</h2>
+                                    </div>
+                                </div>
+								<br><br>
+                                <h2 class="purple-text text-center"><strong>SUCCESS !</strong></h2>
+                                <br>
+                                <br><br>
+                                <div class="row justify-content-center">
+                                    <div class="col-7 text-center">
+                                        <h5 class="purple-text text-center">Your response recorded successfully!</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modelWindow" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">                  
+                    <h3>Add Owner or Shareholder</h3>
+                    <a class="close" data-dismiss="modal">×</a>
+                </div>
+                <form id="contactForm" name="contact" role="form">
+                    <div class="modal-body">				
+                        <div class="form-group">
+                            <label for="oName">Full Name or Company Legal Name (in English) *</label>
+                            <input type="text" name="oName" class="form-control" id="oName">
+                        </div>
+                        <div class="form-group">
+                            <label for="oAltName">Does this person or entity have an alias or alternate name in another language? *</label>
+                            <br>
+                            <div class="d-flex align-items-center col-md-12">
+                                <input class="col-md-1" type="radio" name="mRadio1" id="r9" value="yes">
+                                <label class="col-md-1" for="inlineRadio1">Yes</label>
+                                <input class="col-md-1" type="radio" name="mRadio1" id="r10" value="no">
+                                <label class="col-md-1" for="inlineRadio1">No</label>
+                            </div>
+                            
+                            <br>
+                            <input type="text" name="oAltName" class="form-control" id="oAltName" placeholder="Please specify *">
+                        </div>
+                        <div class="form-group">
+                            <label for="ownPercent">Indicate Ownership % (in numbers) or Type of Control *</label>
+                            <input type="text" name="ownPercent" class="form-control" id="ownPercent">
+                        </div>					
+                    </div>
+                    <div class="modal-footer">					
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <input type="button" class="btn btn-success" id="addBtn" value="Add">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modelWindow1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">                  
+                    <h3>Add Board of Director</h3>
+                    <a class="close" data-dismiss="modal">×</a>
+                </div>
+                <form id="contactForm" name="contact" role="form">
+                    <div class="modal-body">				
+                        <div class="form-group">
+                            <label for="bodName">Full Name (in English) *</label>
+                            <input type="text" name="bodName" class="form-control" id="bodName">
+                        </div>
+                        <div class="form-group">
+                            <label for="bodAltName">Does this person or entity have an alias or alternate name in another language? *</label>
+                            <br>
+                            <div class="d-flex align-items-center col-md-12">
+                                <input class="col-md-1" type="radio" name="mRadio2" id="r11" value="yes">
+                                <label class="col-md-1" for="inlineRadio1">Yes</label>
+                                <input class="col-md-1" type="radio" name="mRadio2" id="r12" value="no">
+                                <label class="col-md-1" for="inlineRadio1">No</label>
+                            </div>
+                            <br>
+                            <input type="text" name="bodAltName" class="form-control" id="bodAltName" placeholder="Please specify *">
+                        </div>
+                        <div class="form-group">
+                            <label for="bodPosition">Indicate Title/Position *</label>
+                            <input type="text" name="bodPosition" class="form-control" id="bodPosition">
+                        </div>					
+                    </div>
+                    <div class="modal-footer">					
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <input type="button" class="btn btn-success" id="addBODBtn" value="Add">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="modelWindow2" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">                  
+                    <h3>Upload File</h3>
+                    <a class="close" data-dismiss="modal">×</a>
+                </div>
+                <form id="contactForm" name="contact" role="form">
+                    <div class="modal-body">				
+                        <div class="form-group">
+                            <label for="docType">Document Type</label>
+                            <input type="text" name="docType" class="form-control" id="docType">
+                        </div>
+                        <div class="form-group">
+                            <label for="selectFile">Select file from directory</label>
+                            <input type="file" name="selectFile" class="form-control" id="selectFile">
+                        </div>					
+                    </div>
+                    <div class="modal-footer">					
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-success" id="uploadRev">Upload</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="modelWindow3" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">                  
+                    <h3>Upload File</h3>
+                    <a class="close" data-dismiss="modal">×</a>
+                </div>
+                <form id="contactForm" name="contact" role="form">
+                    <div class="modal-body">				
+                        <div class="form-group">
+                            <label for="docType1">Document Type</label>
+                            <input type="text" name="docType1" class="form-control" id="docType1">
+                        </div>
+                        <div class="form-group">
+                            <label for="selectFile1">Select file from directory</label>
+                            <input type="file" name="selectFile1" class="form-control" id="selectFile1">
+                        </div>					
+                    </div>
+                    <div class="modal-footer">					
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <input type="button" class="btn btn-success" id="uploadTech" value="Upload">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="modelWindow4" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">                  
+                    <h3>Upload File</h3>
+                    <a class="close" data-dismiss="modal">×</a>
+                </div>
+                <form id="contactForm" name="contact" role="form">
+                    <div class="modal-body">				
+                        <div class="form-group">
+                            <label for="docType2">Document Type</label>
+                            <input type="text" name="docType2" class="form-control" id="docType2">
+                        </div>
+                        <div class="form-group">
+                            <label for="selectFile2">Select file from directory</label>
+                            <input type="file" name="selectFile2" class="form-control" id="selectFile2">
+                        </div>					
+                    </div>
+                    <div class="modal-footer">					
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <input type="button" class="btn btn-success" id="uploadIp1" value="Upload">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="modelWindow5" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">                  
+                    <h3>Upload File</h3>
+                    <a class="close" data-dismiss="modal">×</a>
+                </div>
+                <form id="contactForm" name="contact" role="form">
+                    <div class="modal-body">				
+                        <div class="form-group">
+                            <label for="docType3">Document Type</label>
+                            <input type="text" name="docType3" class="form-control" id="docType3">
+                        </div>
+                        <div class="form-group">
+                            <label for="selectFile3">Select file from directory</label>
+                            <input type="file" name="selectFile3" class="form-control" id="selectFile3">
+                        </div>					
+                    </div>
+                    <div class="modal-footer">					
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <input type="button" class="btn btn-success" id="uploadIp2" value="Upload">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var t = $('#ownerTable').DataTable({searching: false, paging: false, info: false, sorting: false});
+    var t1 = $('#bodTable').DataTable({searching: false, paging: false, info: false, sorting: false});
+    
+    var table0 = document.getElementById("revTable");
+	var table1 = document.getElementById("techTable");
+	var table2 = document.getElementById("ipTable");
+	var table3 = document.getElementById("ipTable2");
+	
+    $(document).ready(function(){
+    	     
+    	t.column(0).visible(false);
+    	t1.column(0).visible(false);
+    	
+    	//$("#secondComName").hide();
+        //$("#secondAddr").hide();
+        //$("#parentSecondName").hide();
+        //$("#secondGlobalName").hide();
+        $("#oAltName").hide();
+        $("#bodAltName").hide();
+        
+        var secondComName = $("#secondComName").val();
+        var secondAddr = $("#secondAddr").val();
+        var parentSecondName = $("#parentSecondName").val();
+        var secondGlobalName = $("#secondGlobalName").val();
+        
+        functionsecondComName();
+        functionsecondAddr();
+        functionparentSecondName();
+        functionsecondGlobalName();
+        
+        function functionsecondComName(){
+        	if(secondComName == ""){
+        		$("#secondComName").hide();
+        		$("#r2").prop("checked", true);                
+        	}
+        	else{
+        		$("#secondComName").show();
+        		$("#r1").prop("checked", true);
+        	}
+        }
+        
+        function functionsecondAddr(){
+        	if(secondAddr == ""){
+        		$("#secondAddr").hide();
+        		$("#r4").prop("checked", true);
+        	}
+        	else{
+        		$("#secondAddr").show();
+        		$("#r3").prop("checked", true);
+        	}
+        }
+
+        function functionparentSecondName(){
+        	if(parentSecondName == ""){
+        		$("#parentSecondName").hide();
+        		$("#r6").prop("checked", true);
+        	}
+        	else{
+        		$("#parentSecondName").show();
+        		$("#r5").prop("checked", true);
+        	}
+        }
+        
+        function functionsecondGlobalName(){
+        	if(secondGlobalName == ""){
+        		$("#secondGlobalName").hide();
+        		$("#r8").prop("checked", true);
+        	}
+        	else{
+        		$("#secondGlobalName").show();
+        		$("#r7").prop("checked", true);
+        	}
+        }
+        
+        $('#addOwner').click(function() {
+            $('#modelWindow').modal('show');
+        });
+
+        $('#addBOD').click(function() {
+            $('#modelWindow1').modal('show');
+        });
+        
+        $('#uploadContracts').click(function() {
+            $('#modelWindow2').modal('show');
+        });
+
+        $('#uploadIncorporation').click(function() {
+            $('#modelWindow3').modal('show');
+        });
+        
+        $('#uploadIP').click(function() {
+            $('#modelWindow4').modal('show');
+        });
+
+        $('#uploadIP2').click(function() {
+            $('#modelWindow5').modal('show');
+        });
+
+        $('#addBtn').click(function () {
+
+            var ownerName = $("#oName").val();
+            var altName = $("#oAltName").val();
+            var ownPercent = $("#ownPercent").val();
+            var mRadio1 = document.querySelector('input[name = "mRadio1"]:checked') == null ? "" : document.querySelector('input[name = "mRadio1"]:checked').value;
+
+            if (ownerName == "" || ownPercent == "" || mRadio1 == "") {
+                alert("Please fill up mandatory fields");
+            }
+
+            else {
+                if (mRadio1 == "yes" && altName == "") {
+                    alert("Please fill up mandatory fields");
+                }
+
+                else {
+                	var owner = {};
+                	owner["ownerName"] = ownerName;
+                	owner["ownerSecondName"] = altName;
+                	owner["ownerPercent"] = ownPercent;                       
+                    
+                    $.ajax({
+                        type: "POST",
+                        contentType: "application/json",
+                        url: "/addOwner",
+                        data: JSON.stringify(owner),
+                        dataType: 'json',
+                        cache: false,
+                        timeout: 600000,
+                        success: function (data) {
+                            console.log(data["message"]);
+                            if(data["message"]=="Failed"){
+                            	alert("Failed to save data. Please try again");
+                            }
+                            
+                            else{
+                                var rowId = data["message"];                   	
+                            	$("#oName").val("");
+                                $("#oAltName").val("");
+                                $("#ownPercent").val("");
+
+                                t.row.add([rowId, ownerName, altName, ownPercent, '<input type=' + 'button' + ' name =' + 'oRmBtn' + ' value =' + 'Remove' + ' id = ' + 'oRmBtn' + ' />']).draw();
+
+                                $('#modelWindow').modal('hide');
+                            }
+
+                        },
+                        error: function (e) {
+
+                            alert("Failed to save data. Please try again");
+
+                        }
+                    });
+                }
+            }               
+
+        });
+
+        $('#addBODBtn').click(function() {
+            var bodName = $("#bodName").val();
+            var bodAltName = $("#bodAltName").val();
+            var bodPosition = $("#bodPosition").val();
+            var mRadio2 = document.querySelector('input[name = "mRadio2"]:checked') == null ? "" : document.querySelector('input[name = "mRadio2"]:checked').value;               
+            
+            var bod = {};
+        	bod["bodName"] = bodName;
+        	bod["BodSecondName"] = bodAltName;
+        	bod["tile"] = bodPosition;                       
+            
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                url: "/addBod",
+                data: JSON.stringify(bod),
+                dataType: 'json',
+                cache: false,
+                timeout: 600000,
+                success: function (data) {
+
+                    if(data["message"]=="Failed"){
+                    	alert("Failed to save data. Please try again");
+                    }
+                    
+                    else{
+                        var rowId = data["message"];
+                        
+                        $("#bodName").val("");
+                        $("#bodAltName").val("");
+                        $("#bodPosition").val("");
+
+                        t1.row.add([rowId, bodName, bodAltName, bodPosition, '<input type=' + 'button' +' name ='+ 'dRmBtn' + ' value =' + 'Remove' + ' id = '+'dRmBtn'+' />']).draw();
+                        
+                        $('#modelWindow1').modal('hide');
+                    }
+
+                },
+                error: function (e) {
+
+                    alert("Failed to save data. Please try again");
+
+                }
+            });
+
+        });
+        
+        $("#uploadRev").click(function(e) { 
+        	        	
+        	var formData = new FormData();
+        	var docType = $("#docType").val();
+        	formData.append('docType', docType);
+        	formData.append('selectFile', $('#selectFile')[0].files[0])
+        	//console.log(docType);
+        	//console.log($('#selectFile')[0].files[0]);
+
+        	$.ajax({ 
+        		type:"POST", 
+        		url:"/addContracts",
+        		data:formData, 
+        		cache:false,
+        		contentType: false, 
+        		processData:false, 
+        		success:function(data) {
+    				if(data["message"]=="Failed"){
+                    	alert("Failed to save data. Please try again");
+                    }
+                    
+                    else{
+                    	var rowId = data["message"];
+                    	var docType = $("#docType").val();
+                        var selectFile = $("#selectFile").val().split(/(\\|\/)/g).pop();
+
+                        $("#docType").val("");
+            			$("#selectFile").val("");
+            			
+            			var row = table0.insertRow(0);
+            			var cell1 = row.insertCell(0);
+            			var cell2 = row.insertCell(1);
+            			var cell3 = row.insertCell(2);
+            			 cell1.innerHTML = rowId;
+            			 cell2.innerHTML = selectFile;
+            			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'revBtn' + ' id = ' + 'revBtn' + ' style= ' + 'border:none'+ '>X</button>';
+            			
+            			 $("td:nth-child(1)").hide();
+            			
+            			$('#modelWindow2').modal('hide');
+                    } 
+        		},
+        		
+        		error: function (e) {
+
+                    alert("Failed to save data. Please try again");
+
+                }
+        		
+        	});
+        });
+		
+		$('#uploadTech').click(function() {
+			var formData = new FormData();
+        	var docType = $("#docType1").val();
+        	formData.append('docType', docType);
+        	formData.append('selectFile', $('#selectFile1')[0].files[0])
+        	//console.log(docType);
+        	//console.log($('#selectFile')[0].files[0]);
+
+        	$.ajax({ 
+        		type:"POST", 
+        		url:"/addIncorporationDoc",
+        		data:formData, 
+        		cache:false,
+        		contentType: false, 
+        		processData:false, 
+        		success:function(data) {
+    				if(data["message"]=="Failed"){
+                    	alert("Failed to save data. Please try again");
+                    }
+                    
+                    else{
+                    	var rowId = data["message"];
+                    	var docType = $("#docType1").val();
+                        var selectFile = $("#selectFile1").val().split(/(\\|\/)/g).pop();
+
+                        $("#docType1").val("");
+            			$("#selectFile1").val("");
+            			
+            			var row = table1.insertRow(0);
+            			var cell1 = row.insertCell(0);
+            			var cell2 = row.insertCell(1);
+            			var cell3 = row.insertCell(2);
+            			 cell1.innerHTML = rowId;
+            			 cell2.innerHTML = selectFile;
+            			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'techBtn' + ' id = ' + 'techBtn' + ' style= ' + 'border:none'+ '>X</button>';
+            			
+            			 $("td:nth-child(1)").hide();
+            			
+            			$('#modelWindow3').modal('hide');
+                    } 
+        		},
+        		
+        		error: function (e) {
+
+                    alert("Failed to save data. Please try again");
+
+                }
+        		
+        	});
+
+        });
+		
+		$('#uploadIp1').click(function() {
+			var formData = new FormData();
+        	var docType = $("#docType2").val();
+        	formData.append('docType', docType);
+        	formData.append('selectFile', $('#selectFile2')[0].files[0])
+        	//console.log(docType);
+        	//console.log($('#selectFile')[0].files[0]);
+
+        	$.ajax({ 
+        		type:"POST", 
+        		url:"/addIpDoc1",
+        		data:formData, 
+        		cache:false,
+        		contentType: false, 
+        		processData:false, 
+        		success:function(data) {
+    				if(data["message"]=="Failed"){
+                    	alert("Failed to save data. Please try again");
+                    }
+                    
+                    else{
+                    	var rowId = data["message"];
+                    	var docType = $("#docType2").val();
+                        var selectFile = $("#selectFile2").val().split(/(\\|\/)/g).pop();
+
+                        $("#docType2").val("");
+            			$("#selectFile2").val("");
+            			
+            			var row = table2.insertRow(0);
+            			var cell1 = row.insertCell(0);
+            			var cell2 = row.insertCell(1);
+            			var cell3 = row.insertCell(2);
+            			 cell1.innerHTML = rowId;
+            			 cell2.innerHTML = selectFile;
+            			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'ipBtn1' + ' id = ' + 'ipBtn1' + ' style= ' + 'border:none'+ '>X</button>';
+            			
+            			 $("td:nth-child(1)").hide();
+            			
+            			$('#modelWindow4').modal('hide');
+                    } 
+        		},
+        		
+        		error: function (e) {
+
+                    alert("Failed to save data. Please try again");
+
+                }
+        		
+        	});
+
+        });
+		
+		$('#uploadIp2').click(function() {
+			var formData = new FormData();
+        	var docType = $("#docType3").val();
+        	formData.append('docType', docType);
+        	formData.append('selectFile', $('#selectFile3')[0].files[0])
+        	//console.log(docType);
+        	//console.log($('#selectFile')[0].files[0]);
+
+        	$.ajax({ 
+        		type:"POST", 
+        		url:"/addIpDoc2",
+        		data:formData, 
+        		cache:false,
+        		contentType: false, 
+        		processData:false, 
+        		success:function(data) {
+    				if(data["message"]=="Failed"){
+                    	alert("Failed to save data. Please try again");
+                    }
+                    
+                    else{
+                    	var rowId = data["message"];
+                    	var docType = $("#docType3").val();
+                        var selectFile = $("#selectFile3").val().split(/(\\|\/)/g).pop();
+
+                        $("#docType3").val("");
+            			$("#selectFile3").val("");
+            			
+            			var row = table3.insertRow(0);
+            			var cell1 = row.insertCell(0);
+            			var cell2 = row.insertCell(1);
+            			var cell3 = row.insertCell(2);
+            			 cell1.innerHTML = rowId;
+            			 cell2.innerHTML = selectFile;
+            			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'ipBtn2' + ' id = ' + 'ipBtn2' + ' style= ' + 'border:none'+ '>X</button>';
+            			
+            			 $("td:nth-child(1)").hide();
+            			
+            			$('#modelWindow5').modal('hide');
+                    } 
+        		},
+        		
+        		error: function (e) {
+
+                    alert("Failed to save data. Please try again");
+
+                }
+        		
+        	});
+
+        });
+
+        $("#r1").click(function () {
+            $("#secondComName").show();
+        });
+        $("#r2").click(function () {
+        	$("#secondComName").val("");
+            $("#secondComName").hide();
+        });
+
+        $("#r3").click(function () {
+            $("#secondAddr").show();
+        });
+        $("#r4").click(function () {
+        	$("#secondAddr").val("");
+            $("#secondAddr").hide();
+        });
+
+        $("#r5").click(function () {
+            $("#parentSecondName").show();
+        });
+        $("#r6").click(function () {
+        	$("#parentSecondName").val("");
+            $("#parentSecondName").hide();
+        });
+
+        $("#r7").click(function () {
+            $("#secondGlobalName").show();
+        });
+        $("#r8").click(function () {
+        	$("#secondGlobalName").val("");
+            $("#secondGlobalName").hide();
+        });
+
+        $("#r9").click(function () {
+            $("#oAltName").show();
+        });
+        $("#r10").click(function () {
+        	$("#oAltName").val("");
+            $("#oAltName").hide();
+        });
+
+        $("#r11").click(function () {
+            $("#bodAltName").show();
+        });
+        $("#r12").click(function () {
+        	$("#bodAltName").val("");
+            $("#bodAltName").hide();
+        });
+        
+    });
+
+    $('#ownerTable tbody').on( 'click', '#oRmBtn', function () {
+        var r=confirm("Are you sure want to remove?");
+        if (r==true)
+        {
+        	//t.row( $(this).parents('tr') ).remove().draw();
+        	
+      		var row = t.row( $(this).closest('tr') );                
+            var owner = {};
+            var rowData = row.data();
+            console.log(rowData);
+            owner['id'] = rowData[0];
+            
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                url: "/deleteOwner",
+                data: JSON.stringify(owner),
+                dataType: 'json',
+                cache: false,
+                timeout: 600000,
+                success: function (data) {
+                    console.log(data["message"]);
+                    
+                    if(data["message"]=="Failed"){
+                    	alert("Failed to delete data. Please try again");
+                    }
+                    
+                    else{
+                    	//t.row( $(this).parents('tr') ).remove().draw();
+                    	row.remove().draw();
+                    }
+
+                },
+                error: function (e) {
+
+                    alert("Failed to delete data. Please try again");
+
+                }
+            });
+            
+        }
+        else
+        {
+            
+        }
+        
+    } );
+
+    $('#bodTable tbody').on( 'click', '#dRmBtn', function () {
+        var r=confirm("Are you sure want to remove?");            
+        if (r==true)
+        {
+            //t1.row( $(this).parents('tr') ).remove().draw();
+            
+        	var row = t1.row( $(this).closest('tr') );                
+            var bod = {};
+            var rowData = row.data();
+            console.log(rowData);
+            bod['id'] = rowData[0];
+            
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                url: "/deleteBod",
+                data: JSON.stringify(bod),
+                dataType: 'json',
+                cache: false,
+                timeout: 600000,
+                success: function (data) {
+                    console.log(data["message"]);
+                    
+                    if(data["message"]=="Failed"){
+                    	alert("Failed to delete data. Please try again");
+                    }
+                    
+                    else{
+                    	//t.row( $(this).parents('tr') ).remove().draw();
+                    	row.remove().draw();
+                    }
+
+                },
+                error: function (e) {
+
+                    alert("Failed to delete data. Please try again");
+
+                }
+            });
+        }
+        else
+        {
+            
+        }
+    } );
+    
+    $(document).on( 'click', '#revBtn', function(){
+ 			  
+	    var r=confirm("Are you sure want to remove?");
+		if (r==true)
+		{				
+		var row = $(this).parents('tr');      
+           var contracts = {};
+           var rowData = row.data();
+           contracts['id'] = row.find('td:eq(0)').text();
+           
+           $.ajax({
+               type: "POST",
+               contentType: "application/json",
+               url: "/deleteContracts",
+               data: JSON.stringify(contracts),
+               dataType: 'json',
+               cache: false,
+               timeout: 600000,
+               success: function (data) {
+                   console.log(data["message"]);
+                   
+                   if(data["message"]=="Failed"){
+                   	alert("Failed to delete data. Please try again");
+                   }
+                   
+                   else{
+                   	//t.row( $(this).parents('tr') ).remove().draw();
+                   	//row.remove().draw();
+                   	row.remove();
+                   }
+
+               },
+               error: function (e) {
+
+                   alert("Failed to delete data. Please try again");
+
+               }
+           });
+		}
+		else
+		{
+			
+		}
+	});
+    
+
+		
+	$(document).on('click', '#techBtn', function(e){
+	   
+		var r=confirm("Are you sure want to remove?");
+		if (r==true)
+		{				
+		var row = $(this).parents('tr');      
+           var contracts = {};
+           var rowData = row.data();
+           contracts['id'] = row.find('td:eq(0)').text();
+           
+           $.ajax({
+               type: "POST",
+               contentType: "application/json",
+               url: "/deleteIncorporationDoc",
+               data: JSON.stringify(contracts),
+               dataType: 'json',
+               cache: false,
+               timeout: 600000,
+               success: function (data) {
+                   console.log(data["message"]);
+                   
+                   if(data["message"]=="Failed"){
+                   	alert("Failed to delete data. Please try again");
+                   }
+                   
+                   else{
+                   	//t.row( $(this).parents('tr') ).remove().draw();
+                   	//row.remove().draw();
+                   	row.remove();
+                   }
+
+               },
+               error: function (e) {
+
+                   alert("Failed to delete data. Please try again");
+
+               }
+           });
+		}
+		else
+		{
+			
+		}
+	});
+	
+	$(document).on('click', '#ipBtn1', function(e){
+	   
+	   
+		var r=confirm("Are you sure want to remove?");
+		if (r==true)
+		{				
+		var row = $(this).parents('tr');      
+           var contracts = {};
+           var rowData = row.data();
+           contracts['id'] = row.find('td:eq(0)').text();
+           
+           $.ajax({
+               type: "POST",
+               contentType: "application/json",
+               url: "/deleteIpDoc1",
+               data: JSON.stringify(contracts),
+               dataType: 'json',
+               cache: false,
+               timeout: 600000,
+               success: function (data) {
+                   console.log(data["message"]);
+                   
+                   if(data["message"]=="Failed"){
+                   	alert("Failed to delete data. Please try again");
+                   }
+                   
+                   else{
+                   	//t.row( $(this).parents('tr') ).remove().draw();
+                   	//row.remove().draw();
+                   	row.remove();
+                   }
+
+               },
+               error: function (e) {
+
+                   alert("Failed to delete data. Please try again");
+
+               }
+           });
+		}
+		else
+		{
+			
+		}
+	});
+	
+	$(document).on('click', '#ipBtn2', function(){
+	   
+	   
+		var r=confirm("Are you sure want to remove?");
+		if (r==true)
+		{				
+		var row = $(this).parents('tr');      
+           var contracts = {};
+           var rowData = row.data();
+           contracts['id'] = row.find('td:eq(0)').text();
+           
+           $.ajax({
+               type: "POST",
+               contentType: "application/json",
+               url: "/deleteIpDoc2",
+               data: JSON.stringify(contracts),
+               dataType: 'json',
+               cache: false,
+               timeout: 600000,
+               success: function (data) {
+                   console.log(data["message"]);
+                   
+                   if(data["message"]=="Failed"){
+                   	alert("Failed to delete data. Please try again");
+                   }
+                   
+                   else{
+                   	//t.row( $(this).parents('tr') ).remove().draw();
+                   	//row.remove().draw();
+                   	row.remove();
+                   }
+
+               },
+               error: function (e) {
+
+                   alert("Failed to delete data. Please try again");
+
+               }
+           });
+		}
+		else
+		{
+			
+		}
+	});
+    </script>
+</body>
+</html>
