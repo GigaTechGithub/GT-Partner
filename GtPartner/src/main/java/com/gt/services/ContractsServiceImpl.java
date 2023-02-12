@@ -1,5 +1,7 @@
 package com.gt.services;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +40,12 @@ public class ContractsServiceImpl implements ContractsService{
 		catch (Exception e) {
 			return "Failed";
 		}
+	}
+
+	@Override
+	public List<Contracts> findBydiligenceId(int dilId) {
+		List<Contracts> contractList = contractsRepository.findBydiligenceId(dilId);
+		return contractList;
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.gt.services;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +40,13 @@ public class OwnerServiceImpl implements OwnerService{
 		catch (Exception e) {
 			return "Failed";
 		}
+	}
+
+	@Override
+	public List<Owner> findBydiligenceId(int dilId) {
+		List<Owner> ownerList = ownerRepository.findBydiligenceId(dilId);
+		return ownerList;
+		
 	}
 
 }

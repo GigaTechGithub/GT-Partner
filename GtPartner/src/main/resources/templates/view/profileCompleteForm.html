@@ -165,7 +165,15 @@
                                         </tr>                                        
                                     </thead>
                                     <tbody id="tableBody">
-                                        
+                                        <tr th:each="owner : ${ownerList}">
+									      <td th:text="${owner.id}"></td>
+									      <td th:text="${owner.ownerName}"></td>
+									      <td th:text="${owner.ownerSecondName}"></td>
+									      <td th:text="${owner.ownerPercent}"></td>
+									      <td>
+									      	<input type= "button" name = "oRmBtn" value = "Remove" id = "oRmBtn" />
+									      </td>
+									    </tr>
                                     </tbody>
                                 </table>
                                 <input type="button" name="addOwner" class="addOwner" id="addOwner" value="Add Owner or Shareholder"/>
@@ -192,7 +200,15 @@
                                         </tr>                                        
                                     </thead>
                                     <tbody id="tableBody">
-                                        
+                                        <tr th:each="bod : ${bodList}">
+									      <td th:text="${bod.id}"></td>
+									      <td th:text="${bod.bodName}"></td>
+									      <td th:text="${bod.BodSecondName}"></td>
+									      <td th:text="${bod.tile}"></td>
+									      <td>
+									      	<input type= "button" name = "dRmBtn" value = "Remove" id = "dRmBtn" />
+									      </td>
+									    </tr>
                                     </tbody>
                                 </table>
                                 <input type="button" name="addBOD" class="addBOD" id="addBOD" value="Add Board of Director"/>
@@ -388,7 +404,13 @@
 								<label class="fieldlabels">Copies of the 5 largest contracts for the current year.</label>
                                 <input type="button" id="uploadContracts" value="Upload Files"/>
 								<table id="revTable">
-									
+									<tr th:each="contracts : ${contractsList}">
+								      <td th:text="${contracts.id}" style="display: none"></td>
+								      <td th:text="${contracts.fileName}"></td>
+								      <td>
+								      	<button type="button" name ="revBtn" id ="revBtn" style= "border:none">X</button>
+								      </td>
+								    </tr>
 								</table>
 								<br>
                                 <label class="fieldlabels">Description of the procedures for contracting and billing maintenance.</label>
@@ -420,7 +442,13 @@
 								<label class="fieldlabels">Incorporation Documents of the Company</label>
                                 <input type="button" id="uploadIncorporation" value="Upload Files"/>
 								<table id="techTable">
-									
+									<tr th:each="incorporationDoc : ${incorporationDocList}">
+								      <td th:text="${incorporationDoc.id}" style="display: none"></td>
+								      <td th:text="${incorporationDoc.fileName}"></td>
+								      <td>
+								      	<button type="button" name ="techBtn" id ="techBtn" style= "border:none">X</button>
+								      </td>
+								    </tr>
 								</table>
 								<br>
                                 <label class="fieldlabels">IT Organization chart & Client structure (quantity, type, location)</label>
@@ -533,13 +561,25 @@
 								vi. registrations, issuances, applications, additions, affidavits, continuations, divisions and other filings related to the foregoing items. </label>
                                 <input type="button" id="uploadIP" value="Upload Files"/>
 								<table id="ipTable">
-									
+									<tr th:each="ipDoc1 : ${ipDoc1List}">
+								      <td th:text="${ipDoc1.id}" style="display: none"></td>
+								      <td th:text="${ipDoc1.fileName}"></td>
+								      <td>
+								      	<button type="button" name ="ipBtn1" id ="ipBtn1" style= "border:none">X</button>
+								      </td>
+								    </tr>
 								</table>
 								<br>
                                 <label class="fieldlabels">Copies of searches, counsel’s opinion letters, and application file histories (or file wrappers) for the items requested in the preceding</label>
                                 <input type="button" id="uploadIP2" value="Upload Files"/>
 								<table id="ipTable2">
-									
+									<tr th:each="ipDoc2 : ${ipDoc2List}">
+								      <td th:text="${ipDoc2.id}" style="display: none"></td>
+								      <td th:text="${ipDoc2.fileName}"></td>
+								      <td>
+								      	<button type="button" name ="ipBtn2" id ="ipBtn2" style= "border:none">X</button>
+								      </td>
+								    </tr>
 								</table>
 								<br>
                                 <label class="fieldlabels">Schedule of all material ongoing or planned software, databases, and/or network development projects.</label>
@@ -829,21 +869,78 @@
     <script>
     var t = $('#ownerTable').DataTable({searching: false, paging: false, info: false, sorting: false});
     var t1 = $('#bodTable').DataTable({searching: false, paging: false, info: false, sorting: false});
+    
     var table0 = document.getElementById("revTable");
 	var table1 = document.getElementById("techTable");
 	var table2 = document.getElementById("ipTable");
 	var table3 = document.getElementById("ipTable2");
 	
     $(document).ready(function(){
+    	     
     	t.column(0).visible(false);
     	t1.column(0).visible(false);
-        $("#secondComName").hide();
-        $("#secondAddr").hide();
-        $("#parentSecondName").hide();
-        $("#secondGlobalName").hide();
+    	
+    	//$("#secondComName").hide();
+        //$("#secondAddr").hide();
+        //$("#parentSecondName").hide();
+        //$("#secondGlobalName").hide();
         $("#oAltName").hide();
         $("#bodAltName").hide();
+        
+        var secondComName = $("#secondComName").val();
+        var secondAddr = $("#secondAddr").val();
+        var parentSecondName = $("#parentSecondName").val();
+        var secondGlobalName = $("#secondGlobalName").val();
+        
+        functionsecondComName();
+        functionsecondAddr();
+        functionparentSecondName();
+        functionsecondGlobalName();
+        
+        function functionsecondComName(){
+        	if(secondComName == ""){
+        		$("#secondComName").hide();
+        		$("#r2").prop("checked", true);                
+        	}
+        	else{
+        		$("#secondComName").show();
+        		$("#r1").prop("checked", true);
+        	}
+        }
+        
+        function functionsecondAddr(){
+        	if(secondAddr == ""){
+        		$("#secondAddr").hide();
+        		$("#r4").prop("checked", true);
+        	}
+        	else{
+        		$("#secondAddr").show();
+        		$("#r3").prop("checked", true);
+        	}
+        }
 
+        function functionparentSecondName(){
+        	if(parentSecondName == ""){
+        		$("#parentSecondName").hide();
+        		$("#r6").prop("checked", true);
+        	}
+        	else{
+        		$("#parentSecondName").show();
+        		$("#r5").prop("checked", true);
+        	}
+        }
+        
+        function functionsecondGlobalName(){
+        	if(secondGlobalName == ""){
+        		$("#secondGlobalName").hide();
+        		$("#r8").prop("checked", true);
+        	}
+        	else{
+        		$("#secondGlobalName").show();
+        		$("#r7").prop("checked", true);
+        	}
+        }
+        
         $('#addOwner').click(function() {
             $('#modelWindow').modal('show');
         });
@@ -1186,7 +1283,7 @@
             $("#secondComName").show();
         });
         $("#r2").click(function () {
-        	$("#secondComName").value("");
+        	$("#secondComName").val("");
             $("#secondComName").hide();
         });
 
@@ -1194,7 +1291,7 @@
             $("#secondAddr").show();
         });
         $("#r4").click(function () {
-        	$("#secondAddr").value("");
+        	$("#secondAddr").val("");
             $("#secondAddr").hide();
         });
 
@@ -1202,7 +1299,7 @@
             $("#parentSecondName").show();
         });
         $("#r6").click(function () {
-        	$("#parentSecondName").value("");
+        	$("#parentSecondName").val("");
             $("#parentSecondName").hide();
         });
 
@@ -1210,7 +1307,7 @@
             $("#secondGlobalName").show();
         });
         $("#r8").click(function () {
-        	$("#secondGlobalName").value("");
+        	$("#secondGlobalName").val("");
             $("#secondGlobalName").hide();
         });
 
@@ -1218,7 +1315,7 @@
             $("#oAltName").show();
         });
         $("#r10").click(function () {
-        	$("#oAltName").value("");
+        	$("#oAltName").val("");
             $("#oAltName").hide();
         });
 
@@ -1226,7 +1323,7 @@
             $("#bodAltName").show();
         });
         $("#r12").click(function () {
-        	$("#bodAltName").value("");
+        	$("#bodAltName").val("");
             $("#bodAltName").hide();
         });
         

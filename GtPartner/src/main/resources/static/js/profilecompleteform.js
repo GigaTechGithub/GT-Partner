@@ -37,9 +37,9 @@ $(document).ready(function(){
     	var export2 = document.getElementById("export2").value;
     	
     	var radio1 = document.querySelector('input[name = "radio1"]:checked') == null? "" : document.querySelector('input[name = "radio1"]:checked').value;
-    	var radio2 = document.querySelector('input[name = "radio2"]:checked') == null? "" : document.querySelector('input[name = "radio1"]:checked').value;
-    	var radio3 = document.querySelector('input[name = "radio3"]:checked') == null? "" : document.querySelector('input[name = "radio1"]:checked').value;
-    	var radio4 = document.querySelector('input[name = "radio4"]:checked') == null? "" : document.querySelector('input[name = "radio1"]:checked').value;
+    	var radio2 = document.querySelector('input[name = "radio2"]:checked') == null? "" : document.querySelector('input[name = "radio2"]:checked').value;
+    	var radio3 = document.querySelector('input[name = "radio3"]:checked') == null? "" : document.querySelector('input[name = "radio3"]:checked').value;
+    	var radio4 = document.querySelector('input[name = "radio4"]:checked') == null? "" : document.querySelector('input[name = "radio4"]:checked').value;
     	
     	if(comLegalName == "" || countryOfReg=="" || regDate=="" || taxId=="" || legalAddr=="" || website=="" || employeeCount=="" || bodCount == "" || personalConnection == "" || isGovCon =="" || isGov == "" || ethical1 == "" || ethical2 == "" || export1 == "" || export2 == "" || radio1 == "" || radio2 == ""){
     	

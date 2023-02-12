@@ -1,5 +1,7 @@
 package com.gt.services;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +40,12 @@ public class IncorporationDocServiceImpl implements IncorporationDocService{
 		catch (Exception e) {
 			return "Failed";
 		}
+	}
+
+	@Override
+	public List<IncorporationDoc> findBydiligenceId(int dilId) {
+		List<IncorporationDoc> incorporationDocList = incorporationDocRepository.findBydiligenceId(dilId);
+		return incorporationDocList;
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.gt.services;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,6 +38,12 @@ public class IpDoc1ServiceImpl implements IpDoc1Service{
 		catch (Exception e) {
 			return "Failed";
 		}
+	}
+
+	@Override
+	public List<IpDoc1> findBydiligenceId(int dilId) {
+		List<IpDoc1> ipDoc1List = ipDoc1Repository.findBydiligenceId(dilId);
+		return ipDoc1List;
 	}
 
 }

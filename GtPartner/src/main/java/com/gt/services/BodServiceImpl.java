@@ -1,5 +1,7 @@
 package com.gt.services;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,5 +40,11 @@ public class BodServiceImpl implements BodService{
 		catch(Exception e) {
 			return "Failed";
 		}
+	}
+
+	@Override
+	public List<Bod> findBydiligenceId(int dilId) {
+		List<Bod> bodList = bodRepository.findBydiligenceId(dilId);
+		return bodList;
 	}
 }
