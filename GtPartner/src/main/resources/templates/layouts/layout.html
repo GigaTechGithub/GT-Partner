@@ -1,0 +1,29 @@
+<!doctype html>
+<html xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      lang="en">
+  <head>
+  	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="nav-css/style.css">
+  </head>
+  
+  <body>
+    <div class="wrapper d-flex align-items-stretch">
+    <div id="products-nav" th:replace="~{/layouts/_sideNavbar :: left-side-nav-bar}"></div>
+	    <div>
+		    <div id="products-header" th:replace="~{/layouts/_header :: top-header}"></div>
+	      		<div id="content" class="p-4 p-md-5"></div>
+		   <div id="products-footer" th:replace="~{/layouts/_footer :: bottom-footer}"></div>
+	   </div>
+    </div>
+
+    <script src="nav-js/jquery.min.js"></script>
+    <script src="nav-js/popper.js"></script>
+    <script src="nav-js/bootstrap.min.js"></script>
+    <script src="nav-js/main.js"></script>
+    
+  </body>
+</html>
