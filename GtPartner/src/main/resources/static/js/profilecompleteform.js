@@ -1,11 +1,12 @@
+var result;
+var current_fs, next_fs, previous_fs; //fieldsets
+var opacity;
+var current = 1;
+var steps = 8;
+
 $(document).ready(function(){
-	var result;
-	var current_fs, next_fs, previous_fs; //fieldsets
-	var opacity;
-	var current = 1;
-	var steps = $("fieldset").length;
 	
-    setProgressBar(current);
+	//setProgressBar(current);    
     
     $(".nextFromFirstStep").click(function(){
 
@@ -740,18 +741,264 @@ $(document).ready(function(){
     	result = value;
     }
     
-    function setProgressBar(curStep){
-        var percent = parseFloat(100 / steps) * curStep;
-        percent = percent.toFixed();
-        $(".progress-bar")
-          .css("width",percent+"%")   
-    }
+//    function setProgressBar(curStep){
+//        var percent = parseFloat(100 / steps) * curStep;
+//        percent = percent.toFixed();
+//        $(".progress-bar")
+//          .css("width",percent+"%")   
+//    }
     
     $(".submit").click(function(){
         return false;
     })
-        
+    
+    
 });
+
+function setProgressBar(curStep){
+    var percent = parseFloat(100 / steps) * curStep;
+    percent = percent.toFixed();
+    $(".progress-bar")
+      .css("width",percent+"%")   
+}
+
+
+function openDoc(a){
+	if(a==90){
+		current_fs = $("#fieldset1");
+        next_fs = $("#fieldset8");
+        var fieldSet7 = $("#fieldset7");
+        var fieldSet6 = $("#fieldset6");
+        var fieldSet5 = $("#fieldset5");
+        var fieldSet4 = $("#fieldset4");
+        var fieldSet3 = $("#fieldset3");
+        var fieldSet2 = $("#fieldset2");
+        
+        //Add Class Active
+        $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+        $("#progressbar li").eq($("fieldset").index(fieldSet7)).addClass("active");
+        $("#progressbar li").eq($("fieldset").index(fieldSet6)).addClass("active");
+        $("#progressbar li").eq($("fieldset").index(fieldSet5)).addClass("active");
+        $("#progressbar li").eq($("fieldset").index(fieldSet4)).addClass("active");
+        $("#progressbar li").eq($("fieldset").index(fieldSet3)).addClass("active");
+        $("#progressbar li").eq($("fieldset").index(fieldSet2)).addClass("active");
+        
+        //show the next fieldset
+        next_fs.show(); 
+        //hide the current fieldset with style
+        current_fs.animate({opacity: 0}, {
+            step: function(now) {
+                // for making fielset appear animation
+                opacity = 1 - now;
+    
+                current_fs.css({
+                    'display': 'none',
+                    'position': 'relative'
+                });
+                next_fs.css({'opacity': opacity});
+            }, 
+            duration: 500
+        });
+        current = 8;
+        setProgressBar(current);
+	}
+	
+	if(a==60){
+		current_fs = $("#fieldset1");
+        next_fs = $("#fieldset7");
+        var fieldSet6 = $("#fieldset6");
+        var fieldSet5 = $("#fieldset5");
+        var fieldSet4 = $("#fieldset4");
+        var fieldSet3 = $("#fieldset3");
+        var fieldSet2 = $("#fieldset2");
+        
+        //Add Class Active
+        $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+        $("#progressbar li").eq($("fieldset").index(fieldSet6)).addClass("active");
+        $("#progressbar li").eq($("fieldset").index(fieldSet5)).addClass("active");
+        $("#progressbar li").eq($("fieldset").index(fieldSet4)).addClass("active");
+        $("#progressbar li").eq($("fieldset").index(fieldSet3)).addClass("active");
+        $("#progressbar li").eq($("fieldset").index(fieldSet2)).addClass("active");
+        
+        //show the next fieldset
+        next_fs.show(); 
+        //hide the current fieldset with style
+        current_fs.animate({opacity: 0}, {
+            step: function(now) {
+                // for making fielset appear animation
+                opacity = 1 - now;
+    
+                current_fs.css({
+                    'display': 'none',
+                    'position': 'relative'
+                });
+                next_fs.css({'opacity': opacity});
+            }, 
+            duration: 500
+        });
+        current = 7;
+        setProgressBar(current);
+	}
+	
+	if(a==50){
+		current_fs = $("#fieldset1");
+        next_fs = $("#fieldset6");
+        var fieldSet5 = $("#fieldset5");
+        var fieldSet4 = $("#fieldset4");
+        var fieldSet3 = $("#fieldset3");
+        var fieldSet2 = $("#fieldset2");
+        
+        //Add Class Active
+        $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+        $("#progressbar li").eq($("fieldset").index(fieldSet5)).addClass("active");
+        $("#progressbar li").eq($("fieldset").index(fieldSet4)).addClass("active");
+        $("#progressbar li").eq($("fieldset").index(fieldSet3)).addClass("active");
+        $("#progressbar li").eq($("fieldset").index(fieldSet2)).addClass("active");
+        
+        //show the next fieldset
+        next_fs.show(); 
+        //hide the current fieldset with style
+        current_fs.animate({opacity: 0}, {
+            step: function(now) {
+                // for making fielset appear animation
+                opacity = 1 - now;
+    
+                current_fs.css({
+                    'display': 'none',
+                    'position': 'relative'
+                });
+                next_fs.css({'opacity': opacity});
+            }, 
+            duration: 500
+        });
+        current = 6;
+        setProgressBar(current);
+	}
+	
+	if(a==40){
+		current_fs = $("#fieldset1");
+        next_fs = $("#fieldset5");
+        var fieldSet4 = $("#fieldset4");
+        var fieldSet3 = $("#fieldset3");
+        var fieldSet2 = $("#fieldset2");
+        
+        //Add Class Active
+        $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+        $("#progressbar li").eq($("fieldset").index(fieldSet4)).addClass("active");
+        $("#progressbar li").eq($("fieldset").index(fieldSet3)).addClass("active");
+        $("#progressbar li").eq($("fieldset").index(fieldSet2)).addClass("active");
+        
+        //show the next fieldset
+        next_fs.show(); 
+        //hide the current fieldset with style
+        current_fs.animate({opacity: 0}, {
+            step: function(now) {
+                // for making fielset appear animation
+                opacity = 1 - now;
+    
+                current_fs.css({
+                    'display': 'none',
+                    'position': 'relative'
+                });
+                next_fs.css({'opacity': opacity});
+            }, 
+            duration: 500
+        });
+        current = 5;
+        setProgressBar(current);
+	}
+	
+	if(a==30){
+		current_fs = $("#fieldset1");
+        next_fs = $("#fieldset4");
+        var fieldSet3 = $("#fieldset3");
+        var fieldSet2 = $("#fieldset2");
+        
+        //Add Class Active
+        $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+        $("#progressbar li").eq($("fieldset").index(fieldSet3)).addClass("active");
+        $("#progressbar li").eq($("fieldset").index(fieldSet2)).addClass("active");
+        
+        //show the next fieldset
+        next_fs.show(); 
+        //hide the current fieldset with style
+        current_fs.animate({opacity: 0}, {
+            step: function(now) {
+                // for making fielset appear animation
+                opacity = 1 - now;
+    
+                current_fs.css({
+                    'display': 'none',
+                    'position': 'relative'
+                });
+                next_fs.css({'opacity': opacity});
+            }, 
+            duration: 500
+        });
+        current = 4;
+        setProgressBar(current);
+	}
+	
+	if(a==20){
+		current_fs = $("#fieldset1");
+        next_fs = $("#fieldset3");
+        var fieldSet2 = $("#fieldset2");
+        
+        //Add Class Active
+        $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+        $("#progressbar li").eq($("fieldset").index(fieldSet2)).addClass("active");
+        
+        //show the next fieldset
+        next_fs.show(); 
+        //hide the current fieldset with style
+        current_fs.animate({opacity: 0}, {
+            step: function(now) {
+                // for making fielset appear animation
+                opacity = 1 - now;
+    
+                current_fs.css({
+                    'display': 'none',
+                    'position': 'relative'
+                });
+                next_fs.css({'opacity': opacity});
+            }, 
+            duration: 500
+        });
+        current = 3;
+        setProgressBar(current);
+	}
+	
+	if(a==10){
+		current_fs = $("#fieldset1");
+        next_fs = $("#fieldset2");
+        
+        //Add Class Active
+        $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+        
+        //show the next fieldset
+        next_fs.show(); 
+        //hide the current fieldset with style
+        current_fs.animate({opacity: 0}, {
+            step: function(now) {
+                // for making fielset appear animation
+                opacity = 1 - now;
+    
+                current_fs.css({
+                    'display': 'none',
+                    'position': 'relative'
+                });
+                next_fs.css({'opacity': opacity});
+            }, 
+            duration: 500
+        });
+        current = 2;
+        setProgressBar(current);
+	}
+	
+	else{
+		setProgressBar(current);
+	}
+}
 
 
 

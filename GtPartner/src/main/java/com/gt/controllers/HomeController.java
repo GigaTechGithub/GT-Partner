@@ -30,6 +30,7 @@ import com.gt.models.Technology;
 import com.gt.services.BodService;
 import com.gt.services.CompanyService;
 import com.gt.services.ContractsService;
+import com.gt.services.DiligenceService;
 import com.gt.services.IncorporationDocService;
 import com.gt.services.IpDoc1Service;
 import com.gt.services.IpDoc2Service;
@@ -42,6 +43,8 @@ import com.gt.services.TechnologyService;
 
 @Controller
 public class HomeController {	
+	@Autowired
+	DiligenceService diligenceService;
 	
 	@Autowired
 	CompanyService companyService;
@@ -127,6 +130,8 @@ public class HomeController {
 		List<IpDoc1> ipDoc1List = ipDoc1Service.findBydiligenceId(diligenceId());
 		List<IpDoc2> ipDoc2List = ipDoc2Service.findBydiligenceId(diligenceId());
 		
+		int diligenceStatus = diligenceService.findById(diligenceId()).get(0).getProfileStatus();
+		
 		model.addAttribute("company", company);
 		model.addAttribute("legal", legal);
 		model.addAttribute("revenue", revenue);
@@ -140,6 +145,7 @@ public class HomeController {
 		model.addAttribute("ipDoc1List", ipDoc1List);
 		model.addAttribute("ipDoc2List", ipDoc2List);
 		model.addAttribute("getCountries", getCountries());
+		model.addAttribute("diligenceStatus", diligenceStatus);
 		
     	//return "view/profileCompleteForm";
 		

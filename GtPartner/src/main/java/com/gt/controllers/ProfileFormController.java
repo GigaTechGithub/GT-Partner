@@ -1,12 +1,15 @@
 package com.gt.controllers;
 
-
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import javax.servlet.MultipartConfigElement;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
@@ -237,10 +240,12 @@ public class ProfileFormController {
 	    	String result = companyService.saveCompany(company);
 	    	
 	    	Diligence diligence = diligenceService.findById(diligenceId()).get(0);
-
-			diligence.setProfileStatus(10);
 	    	
-	    	diligenceService.saveDiligence(diligence);
+	    	if(diligence.getProfileStatus() != 90) {
+	    		diligence.setProfileStatus(10);
+		    	
+		    	diligenceService.saveDiligence(diligence);
+	    	}
 	    	
 	    	response.setMessage(result);
 	    	
@@ -284,10 +289,12 @@ public class ProfileFormController {
 	    	String result = legalService.saveLegal(legal);
 	    	
 	    	Diligence diligence = diligenceService.findById(diligenceId()).get(0);
-
-			diligence.setProfileStatus(20);
 	    	
-	    	diligenceService.saveDiligence(diligence);
+	    	if(diligence.getProfileStatus() != 90) {
+	    		diligence.setProfileStatus(20);
+		    	
+		    	diligenceService.saveDiligence(diligence);
+	    	}
 	    	
 	    	response.setMessage(result);
 	    	
@@ -341,6 +348,11 @@ public class ProfileFormController {
 	    	
 	    	String result = contractsService.deleteContracts(request.getId());
 	    	
+	    	if(result == "Success") {		        
+		        Path path = Paths.get("C:\\upload\\"+ diligenceId()+"-"+request.getFileName());
+		        Files.delete(path);
+	    	}	    	
+	    	
 	    	response.setMessage(result);
 	    	
 	    	return ResponseEntity.ok(response);
@@ -371,10 +383,13 @@ public class ProfileFormController {
 	    	String result = revenueService.saveRevenue(revenue);
 	    	
 	    	Diligence diligence = diligenceService.findById(diligenceId()).get(0);
-
-			diligence.setProfileStatus(40);
 	    	
-	    	diligenceService.saveDiligence(diligence);
+	    	if(diligence.getProfileStatus() != 90) {
+	    		
+	    		diligence.setProfileStatus(40);
+		    	
+		    	diligenceService.saveDiligence(diligence);
+	    	}
 	    	
 	    	response.setMessage(result);
 	    	
@@ -445,10 +460,13 @@ public class ProfileFormController {
 	    	String result = technologyService.saveTechnology(technology);
 	    	
 	    	Diligence diligence = diligenceService.findById(diligenceId()).get(0);
-
-			diligence.setProfileStatus(50);
 	    	
-	    	diligenceService.saveDiligence(diligence);
+	    	if(diligence.getProfileStatus() != 90) {
+	    		
+	    		diligence.setProfileStatus(50);
+		    	
+		    	diligenceService.saveDiligence(diligence);
+	    	}			
 	    	
 	    	response.setMessage(result);
 	    	
@@ -502,6 +520,11 @@ public class ProfileFormController {
 	    	
 	    	String result = incorporationDocService.deleteIncorporationDoc(request.getId());
 	    	
+	    	if(result == "Success") {		        
+		        Path path = Paths.get("C:\\upload\\"+ diligenceId()+"-"+request.getFileName());
+		        Files.delete(path);
+	    	}
+	    	
 	    	response.setMessage(result);
 	    	
 	    	return ResponseEntity.ok(response);
@@ -537,10 +560,13 @@ public class ProfileFormController {
 	    	String result = ipService.saveIp(ip);
 	    	
 	    	Diligence diligence = diligenceService.findById(diligenceId()).get(0);
-
-			diligence.setProfileStatus(60);
 	    	
-	    	diligenceService.saveDiligence(diligence);
+	    	if(diligence.getProfileStatus() != 90) {
+	    		
+	    		diligence.setProfileStatus(60);
+		    	
+		    	diligenceService.saveDiligence(diligence);
+	    	}			
 	    	
 	    	response.setMessage(result);
 	    	
@@ -562,6 +588,8 @@ public class ProfileFormController {
 		String fileName = selectFile.getOriginalFilename();
 		String filePath = "C:\\upload\\"+ diligenceId()+"-"+fileName;
 		try {
+			selectFile.transferTo( new File(filePath));
+			
 			IpDoc1 ipDoc1 = new IpDoc1();
 			
 			ipDoc1.setCreatedBy(createdById());
@@ -592,6 +620,11 @@ public class ProfileFormController {
 	    	
 	    	String result = ipDoc1Service.deleteIpDoc1(request.getId());
 	    	
+	    	if(result == "Success") {		        
+		        Path path = Paths.get("C:\\upload\\"+ diligenceId()+"-"+request.getFileName());
+		        Files.delete(path);
+	    	}
+	    	
 	    	response.setMessage(result);
 	    	
 	    	return ResponseEntity.ok(response);
@@ -612,6 +645,8 @@ public class ProfileFormController {
 		String filePath = "C:\\upload\\"+ diligenceId()+"-"+fileName;
 		
 		try {
+			selectFile.transferTo( new File(filePath));
+			
 			IpDoc2 ipDoc2 = new IpDoc2();
 			
 			ipDoc2.setCreatedBy(createdById());
@@ -641,6 +676,11 @@ public class ProfileFormController {
 		try {
 	    	
 	    	String result = ipDoc2Service.deleteIpDoc2(request.getId());
+	    	
+	    	if(result == "Success") {		        
+		        Path path = Paths.get("C:\\upload\\"+ diligenceId()+"-"+request.getFileName());
+		        Files.delete(path);
+	    	}
 	    	
 	    	response.setMessage(result);
 	    	

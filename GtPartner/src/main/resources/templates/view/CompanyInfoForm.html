@@ -43,7 +43,7 @@
                         </div>
                         <br>
                         <!-- fieldsets -->
-                        <fieldset>
+                        <fieldset id="fieldset1">
                             <div class="form-card">
                                 <div class="row">
                                     <div class="col-7">
@@ -280,7 +280,7 @@
                             <hr>
                             <input type="button" name="firsStep" id="firsStep" class="nextFromFirstStep action-button" value="Next"/>
                         </fieldset>
-                        <fieldset>
+                        <fieldset id="fieldset2">
                             <div class="form-card">
                                 <div class="row">
                                     <div class="col-7">
@@ -359,7 +359,7 @@
                             <input type="button" id="secondStep" name="secondStep" class="nextFromSecondStep action-button" value="Next"/>
                             <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
                         </fieldset>
-                        <fieldset>
+                        <fieldset id="fieldset3">
                             <div class="form-card">
                                 <div class="row">
                                     <div class="col-7">
@@ -401,7 +401,7 @@
                             <input type="button" id="thirdStep" name="thirdStep" class="nextFromThirdStep action-button" value="Next"/>
                             <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
                         </fieldset>
-                        <fieldset>
+                        <fieldset id="fieldset4">
                             <div class="form-card">
                                 <div class="row">
                                     <div class="col-7">
@@ -437,7 +437,7 @@
                             <input type="button" id="fourthStep" name="fourthStep" class="nextFromFourthStep action-button" value="Next"/>
                             <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
                         </fieldset>
-						<fieldset>
+						<fieldset id="fieldset5">
                             <div class="form-card">
                                 <div class="row">
                                     <div class="col-7">
@@ -549,7 +549,7 @@
                             <input type="button" id="fifthStep" name="fifthStep" class="nextFromFifthStep action-button" value="Next"/>
                             <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
                         </fieldset>
-						<fieldset>
+						<fieldset id="fieldset6">
                             <div class="form-card">
                                 <div class="row">
                                     <div class="col-7">
@@ -617,7 +617,7 @@
                             <input type="button" id="sixthStep" name="sixthStep" class="nextFromSixthStep action-button" value="Next"/>
                             <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
                         </fieldset>
-						<fieldset>
+						<fieldset id="fieldset7">
                             <div class="form-card">
                                 <div class="row">
                                     <div class="col-7">
@@ -661,7 +661,7 @@
                             <input type="button" id="seventhStep" name="seventhStep" class="nextFromSeventhStep action-button" value="Submit"/>
                             <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
                         </fieldset>
-						<fieldset>
+						<fieldset id="fieldset8">
                             <div class="form-card">
                                 <div class="row">
                                     <div class="col-7">
@@ -672,7 +672,7 @@
                                     </div>
                                 </div>
 								<br><br>
-                                <h2 class="purple-text text-center"><strong>SUCCESS !</strong></h2>
+                                <h2 class="purple-text text-center"><strong>COMPLETED !</strong></h2>
                                 <br>
                                 <br><br>
                                 <div class="row justify-content-center">
@@ -875,7 +875,11 @@
             </div>
         </div>
     </div>
-    <script>
+    <script th:inline="javascript">
+    var a = [[${diligenceStatus}]];
+    
+    openDoc(a);
+	
     var t = $('#ownerTable').DataTable({searching: false, paging: false, info: false, sorting: false});
     var t1 = $('#bodTable').DataTable({searching: false, paging: false, info: false, sorting: false});
     
@@ -1441,6 +1445,7 @@
            var contracts = {};
            var rowData = row.data();
            contracts['id'] = row.find('td:eq(0)').text();
+           contracts['fileName'] = row.find('td:eq(1)').text();
            
            $.ajax({
                type: "POST",
@@ -1451,7 +1456,6 @@
                cache: false,
                timeout: 600000,
                success: function (data) {
-                   console.log(data["message"]);
                    
                    if(data["message"]=="Failed"){
                    	alert("Failed to delete data. Please try again");
@@ -1488,6 +1492,7 @@
            var contracts = {};
            var rowData = row.data();
            contracts['id'] = row.find('td:eq(0)').text();
+           contracts['fileName'] = row.find('td:eq(1)').text();
            
            $.ajax({
                type: "POST",
@@ -1534,6 +1539,7 @@
            var contracts = {};
            var rowData = row.data();
            contracts['id'] = row.find('td:eq(0)').text();
+           contracts['fileName'] = row.find('td:eq(1)').text();
            
            $.ajax({
                type: "POST",
@@ -1580,6 +1586,7 @@
            var contracts = {};
            var rowData = row.data();
            contracts['id'] = row.find('td:eq(0)').text();
+           contracts['fileName'] = row.find('td:eq(1)').text();
            
            $.ajax({
                type: "POST",
