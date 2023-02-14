@@ -31,6 +31,19 @@ import com.gt.models.Bod;
 import com.gt.models.Company;
 import com.gt.models.Contracts;
 import com.gt.models.Diligence;
+import com.gt.models.FinDoc1;
+import com.gt.models.FinDoc10;
+import com.gt.models.FinDoc11;
+import com.gt.models.FinDoc12;
+import com.gt.models.FinDoc13;
+import com.gt.models.FinDoc2;
+import com.gt.models.FinDoc3;
+import com.gt.models.FinDoc4;
+import com.gt.models.FinDoc5;
+import com.gt.models.FinDoc6;
+import com.gt.models.FinDoc7;
+import com.gt.models.FinDoc8;
+import com.gt.models.FinDoc9;
 import com.gt.models.IncorporationDoc;
 import com.gt.models.Ip;
 import com.gt.models.IpDoc1;
@@ -44,6 +57,19 @@ import com.gt.services.BodService;
 import com.gt.services.CompanyService;
 import com.gt.services.ContractsService;
 import com.gt.services.DiligenceService;
+import com.gt.services.FinDoc10Service;
+import com.gt.services.FinDoc11Service;
+import com.gt.services.FinDoc12Service;
+import com.gt.services.FinDoc13Service;
+import com.gt.services.FinDoc1Service;
+import com.gt.services.FinDoc2Service;
+import com.gt.services.FinDoc3Service;
+import com.gt.services.FinDoc4Service;
+import com.gt.services.FinDoc5Service;
+import com.gt.services.FinDoc6Service;
+import com.gt.services.FinDoc7Service;
+import com.gt.services.FinDoc8Service;
+import com.gt.services.FinDoc9Service;
 import com.gt.services.IncorporationDocService;
 import com.gt.services.IpDoc1Service;
 import com.gt.services.IpDoc2Service;
@@ -94,6 +120,46 @@ public class ProfileFormController {
 	
 	@Autowired
 	OwnerService ownerService;
+	
+	@Autowired
+	FinDoc1Service finDoc1Service;
+	
+	@Autowired
+	FinDoc2Service finDoc2Service;
+	
+	@Autowired
+	FinDoc3Service finDoc3Service;
+	
+	@Autowired
+	FinDoc4Service finDoc4Service;
+	
+	@Autowired
+	FinDoc5Service finDoc5Service;
+	
+	@Autowired
+	FinDoc6Service finDoc6Service;
+	
+	@Autowired
+	FinDoc7Service finDoc7Service;
+	
+	@Autowired
+	FinDoc8Service finDoc8Service;
+	
+	@Autowired
+	FinDoc9Service finDoc9Service;
+	
+	@Autowired
+	FinDoc10Service finDoc10Service;
+	
+	@Autowired
+	FinDoc11Service finDoc11Service;
+	
+	@Autowired
+	FinDoc12Service finDoc12Service;
+	
+	@Autowired
+	FinDoc13Service finDoc13Service;
+	
 	
 	public HttpSession getSession() {
 		HttpServletRequest servRequest = ((ServletRequestAttributes) RequestContextHolder
@@ -735,6 +801,750 @@ public class ProfileFormController {
 			
 		}
     }
+	
+	@PostMapping({"/addFinDoc1"})
+    public ResponseEntity<?> addFinDoc1(@RequestParam("selectFile") MultipartFile selectFile, @RequestParam("docType") String docType) {
+		AjaxResponse response = new AjaxResponse();
+		String fileName = selectFile.getOriginalFilename();
+		String filePath = "C:\\upload\\"+ diligenceId()+"-"+fileName;
+		try {
+			selectFile.transferTo( new File(filePath));
+			
+			FinDoc1 finDoc1 = new FinDoc1();
+			
+			finDoc1.setCreatedBy(createdById());
+			finDoc1.setDiligenceId(diligenceId());
+			finDoc1.setFileName(fileName);
+			finDoc1.setFilePath(filePath);
+			finDoc1.setFileType(docType);
+			
+	    	String result = finDoc1Service.saveFinDoc1(finDoc1);
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+		
+    }
+	
+	@PostMapping({"/addFinDoc2"})
+    public ResponseEntity<?> addFinDoc2(@RequestParam("selectFile") MultipartFile selectFile, @RequestParam("docType") String docType) {
+		AjaxResponse response = new AjaxResponse();
+		String fileName = selectFile.getOriginalFilename();
+		String filePath = "C:\\upload\\"+ diligenceId()+"-"+fileName;
+		try {
+			selectFile.transferTo( new File(filePath));
+			
+			FinDoc2 finDoc2 = new FinDoc2();
+			
+			finDoc2.setCreatedBy(createdById());
+			finDoc2.setDiligenceId(diligenceId());
+			finDoc2.setFileName(fileName);
+			finDoc2.setFilePath(filePath);
+			finDoc2.setFileType(docType);
+			
+	    	String result = finDoc2Service.saveFinDoc2(finDoc2);
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+		
+    }
+	
+	@PostMapping({"/addFinDoc3"})
+    public ResponseEntity<?> addFinDoc3(@RequestParam("selectFile") MultipartFile selectFile, @RequestParam("docType") String docType) {
+		AjaxResponse response = new AjaxResponse();
+		String fileName = selectFile.getOriginalFilename();
+		String filePath = "C:\\upload\\"+ diligenceId()+"-"+fileName;
+		try {
+			selectFile.transferTo( new File(filePath));
+			
+			FinDoc3 finDoc3 = new FinDoc3();
+			
+			finDoc3.setCreatedBy(createdById());
+			finDoc3.setDiligenceId(diligenceId());
+			finDoc3.setFileName(fileName);
+			finDoc3.setFilePath(filePath);
+			finDoc3.setFileType(docType);
+			
+	    	String result = finDoc3Service.saveFinDoc3(finDoc3);
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+		
+    }
+	
+	@PostMapping({"/addFinDoc4"})
+    public ResponseEntity<?> addFinDoc4(@RequestParam("selectFile") MultipartFile selectFile, @RequestParam("docType") String docType) {
+		AjaxResponse response = new AjaxResponse();
+		String fileName = selectFile.getOriginalFilename();
+		String filePath = "C:\\upload\\"+ diligenceId()+"-"+fileName;
+		try {
+			selectFile.transferTo( new File(filePath));
+			
+			FinDoc4 finDoc4 = new FinDoc4();
+			
+			finDoc4.setCreatedBy(createdById());
+			finDoc4.setDiligenceId(diligenceId());
+			finDoc4.setFileName(fileName);
+			finDoc4.setFilePath(filePath);
+			finDoc4.setFileType(docType);
+			
+	    	String result = finDoc4Service.saveFinDoc4(finDoc4);
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+		
+    }
+	
+	@PostMapping({"/addFinDoc5"})
+    public ResponseEntity<?> addFinDoc5(@RequestParam("selectFile") MultipartFile selectFile, @RequestParam("docType") String docType) {
+		AjaxResponse response = new AjaxResponse();
+		String fileName = selectFile.getOriginalFilename();
+		String filePath = "C:\\upload\\"+ diligenceId()+"-"+fileName;
+		try {
+			selectFile.transferTo( new File(filePath));
+			
+			FinDoc5 finDoc5 = new FinDoc5();
+			
+			finDoc5.setCreatedBy(createdById());
+			finDoc5.setDiligenceId(diligenceId());
+			finDoc5.setFileName(fileName);
+			finDoc5.setFilePath(filePath);
+			finDoc5.setFileType(docType);
+			
+	    	String result = finDoc5Service.saveFinDoc5(finDoc5);
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+		
+    }
+	
+	@PostMapping({"/addFinDoc6"})
+    public ResponseEntity<?> addFinDoc6(@RequestParam("selectFile") MultipartFile selectFile, @RequestParam("docType") String docType) {
+		AjaxResponse response = new AjaxResponse();
+		String fileName = selectFile.getOriginalFilename();
+		String filePath = "C:\\upload\\"+ diligenceId()+"-"+fileName;
+		try {
+			selectFile.transferTo( new File(filePath));
+			
+			FinDoc6 finDoc6 = new FinDoc6();
+			
+			finDoc6.setCreatedBy(createdById());
+			finDoc6.setDiligenceId(diligenceId());
+			finDoc6.setFileName(fileName);
+			finDoc6.setFilePath(filePath);
+			finDoc6.setFileType(docType);
+			
+	    	String result = finDoc6Service.saveFinDoc6(finDoc6);
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+		
+    }
+	
+	@PostMapping({"/addFinDoc7"})
+    public ResponseEntity<?> addFinDoc7(@RequestParam("selectFile") MultipartFile selectFile, @RequestParam("docType") String docType) {
+		AjaxResponse response = new AjaxResponse();
+		String fileName = selectFile.getOriginalFilename();
+		String filePath = "C:\\upload\\"+ diligenceId()+"-"+fileName;
+		try {
+			selectFile.transferTo( new File(filePath));
+			
+			FinDoc7 finDoc7 = new FinDoc7();
+			
+			finDoc7.setCreatedBy(createdById());
+			finDoc7.setDiligenceId(diligenceId());
+			finDoc7.setFileName(fileName);
+			finDoc7.setFilePath(filePath);
+			finDoc7.setFileType(docType);
+			
+	    	String result = finDoc7Service.saveFinDoc7(finDoc7);
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+		
+    }
+	
+	@PostMapping({"/addFinDoc8"})
+    public ResponseEntity<?> addFinDoc8(@RequestParam("selectFile") MultipartFile selectFile, @RequestParam("docType") String docType) {
+		AjaxResponse response = new AjaxResponse();
+		String fileName = selectFile.getOriginalFilename();
+		String filePath = "C:\\upload\\"+ diligenceId()+"-"+fileName;
+		try {
+			selectFile.transferTo( new File(filePath));
+			
+			FinDoc8 finDoc8 = new FinDoc8();
+			
+			finDoc8.setCreatedBy(createdById());
+			finDoc8.setDiligenceId(diligenceId());
+			finDoc8.setFileName(fileName);
+			finDoc8.setFilePath(filePath);
+			finDoc8.setFileType(docType);
+			
+	    	String result = finDoc8Service.saveFinDoc8(finDoc8);
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+		
+    }
+	
+	@PostMapping({"/addFinDoc9"})
+    public ResponseEntity<?> addFinDoc9(@RequestParam("selectFile") MultipartFile selectFile, @RequestParam("docType") String docType) {
+		AjaxResponse response = new AjaxResponse();
+		String fileName = selectFile.getOriginalFilename();
+		String filePath = "C:\\upload\\"+ diligenceId()+"-"+fileName;
+		try {
+			selectFile.transferTo( new File(filePath));
+			
+			FinDoc9 finDoc9 = new FinDoc9();
+			
+			finDoc9.setCreatedBy(createdById());
+			finDoc9.setDiligenceId(diligenceId());
+			finDoc9.setFileName(fileName);
+			finDoc9.setFilePath(filePath);
+			finDoc9.setFileType(docType);
+			
+	    	String result = finDoc9Service.saveFinDoc9(finDoc9);
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+		
+    }
+	
+	@PostMapping({"/addFinDoc10"})
+    public ResponseEntity<?> addFinDoc10(@RequestParam("selectFile") MultipartFile selectFile, @RequestParam("docType") String docType) {
+		AjaxResponse response = new AjaxResponse();
+		String fileName = selectFile.getOriginalFilename();
+		String filePath = "C:\\upload\\"+ diligenceId()+"-"+fileName;
+		try {
+			selectFile.transferTo( new File(filePath));
+			
+			FinDoc10 finDoc10 = new FinDoc10();
+			
+			finDoc10.setCreatedBy(createdById());
+			finDoc10.setDiligenceId(diligenceId());
+			finDoc10.setFileName(fileName);
+			finDoc10.setFilePath(filePath);
+			finDoc10.setFileType(docType);
+			
+	    	String result = finDoc10Service.saveFinDoc10(finDoc10);
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+		
+    }
+	
+	@PostMapping({"/addFinDoc11"})
+    public ResponseEntity<?> addFinDoc11(@RequestParam("selectFile") MultipartFile selectFile, @RequestParam("docType") String docType) {
+		AjaxResponse response = new AjaxResponse();
+		String fileName = selectFile.getOriginalFilename();
+		String filePath = "C:\\upload\\"+ diligenceId()+"-"+fileName;
+		try {
+			selectFile.transferTo( new File(filePath));
+			
+			FinDoc11 finDoc11 = new FinDoc11();
+			
+			finDoc11.setCreatedBy(createdById());
+			finDoc11.setDiligenceId(diligenceId());
+			finDoc11.setFileName(fileName);
+			finDoc11.setFilePath(filePath);
+			finDoc11.setFileType(docType);
+			
+	    	String result = finDoc11Service.saveFinDoc11(finDoc11);
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+		
+    }
+	
+	@PostMapping({"/addFinDoc12"})
+    public ResponseEntity<?> addFinDoc12(@RequestParam("selectFile") MultipartFile selectFile, @RequestParam("docType") String docType) {
+		AjaxResponse response = new AjaxResponse();
+		String fileName = selectFile.getOriginalFilename();
+		String filePath = "C:\\upload\\"+ diligenceId()+"-"+fileName;
+		try {
+			selectFile.transferTo( new File(filePath));
+			
+			FinDoc12 finDoc12 = new FinDoc12();
+			
+			finDoc12.setCreatedBy(createdById());
+			finDoc12.setDiligenceId(diligenceId());
+			finDoc12.setFileName(fileName);
+			finDoc12.setFilePath(filePath);
+			finDoc12.setFileType(docType);
+			
+	    	String result = finDoc12Service.saveFinDoc12(finDoc12);
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+		
+    }
+	
+	@PostMapping({"/addFinDoc13"})
+    public ResponseEntity<?> addFinDoc13(@RequestParam("selectFile") MultipartFile selectFile, @RequestParam("docType") String docType) {
+		AjaxResponse response = new AjaxResponse();
+		String fileName = selectFile.getOriginalFilename();
+		String filePath = "C:\\upload\\"+ diligenceId()+"-"+fileName;
+		try {
+			selectFile.transferTo( new File(filePath));
+			
+			FinDoc13 finDoc13 = new FinDoc13();
+			
+			finDoc13.setCreatedBy(createdById());
+			finDoc13.setDiligenceId(diligenceId());
+			finDoc13.setFileName(fileName);
+			finDoc13.setFilePath(filePath);
+			finDoc13.setFileType(docType);
+			
+	    	String result = finDoc13Service.saveFinDoc13(finDoc13);
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+		
+    }
+	
+	@PostMapping({"/deleteFinDoc1"})
+    public ResponseEntity<?> deleteFinDoc1(@RequestBody FinDoc1 request, Errors errors) {
+		AjaxResponse response = new AjaxResponse();
+		try {
+	    	
+	    	String result = finDoc1Service.deleteFinDoc1(request.getId());
+	    	
+	    	if(result == "Success") {		        
+		        Path path = Paths.get("C:\\upload\\"+ diligenceId()+"-"+request.getFileName());
+		        Files.delete(path);
+	    	}
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+    }
+	
+	@PostMapping({"/deleteFinDoc2"})
+    public ResponseEntity<?> deleteFinDoc2(@RequestBody FinDoc2 request, Errors errors) {
+		AjaxResponse response = new AjaxResponse();
+		try {
+	    	
+	    	String result = finDoc2Service.deleteFinDoc2(request.getId());
+	    	
+	    	if(result == "Success") {		        
+		        Path path = Paths.get("C:\\upload\\"+ diligenceId()+"-"+request.getFileName());
+		        Files.delete(path);
+	    	}
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+    }
+	
+	@PostMapping({"/deleteFinDoc3"})
+    public ResponseEntity<?> deleteFinDoc3(@RequestBody FinDoc3 request, Errors errors) {
+		AjaxResponse response = new AjaxResponse();
+		try {
+	    	
+	    	String result = finDoc3Service.deleteFinDoc3(request.getId());
+	    	
+	    	if(result == "Success") {		        
+		        Path path = Paths.get("C:\\upload\\"+ diligenceId()+"-"+request.getFileName());
+		        Files.delete(path);
+	    	}
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+    }
+	
+	@PostMapping({"/deleteFinDoc4"})
+    public ResponseEntity<?> deleteFinDoc4(@RequestBody FinDoc4 request, Errors errors) {
+		AjaxResponse response = new AjaxResponse();
+		try {
+	    	
+	    	String result = finDoc4Service.deleteFinDoc4(request.getId());
+	    	
+	    	if(result == "Success") {		        
+		        Path path = Paths.get("C:\\upload\\"+ diligenceId()+"-"+request.getFileName());
+		        Files.delete(path);
+	    	}
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+    }
+	
+	@PostMapping({"/deleteFinDoc5"})
+    public ResponseEntity<?> deleteFinDoc5(@RequestBody FinDoc5 request, Errors errors) {
+		AjaxResponse response = new AjaxResponse();
+		try {
+	    	
+	    	String result = finDoc5Service.deleteFinDoc5(request.getId());
+	    	
+	    	if(result == "Success") {		        
+		        Path path = Paths.get("C:\\upload\\"+ diligenceId()+"-"+request.getFileName());
+		        Files.delete(path);
+	    	}
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+    }
+	
+	@PostMapping({"/deleteFinDoc6"})
+    public ResponseEntity<?> deleteFinDoc6(@RequestBody FinDoc6 request, Errors errors) {
+		AjaxResponse response = new AjaxResponse();
+		try {
+	    	
+	    	String result = finDoc6Service.deleteFinDoc6(request.getId());
+	    	
+	    	if(result == "Success") {		        
+		        Path path = Paths.get("C:\\upload\\"+ diligenceId()+"-"+request.getFileName());
+		        Files.delete(path);
+	    	}
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+    }
+	
+	
+	@PostMapping({"/deleteFinDoc7"})
+    public ResponseEntity<?> deleteFinDoc7(@RequestBody FinDoc7 request, Errors errors) {
+		AjaxResponse response = new AjaxResponse();
+		try {
+	    	
+	    	String result = finDoc7Service.deleteFinDoc7(request.getId());
+	    	
+	    	if(result == "Success") {		        
+		        Path path = Paths.get("C:\\upload\\"+ diligenceId()+"-"+request.getFileName());
+		        Files.delete(path);
+	    	}
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+    }
+	
+	@PostMapping({"/deleteFinDoc8"})
+    public ResponseEntity<?> deleteFinDoc8(@RequestBody FinDoc8 request, Errors errors) {
+		AjaxResponse response = new AjaxResponse();
+		try {
+	    	
+	    	String result = finDoc8Service.deleteFinDoc8(request.getId());
+	    	
+	    	if(result == "Success") {		        
+		        Path path = Paths.get("C:\\upload\\"+ diligenceId()+"-"+request.getFileName());
+		        Files.delete(path);
+	    	}
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+    }
+	
+	@PostMapping({"/deleteFinDoc9"})
+    public ResponseEntity<?> deleteFinDoc9(@RequestBody FinDoc9 request, Errors errors) {
+		AjaxResponse response = new AjaxResponse();
+		try {
+	    	
+	    	String result = finDoc9Service.deleteFinDoc9(request.getId());
+	    	
+	    	if(result == "Success") {		        
+		        Path path = Paths.get("C:\\upload\\"+ diligenceId()+"-"+request.getFileName());
+		        Files.delete(path);
+	    	}
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+    }
+	
+	@PostMapping({"/deleteFinDoc10"})
+    public ResponseEntity<?> deleteFinDoc10(@RequestBody FinDoc10 request, Errors errors) {
+		AjaxResponse response = new AjaxResponse();
+		try {
+	    	
+	    	String result = finDoc10Service.deleteFinDoc10(request.getId());
+	    	
+	    	if(result == "Success") {		        
+		        Path path = Paths.get("C:\\upload\\"+ diligenceId()+"-"+request.getFileName());
+		        Files.delete(path);
+	    	}
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+    }
+	
+	@PostMapping({"/deleteFinDoc11"})
+    public ResponseEntity<?> deleteFinDoc11(@RequestBody FinDoc11 request, Errors errors) {
+		AjaxResponse response = new AjaxResponse();
+		try {
+	    	
+	    	String result = finDoc11Service.deleteFinDoc11(request.getId());
+	    	
+	    	if(result == "Success") {		        
+		        Path path = Paths.get("C:\\upload\\"+ diligenceId()+"-"+request.getFileName());
+		        Files.delete(path);
+	    	}
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+    }
+	
+	@PostMapping({"/deleteFinDoc12"})
+    public ResponseEntity<?> deleteFinDoc12(@RequestBody FinDoc12 request, Errors errors) {
+		AjaxResponse response = new AjaxResponse();
+		try {
+	    	
+	    	String result = finDoc12Service.deleteFinDoc12(request.getId());
+	    	
+	    	if(result == "Success") {		        
+		        Path path = Paths.get("C:\\upload\\"+ diligenceId()+"-"+request.getFileName());
+		        Files.delete(path);
+	    	}
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+    }
+	
+	@PostMapping({"/deleteFinDoc13"})
+    public ResponseEntity<?> deleteFinDoc13(@RequestBody FinDoc13 request, Errors errors) {
+		AjaxResponse response = new AjaxResponse();
+		try {
+	    	
+	    	String result = finDoc13Service.deleteFinDoc13(request.getId());
+	    	
+	    	if(result == "Success") {		        
+		        Path path = Paths.get("C:\\upload\\"+ diligenceId()+"-"+request.getFileName());
+		        Files.delete(path);
+	    	}
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+    }
+	
+	
 	
 	
 }
