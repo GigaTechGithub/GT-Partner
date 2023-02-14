@@ -370,33 +370,149 @@
                                     </div>
                                 </div>
                                 <label class="fieldlabels">Annual and quarterly financial and bank statements</label>
-                                <input type="text"/>
+                                <input type="button" id="fin1" value="Upload Files"/>
+								<table id="fin1Table">
+									<tr th:each="contracts : ${contractsList}">
+								      <td th:text="${contracts.id}" style="display: none"></td>
+								      <td th:text="${contracts.fileName}"></td>
+								      <td>
+								      	<button type="button" name ="fin1DltBtn" id ="fin1Btn" style= "border:none">X</button>
+								      </td>
+								    </tr>
+								</table>
                                 <label class="fieldlabels">Investment and hedging policies</label>
-                                <input type="text"/>
+                                <input type="button" id="fin2" value="Upload Files"/>
+								<table id="fin2Table">
+									<tr th:each="contracts : ${contractsList}">
+								      <td th:text="${contracts.id}" style="display: none"></td>
+								      <td th:text="${contracts.fileName}"></td>
+								      <td>
+								      	<button type="button" name ="fin2DltBtn" id ="fin2Btn" style= "border:none">X</button>
+								      </td>
+								    </tr>
+								</table>
                                 <label class="fieldlabels">Sales and profits by product, channel and geography</label>
-                                <input type="text"/>
+                                <input type="button" id="fin3" value="Upload Files"/>
+								<table id="fin3Table">
+									<tr th:each="contracts : ${contractsList}">
+								      <td th:text="${contracts.id}" style="display: none"></td>
+								      <td th:text="${contracts.fileName}"></td>
+								      <td>
+								      	<button type="button" name ="fin3DltBtn" id ="fin3Btn" style= "border:none">X</button>
+								      </td>
+								    </tr>
+								</table>
                                 <label class="fieldlabels">Accounts receivable</label>
-                                <input type="text"/>
+                                <input type="button" id="fin4" value="Upload Files"/>
+								<table id="fin4Table">
+									<tr th:each="contracts : ${contractsList}">
+								      <td th:text="${contracts.id}" style="display: none"></td>
+								      <td th:text="${contracts.fileName}"></td>
+								      <td>
+								      	<button type="button" name ="fin4DltBtn" id ="fin4Btn" style= "border:none">X</button>
+								      </td>
+								    </tr>
+								</table>
                                 <label class="fieldlabels">Capital structure</label>
-                                <input type="text"/>
+                                <input type="button" id="fin5" value="Upload Files"/>
+								<table id="fin5Table">
+									<tr th:each="contracts : ${contractsList}">
+								      <td th:text="${contracts.id}" style="display: none"></td>
+								      <td th:text="${contracts.fileName}"></td>
+								      <td>
+								      	<button type="button" name ="fin5DltBtn" id ="fin5Btn" style= "border:none">X</button>
+								      </td>
+								    </tr>
+								</table>
                                 <label class="fieldlabels">Summary of debt instruments</label>
-                                <input type="text"/>
+                                <input type="button" id="fin6" value="Upload Files"/>
+								<table id="fin6Table">
+									<tr th:each="contracts : ${contractsList}">
+								      <td th:text="${contracts.id}" style="display: none"></td>
+								      <td th:text="${contracts.fileName}"></td>
+								      <td>
+								      	<button type="button" name ="fin6DltBtn" id ="fin6Btn" style= "border:none">X</button>
+								      </td>
+								    </tr>
+								</table>
                                 <label class="fieldlabels">Financial projections</label>
-                                <input type="text"/>
+                                <input type="button" id="fin7" value="Upload Files"/>
+								<table id="fin7Table">
+									<tr th:each="contracts : ${contractsList}">
+								      <td th:text="${contracts.id}" style="display: none"></td>
+								      <td th:text="${contracts.fileName}"></td>
+								      <td>
+								      	<button type="button" name ="fin7DltBtn" id ="fin7Btn" style= "border:none">X</button>
+								      </td>
+								    </tr>
+								</table>
                                 <label class="fieldlabels">Revenue by product type, customers and channel</label>
-                                <input type="text"/>
+                                <input type="button" id="fin8" value="Upload Files"/>
+								<table id="fin8Table">
+									<tr th:each="contracts : ${contractsList}">
+								      <td th:text="${contracts.id}" style="display: none"></td>
+								      <td th:text="${contracts.fileName}"></td>
+								      <td>
+								      	<button type="button" name ="fin8DltBtn" id ="fin8Btn" style= "border:none">X</button>
+								      </td>
+								    </tr>
+								</table>
                                 <label class="fieldlabels">Major growth drivers and prospects</label>
-                                <input type="text"/>
+                                <input type="button" id="fin9" value="Upload Files"/>
+								<table id="fin9Table">
+									<tr th:each="contracts : ${contractsList}">
+								      <td th:text="${contracts.id}" style="display: none"></td>
+								      <td th:text="${contracts.fileName}"></td>
+								      <td>
+								      	<button type="button" name ="fin9DltBtn" id ="fin9Btn" style= "border:none">X</button>
+								      </td>
+								    </tr>
+								</table>
 								<label class="fieldlabels">Industry and company pricing policies</label>
-                                <input type="text"/>
+                                <input type="button" id="fin10" value="Upload Files"/>
+								<table id="fin10Table">
+									<tr th:each="contracts : ${contractsList}">
+								      <td th:text="${contracts.id}" style="display: none"></td>
+								      <td th:text="${contracts.fileName}"></td>
+								      <td>
+								      	<button type="button" name ="fin10DltBtn" id ="fin10Btn" style= "border:none">X</button>
+								      </td>
+								    </tr>
+								</table>
                                 <label class="fieldlabels">Summary of current tax positions</label>
-                                <input type="text"/>
+                                <input type="button" id="fin11" value="Upload Files"/>
+								<table id="fin11Table">
+									<tr th:each="contracts : ${contractsList}">
+								      <td th:text="${contracts.id}" style="display: none"></td>
+								      <td th:text="${contracts.fileName}"></td>
+								      <td>
+								      	<button type="button" name ="fin11DltBtn" id ="fin11Btn" style= "border:none">X</button>
+								      </td>
+								    </tr>
+								</table>
                                 <label class="fieldlabels">Accounting policies</label>
-                                <input type="text"/>
+                                <input type="button" id="fin12" value="Upload Files"/>
+								<table id="fin12Table">
+									<tr th:each="contracts : ${contractsList}">
+								      <td th:text="${contracts.id}" style="display: none"></td>
+								      <td th:text="${contracts.fileName}"></td>
+								      <td>
+								      	<button type="button" name ="fin12DltBtn" id ="fin12Btn" style= "border:none">X</button>
+								      </td>
+								    </tr>
+								</table>
                                 <label class="fieldlabels">Financing history for equity, warrants and debt</label>
-                                <input type="text"/>
+                                <input type="button" id="fin13" value="Upload Files"/>
+								<table id="fin13Table">
+									<tr th:each="contracts : ${contractsList}">
+								      <td th:text="${contracts.id}" style="display: none"></td>
+								      <td th:text="${contracts.fileName}"></td>
+								      <td>
+								      	<button type="button" name ="fin13DltBtn" id ="fin13Btn" style= "border:none">X</button>
+								      </td>
+								    </tr>
+								</table>
                                 <br>
-                                <input type="hidden" id="rowId3"/>
                             </div>
                             <input type="button" id="thirdStep" name="thirdStep" class="nextFromThirdStep action-button" value="Next"/>
                             <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
@@ -875,6 +991,358 @@
             </div>
         </div>
     </div>
+    
+    <div class="modal fade" id="modelWindow6" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">                  
+                    <h3>Upload File</h3>
+                    <a class="close" data-dismiss="modal">×</a>
+                </div>
+                <form id="contactForm" name="contact" role="form">
+                    <div class="modal-body">				
+                        <div class="form-group">
+                            <label for="docType4">Document Type</label>
+                            <input type="text" name="docType4" class="form-control" id="docType4">
+                        </div>
+                        <div class="form-group">
+                            <label for="selectFile4">Select file from directory</label>
+                            <input type="file" name="selectFile4" class="form-control" id="selectFile4">
+                        </div>					
+                    </div>
+                    <div class="modal-footer">					
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <input type="button" class="btn btn-success" id="uploadFin1" value="Upload">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="modelWindow7" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">                  
+                    <h3>Upload File</h3>
+                    <a class="close" data-dismiss="modal">×</a>
+                </div>
+                <form id="contactForm" name="contact" role="form">
+                    <div class="modal-body">				
+                        <div class="form-group">
+                            <label for="docType5">Document Type</label>
+                            <input type="text" name="docType5" class="form-control" id="docType5">
+                        </div>
+                        <div class="form-group">
+                            <label for="selectFile5">Select file from directory</label>
+                            <input type="file" name="selectFile5" class="form-control" id="selectFile5">
+                        </div>					
+                    </div>
+                    <div class="modal-footer">					
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <input type="button" class="btn btn-success" id="uploadFin2" value="Upload">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="modelWindow8" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">                  
+                    <h3>Upload File</h3>
+                    <a class="close" data-dismiss="modal">×</a>
+                </div>
+                <form id="contactForm" name="contact" role="form">
+                    <div class="modal-body">				
+                        <div class="form-group">
+                            <label for="docType6">Document Type</label>
+                            <input type="text" name="docType6" class="form-control" id="docType6">
+                        </div>
+                        <div class="form-group">
+                            <label for="selectFile6">Select file from directory</label>
+                            <input type="file" name="selectFile6" class="form-control" id="selectFile6">
+                        </div>					
+                    </div>
+                    <div class="modal-footer">					
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <input type="button" class="btn btn-success" id="uploadFin3" value="Upload">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="modelWindow9" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">                  
+                    <h3>Upload File</h3>
+                    <a class="close" data-dismiss="modal">×</a>
+                </div>
+                <form id="contactForm" name="contact" role="form">
+                    <div class="modal-body">				
+                        <div class="form-group">
+                            <label for="docType7">Document Type</label>
+                            <input type="text" name="docType7" class="form-control" id="docType7">
+                        </div>
+                        <div class="form-group">
+                            <label for="selectFile7">Select file from directory</label>
+                            <input type="file" name="selectFile7" class="form-control" id="selectFile7">
+                        </div>					
+                    </div>
+                    <div class="modal-footer">					
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <input type="button" class="btn btn-success" id="uploadFin4" value="Upload">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="modelWindow10" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">                  
+                    <h3>Upload File</h3>
+                    <a class="close" data-dismiss="modal">×</a>
+                </div>
+                <form id="contactForm" name="contact" role="form">
+                    <div class="modal-body">				
+                        <div class="form-group">
+                            <label for="docType8">Document Type</label>
+                            <input type="text" name="docType8" class="form-control" id="docType8">
+                        </div>
+                        <div class="form-group">
+                            <label for="selectFile8">Select file from directory</label>
+                            <input type="file" name="selectFile8" class="form-control" id="selectFile8">
+                        </div>					
+                    </div>
+                    <div class="modal-footer">					
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <input type="button" class="btn btn-success" id="uploadFin5" value="Upload">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="modelWindow11" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">                  
+                    <h3>Upload File</h3>
+                    <a class="close" data-dismiss="modal">×</a>
+                </div>
+                <form id="contactForm" name="contact" role="form">
+                    <div class="modal-body">				
+                        <div class="form-group">
+                            <label for="docType9">Document Type</label>
+                            <input type="text" name="docType9" class="form-control" id="docType9">
+                        </div>
+                        <div class="form-group">
+                            <label for="selectFile9">Select file from directory</label>
+                            <input type="file" name="selectFile9" class="form-control" id="selectFile9">
+                        </div>					
+                    </div>
+                    <div class="modal-footer">					
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <input type="button" class="btn btn-success" id="uploadFin6" value="Upload">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="modelWindow12" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">                  
+                    <h3>Upload File</h3>
+                    <a class="close" data-dismiss="modal">×</a>
+                </div>
+                <form id="contactForm" name="contact" role="form">
+                    <div class="modal-body">				
+                        <div class="form-group">
+                            <label for="docType10">Document Type</label>
+                            <input type="text" name="docType10" class="form-control" id="docType10">
+                        </div>
+                        <div class="form-group">
+                            <label for="selectFile10">Select file from directory</label>
+                            <input type="file" name="selectFile10" class="form-control" id="selectFile10">
+                        </div>					
+                    </div>
+                    <div class="modal-footer">					
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <input type="button" class="btn btn-success" id="uploadFin7" value="Upload">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="modelWindow13" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">                  
+                    <h3>Upload File</h3>
+                    <a class="close" data-dismiss="modal">×</a>
+                </div>
+                <form id="contactForm" name="contact" role="form">
+                    <div class="modal-body">				
+                        <div class="form-group">
+                            <label for="docType11">Document Type</label>
+                            <input type="text" name="docType11" class="form-control" id="docType11">
+                        </div>
+                        <div class="form-group">
+                            <label for="selectFile11">Select file from directory</label>
+                            <input type="file" name="selectFile11" class="form-control" id="selectFile11">
+                        </div>					
+                    </div>
+                    <div class="modal-footer">					
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <input type="button" class="btn btn-success" id="uploadFin8" value="Upload">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="modelWindow14" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">                  
+                    <h3>Upload File</h3>
+                    <a class="close" data-dismiss="modal">×</a>
+                </div>
+                <form id="contactForm" name="contact" role="form">
+                    <div class="modal-body">				
+                        <div class="form-group">
+                            <label for="docType12">Document Type</label>
+                            <input type="text" name="docType12" class="form-control" id="docType12">
+                        </div>
+                        <div class="form-group">
+                            <label for="selectFile12">Select file from directory</label>
+                            <input type="file" name="selectFile12" class="form-control" id="selectFile12">
+                        </div>					
+                    </div>
+                    <div class="modal-footer">					
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <input type="button" class="btn btn-success" id="uploadFin9" value="Upload">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="modelWindow15" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">                  
+                    <h3>Upload File</h3>
+                    <a class="close" data-dismiss="modal">×</a>
+                </div>
+                <form id="contactForm" name="contact" role="form">
+                    <div class="modal-body">				
+                        <div class="form-group">
+                            <label for="docType13">Document Type</label>
+                            <input type="text" name="docType13" class="form-control" id="docType13">
+                        </div>
+                        <div class="form-group">
+                            <label for="selectFile13">Select file from directory</label>
+                            <input type="file" name="selectFile13" class="form-control" id="selectFile13">
+                        </div>					
+                    </div>
+                    <div class="modal-footer">					
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <input type="button" class="btn btn-success" id="uploadFin10" value="Upload">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="modelWindow16" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">                  
+                    <h3>Upload File</h3>
+                    <a class="close" data-dismiss="modal">×</a>
+                </div>
+                <form id="contactForm" name="contact" role="form">
+                    <div class="modal-body">				
+                        <div class="form-group">
+                            <label for="docType14">Document Type</label>
+                            <input type="text" name="docType14" class="form-control" id="docType14">
+                        </div>
+                        <div class="form-group">
+                            <label for="selectFile14">Select file from directory</label>
+                            <input type="file" name="selectFile14" class="form-control" id="selectFile14">
+                        </div>					
+                    </div>
+                    <div class="modal-footer">					
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <input type="button" class="btn btn-success" id="uploadFin11" value="Upload">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="modelWindow17" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">                  
+                    <h3>Upload File</h3>
+                    <a class="close" data-dismiss="modal">×</a>
+                </div>
+                <form id="contactForm" name="contact" role="form">
+                    <div class="modal-body">				
+                        <div class="form-group">
+                            <label for="docType15">Document Type</label>
+                            <input type="text" name="docType15" class="form-control" id="docType15">
+                        </div>
+                        <div class="form-group">
+                            <label for="selectFile15">Select file from directory</label>
+                            <input type="file" name="selectFile15" class="form-control" id="selectFile15">
+                        </div>					
+                    </div>
+                    <div class="modal-footer">					
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <input type="button" class="btn btn-success" id="uploadFin12" value="Upload">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="modelWindow18" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">                  
+                    <h3>Upload File</h3>
+                    <a class="close" data-dismiss="modal">×</a>
+                </div>
+                <form id="contactForm" name="contact" role="form">
+                    <div class="modal-body">				
+                        <div class="form-group">
+                            <label for="docType16">Document Type</label>
+                            <input type="text" name="docType16" class="form-control" id="docType16">
+                        </div>
+                        <div class="form-group">
+                            <label for="selectFile16">Select file from directory</label>
+                            <input type="file" name="selectFile16" class="form-control" id="selectFile16">
+                        </div>					
+                    </div>
+                    <div class="modal-footer">					
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <input type="button" class="btn btn-success" id="uploadFin13" value="Upload">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
     <script th:inline="javascript">
     var a = [[${diligenceStatus}]];
     
@@ -887,6 +1355,20 @@
 	var table1 = document.getElementById("techTable");
 	var table2 = document.getElementById("ipTable");
 	var table3 = document.getElementById("ipTable2");
+	
+	var table4 = document.getElementById("fin1Table");
+	var table5 = document.getElementById("fin2Table");
+	var table6 = document.getElementById("fin3Table");
+	var table7 = document.getElementById("fin4Table");
+	var table8 = document.getElementById("fin5Table");
+	var table9 = document.getElementById("fin6Table");
+	var table10 = document.getElementById("fin7Table");
+	var table11 = document.getElementById("fin8Table");
+	var table12 = document.getElementById("fin9Table");
+	var table13 = document.getElementById("fin10Table");
+	var table14 = document.getElementById("fin11Table");
+	var table15 = document.getElementById("fin12Table");
+	var table16 = document.getElementById("fin13Table");
 	
     $(document).ready(function(){
     	     
@@ -976,6 +1458,59 @@
 
         $('#uploadIP2').click(function() {
             $('#modelWindow5').modal('show');
+        });
+        
+        $('#fin1').click(function() {
+            $('#modelWindow6').modal('show');
+        });
+        
+        $('#fin2').click(function() {
+            $('#modelWindow7').modal('show');
+        });
+        
+        $('#fin3').click(function() {
+            $('#modelWindow8').modal('show');
+        });
+        
+        $('#fin4').click(function() {
+            $('#modelWindow9').modal('show');
+        });
+        
+        $('#fin5').click(function() {
+            $('#modelWindow10').modal('show');
+        });
+        
+        $('#fin6').click(function() {
+            $('#modelWindow11').modal('show');
+        });
+        
+        $('#fin7').click(function() {
+            $('#modelWindow12').modal('show');
+        });
+        
+        
+        $('#fin8').click(function() {
+            $('#modelWindow13').modal('show');
+        });
+        
+        $('#fin9').click(function() {
+            $('#modelWindow14').modal('show');
+        });
+        
+        $('#fin10').click(function() {
+            $('#modelWindow15').modal('show');
+        });
+        
+        $('#fin11').click(function() {
+            $('#modelWindow16').modal('show');
+        });
+        
+        $('#fin12').click(function() {
+            $('#modelWindow17').modal('show');
+        });
+        
+        $('#fin13').click(function() {
+            $('#modelWindow18').modal('show');
         });
 
         $('#addBtn').click(function () {
@@ -1279,6 +1814,656 @@
             			 $("td:nth-child(1)").hide();
             			
             			$('#modelWindow5').modal('hide');
+                    } 
+        		},
+        		
+        		error: function (e) {
+
+                    alert("Failed to save data. Please try again");
+
+                }
+        		
+        	});
+        	
+       	$('#uploadFin1').click(function() {
+   			var formData = new FormData();
+           	var docType = $("#docType4").val();
+           	formData.append('docType', docType);
+           	formData.append('selectFile', $('#selectFile4')[0].files[0])
+           	//console.log(docType);
+           	//console.log($('#selectFile')[0].files[0]);
+
+           	$.ajax({ 
+           		type:"POST", 
+           		url:"/addIpDoc2",
+           		data:formData, 
+           		cache:false,
+           		contentType: false, 
+           		processData:false, 
+           		success:function(data) {
+       				if(data["message"]=="Failed"){
+                       	alert("Failed to save data. Please try again");
+                       }
+                       
+                       else{
+                       	var rowId = data["message"];
+                       	var docType = $("#docType3").val();
+                           var selectFile = $("#selectFile4").val().split(/(\\|\/)/g).pop();
+
+                           $("#docType4").val("");
+               			$("#selectFile4").val("");
+               			
+               			var row = table4.insertRow(0);
+               			var cell1 = row.insertCell(0);
+               			var cell2 = row.insertCell(1);
+               			var cell3 = row.insertCell(2);
+               			 cell1.innerHTML = rowId;
+               			 cell2.innerHTML = selectFile;
+               			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin1DltBtn' + ' id = ' + 'fin1Btn' + ' style= ' + 'border:none'+ '>X</button>';
+               			
+               			 $("td:nth-child(1)").hide();
+               			
+               			$('#modelWindow6').modal('hide');
+                       } 
+           		},
+           		
+           		error: function (e) {
+
+                       alert("Failed to save data. Please try again");
+
+                   }
+           		
+           	});
+            	
+       	$('#uploadFin2').click(function() {
+   			var formData = new FormData();
+           	var docType = $("#docType5").val();
+           	formData.append('docType', docType);
+           	formData.append('selectFile', $('#selectFile5')[0].files[0])
+           	//console.log(docType);
+           	//console.log($('#selectFile')[0].files[0]);
+
+           	$.ajax({ 
+           		type:"POST", 
+           		url:"/addIpDoc2",
+           		data:formData, 
+           		cache:false,
+           		contentType: false, 
+           		processData:false, 
+           		success:function(data) {
+       				if(data["message"]=="Failed"){
+                       	alert("Failed to save data. Please try again");
+                       }
+                       
+                       else{
+                       	var rowId = data["message"];
+                       	var docType = $("#docType5").val();
+                           var selectFile = $("#selectFile5").val().split(/(\\|\/)/g).pop();
+
+                        $("#docType5").val("");
+               			$("#selectFile5").val("");
+               			
+               			var row = table5.insertRow(0);
+               			var cell1 = row.insertCell(0);
+               			var cell2 = row.insertCell(1);
+               			var cell3 = row.insertCell(2);
+               			 cell1.innerHTML = rowId;
+               			 cell2.innerHTML = selectFile;
+               			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin2DltBtn' + ' id = ' + 'fin2Btn' + ' style= ' + 'border:none'+ '>X</button>';
+               			
+               			 $("td:nth-child(1)").hide();
+               			
+               			$('#modelWindow7').modal('hide');
+                       } 
+           		},
+           		
+           		error: function (e) {
+
+                       alert("Failed to save data. Please try again");
+
+                   }
+           		
+           	});
+                	
+       	$('#uploadFin3').click(function() {
+   			var formData = new FormData();
+           	var docType = $("#docType6").val();
+           	formData.append('docType', docType);
+           	formData.append('selectFile', $('#selectFile6')[0].files[0])
+           	//console.log(docType);
+           	//console.log($('#selectFile')[0].files[0]);
+
+           	$.ajax({ 
+           		type:"POST", 
+           		url:"/addIpDoc2",
+           		data:formData, 
+           		cache:false,
+           		contentType: false, 
+           		processData:false, 
+           		success:function(data) {
+       				if(data["message"]=="Failed"){
+                       	alert("Failed to save data. Please try again");
+                       }
+                       
+                       else{
+                       	var rowId = data["message"];
+                       	var docType = $("#docType6").val();
+                           var selectFile = $("#selectFile6").val().split(/(\\|\/)/g).pop();
+
+                           $("#docType6").val("");
+               			$("#selectFile6").val("");
+               			
+               			var row = table6.insertRow(0);
+               			var cell1 = row.insertCell(0);
+               			var cell2 = row.insertCell(1);
+               			var cell3 = row.insertCell(2);
+               			 cell1.innerHTML = rowId;
+               			 cell2.innerHTML = selectFile;
+               			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin3DltBtn' + ' id = ' + 'fin3Btn' + ' style= ' + 'border:none'+ '>X</button>';
+               			
+               			 $("td:nth-child(1)").hide();
+               			
+               			$('#modelWindow8').modal('hide');
+                       } 
+           		},
+           		
+           		error: function (e) {
+
+                       alert("Failed to save data. Please try again");
+
+                   }
+           		
+           	});
+                    	
+       	$('#uploadFin4').click(function() {
+   			var formData = new FormData();
+           	var docType = $("#docType7").val();
+           	formData.append('docType', docType);
+           	formData.append('selectFile', $('#selectFile7')[0].files[0])
+           	//console.log(docType);
+           	//console.log($('#selectFile')[0].files[0]);
+
+           	$.ajax({ 
+           		type:"POST", 
+           		url:"/addIpDoc2",
+           		data:formData, 
+           		cache:false,
+           		contentType: false, 
+           		processData:false, 
+           		success:function(data) {
+       				if(data["message"]=="Failed"){
+                       	alert("Failed to save data. Please try again");
+                       }
+                       
+                       else{
+                       	var rowId = data["message"];
+                       	var docType = $("#docType7").val();
+                           var selectFile = $("#selectFile7").val().split(/(\\|\/)/g).pop();
+
+                        $("#docType7").val("");
+               			$("#selectFile7").val("");
+               			
+               			var row = table7.insertRow(0);
+               			var cell1 = row.insertCell(0);
+               			var cell2 = row.insertCell(1);
+               			var cell3 = row.insertCell(2);
+               			 cell1.innerHTML = rowId;
+               			 cell2.innerHTML = selectFile;
+               			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin4DltBtn' + ' id = ' + 'fin4Btn' + ' style= ' + 'border:none'+ '>X</button>';
+               			
+               			 $("td:nth-child(1)").hide();
+               			
+               			$('#modelWindow9').modal('hide');
+                       } 
+           		},
+           		
+           		error: function (e) {
+
+                       alert("Failed to save data. Please try again");
+
+                   }
+           		
+           	});
+                        	
+       	$('#uploadFin5').click(function() {
+   			var formData = new FormData();
+           	var docType = $("#docType8").val();
+           	formData.append('docType', docType);
+           	formData.append('selectFile', $('#selectFile8')[0].files[0])
+           	//console.log(docType);
+           	//console.log($('#selectFile')[0].files[0]);
+
+           	$.ajax({ 
+           		type:"POST", 
+           		url:"/addIpDoc2",
+           		data:formData, 
+           		cache:false,
+           		contentType: false, 
+           		processData:false, 
+           		success:function(data) {
+       				if(data["message"]=="Failed"){
+                       	alert("Failed to save data. Please try again");
+                       }
+                       
+                       else{
+                       	var rowId = data["message"];
+                       	var docType = $("#docType8").val();
+                           var selectFile = $("#selectFile8").val().split(/(\\|\/)/g).pop();
+
+                        $("#docType8").val("");
+               			$("#selectFile8").val("");
+               			
+               			var row = table8.insertRow(0);
+               			var cell1 = row.insertCell(0);
+               			var cell2 = row.insertCell(1);
+               			var cell3 = row.insertCell(2);
+               			 cell1.innerHTML = rowId;
+               			 cell2.innerHTML = selectFile;
+               			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin5DltBtn' + ' id = ' + 'fin5Btn' + ' style= ' + 'border:none'+ '>X</button>';
+               			
+               			 $("td:nth-child(1)").hide();
+               			
+               			$('#modelWindow10').modal('hide');
+                       } 
+           		},
+           		
+           		error: function (e) {
+
+                       alert("Failed to save data. Please try again");
+
+                   }
+           		
+           	});
+                            	
+       	$('#uploadFin6').click(function() {
+   			var formData = new FormData();
+           	var docType = $("#docType9").val();
+           	formData.append('docType', docType);
+           	formData.append('selectFile', $('#selectFile9')[0].files[0])
+           	//console.log(docType);
+           	//console.log($('#selectFile')[0].files[0]);
+
+           	$.ajax({ 
+           		type:"POST", 
+           		url:"/addIpDoc2",
+           		data:formData, 
+           		cache:false,
+           		contentType: false, 
+           		processData:false, 
+           		success:function(data) {
+       				if(data["message"]=="Failed"){
+                       	alert("Failed to save data. Please try again");
+                       }
+                       
+                       else{
+                       	var rowId = data["message"];
+                       	var docType = $("#docType9").val();
+                           var selectFile = $("#selectFile9").val().split(/(\\|\/)/g).pop();
+
+                        $("#docType9").val("");
+               			$("#selectFile9").val("");
+               			
+               			var row = table9.insertRow(0);
+               			var cell1 = row.insertCell(0);
+               			var cell2 = row.insertCell(1);
+               			var cell3 = row.insertCell(2);
+               			 cell1.innerHTML = rowId;
+               			 cell2.innerHTML = selectFile;
+               			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin6DltBtn' + ' id = ' + 'fin6Btn' + ' style= ' + 'border:none'+ '>X</button>';
+               			
+               			 $("td:nth-child(1)").hide();
+               			
+               			$('#modelWindow11').modal('hide');
+                       } 
+           		},
+           		
+           		error: function (e) {
+
+                       alert("Failed to save data. Please try again");
+
+                   }
+           		
+           	});
+                                	
+     	$('#uploadFin7').click(function() {
+ 			var formData = new FormData();
+         	var docType = $("#docType10").val();
+         	formData.append('docType', docType);
+         	formData.append('selectFile', $('#selectFile10')[0].files[0])
+         	//console.log(docType);
+         	//console.log($('#selectFile')[0].files[0]);
+
+         	$.ajax({ 
+         		type:"POST", 
+         		url:"/addIpDoc2",
+         		data:formData, 
+         		cache:false,
+         		contentType: false, 
+         		processData:false, 
+         		success:function(data) {
+     				if(data["message"]=="Failed"){
+                     	alert("Failed to save data. Please try again");
+                     }
+                     
+                     else{
+                     	var rowId = data["message"];
+                     	var docType = $("#docType10").val();
+                         var selectFile = $("#selectFile10").val().split(/(\\|\/)/g).pop();
+
+                         $("#docType10").val("");
+             			$("#selectFile10").val("");
+             			
+             			var row = table10.insertRow(0);
+             			var cell1 = row.insertCell(0);
+             			var cell2 = row.insertCell(1);
+             			var cell3 = row.insertCell(2);
+             			 cell1.innerHTML = rowId;
+             			 cell2.innerHTML = selectFile;
+             			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin7DltBtn' + ' id = ' + 'fin7Btn' + ' style= ' + 'border:none'+ '>X</button>';
+             			
+             			 $("td:nth-child(1)").hide();
+             			
+             			$('#modelWindow12').modal('hide');
+                     } 
+         		},
+         		
+         		error: function (e) {
+
+                     alert("Failed to save data. Please try again");
+
+                 }
+         		
+         	});
+                                    	
+     	$('#uploadFin8').click(function() {
+ 			var formData = new FormData();
+         	var docType = $("#docType11").val();
+         	formData.append('docType', docType);
+         	formData.append('selectFile', $('#selectFile11')[0].files[0])
+         	//console.log(docType);
+         	//console.log($('#selectFile')[0].files[0]);
+
+         	$.ajax({ 
+         		type:"POST", 
+         		url:"/addIpDoc2",
+         		data:formData, 
+         		cache:false,
+         		contentType: false, 
+         		processData:false, 
+         		success:function(data) {
+     				if(data["message"]=="Failed"){
+                     	alert("Failed to save data. Please try again");
+                     }
+                     
+                     else{
+                     	var rowId = data["message"];
+                     	var docType = $("#docType11").val();
+                         var selectFile = $("#selectFile11").val().split(/(\\|\/)/g).pop();
+
+                         $("#docType11").val("");
+             			$("#selectFile11").val("");
+             			
+             			var row = table11.insertRow(0);
+             			var cell1 = row.insertCell(0);
+             			var cell2 = row.insertCell(1);
+             			var cell3 = row.insertCell(2);
+             			 cell1.innerHTML = rowId;
+             			 cell2.innerHTML = selectFile;
+             			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin8DltBtn' + ' id = ' + 'fin8Btn' + ' style= ' + 'border:none'+ '>X</button>';
+             			
+             			 $("td:nth-child(1)").hide();
+             			
+             			$('#modelWindow13').modal('hide');
+                     } 
+         		},
+         		
+         		error: function (e) {
+
+                     alert("Failed to save data. Please try again");
+
+                 }
+         		
+         	});
+                                        	
+     	$('#uploadFin9').click(function() {
+ 			var formData = new FormData();
+         	var docType = $("#docType12").val();
+         	formData.append('docType', docType);
+         	formData.append('selectFile', $('#selectFile12')[0].files[0])
+         	//console.log(docType);
+         	//console.log($('#selectFile')[0].files[0]);
+
+         	$.ajax({ 
+         		type:"POST", 
+         		url:"/addIpDoc2",
+         		data:formData, 
+         		cache:false,
+         		contentType: false, 
+         		processData:false, 
+         		success:function(data) {
+     				if(data["message"]=="Failed"){
+                     	alert("Failed to save data. Please try again");
+                     }
+                     
+                     else{
+                     	var rowId = data["message"];
+                     	var docType = $("#docType12").val();
+                         var selectFile = $("#selectFile12").val().split(/(\\|\/)/g).pop();
+
+                         $("#docType12").val("");
+             			$("#selectFile12").val("");
+             			
+             			var row = table12.insertRow(0);
+             			var cell1 = row.insertCell(0);
+             			var cell2 = row.insertCell(1);
+             			var cell3 = row.insertCell(2);
+             			 cell1.innerHTML = rowId;
+             			 cell2.innerHTML = selectFile;
+             			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin9DltBtn' + ' id = ' + 'fin9Btn' + ' style= ' + 'border:none'+ '>X</button>';
+             			
+             			 $("td:nth-child(1)").hide();
+             			
+             			$('#modelWindow14').modal('hide');
+                     } 
+         		},
+         		
+         		error: function (e) {
+
+                     alert("Failed to save data. Please try again");
+
+                 }
+         		
+         	});
+                                            	
+     	$('#uploadFin10').click(function() {
+ 			var formData = new FormData();
+         	var docType = $("#docType13").val();
+         	formData.append('docType', docType);
+         	formData.append('selectFile', $('#selectFile13')[0].files[0])
+         	//console.log(docType);
+         	//console.log($('#selectFile')[0].files[0]);
+
+         	$.ajax({ 
+         		type:"POST", 
+         		url:"/addIpDoc2",
+         		data:formData, 
+         		cache:false,
+         		contentType: false, 
+         		processData:false, 
+         		success:function(data) {
+     				if(data["message"]=="Failed"){
+                     	alert("Failed to save data. Please try again");
+                     }
+                     
+                     else{
+                     	var rowId = data["message"];
+                     	var docType = $("#docType13").val();
+                         var selectFile = $("#selectFile13").val().split(/(\\|\/)/g).pop();
+
+                         $("#docType13").val("");
+             			$("#selectFile13").val("");
+             			
+             			var row = table13.insertRow(0);
+             			var cell1 = row.insertCell(0);
+             			var cell2 = row.insertCell(1);
+             			var cell3 = row.insertCell(2);
+             			 cell1.innerHTML = rowId;
+             			 cell2.innerHTML = selectFile;
+             			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin10DltBtn' + ' id = ' + 'fin10Btn' + ' style= ' + 'border:none'+ '>X</button>';
+             			
+             			 $("td:nth-child(1)").hide();
+             			
+             			$('#modelWindow15').modal('hide');
+                     } 
+         		},
+         		
+         		error: function (e) {
+
+                     alert("Failed to save data. Please try again");
+
+                 }
+         		
+         	});
+                                                	
+    	$('#uploadFin11').click(function() {
+			var formData = new FormData();
+        	var docType = $("#docType14").val();
+        	formData.append('docType', docType);
+        	formData.append('selectFile', $('#selectFile14')[0].files[0])
+        	//console.log(docType);
+        	//console.log($('#selectFile')[0].files[0]);
+
+        	$.ajax({ 
+        		type:"POST", 
+        		url:"/addIpDoc2",
+        		data:formData, 
+        		cache:false,
+        		contentType: false, 
+        		processData:false, 
+        		success:function(data) {
+    				if(data["message"]=="Failed"){
+                    	alert("Failed to save data. Please try again");
+                    }
+                    
+                    else{
+                    	var rowId = data["message"];
+                    	var docType = $("#docType14").val();
+                        var selectFile = $("#selectFile14").val().split(/(\\|\/)/g).pop();
+
+                        $("#docType14").val("");
+            			$("#selectFile14").val("");
+            			
+            			var row = table14.insertRow(0);
+            			var cell1 = row.insertCell(0);
+            			var cell2 = row.insertCell(1);
+            			var cell3 = row.insertCell(2);
+            			 cell1.innerHTML = rowId;
+            			 cell2.innerHTML = selectFile;
+            			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin11DltBtn' + ' id = ' + 'fin11Btn' + ' style= ' + 'border:none'+ '>X</button>';
+            			
+            			 $("td:nth-child(1)").hide();
+            			
+            			$('#modelWindow16').modal('hide');
+                    } 
+        		},
+        		
+        		error: function (e) {
+
+                    alert("Failed to save data. Please try again");
+
+                }
+        		
+        	});
+                                                    	
+    	$('#uploadFin12').click(function() {
+			var formData = new FormData();
+        	var docType = $("#docType15").val();
+        	formData.append('docType', docType);
+        	formData.append('selectFile', $('#selectFile15')[0].files[0])
+        	//console.log(docType);
+        	//console.log($('#selectFile')[0].files[0]);
+
+        	$.ajax({ 
+        		type:"POST", 
+        		url:"/addIpDoc2",
+        		data:formData, 
+        		cache:false,
+        		contentType: false, 
+        		processData:false, 
+        		success:function(data) {
+    				if(data["message"]=="Failed"){
+                    	alert("Failed to save data. Please try again");
+                    }
+                    
+                    else{
+                    	var rowId = data["message"];
+                    	var docType = $("#docType15").val();
+                        var selectFile = $("#selectFile15").val().split(/(\\|\/)/g).pop();
+
+                        $("#docType15").val("");
+            			$("#selectFile15").val("");
+            			
+            			var row = table15.insertRow(0);
+            			var cell1 = row.insertCell(0);
+            			var cell2 = row.insertCell(1);
+            			var cell3 = row.insertCell(2);
+            			 cell1.innerHTML = rowId;
+            			 cell2.innerHTML = selectFile;
+            			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin12DltBtn' + ' id = ' + 'fin12Btn' + ' style= ' + 'border:none'+ '>X</button>';
+            			
+            			 $("td:nth-child(1)").hide();
+            			
+            			$('#modelWindow17').modal('hide');
+                    } 
+        		},
+        		
+        		error: function (e) {
+
+                    alert("Failed to save data. Please try again");
+
+                }
+        		
+        	});
+                                                        	
+    	$('#uploadFin13').click(function() {
+			var formData = new FormData();
+        	var docType = $("#docType16").val();
+        	formData.append('docType', docType);
+        	formData.append('selectFile', $('#selectFile16')[0].files[0])
+        	//console.log(docType);
+        	//console.log($('#selectFile')[0].files[0]);
+
+        	$.ajax({ 
+        		type:"POST", 
+        		url:"/addIpDoc2",
+        		data:formData, 
+        		cache:false,
+        		contentType: false, 
+        		processData:false, 
+        		success:function(data) {
+    				if(data["message"]=="Failed"){
+                    	alert("Failed to save data. Please try again");
+                    }
+                    
+                    else{
+                    	var rowId = data["message"];
+                    	var docType = $("#docType16").val();
+                        var selectFile = $("#selectFile16").val().split(/(\\|\/)/g).pop();
+
+                        $("#docType16").val("");
+            			$("#selectFile16").val("");
+            			
+            			var row = table16.insertRow(0);
+            			var cell1 = row.insertCell(0);
+            			var cell2 = row.insertCell(1);
+            			var cell3 = row.insertCell(2);
+            			 cell1.innerHTML = rowId;
+            			 cell2.innerHTML = selectFile;
+            			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin13DltBtn' + ' id = ' + 'fin13Btn' + ' style= ' + 'border:none'+ '>X</button>';
+            			
+            			 $("td:nth-child(1)").hide();
+            			
+            			$('#modelWindow18').modal('hide');
                     } 
         		},
         		
@@ -1616,12 +2801,618 @@
 
                }
            });
+           
+    $(document).on('click', '#fin1DltBtn', function(){
+ 	   
+ 	   
+		var r=confirm("Are you sure want to remove?");
+		if (r==true)
+		{				
+		  var row = $(this).parents('tr');      
+          var contracts = {};
+          var rowData = row.data();
+          contracts['id'] = row.find('td:eq(0)').text();
+          contracts['fileName'] = row.find('td:eq(1)').text();
+          
+          $.ajax({
+              type: "POST",
+              contentType: "application/json",
+              url: "/deleteIpDoc2",
+              data: JSON.stringify(contracts),
+              dataType: 'json',
+              cache: false,
+              timeout: 600000,
+              success: function (data) {
+                  console.log(data["message"]);
+                  
+                  if(data["message"]=="Failed"){
+                  	alert("Failed to delete data. Please try again");
+                  }
+                  
+                  else{
+                  	//t.row( $(this).parents('tr') ).remove().draw();
+                  	//row.remove().draw();
+                  	row.remove();
+                  }
+
+              },
+              error: function (e) {
+
+                  alert("Failed to delete data. Please try again");
+
+              }
+          });
 		}
 		else
 		{
 			
 		}
-	});
+    });
+    
+    $(document).on('click', '#fin2DltBtn', function(){
+  	   
+  	   
+		var r=confirm("Are you sure want to remove?");
+		if (r==true)
+		{				
+		  var row = $(this).parents('tr');      
+          var contracts = {};
+          var rowData = row.data();
+          contracts['id'] = row.find('td:eq(0)').text();
+          contracts['fileName'] = row.find('td:eq(1)').text();
+          
+          $.ajax({
+              type: "POST",
+              contentType: "application/json",
+              url: "/deleteIpDoc2",
+              data: JSON.stringify(contracts),
+              dataType: 'json',
+              cache: false,
+              timeout: 600000,
+              success: function (data) {
+                  console.log(data["message"]);
+                  
+                  if(data["message"]=="Failed"){
+                  	alert("Failed to delete data. Please try again");
+                  }
+                  
+                  else{
+                  	//t.row( $(this).parents('tr') ).remove().draw();
+                  	//row.remove().draw();
+                  	row.remove();
+                  }
+
+              },
+              error: function (e) {
+
+                  alert("Failed to delete data. Please try again");
+
+              }
+          });
+		}
+		else
+		{
+			
+		}
+    });
+    
+    $(document).on('click', '#fin3DltBtn', function(){
+  	   
+  	   
+		var r=confirm("Are you sure want to remove?");
+		if (r==true)
+		{				
+		  var row = $(this).parents('tr');      
+          var contracts = {};
+          var rowData = row.data();
+          contracts['id'] = row.find('td:eq(0)').text();
+          contracts['fileName'] = row.find('td:eq(1)').text();
+          
+          $.ajax({
+              type: "POST",
+              contentType: "application/json",
+              url: "/deleteIpDoc2",
+              data: JSON.stringify(contracts),
+              dataType: 'json',
+              cache: false,
+              timeout: 600000,
+              success: function (data) {
+                  console.log(data["message"]);
+                  
+                  if(data["message"]=="Failed"){
+                  	alert("Failed to delete data. Please try again");
+                  }
+                  
+                  else{
+                  	//t.row( $(this).parents('tr') ).remove().draw();
+                  	//row.remove().draw();
+                  	row.remove();
+                  }
+
+              },
+              error: function (e) {
+
+                  alert("Failed to delete data. Please try again");
+
+              }
+          });
+		}
+		else
+		{
+			
+		}
+    });
+    
+    $(document).on('click', '#fin4DltBtn', function(){
+  	   
+  	   
+		var r=confirm("Are you sure want to remove?");
+		if (r==true)
+		{				
+		  var row = $(this).parents('tr');      
+          var contracts = {};
+          var rowData = row.data();
+          contracts['id'] = row.find('td:eq(0)').text();
+          contracts['fileName'] = row.find('td:eq(1)').text();
+          
+          $.ajax({
+              type: "POST",
+              contentType: "application/json",
+              url: "/deleteIpDoc2",
+              data: JSON.stringify(contracts),
+              dataType: 'json',
+              cache: false,
+              timeout: 600000,
+              success: function (data) {
+                  console.log(data["message"]);
+                  
+                  if(data["message"]=="Failed"){
+                  	alert("Failed to delete data. Please try again");
+                  }
+                  
+                  else{
+                  	//t.row( $(this).parents('tr') ).remove().draw();
+                  	//row.remove().draw();
+                  	row.remove();
+                  }
+
+              },
+              error: function (e) {
+
+                  alert("Failed to delete data. Please try again");
+
+              }
+          });
+		}
+		else
+		{
+			
+		}
+    });
+    
+    $(document).on('click', '#fin5DltBtn', function(){
+  	   
+  	   
+		var r=confirm("Are you sure want to remove?");
+		if (r==true)
+		{				
+		  var row = $(this).parents('tr');      
+          var contracts = {};
+          var rowData = row.data();
+          contracts['id'] = row.find('td:eq(0)').text();
+          contracts['fileName'] = row.find('td:eq(1)').text();
+          
+          $.ajax({
+              type: "POST",
+              contentType: "application/json",
+              url: "/deleteIpDoc2",
+              data: JSON.stringify(contracts),
+              dataType: 'json',
+              cache: false,
+              timeout: 600000,
+              success: function (data) {
+                  console.log(data["message"]);
+                  
+                  if(data["message"]=="Failed"){
+                  	alert("Failed to delete data. Please try again");
+                  }
+                  
+                  else{
+                  	//t.row( $(this).parents('tr') ).remove().draw();
+                  	//row.remove().draw();
+                  	row.remove();
+                  }
+
+              },
+              error: function (e) {
+
+                  alert("Failed to delete data. Please try again");
+
+              }
+          });
+		}
+		else
+		{
+			
+		}
+    });
+    
+    $(document).on('click', '#fin6DltBtn', function(){
+  	   
+  	   
+		var r=confirm("Are you sure want to remove?");
+		if (r==true)
+		{				
+		  var row = $(this).parents('tr');      
+          var contracts = {};
+          var rowData = row.data();
+          contracts['id'] = row.find('td:eq(0)').text();
+          contracts['fileName'] = row.find('td:eq(1)').text();
+          
+          $.ajax({
+              type: "POST",
+              contentType: "application/json",
+              url: "/deleteIpDoc2",
+              data: JSON.stringify(contracts),
+              dataType: 'json',
+              cache: false,
+              timeout: 600000,
+              success: function (data) {
+                  console.log(data["message"]);
+                  
+                  if(data["message"]=="Failed"){
+                  	alert("Failed to delete data. Please try again");
+                  }
+                  
+                  else{
+                  	//t.row( $(this).parents('tr') ).remove().draw();
+                  	//row.remove().draw();
+                  	row.remove();
+                  }
+
+              },
+              error: function (e) {
+
+                  alert("Failed to delete data. Please try again");
+
+              }
+          });
+		}
+		else
+		{
+			
+		}
+    });
+    
+    $(document).on('click', '#fin7DltBtn', function(){
+  	   
+  	   
+		var r=confirm("Are you sure want to remove?");
+		if (r==true)
+		{				
+		  var row = $(this).parents('tr');      
+          var contracts = {};
+          var rowData = row.data();
+          contracts['id'] = row.find('td:eq(0)').text();
+          contracts['fileName'] = row.find('td:eq(1)').text();
+          
+          $.ajax({
+              type: "POST",
+              contentType: "application/json",
+              url: "/deleteIpDoc2",
+              data: JSON.stringify(contracts),
+              dataType: 'json',
+              cache: false,
+              timeout: 600000,
+              success: function (data) {
+                  console.log(data["message"]);
+                  
+                  if(data["message"]=="Failed"){
+                  	alert("Failed to delete data. Please try again");
+                  }
+                  
+                  else{
+                  	//t.row( $(this).parents('tr') ).remove().draw();
+                  	//row.remove().draw();
+                  	row.remove();
+                  }
+
+              },
+              error: function (e) {
+
+                  alert("Failed to delete data. Please try again");
+
+              }
+          });
+		}
+		else
+		{
+			
+		}
+    });
+    
+    $(document).on('click', '#fin8DltBtn', function(){
+  	   
+  	   
+		var r=confirm("Are you sure want to remove?");
+		if (r==true)
+		{				
+		  var row = $(this).parents('tr');      
+          var contracts = {};
+          var rowData = row.data();
+          contracts['id'] = row.find('td:eq(0)').text();
+          contracts['fileName'] = row.find('td:eq(1)').text();
+          
+          $.ajax({
+              type: "POST",
+              contentType: "application/json",
+              url: "/deleteIpDoc2",
+              data: JSON.stringify(contracts),
+              dataType: 'json',
+              cache: false,
+              timeout: 600000,
+              success: function (data) {
+                  console.log(data["message"]);
+                  
+                  if(data["message"]=="Failed"){
+                  	alert("Failed to delete data. Please try again");
+                  }
+                  
+                  else{
+                  	//t.row( $(this).parents('tr') ).remove().draw();
+                  	//row.remove().draw();
+                  	row.remove();
+                  }
+
+              },
+              error: function (e) {
+
+                  alert("Failed to delete data. Please try again");
+
+              }
+          });
+		}
+		else
+		{
+			
+		}
+    });
+    
+    $(document).on('click', '#fin9DltBtn', function(){
+  	   
+  	   
+		var r=confirm("Are you sure want to remove?");
+		if (r==true)
+		{				
+		  var row = $(this).parents('tr');      
+          var contracts = {};
+          var rowData = row.data();
+          contracts['id'] = row.find('td:eq(0)').text();
+          contracts['fileName'] = row.find('td:eq(1)').text();
+          
+          $.ajax({
+              type: "POST",
+              contentType: "application/json",
+              url: "/deleteIpDoc2",
+              data: JSON.stringify(contracts),
+              dataType: 'json',
+              cache: false,
+              timeout: 600000,
+              success: function (data) {
+                  console.log(data["message"]);
+                  
+                  if(data["message"]=="Failed"){
+                  	alert("Failed to delete data. Please try again");
+                  }
+                  
+                  else{
+                  	//t.row( $(this).parents('tr') ).remove().draw();
+                  	//row.remove().draw();
+                  	row.remove();
+                  }
+
+              },
+              error: function (e) {
+
+                  alert("Failed to delete data. Please try again");
+
+              }
+          });
+		}
+		else
+		{
+			
+		}
+    });
+    
+    $(document).on('click', '#fin10DltBtn', function(){
+  	   
+  	   
+		var r=confirm("Are you sure want to remove?");
+		if (r==true)
+		{				
+		  var row = $(this).parents('tr');      
+          var contracts = {};
+          var rowData = row.data();
+          contracts['id'] = row.find('td:eq(0)').text();
+          contracts['fileName'] = row.find('td:eq(1)').text();
+          
+          $.ajax({
+              type: "POST",
+              contentType: "application/json",
+              url: "/deleteIpDoc2",
+              data: JSON.stringify(contracts),
+              dataType: 'json',
+              cache: false,
+              timeout: 600000,
+              success: function (data) {
+                  console.log(data["message"]);
+                  
+                  if(data["message"]=="Failed"){
+                  	alert("Failed to delete data. Please try again");
+                  }
+                  
+                  else{
+                  	//t.row( $(this).parents('tr') ).remove().draw();
+                  	//row.remove().draw();
+                  	row.remove();
+                  }
+
+              },
+              error: function (e) {
+
+                  alert("Failed to delete data. Please try again");
+
+              }
+          });
+		}
+		else
+		{
+			
+		}
+    });
+    
+    $(document).on('click', '#fin11DltBtn', function(){
+  	   
+  	   
+		var r=confirm("Are you sure want to remove?");
+		if (r==true)
+		{				
+		  var row = $(this).parents('tr');      
+          var contracts = {};
+          var rowData = row.data();
+          contracts['id'] = row.find('td:eq(0)').text();
+          contracts['fileName'] = row.find('td:eq(1)').text();
+          
+          $.ajax({
+              type: "POST",
+              contentType: "application/json",
+              url: "/deleteIpDoc2",
+              data: JSON.stringify(contracts),
+              dataType: 'json',
+              cache: false,
+              timeout: 600000,
+              success: function (data) {
+                  console.log(data["message"]);
+                  
+                  if(data["message"]=="Failed"){
+                  	alert("Failed to delete data. Please try again");
+                  }
+                  
+                  else{
+                  	//t.row( $(this).parents('tr') ).remove().draw();
+                  	//row.remove().draw();
+                  	row.remove();
+                  }
+
+              },
+              error: function (e) {
+
+                  alert("Failed to delete data. Please try again");
+
+              }
+          });
+		}
+		else
+		{
+			
+		}
+    });
+    
+    $(document).on('click', '#fin12DltBtn', function(){
+  	   
+  	   
+		var r=confirm("Are you sure want to remove?");
+		if (r==true)
+		{				
+		  var row = $(this).parents('tr');      
+          var contracts = {};
+          var rowData = row.data();
+          contracts['id'] = row.find('td:eq(0)').text();
+          contracts['fileName'] = row.find('td:eq(1)').text();
+          
+          $.ajax({
+              type: "POST",
+              contentType: "application/json",
+              url: "/deleteIpDoc2",
+              data: JSON.stringify(contracts),
+              dataType: 'json',
+              cache: false,
+              timeout: 600000,
+              success: function (data) {
+                  console.log(data["message"]);
+                  
+                  if(data["message"]=="Failed"){
+                  	alert("Failed to delete data. Please try again");
+                  }
+                  
+                  else{
+                  	//t.row( $(this).parents('tr') ).remove().draw();
+                  	//row.remove().draw();
+                  	row.remove();
+                  }
+
+              },
+              error: function (e) {
+
+                  alert("Failed to delete data. Please try again");
+
+              }
+          });
+		}
+		else
+		{
+			
+		}
+    });
+    
+    $(document).on('click', '#fin13DltBtn', function(){
+  	   
+  	   
+		var r=confirm("Are you sure want to remove?");
+		if (r==true)
+		{				
+		  var row = $(this).parents('tr');      
+          var contracts = {};
+          var rowData = row.data();
+          contracts['id'] = row.find('td:eq(0)').text();
+          contracts['fileName'] = row.find('td:eq(1)').text();
+          
+          $.ajax({
+              type: "POST",
+              contentType: "application/json",
+              url: "/deleteIpDoc2",
+              data: JSON.stringify(contracts),
+              dataType: 'json',
+              cache: false,
+              timeout: 600000,
+              success: function (data) {
+                  console.log(data["message"]);
+                  
+                  if(data["message"]=="Failed"){
+                  	alert("Failed to delete data. Please try again");
+                  }
+                  
+                  else{
+                  	//t.row( $(this).parents('tr') ).remove().draw();
+                  	//row.remove().draw();
+                  	row.remove();
+                  }
+
+              },
+              error: function (e) {
+
+                  alert("Failed to delete data. Please try again");
+
+              }
+          });
+		}
+		else
+		{
+			
+		}
+    });
+    
     </script>        
 </div>
 
