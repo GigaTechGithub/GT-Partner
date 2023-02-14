@@ -229,6 +229,19 @@ public class HomeController {
 		model.addAttribute("ipDoc2List", ipDoc2List);
 		model.addAttribute("getCountries", getCountries());
 		model.addAttribute("diligenceStatus", diligenceStatus);
+		model.addAttribute("finDoc1List", finDoc1List);
+		model.addAttribute("finDoc2List", finDoc2List);
+		model.addAttribute("finDoc3List", finDoc3List);
+		model.addAttribute("finDoc4List", finDoc4List);
+		model.addAttribute("finDoc5List", finDoc5List);
+		model.addAttribute("finDoc6List", finDoc6List);
+		model.addAttribute("finDoc7List", finDoc7List);
+		model.addAttribute("finDoc8List", finDoc8List);
+		model.addAttribute("finDoc9List", finDoc9List);
+		model.addAttribute("finDoc10List", finDoc10List);
+		model.addAttribute("finDoc11List", finDoc11List);
+		model.addAttribute("finDoc12List", finDoc12List);
+		model.addAttribute("finDoc13List", finDoc13List);
 		
     	//return "view/profileCompleteForm";
 		

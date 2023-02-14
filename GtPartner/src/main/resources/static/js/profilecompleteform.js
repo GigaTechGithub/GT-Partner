@@ -255,29 +255,64 @@ $(document).ready(function(){
 	
 	$(".nextFromThirdStep").click(function(){
         
-        current_fs = $(this).parent();
-        next_fs = $(this).parent().next();
-        
-        //Add Class Active
-        $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-        
-        //show the next fieldset
-        next_fs.show(); 
-        //hide the current fieldset with style
-        current_fs.animate({opacity: 0}, {
-            step: function(now) {
-                // for making fielset appear animation
-                opacity = 1 - now;
-    
-                current_fs.css({
-                    'display': 'none',
-                    'position': 'relative'
-                });
-                next_fs.css({'opacity': opacity});
-            }, 
-            duration: 500
+        $.ajax({
+            type: "POST",
+            //contentType: "application/json",
+            url: "/addFinancial",
+            //data: JSON.stringify(legal),
+            dataType: 'json',
+            cache: false,
+            timeout: 600000,
+            success: function (data) {
+                console.log(data["message"]);
+                if(data["message"]=="Failed"){
+                	alert("Failed to save data. Please try again");
+                	result = data["message"];
+                }
+                
+                else{
+                	result = data["message"];
+                }
+
+            },
+            error: function (e) {
+
+                alert("Failed to save data. Please try again");
+                result = "Failed";
+
+            },
+            async: false
         });
-        setProgressBar(++current);
+        
+        if(result == "Failed"){
+        	
+        }
+        
+        else{
+        	current_fs = $(this).parent();
+			next_fs = $(this).parent().next();
+			
+			//Add Class Active
+			$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+			
+			//show the next fieldset
+			next_fs.show(); 
+			//hide the current fieldset with style
+			current_fs.animate({opacity: 0}, {
+				step: function(now) {
+					// for making fielset appear animation
+					opacity = 1 - now;
+		
+					current_fs.css({
+						'display': 'none',
+						'position': 'relative'
+					});
+					next_fs.css({'opacity': opacity});
+				}, 
+				duration: 500
+			});
+			setProgressBar(++current);
+        }
     });
 	
 	$(".nextFromFourthStep").click(function(){

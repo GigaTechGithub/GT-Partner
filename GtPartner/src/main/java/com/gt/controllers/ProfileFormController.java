@@ -307,7 +307,7 @@ public class ProfileFormController {
 	    	
 	    	Diligence diligence = diligenceService.findById(diligenceId()).get(0);
 	    	
-	    	if(diligence.getProfileStatus() != 90) {
+	    	if(diligence.getProfileStatus() < 10) {
 	    		diligence.setProfileStatus(10);
 		    	
 		    	diligenceService.saveDiligence(diligence);
@@ -356,10 +356,37 @@ public class ProfileFormController {
 	    	
 	    	Diligence diligence = diligenceService.findById(diligenceId()).get(0);
 	    	
-	    	if(diligence.getProfileStatus() != 90) {
+	    	if(diligence.getProfileStatus() < 20) {
 	    		diligence.setProfileStatus(20);
 		    	
 		    	diligenceService.saveDiligence(diligence);
+	    	}
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+    }
+	
+	@PostMapping({"/addFinancial"})
+    public ResponseEntity<?> addFinancial() {
+		AjaxResponse response = new AjaxResponse();
+		String result="Success";
+		try {
+	    	
+	    	Diligence diligence = diligenceService.findById(diligenceId()).get(0);
+	    	
+	    	if(diligence.getProfileStatus() < 30) {
+	    		diligence.setProfileStatus(30);
+		    	
+		    	result = diligenceService.saveDiligence(diligence);
 	    	}
 	    	
 	    	response.setMessage(result);
@@ -450,7 +477,7 @@ public class ProfileFormController {
 	    	
 	    	Diligence diligence = diligenceService.findById(diligenceId()).get(0);
 	    	
-	    	if(diligence.getProfileStatus() != 90) {
+	    	if(diligence.getProfileStatus() < 40) {
 	    		
 	    		diligence.setProfileStatus(40);
 		    	
@@ -527,7 +554,7 @@ public class ProfileFormController {
 	    	
 	    	Diligence diligence = diligenceService.findById(diligenceId()).get(0);
 	    	
-	    	if(diligence.getProfileStatus() != 90) {
+	    	if(diligence.getProfileStatus() < 50) {
 	    		
 	    		diligence.setProfileStatus(50);
 		    	
@@ -627,7 +654,7 @@ public class ProfileFormController {
 	    	
 	    	Diligence diligence = diligenceService.findById(diligenceId()).get(0);
 	    	
-	    	if(diligence.getProfileStatus() != 90) {
+	    	if(diligence.getProfileStatus() <60) {
 	    		
 	    		diligence.setProfileStatus(60);
 		    	

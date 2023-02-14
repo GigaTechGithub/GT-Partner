@@ -372,143 +372,155 @@
                                 <label class="fieldlabels">Annual and quarterly financial and bank statements</label>
                                 <input type="button" id="fin1" value="Upload Files"/>
 								<table id="fin1Table">
-									<tr th:each="contracts : ${contractsList}">
-								      <td th:text="${contracts.id}" style="display: none"></td>
-								      <td th:text="${contracts.fileName}"></td>
+									<tr th:each="finDoc1 : ${finDoc1List}">
+								      <td th:text="${finDoc1.id}" style="display: none"></td>
+								      <td th:text="${finDoc1.fileName}"></td>
 								      <td>
-								      	<button type="button" name ="fin1DltBtn" id ="fin1Btn" style= "border:none">X</button>
+								      	<button type="button" name ="fin1DltBtn" id ="fin1DltBtn" style= "border:none">X</button>
 								      </td>
 								    </tr>
 								</table>
+								<br>
                                 <label class="fieldlabels">Investment and hedging policies</label>
                                 <input type="button" id="fin2" value="Upload Files"/>
 								<table id="fin2Table">
-									<tr th:each="contracts : ${contractsList}">
-								      <td th:text="${contracts.id}" style="display: none"></td>
-								      <td th:text="${contracts.fileName}"></td>
+									<tr th:each="finDoc2 : ${finDoc2List}">
+								      <td th:text="${finDoc2.id}" style="display: none"></td>
+								      <td th:text="${finDoc2.fileName}"></td>
 								      <td>
-								      	<button type="button" name ="fin2DltBtn" id ="fin2Btn" style= "border:none">X</button>
+								      	<button type="button" name ="fin2DltBtn" id ="fin2DltBtn" style= "border:none">X</button>
 								      </td>
 								    </tr>
 								</table>
+								<br>
                                 <label class="fieldlabels">Sales and profits by product, channel and geography</label>
                                 <input type="button" id="fin3" value="Upload Files"/>
 								<table id="fin3Table">
-									<tr th:each="contracts : ${contractsList}">
-								      <td th:text="${contracts.id}" style="display: none"></td>
-								      <td th:text="${contracts.fileName}"></td>
+									<tr th:each="finDoc3 : ${finDoc3List}">
+								      <td th:text="${finDoc3.id}" style="display: none"></td>
+								      <td th:text="${finDoc3.fileName}"></td>
 								      <td>
-								      	<button type="button" name ="fin3DltBtn" id ="fin3Btn" style= "border:none">X</button>
+								      	<button type="button" name ="fin3DltBtn" id ="fin3DltBtn" style= "border:none">X</button>
 								      </td>
 								    </tr>
 								</table>
+								<br>
                                 <label class="fieldlabels">Accounts receivable</label>
                                 <input type="button" id="fin4" value="Upload Files"/>
 								<table id="fin4Table">
-									<tr th:each="contracts : ${contractsList}">
-								      <td th:text="${contracts.id}" style="display: none"></td>
-								      <td th:text="${contracts.fileName}"></td>
+									<tr th:each="finDoc4 : ${finDoc4List}">
+								      <td th:text="${finDoc4.id}" style="display: none"></td>
+								      <td th:text="${finDoc4.fileName}"></td>
 								      <td>
-								      	<button type="button" name ="fin4DltBtn" id ="fin4Btn" style= "border:none">X</button>
+								      	<button type="button" name ="fin4DltBtn" id ="fin4DltBtn" style= "border:none">X</button>
 								      </td>
 								    </tr>
 								</table>
+								<br>
                                 <label class="fieldlabels">Capital structure</label>
                                 <input type="button" id="fin5" value="Upload Files"/>
 								<table id="fin5Table">
-									<tr th:each="contracts : ${contractsList}">
-								      <td th:text="${contracts.id}" style="display: none"></td>
-								      <td th:text="${contracts.fileName}"></td>
+									<tr th:each="finDoc5 : ${finDoc5List}">
+								      <td th:text="${finDoc5.id}" style="display: none"></td>
+								      <td th:text="${finDoc5.fileName}"></td>
 								      <td>
-								      	<button type="button" name ="fin5DltBtn" id ="fin5Btn" style= "border:none">X</button>
+								      	<button type="button" name ="fin5DltBtn" id ="fin5DltBtn" style= "border:none">X</button>
 								      </td>
 								    </tr>
 								</table>
+								<br>
                                 <label class="fieldlabels">Summary of debt instruments</label>
                                 <input type="button" id="fin6" value="Upload Files"/>
 								<table id="fin6Table">
-									<tr th:each="contracts : ${contractsList}">
-								      <td th:text="${contracts.id}" style="display: none"></td>
-								      <td th:text="${contracts.fileName}"></td>
+									<tr th:each="finDoc6 : ${finDoc6List}">
+								      <td th:text="${finDoc6.id}" style="display: none"></td>
+								      <td th:text="${finDoc6.fileName}"></td>
 								      <td>
-								      	<button type="button" name ="fin6DltBtn" id ="fin6Btn" style= "border:none">X</button>
+								      	<button type="button" name ="fin6DltBtn" id ="fin6DltBtn" style= "border:none">X</button>
 								      </td>
 								    </tr>
 								</table>
+								<br>
                                 <label class="fieldlabels">Financial projections</label>
                                 <input type="button" id="fin7" value="Upload Files"/>
 								<table id="fin7Table">
-									<tr th:each="contracts : ${contractsList}">
-								      <td th:text="${contracts.id}" style="display: none"></td>
-								      <td th:text="${contracts.fileName}"></td>
+									<tr th:each="finDoc7 : ${finDoc7List}">
+								      <td th:text="${finDoc7.id}" style="display: none"></td>
+								      <td th:text="${finDoc7.fileName}"></td>
 								      <td>
-								      	<button type="button" name ="fin7DltBtn" id ="fin7Btn" style= "border:none">X</button>
+								      	<button type="button" name ="fin7DltBtn" id ="fin7DltBtn" style= "border:none">X</button>
 								      </td>
 								    </tr>
 								</table>
+								<br>
                                 <label class="fieldlabels">Revenue by product type, customers and channel</label>
                                 <input type="button" id="fin8" value="Upload Files"/>
 								<table id="fin8Table">
-									<tr th:each="contracts : ${contractsList}">
-								      <td th:text="${contracts.id}" style="display: none"></td>
-								      <td th:text="${contracts.fileName}"></td>
+									<tr th:each="finDoc8 : ${finDoc8List}">
+								      <td th:text="${finDoc8.id}" style="display: none"></td>
+								      <td th:text="${finDoc8.fileName}"></td>
 								      <td>
-								      	<button type="button" name ="fin8DltBtn" id ="fin8Btn" style= "border:none">X</button>
+								      	<button type="button" name ="fin8DltBtn" id ="fin8DltBtn" style= "border:none">X</button>
 								      </td>
 								    </tr>
 								</table>
+								<br>
                                 <label class="fieldlabels">Major growth drivers and prospects</label>
                                 <input type="button" id="fin9" value="Upload Files"/>
 								<table id="fin9Table">
-									<tr th:each="contracts : ${contractsList}">
-								      <td th:text="${contracts.id}" style="display: none"></td>
-								      <td th:text="${contracts.fileName}"></td>
+									<tr th:each="finDoc9 : ${finDoc9List}">
+								      <td th:text="${finDoc9.id}" style="display: none"></td>
+								      <td th:text="${finDoc9.fileName}"></td>
 								      <td>
-								      	<button type="button" name ="fin9DltBtn" id ="fin9Btn" style= "border:none">X</button>
+								      	<button type="button" name ="fin9DltBtn" id ="fin9DltBtn" style= "border:none">X</button>
 								      </td>
 								    </tr>
 								</table>
+								<br>
 								<label class="fieldlabels">Industry and company pricing policies</label>
                                 <input type="button" id="fin10" value="Upload Files"/>
 								<table id="fin10Table">
-									<tr th:each="contracts : ${contractsList}">
-								      <td th:text="${contracts.id}" style="display: none"></td>
-								      <td th:text="${contracts.fileName}"></td>
+									<tr th:each="finDoc10 : ${finDoc10List}">
+								      <td th:text="${finDoc10.id}" style="display: none"></td>
+								      <td th:text="${finDoc10.fileName}"></td>
 								      <td>
-								      	<button type="button" name ="fin10DltBtn" id ="fin10Btn" style= "border:none">X</button>
+								      	<button type="button" name ="fin10DltBtn" id ="fin10DltBtn" style= "border:none">X</button>
 								      </td>
 								    </tr>
 								</table>
+								<br>
                                 <label class="fieldlabels">Summary of current tax positions</label>
                                 <input type="button" id="fin11" value="Upload Files"/>
 								<table id="fin11Table">
-									<tr th:each="contracts : ${contractsList}">
-								      <td th:text="${contracts.id}" style="display: none"></td>
-								      <td th:text="${contracts.fileName}"></td>
+									<tr th:each="finDoc11 : ${finDoc11List}">
+								      <td th:text="${finDoc11.id}" style="display: none"></td>
+								      <td th:text="${finDoc11.fileName}"></td>
 								      <td>
-								      	<button type="button" name ="fin11DltBtn" id ="fin11Btn" style= "border:none">X</button>
+								      	<button type="button" name ="fin11DltBtn" id ="fin11DltBtn" style= "border:none">X</button>
 								      </td>
 								    </tr>
 								</table>
+								<br>
                                 <label class="fieldlabels">Accounting policies</label>
                                 <input type="button" id="fin12" value="Upload Files"/>
 								<table id="fin12Table">
-									<tr th:each="contracts : ${contractsList}">
-								      <td th:text="${contracts.id}" style="display: none"></td>
-								      <td th:text="${contracts.fileName}"></td>
+									<tr th:each="finDoc12 : ${finDoc12List}">
+								      <td th:text="${finDoc12.id}" style="display: none"></td>
+								      <td th:text="${finDoc12.fileName}"></td>
 								      <td>
-								      	<button type="button" name ="fin12DltBtn" id ="fin12Btn" style= "border:none">X</button>
+								      	<button type="button" name ="fin12DltBtn" id ="fin12DltBtn" style= "border:none">X</button>
 								      </td>
 								    </tr>
 								</table>
+								<br>
                                 <label class="fieldlabels">Financing history for equity, warrants and debt</label>
                                 <input type="button" id="fin13" value="Upload Files"/>
 								<table id="fin13Table">
-									<tr th:each="contracts : ${contractsList}">
-								      <td th:text="${contracts.id}" style="display: none"></td>
-								      <td th:text="${contracts.fileName}"></td>
+									<tr th:each="finDoc13 : ${finDoc13List}">
+								      <td th:text="${finDoc13.id}" style="display: none"></td>
+								      <td th:text="${finDoc13.fileName}"></td>
 								      <td>
-								      	<button type="button" name ="fin13DltBtn" id ="fin13Btn" style= "border:none">X</button>
+								      	<button type="button" name ="fin13DltBtn" id ="fin13DltBtn" style= "border:none">X</button>
 								      </td>
 								    </tr>
 								</table>
@@ -1825,6 +1837,8 @@
         		
         	});
         	
+		});
+        	
        	$('#uploadFin1').click(function() {
    			var formData = new FormData();
            	var docType = $("#docType4").val();
@@ -1835,7 +1849,7 @@
 
            	$.ajax({ 
            		type:"POST", 
-           		url:"/addIpDoc2",
+           		url:"/addFinDoc1",
            		data:formData, 
            		cache:false,
            		contentType: false, 
@@ -1859,7 +1873,7 @@
                			var cell3 = row.insertCell(2);
                			 cell1.innerHTML = rowId;
                			 cell2.innerHTML = selectFile;
-               			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin1DltBtn' + ' id = ' + 'fin1Btn' + ' style= ' + 'border:none'+ '>X</button>';
+               			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin1DltBtn' + ' id = ' + 'fin1DltBtn' + ' style= ' + 'border:none'+ '>X</button>';
                			
                			 $("td:nth-child(1)").hide();
                			
@@ -1874,6 +1888,7 @@
                    }
            		
            	});
+       	});
             	
        	$('#uploadFin2').click(function() {
    			var formData = new FormData();
@@ -1885,7 +1900,7 @@
 
            	$.ajax({ 
            		type:"POST", 
-           		url:"/addIpDoc2",
+           		url:"/addFinDoc2",
            		data:formData, 
            		cache:false,
            		contentType: false, 
@@ -1909,7 +1924,7 @@
                			var cell3 = row.insertCell(2);
                			 cell1.innerHTML = rowId;
                			 cell2.innerHTML = selectFile;
-               			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin2DltBtn' + ' id = ' + 'fin2Btn' + ' style= ' + 'border:none'+ '>X</button>';
+               			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin2DltBtn' + ' id = ' + 'fin2DltBtn' + ' style= ' + 'border:none'+ '>X</button>';
                			
                			 $("td:nth-child(1)").hide();
                			
@@ -1924,6 +1939,7 @@
                    }
            		
            	});
+       	});
                 	
        	$('#uploadFin3').click(function() {
    			var formData = new FormData();
@@ -1935,7 +1951,7 @@
 
            	$.ajax({ 
            		type:"POST", 
-           		url:"/addIpDoc2",
+           		url:"/addFinDoc3",
            		data:formData, 
            		cache:false,
            		contentType: false, 
@@ -1959,7 +1975,7 @@
                			var cell3 = row.insertCell(2);
                			 cell1.innerHTML = rowId;
                			 cell2.innerHTML = selectFile;
-               			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin3DltBtn' + ' id = ' + 'fin3Btn' + ' style= ' + 'border:none'+ '>X</button>';
+               			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin3DltBtn' + ' id = ' + 'fin3DltBtn' + ' style= ' + 'border:none'+ '>X</button>';
                			
                			 $("td:nth-child(1)").hide();
                			
@@ -1974,6 +1990,7 @@
                    }
            		
            	});
+       	});
                     	
        	$('#uploadFin4').click(function() {
    			var formData = new FormData();
@@ -1985,7 +2002,7 @@
 
            	$.ajax({ 
            		type:"POST", 
-           		url:"/addIpDoc2",
+           		url:"/addFinDoc4",
            		data:formData, 
            		cache:false,
            		contentType: false, 
@@ -2009,7 +2026,7 @@
                			var cell3 = row.insertCell(2);
                			 cell1.innerHTML = rowId;
                			 cell2.innerHTML = selectFile;
-               			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin4DltBtn' + ' id = ' + 'fin4Btn' + ' style= ' + 'border:none'+ '>X</button>';
+               			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin4DltBtn' + ' id = ' + 'fin4DltBtn' + ' style= ' + 'border:none'+ '>X</button>';
                			
                			 $("td:nth-child(1)").hide();
                			
@@ -2024,6 +2041,7 @@
                    }
            		
            	});
+       	});
                         	
        	$('#uploadFin5').click(function() {
    			var formData = new FormData();
@@ -2035,7 +2053,7 @@
 
            	$.ajax({ 
            		type:"POST", 
-           		url:"/addIpDoc2",
+           		url:"/addFinDoc5",
            		data:formData, 
            		cache:false,
            		contentType: false, 
@@ -2059,7 +2077,7 @@
                			var cell3 = row.insertCell(2);
                			 cell1.innerHTML = rowId;
                			 cell2.innerHTML = selectFile;
-               			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin5DltBtn' + ' id = ' + 'fin5Btn' + ' style= ' + 'border:none'+ '>X</button>';
+               			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin5DltBtn' + ' id = ' + 'fin5DltBtn' + ' style= ' + 'border:none'+ '>X</button>';
                			
                			 $("td:nth-child(1)").hide();
                			
@@ -2074,6 +2092,7 @@
                    }
            		
            	});
+       	});
                             	
        	$('#uploadFin6').click(function() {
    			var formData = new FormData();
@@ -2085,7 +2104,7 @@
 
            	$.ajax({ 
            		type:"POST", 
-           		url:"/addIpDoc2",
+           		url:"/addFinDoc6",
            		data:formData, 
            		cache:false,
            		contentType: false, 
@@ -2109,7 +2128,7 @@
                			var cell3 = row.insertCell(2);
                			 cell1.innerHTML = rowId;
                			 cell2.innerHTML = selectFile;
-               			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin6DltBtn' + ' id = ' + 'fin6Btn' + ' style= ' + 'border:none'+ '>X</button>';
+               			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin6DltBtn' + ' id = ' + 'fin6DltBtn' + ' style= ' + 'border:none'+ '>X</button>';
                			
                			 $("td:nth-child(1)").hide();
                			
@@ -2124,6 +2143,7 @@
                    }
            		
            	});
+       	});
                                 	
      	$('#uploadFin7').click(function() {
  			var formData = new FormData();
@@ -2135,7 +2155,7 @@
 
          	$.ajax({ 
          		type:"POST", 
-         		url:"/addIpDoc2",
+         		url:"/addFinDoc7",
          		data:formData, 
          		cache:false,
          		contentType: false, 
@@ -2159,7 +2179,7 @@
              			var cell3 = row.insertCell(2);
              			 cell1.innerHTML = rowId;
              			 cell2.innerHTML = selectFile;
-             			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin7DltBtn' + ' id = ' + 'fin7Btn' + ' style= ' + 'border:none'+ '>X</button>';
+             			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin7DltBtn' + ' id = ' + 'fin7DltBtn' + ' style= ' + 'border:none'+ '>X</button>';
              			
              			 $("td:nth-child(1)").hide();
              			
@@ -2174,6 +2194,7 @@
                  }
          		
          	});
+     	});
                                     	
      	$('#uploadFin8').click(function() {
  			var formData = new FormData();
@@ -2185,7 +2206,7 @@
 
          	$.ajax({ 
          		type:"POST", 
-         		url:"/addIpDoc2",
+         		url:"/addFinDoc8",
          		data:formData, 
          		cache:false,
          		contentType: false, 
@@ -2209,7 +2230,7 @@
              			var cell3 = row.insertCell(2);
              			 cell1.innerHTML = rowId;
              			 cell2.innerHTML = selectFile;
-             			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin8DltBtn' + ' id = ' + 'fin8Btn' + ' style= ' + 'border:none'+ '>X</button>';
+             			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin8DltBtn' + ' id = ' + 'fin8DltBtn' + ' style= ' + 'border:none'+ '>X</button>';
              			
              			 $("td:nth-child(1)").hide();
              			
@@ -2224,6 +2245,7 @@
                  }
          		
          	});
+     	});
                                         	
      	$('#uploadFin9').click(function() {
  			var formData = new FormData();
@@ -2235,7 +2257,7 @@
 
          	$.ajax({ 
          		type:"POST", 
-         		url:"/addIpDoc2",
+         		url:"/addFinDoc9",
          		data:formData, 
          		cache:false,
          		contentType: false, 
@@ -2259,7 +2281,7 @@
              			var cell3 = row.insertCell(2);
              			 cell1.innerHTML = rowId;
              			 cell2.innerHTML = selectFile;
-             			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin9DltBtn' + ' id = ' + 'fin9Btn' + ' style= ' + 'border:none'+ '>X</button>';
+             			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin9DltBtn' + ' id = ' + 'fin9DltBtn' + ' style= ' + 'border:none'+ '>X</button>';
              			
              			 $("td:nth-child(1)").hide();
              			
@@ -2274,6 +2296,7 @@
                  }
          		
          	});
+     	});
                                             	
      	$('#uploadFin10').click(function() {
  			var formData = new FormData();
@@ -2285,7 +2308,7 @@
 
          	$.ajax({ 
          		type:"POST", 
-         		url:"/addIpDoc2",
+         		url:"/addFinDoc10",
          		data:formData, 
          		cache:false,
          		contentType: false, 
@@ -2309,7 +2332,7 @@
              			var cell3 = row.insertCell(2);
              			 cell1.innerHTML = rowId;
              			 cell2.innerHTML = selectFile;
-             			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin10DltBtn' + ' id = ' + 'fin10Btn' + ' style= ' + 'border:none'+ '>X</button>';
+             			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin10DltBtn' + ' id = ' + 'fin10DltBtn' + ' style= ' + 'border:none'+ '>X</button>';
              			
              			 $("td:nth-child(1)").hide();
              			
@@ -2324,6 +2347,7 @@
                  }
          		
          	});
+     	});
                                                 	
     	$('#uploadFin11').click(function() {
 			var formData = new FormData();
@@ -2335,7 +2359,7 @@
 
         	$.ajax({ 
         		type:"POST", 
-        		url:"/addIpDoc2",
+        		url:"/addFinDoc11",
         		data:formData, 
         		cache:false,
         		contentType: false, 
@@ -2359,7 +2383,7 @@
             			var cell3 = row.insertCell(2);
             			 cell1.innerHTML = rowId;
             			 cell2.innerHTML = selectFile;
-            			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin11DltBtn' + ' id = ' + 'fin11Btn' + ' style= ' + 'border:none'+ '>X</button>';
+            			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin11DltBtn' + ' id = ' + 'fin11DltBtn' + ' style= ' + 'border:none'+ '>X</button>';
             			
             			 $("td:nth-child(1)").hide();
             			
@@ -2374,6 +2398,7 @@
                 }
         		
         	});
+    	});
                                                     	
     	$('#uploadFin12').click(function() {
 			var formData = new FormData();
@@ -2385,7 +2410,7 @@
 
         	$.ajax({ 
         		type:"POST", 
-        		url:"/addIpDoc2",
+        		url:"/addFinDoc12",
         		data:formData, 
         		cache:false,
         		contentType: false, 
@@ -2409,7 +2434,7 @@
             			var cell3 = row.insertCell(2);
             			 cell1.innerHTML = rowId;
             			 cell2.innerHTML = selectFile;
-            			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin12DltBtn' + ' id = ' + 'fin12Btn' + ' style= ' + 'border:none'+ '>X</button>';
+            			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin12DltBtn' + ' id = ' + 'fin12DltBtn' + ' style= ' + 'border:none'+ '>X</button>';
             			
             			 $("td:nth-child(1)").hide();
             			
@@ -2424,6 +2449,7 @@
                 }
         		
         	});
+    	});
                                                         	
     	$('#uploadFin13').click(function() {
 			var formData = new FormData();
@@ -2435,7 +2461,7 @@
 
         	$.ajax({ 
         		type:"POST", 
-        		url:"/addIpDoc2",
+        		url:"/addFinDoc13",
         		data:formData, 
         		cache:false,
         		contentType: false, 
@@ -2459,7 +2485,7 @@
             			var cell3 = row.insertCell(2);
             			 cell1.innerHTML = rowId;
             			 cell2.innerHTML = selectFile;
-            			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin13DltBtn' + ' id = ' + 'fin13Btn' + ' style= ' + 'border:none'+ '>X</button>';
+            			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin13DltBtn' + ' id = ' + 'fin13DltBtn' + ' style= ' + 'border:none'+ '>X</button>';
             			
             			 $("td:nth-child(1)").hide();
             			
@@ -2801,6 +2827,12 @@
 
                }
            });
+		}
+		else
+		{
+			
+		}
+    });
            
     $(document).on('click', '#fin1DltBtn', function(){
  	   
@@ -2817,7 +2849,7 @@
           $.ajax({
               type: "POST",
               contentType: "application/json",
-              url: "/deleteIpDoc2",
+              url: "/deleteFinDoc1",
               data: JSON.stringify(contracts),
               dataType: 'json',
               cache: false,
@@ -2864,7 +2896,7 @@
           $.ajax({
               type: "POST",
               contentType: "application/json",
-              url: "/deleteIpDoc2",
+              url: "/deleteFinDoc2",
               data: JSON.stringify(contracts),
               dataType: 'json',
               cache: false,
@@ -2911,7 +2943,7 @@
           $.ajax({
               type: "POST",
               contentType: "application/json",
-              url: "/deleteIpDoc2",
+              url: "/deleteFinDoc3",
               data: JSON.stringify(contracts),
               dataType: 'json',
               cache: false,
@@ -2958,7 +2990,7 @@
           $.ajax({
               type: "POST",
               contentType: "application/json",
-              url: "/deleteIpDoc2",
+              url: "/deleteFinDoc4",
               data: JSON.stringify(contracts),
               dataType: 'json',
               cache: false,
@@ -3005,7 +3037,7 @@
           $.ajax({
               type: "POST",
               contentType: "application/json",
-              url: "/deleteIpDoc2",
+              url: "/deleteFinDoc5",
               data: JSON.stringify(contracts),
               dataType: 'json',
               cache: false,
@@ -3052,7 +3084,7 @@
           $.ajax({
               type: "POST",
               contentType: "application/json",
-              url: "/deleteIpDoc2",
+              url: "/deleteFinDoc6",
               data: JSON.stringify(contracts),
               dataType: 'json',
               cache: false,
@@ -3099,7 +3131,7 @@
           $.ajax({
               type: "POST",
               contentType: "application/json",
-              url: "/deleteIpDoc2",
+              url: "/deleteFinDoc7",
               data: JSON.stringify(contracts),
               dataType: 'json',
               cache: false,
@@ -3146,7 +3178,7 @@
           $.ajax({
               type: "POST",
               contentType: "application/json",
-              url: "/deleteIpDoc2",
+              url: "/deleteFinDoc8",
               data: JSON.stringify(contracts),
               dataType: 'json',
               cache: false,
@@ -3193,7 +3225,7 @@
           $.ajax({
               type: "POST",
               contentType: "application/json",
-              url: "/deleteIpDoc2",
+              url: "/deleteFinDoc9",
               data: JSON.stringify(contracts),
               dataType: 'json',
               cache: false,
@@ -3227,7 +3259,6 @@
     
     $(document).on('click', '#fin10DltBtn', function(){
   	   
-  	   
 		var r=confirm("Are you sure want to remove?");
 		if (r==true)
 		{				
@@ -3240,7 +3271,7 @@
           $.ajax({
               type: "POST",
               contentType: "application/json",
-              url: "/deleteIpDoc2",
+              url: "/deleteFinDoc10",
               data: JSON.stringify(contracts),
               dataType: 'json',
               cache: false,
@@ -3287,7 +3318,7 @@
           $.ajax({
               type: "POST",
               contentType: "application/json",
-              url: "/deleteIpDoc2",
+              url: "/deleteFinDoc11",
               data: JSON.stringify(contracts),
               dataType: 'json',
               cache: false,
@@ -3334,7 +3365,7 @@
           $.ajax({
               type: "POST",
               contentType: "application/json",
-              url: "/deleteIpDoc2",
+              url: "/deleteFinDoc12",
               data: JSON.stringify(contracts),
               dataType: 'json',
               cache: false,
@@ -3381,7 +3412,7 @@
           $.ajax({
               type: "POST",
               contentType: "application/json",
-              url: "/deleteIpDoc2",
+              url: "/deleteFinDoc13",
               data: JSON.stringify(contracts),
               dataType: 'json',
               cache: false,
