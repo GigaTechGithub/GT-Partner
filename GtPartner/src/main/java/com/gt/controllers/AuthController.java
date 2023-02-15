@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.gt.models.Users;
 import com.gt.services.UserService;
@@ -26,9 +27,39 @@ public class AuthController {
     public String loginPage(Model model) {
         return "login/loginPage";
     }
+
+    
+//    @PostMapping({"/login"})
+//    public String getLoginUser(Model m, @ModelAttribute("UserLogin") Users request, RedirectAttributes redirectAttributes) {
+//    	
+//    	HttpServletRequest servRequest = ((ServletRequestAttributes) RequestContextHolder
+//				.getRequestAttributes()).getRequest();
+//		HttpSession session = servRequest.getSession(true);
+//
+//    	Users user = userService.findByusername(request.getUsername().toString());
+//    	if(user !=null) {
+//    		session.setAttribute("id", user.getId()); 
+//    		session.setAttribute("name", user.getName()); 
+//    		session.setAttribute("username", user.getUsername()); 
+//    		session.setAttribute("email", user.getEmail()); 
+//    		session.setAttribute("mobile", user.getMobile());
+//    		session.setAttribute("diligenceId", user.getDiligenceId());
+//    		
+//    		if (user.getPassword().equals(request.getPassword())) {
+//        		return "redirect:/home";
+//    		}else {
+//    			redirectAttributes.addFlashAttribute("message", "Invalid Username or Password");
+//    			return "redirect:/";
+//    		}
+//    	}else {
+//			redirectAttributes.addFlashAttribute("message", "Invalid Username or Password");
+//			return "redirect:/";
+//		}
+//    	
+//    }
     
     @PostMapping({"/login"})
-    public String getLoginUser(Model m, @ModelAttribute("UserLogin") Users request, RedirectAttributes redirectAttributes) {
+    public RedirectView getLoginUser(Model m, @ModelAttribute("UserLogin") Users request, RedirectAttributes redirectAttributes) {
     	
     	HttpServletRequest servRequest = ((ServletRequestAttributes) RequestContextHolder
 				.getRequestAttributes()).getRequest();
@@ -44,16 +75,25 @@ public class AuthController {
     		session.setAttribute("diligenceId", user.getDiligenceId());
     		
     		if (user.getPassword().equals(request.getPassword())) {
-        		return "redirect:/home";
+    			return new RedirectView("/home", true);
     		}else {
     			redirectAttributes.addFlashAttribute("message", "Invalid Username or Password");
-    			return "redirect:/";
+    			return new RedirectView("/", true);
     		}
     	}else {
 			redirectAttributes.addFlashAttribute("message", "Invalid Username or Password");
-			return "redirect:/";
+			return new RedirectView("/", true);
 		}
     	
+    }
+    
+    @PostMapping("/logout")
+    public String logout(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate();
+        }
+        return "redirect:/login";
     }
     
     @GetMapping("/products")
@@ -64,4 +104,5 @@ public class AuthController {
     public String about() {
         return "layouts/about";
     }
+    
 }
