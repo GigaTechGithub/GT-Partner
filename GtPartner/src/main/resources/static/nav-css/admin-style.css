@@ -56,7 +56,7 @@ article, aside, figcaption, figure, header, hgroup, main, nav, section {
    bottom: 0;
    height: 30px;
    width: 100%;
-   background-color: darkcyan;
+   background-color: #6f9303;
    color: white;
    text-align: center;
 }
