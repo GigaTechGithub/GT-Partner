@@ -38,20 +38,28 @@ public class AuthController {
 
     	Users user = userService.findByusername(request.getUsername().toString());
     	if(user !=null) {
-    		session.setAttribute("id", user.getId()); 
-    		session.setAttribute("name", user.getName()); 
-    		session.setAttribute("username", user.getUsername()); 
-    		session.setAttribute("email", user.getEmail()); 
-    		session.setAttribute("mobile", user.getMobile());
-    		session.setAttribute("diligenceId", user.getDiligenceId());
-    		session.setAttribute("isAdmin", user.getIsAdmin());
+    		if(user.getStatus() == 1) {       		
+        		if (user.getPassword().equals(request.getPassword())) {
+        			session.setAttribute("id", user.getId()); 
+            		session.setAttribute("name", user.getName()); 
+            		session.setAttribute("username", user.getUsername()); 
+            		session.setAttribute("email", user.getEmail()); 
+            		session.setAttribute("mobile", user.getMobile());
+            		session.setAttribute("diligenceId", user.getDiligenceId());
+            		session.setAttribute("isAdmin", user.getIsAdmin());
+            		
+            		return "redirect:/home";
+        		}else {
+        			redirectAttributes.addFlashAttribute("message", "Invalid Username or Password");
+        			return "redirect:/";
+        		}
+    		}
     		
-    		if (user.getPassword().equals(request.getPassword())) {
-        		return "redirect:/home";
-    		}else {
+    		else {
     			redirectAttributes.addFlashAttribute("message", "Invalid Username or Password");
     			return "redirect:/";
     		}
+    		
     	}else {
 			redirectAttributes.addFlashAttribute("message", "Invalid Username or Password");
 			return "redirect:/";
