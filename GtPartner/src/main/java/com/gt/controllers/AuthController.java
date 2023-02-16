@@ -29,37 +29,8 @@ public class AuthController {
     }
 
     
-//    @PostMapping({"/login"})
-//    public String getLoginUser(Model m, @ModelAttribute("UserLogin") Users request, RedirectAttributes redirectAttributes) {
-//    	
-//    	HttpServletRequest servRequest = ((ServletRequestAttributes) RequestContextHolder
-//				.getRequestAttributes()).getRequest();
-//		HttpSession session = servRequest.getSession(true);
-//
-//    	Users user = userService.findByusername(request.getUsername().toString());
-//    	if(user !=null) {
-//    		session.setAttribute("id", user.getId()); 
-//    		session.setAttribute("name", user.getName()); 
-//    		session.setAttribute("username", user.getUsername()); 
-//    		session.setAttribute("email", user.getEmail()); 
-//    		session.setAttribute("mobile", user.getMobile());
-//    		session.setAttribute("diligenceId", user.getDiligenceId());
-//    		
-//    		if (user.getPassword().equals(request.getPassword())) {
-//        		return "redirect:/home";
-//    		}else {
-//    			redirectAttributes.addFlashAttribute("message", "Invalid Username or Password");
-//    			return "redirect:/";
-//    		}
-//    	}else {
-//			redirectAttributes.addFlashAttribute("message", "Invalid Username or Password");
-//			return "redirect:/";
-//		}
-//    	
-//    }
-    
     @PostMapping({"/login"})
-    public RedirectView getLoginUser(Model m, @ModelAttribute("UserLogin") Users request, RedirectAttributes redirectAttributes) {
+    public String getLoginUser(Model m, @ModelAttribute("UserLogin") Users request, RedirectAttributes redirectAttributes) {
     	
     	HttpServletRequest servRequest = ((ServletRequestAttributes) RequestContextHolder
 				.getRequestAttributes()).getRequest();
@@ -75,14 +46,14 @@ public class AuthController {
     		session.setAttribute("diligenceId", user.getDiligenceId());
     		
     		if (user.getPassword().equals(request.getPassword())) {
-    			return new RedirectView("/home", true);
+        		return "redirect:/home";
     		}else {
     			redirectAttributes.addFlashAttribute("message", "Invalid Username or Password");
-    			return new RedirectView("/", true);
+    			return "redirect:/";
     		}
     	}else {
 			redirectAttributes.addFlashAttribute("message", "Invalid Username or Password");
-			return new RedirectView("/", true);
+			return "redirect:/";
 		}
     	
     }
@@ -96,13 +67,9 @@ public class AuthController {
         return "redirect:/login";
     }
     
-    @GetMapping("/products")
+    @GetMapping("/admin")
     public String products() {
-        return "layouts/products";
-    }
-    @GetMapping("/about")
-    public String about() {
-        return "layouts/about";
+        return "view/admin-hom e";
     }
     
 }
