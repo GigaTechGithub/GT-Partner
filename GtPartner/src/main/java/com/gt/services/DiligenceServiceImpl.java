@@ -30,7 +30,18 @@ public class DiligenceServiceImpl implements DiligenceService{
 	}
 	
 	@Override
-	public List<Diligence> findById(long id){
-		return diligenceRepository.findById(id); 
+	public List<Diligence> findByid(long id){
+		return diligenceRepository.findByid(id); 
 	}
+
+	@Override
+	public List<Diligence> findBystatus(int status) {
+		return diligenceRepository.findBystatus(status);
+	}
+
+	@Override
+	public List<Diligence> findAll() {
+		return diligenceRepository.findAll();
+	}
+	
 }

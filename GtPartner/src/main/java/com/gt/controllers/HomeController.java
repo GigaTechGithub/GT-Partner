@@ -221,7 +221,7 @@ public class HomeController {
 			
 			
 			
-			int diligenceStatus = diligenceService.findById(diligenceId()).get(0).getProfileStatus();
+			int diligenceStatus = diligenceService.findByid(diligenceId()).get(0).getProfileStatus();
 			
 			model.addAttribute("company", company);
 			model.addAttribute("legal", legal);

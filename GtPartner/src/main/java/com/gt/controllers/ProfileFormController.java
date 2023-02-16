@@ -305,7 +305,7 @@ public class ProfileFormController {
 	    	
 	    	String result = companyService.saveCompany(company);
 	    	
-	    	Diligence diligence = diligenceService.findById(diligenceId()).get(0);
+	    	Diligence diligence = diligenceService.findByid(diligenceId()).get(0);
 	    	
 	    	if(diligence.getProfileStatus() < 10) {
 	    		diligence.setProfileStatus(10);
@@ -354,7 +354,7 @@ public class ProfileFormController {
 			
 	    	String result = legalService.saveLegal(legal);
 	    	
-	    	Diligence diligence = diligenceService.findById(diligenceId()).get(0);
+	    	Diligence diligence = diligenceService.findByid(diligenceId()).get(0);
 	    	
 	    	if(diligence.getProfileStatus() < 20) {
 	    		diligence.setProfileStatus(20);
@@ -381,7 +381,7 @@ public class ProfileFormController {
 		String result="Success";
 		try {
 	    	
-	    	Diligence diligence = diligenceService.findById(diligenceId()).get(0);
+	    	Diligence diligence = diligenceService.findByid(diligenceId()).get(0);
 	    	
 	    	if(diligence.getProfileStatus() < 30) {
 	    		diligence.setProfileStatus(30);
@@ -475,7 +475,7 @@ public class ProfileFormController {
 			
 	    	String result = revenueService.saveRevenue(revenue);
 	    	
-	    	Diligence diligence = diligenceService.findById(diligenceId()).get(0);
+	    	Diligence diligence = diligenceService.findByid(diligenceId()).get(0);
 	    	
 	    	if(diligence.getProfileStatus() < 40) {
 	    		
@@ -552,7 +552,7 @@ public class ProfileFormController {
 			
 	    	String result = technologyService.saveTechnology(technology);
 	    	
-	    	Diligence diligence = diligenceService.findById(diligenceId()).get(0);
+	    	Diligence diligence = diligenceService.findByid(diligenceId()).get(0);
 	    	
 	    	if(diligence.getProfileStatus() < 50) {
 	    		
@@ -652,7 +652,7 @@ public class ProfileFormController {
 			
 	    	String result = ipService.saveIp(ip);
 	    	
-	    	Diligence diligence = diligenceService.findById(diligenceId()).get(0);
+	    	Diligence diligence = diligenceService.findByid(diligenceId()).get(0);
 	    	
 	    	if(diligence.getProfileStatus() <60) {
 	    		
@@ -810,7 +810,7 @@ public class ProfileFormController {
 			
 	    	String result = itService.saveIt(it);
 	    	
-	    	Diligence diligence = diligenceService.findById(diligenceId()).get(0);
+	    	Diligence diligence = diligenceService.findByid(diligenceId()).get(0);
 
 			diligence.setProfileStatus(90);
 	    	
