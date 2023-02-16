@@ -254,65 +254,88 @@ $(document).ready(function(){
     });
 	
 	$(".nextFromThirdStep").click(function(){
+		console.log("Clicked");
+        var fin1Table = document.getElementById("fin1Table").rows.length;
+        var fin2Table = document.getElementById("fin2Table").rows.length;
+        var fin3Table = document.getElementById("fin3Table").rows.length;
+        var fin4Table = document.getElementById("fin4Table").rows.length;
+        var fin5Table = document.getElementById("fin5Table").rows.length;
+        var fin6Table = document.getElementById("fin6Table").rows.length;
+        var fin7Table = document.getElementById("fin7Table").rows.length;
+        var fin8Table = document.getElementById("fin8Table").rows.length;
+        var fin9Table = document.getElementById("fin9Table").rows.length;
+        var fin10Table = document.getElementById("fin10Table").rows.length;
+        var fin11Table = document.getElementById("fin11Table").rows.length;
+        var fin12Table = document.getElementById("fin12Table").rows.length;
+        var fin13Table = document.getElementById("fin13Table").rows.length;
         
-        $.ajax({
-            type: "POST",
-            //contentType: "application/json",
-            url: "/addFinancial",
-            //data: JSON.stringify(legal),
-            dataType: 'json',
-            cache: false,
-            timeout: 600000,
-            success: function (data) {
-                console.log(data["message"]);
-                if(data["message"]=="Failed"){
-                	alert("Failed to save data. Please try again");
-                	result = data["message"];
-                }
-                
-                else{
-                	result = data["message"];
-                }
-
-            },
-            error: function (e) {
-
-                alert("Failed to save data. Please try again");
-                result = "Failed";
-
-            },
-            async: false
-        });
-        
-        if(result == "Failed"){
-        	
+        if(fin1Table == 0 || fin2Table == 0 || fin3Table == 0 || fin4Table == 0 || fin5Table == 0 || fin6Table == 0 || fin7Table == 0 || fin8Table == 0 || fin9Table == 0 || fin10Table == 0 || fin11Table == 0 || fin12Table == 0 || fin13Table == 0)
+        {
+        	alert("Please upload mandatory documents");
+        	return 0;
         }
         
         else{
-        	current_fs = $(this).parent();
-			next_fs = $(this).parent().next();
-			
-			//Add Class Active
-			$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-			
-			//show the next fieldset
-			next_fs.show(); 
-			//hide the current fieldset with style
-			current_fs.animate({opacity: 0}, {
-				step: function(now) {
-					// for making fielset appear animation
-					opacity = 1 - now;
-		
-					current_fs.css({
-						'display': 'none',
-						'position': 'relative'
-					});
-					next_fs.css({'opacity': opacity});
-				}, 
-				duration: 500
-			});
-			setProgressBar(++current);
+        	$.ajax({
+                type: "POST",
+                //contentType: "application/json",
+                url: "/addFinancial",
+                //data: JSON.stringify(legal),
+                dataType: 'json',
+                cache: false,
+                timeout: 600000,
+                success: function (data) {
+                    console.log(data["message"]);
+                    if(data["message"]=="Failed"){
+                    	alert("Failed to save data. Please try again");
+                    	result = data["message"];
+                    }
+                    
+                    else{
+                    	result = data["message"];
+                    }
+
+                },
+                error: function (e) {
+
+                    alert("Failed to save data. Please try again");
+                    result = "Failed";
+
+                },
+                async: false
+            });
+            
+            if(result == "Failed"){
+            	
+            }
+            
+            else{
+            	current_fs = $(this).parent();
+    			next_fs = $(this).parent().next();
+    			
+    			//Add Class Active
+    			$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+    			
+    			//show the next fieldset
+    			next_fs.show(); 
+    			//hide the current fieldset with style
+    			current_fs.animate({opacity: 0}, {
+    				step: function(now) {
+    					// for making fielset appear animation
+    					opacity = 1 - now;
+    		
+    					current_fs.css({
+    						'display': 'none',
+    						'position': 'relative'
+    					});
+    					next_fs.css({'opacity': opacity});
+    				}, 
+    				duration: 500
+    			});
+    			setProgressBar(++current);
+            }
         }
+        
     });
 	
 	$(".nextFromFourthStep").click(function(){

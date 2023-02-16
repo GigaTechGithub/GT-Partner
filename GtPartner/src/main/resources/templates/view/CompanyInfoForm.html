@@ -53,10 +53,10 @@
                                         <h2 class="steps">Step 1 - 8</h2>
                                     </div>
                                 </div>
-                                <label class="fieldlabels">Company Legal Name: *</label>
+                                <label class="fieldlabels">Company Legal Name: <span style="color: red;">*</span> </label>
                                 <input type="text" name="comLegalName" id="comLegalName" th:value="${company.companyName}"/>
                                 <br>
-                                <label class="fieldlabels">Does the Company have other Trading/Business Name or name in another language?: *</label>           
+                                <label class="fieldlabels">Does the Company have other Trading/Business Name or name in another language?: <span style="color: red;">*</span> </label>           
                                 <br>
                                 <div class="d-flex align-items-center col-md-12">
                                     <input class="col-md-1" type="radio" name="radio1" id="r1" value="yes">
@@ -69,7 +69,7 @@
                                 <input id="secondComName" type="text" placeholder="Please specify *" th:value="${company.companySecondName}"/>
                                 
                                 <br>                          
-                                <label class="fieldlabels">Country of Registration: *</label><br>                                
+                                <label class="fieldlabels">Country of Registration: <span style="color: red;">*</span> </label><br>                                
                                 <select th:field="${company.country}" id="countryOfReg" style="width: 100%">
 						             <option value=""> -- </option>
 						             <option th:each="country : ${getCountries}" th:value="${country.value}" th:text="${country.value}"></option>
@@ -79,16 +79,16 @@
                                 <label class="fieldlabels">State or Province of Registration, if applicable: </label>
                                 <input type="text" id="state" th:value="${company.province}"/>
                                 <br>
-                                <label class="fieldlabels">Date of Incorporation or Registration with local authorities: *</label>
+                                <label class="fieldlabels">Date of Incorporation or Registration with local authorities(mm/dd/yyyy): <span style="color: red;">*</span> </label>
                                 <input type="date" id="regDate" th:value="${company.incorporation_date}"/>
                                 <br>
-                                <label class="fieldlabels">Tax ID Number: *</label>
+                                <label class="fieldlabels">Tax ID Number: <span style="color: red;">*</span> </label>
                                 <input type="text" id="taxId" th:value="${company.taxId}"/>
                                 <br>
-                                <label class="fieldlabels">Legal Address: *</label>
+                                <label class="fieldlabels">Legal Address: <span style="color: red;">*</span> </label>
                                 <input type="text" id="legalAddr" th:value="${company.address}"/>
                                 <br>
-                                <label class="fieldlabels">Does the Company have other Business Address or Place of Business? *</label>
+                                <label class="fieldlabels">Does the Company have other Business Address or Place of Business? <span style="color: red;">*</span> </label>
                                 <br>
                                 <div class="d-flex align-items-center col-md-12">
                                     <input class="col-md-1" type="radio" name="radio2" id="r3" value="yes">
@@ -99,13 +99,13 @@
                                 <br>
                                 <input id="secondAddr" type="text" placeholder="Please specify *" th:value="${company.secondAddress}"/>                              
                                 <br>
-                                <label class="fieldlabels">Business Telephone: *</label>
+                                <label class="fieldlabels">Business Telephone: <span style="color: red;">*</span> </label>
                                 <input type="text" id="telephone" th:value="${company.telephone}"/>
                                 <br>
-                                <label class="fieldlabels">Business Website: *</label>
+                                <label class="fieldlabels">Business Website: <span style="color: red;">*</span> </label>
                                 <input type="text" id="website" th:value="${company.website}"/>
                                 <br>
-                                <label class="fieldlabels">Number of full-time Employees locally employed by the Company.: *</label>
+                                <label class="fieldlabels">Number of full-time Employees locally employed by the Company: <span style="color: red;">*</span> </label>
                                 <input type="text" id="employeeCount" th:value="${company.noOfEmployees}"/>
                                 <br>
                             </div>
@@ -152,7 +152,10 @@
                                 <input type="text" id="secondGlobalName" placeholder="Please specify *" th:value="${company.parentCompanySecondGlobalName}"/>
                                 <br>
                                 <label class="fieldlabels">Location of Global Ultimate (Country): </label>
-                                <input type="text" id="globalLocation" th:value="${company.parentCompanyGlobalLocation}"/>
+                                <select th:field="${company.parentCompanyGlobalLocation}" id="globalLocation" style="width: 100%">
+						             <option value=""> -- </option>
+						             <option th:each="country : ${getCountries}" th:value="${country.value}" th:text="${country.value}"></option>
+						        </select>
                                 <br>
                             </div>
                             <hr>
@@ -196,7 +199,7 @@
                                         <h2 class="fs-title">04. Company Governance - Board of Directors</h2>
                                     </div>
                                 </div>
-                                <label class="fieldlabels">How many members of the Board of Directors or key decision makers does the Company have? Please note that you will have to enter their information below one by one. *</label>  
+                                <label class="fieldlabels">How many members of the Board of Directors or key decision makers does the Company have? Please note that you will have to enter their information below one by one. <span style="color: red;">*</span> </label>  
                                 <input type="text" id="bodCount" th:value="${company.noOfBod}"/>
                                 <br>
                                 <table id="bodTable" class="display" cellspacing="0" width="100%">
@@ -231,7 +234,7 @@
                                         <h2 class="fs-title">05. Personal Connections</h2>
                                     </div>
                                 </div>
-                                <label class="fieldlabels">To the best of your knowledge, do any of the individuals or entities named in Section 2 to 4 or any employees of your company or your affiliates or subsidiaries, have a financial interest (i.e. ownership interest, partnership arrangement, any agreement or obligation to make a payment, finder's fee, commission etc.) or personal connection (i.e. marriage, family) with any officer, director or employee of the GT / BCL? *</label>  
+                                <label class="fieldlabels">To the best of your knowledge, do any of the individuals or entities named in Section 2 to 4 or any employees of your company or your affiliates or subsidiaries, have a financial interest (i.e. ownership interest, partnership arrangement, any agreement or obligation to make a payment, finder's fee, commission etc.) or personal connection (i.e. marriage, family) with any officer, director or employee of the GT / BCL? <span style="color: red;">*</span> </label>  
                                 <input type="text" id="personalConnection" th:value="${company.personalConnection}"/>
                                 <br>
                             </div>
@@ -242,10 +245,10 @@
                                         <h2 class="fs-title">06. Government Connections</h2>
                                     </div>
                                 </div>
-                                <label class="fieldlabels">To the best of your knowledge, are any of the individuals named in Sections 2 to 4 government officials or public sector employees, or do they have connections (family, business or otherwise) with government officials or public sector employees? *</label>  
+                                <label class="fieldlabels">To the best of your knowledge, are any of the individuals named in Sections 2 to 4 government officials or public sector employees, or do they have connections (family, business or otherwise) with government officials or public sector employees? <span style="color: red;">*</span> </label>  
                                 <input type="text" id="isGovCon" th:value="${company.isGovCon}"/>
                                 <br>
-                                <label class="fieldlabels">Is the Company directly or indirectly owned or controlled, in whole or in part, by the government or is it a public sector entity? *</label>  
+                                <label class="fieldlabels">Is the Company directly or indirectly owned or controlled, in whole or in part, by the government or is it a public sector entity? <span style="color: red;">*</span> </label>  
                                 <input type="text" id="isGov" th:value="${company.isGov}"/>
                                 <br>
                             </div>
@@ -256,10 +259,10 @@
                                         <h2 class="fs-title">07. Ethical Considerations</h2>
                                     </div>
                                 </div>
-                                <label class="fieldlabels">To the best of your knowledge, during the last five years, has the Company or any of the individuals named in Sections 2 to 4 been accused, investigated, prosecuted by law enforcement or any government agency, or entered into any agreements to avoid prosecution from law enforcement for any government regarding alleged violations of anti-corruption laws? *</label>  
+                                <label class="fieldlabels">To the best of your knowledge, during the last five years, has the Company or any of the individuals named in Sections 2 to 4 been accused, investigated, prosecuted by law enforcement or any government agency, or entered into any agreements to avoid prosecution from law enforcement for any government regarding alleged violations of anti-corruption laws? <span style="color: red;">*</span> </label>  
                                 <input type="text" id="ethical1" th:value="${company.ethical1}"/>
                                 <br>
-                                <label class="fieldlabels">To the best of your knowledge, during the last five (5) years, has the Company or any of the individuals named in Sections 2 to 4 been debarred from competing for or bidding on government contracts? *</label>  
+                                <label class="fieldlabels">To the best of your knowledge, during the last five (5) years, has the Company or any of the individuals named in Sections 2 to 4 been debarred from competing for or bidding on government contracts? <span style="color: red;">*</span> </label>  
                                 <input type="text" id="ethical2" th:value="${company.ethical2}"/>
                                 <br>
                             </div>
@@ -269,10 +272,10 @@
                                         <h2 class="fs-title">08. Export Controls</h2>
                                     </div>
                                 </div>
-                                <label class="fieldlabels">To the best of your knowledge, during the last five (5) years, has the Company or Parent Company: a) been fined, or subject to any other enforcement action, including a no action letter or warning/cautionary letter, by any government agency in relation to the import, export or supply of goods, technology, software or services (e.g., under export controls, customs laws or sanctions/embargoes)? *</label>  
+                                <label class="fieldlabels">To the best of your knowledge, during the last five (5) years, has the Company or Parent Company: a) been fined, or subject to any other enforcement action, including a no action letter or warning/cautionary letter, by any government agency in relation to the import, export or supply of goods, technology, software or services (e.g., under export controls, customs laws or sanctions/embargoes)? <span style="color: red;">*</span> </label>  
                                 <input type="text" id="export1" th:value="${company.export1}"/>
                                 <br>
-                                <label class="fieldlabels">b) had any operations in, done business with, or shipped, transferred or supplied any goods, technology, software, or services, either directly or indirectly, to Crimea, Cuba, Iran, North Korea or Syria ("Restricted Territories")? NOTE: This includes products/services to a customer in another country that does business using GT/BCL products/services in a Restricted Territory. *</label>  
+                                <label class="fieldlabels">b) had any operations in, done business with, or shipped, transferred or supplied any goods, technology, software, or services, either directly or indirectly, to Crimea, Cuba, Iran, North Korea or Syria ("Restricted Territories")? NOTE: This includes products/services to a customer in another country that does business using GT/BCL products/services in a Restricted Territory. <span style="color: red;">*</span> </label>  
                                 <input type="text" id="export2" th:value="${company.export2}"/>
                                 <br>
                                 <input type="hidden" id="rowId" th:value="${company.id}"/>
@@ -291,16 +294,16 @@
                                     </div>
                                 </div>
                                 <label class="fieldlabels">In the last ten years has a court, in your country or elsewhere, given any judgement against you about a debt?
-                                    If so, give particulars: *</label>
+                                    If so, give particulars: </label>
                                 <input type="text" id="legal1" th:value="${legal.legal1}"/>
                                 <label class="fieldlabels">In the last ten years have you made any compromise arrangement with your creditors?
-                                    If so, give particulars: *</label>
+                                    If so, give particulars: </label>
                                 <input type="text" id="legal2" th:value="${legal.legal2}"/>
                                 <label class="fieldlabels">Have you ever been declared bankrupt or been the subject of a bankruptcy court order in your country or elsewhere, or has a bankruptcy petition ever been served on you?
-                                    If so, give particulars: *</label>
+                                    If so, give particulars: </label>
                                 <input type="text" id="legal3" th:value="${legal.legal3}"/>
                                 <label class="fieldlabels">Have you ever signed a trust deed for a creditor, made an assignment for the benefit of creditors or made any arrangements for the payment of a composition to creditors?
-                                    If so, give particulars: *</label>
+                                    If so, give particulars: </label>
                                 <input type="text" id="legal4" th:value="${legal.legal4}"/>
                             </div>
                             <div class="form-card">
@@ -311,13 +314,13 @@
                                     </div>
                                 </div>
                                 <label class="fieldlabels">Have you at any time pleaded guilty to or been found guilty of any offence?
-                                    If so, give details of the court which convicted you, the offence, the penalty imposed and date of conviction: *</label>
+                                    If so, give details of the court which convicted you, the offence, the penalty imposed and date of conviction: </label>
                                 <input type="text" id="legal5" th:value="${legal.legal5}"/>
                                 <label class="fieldlabels">In the last five years have you, in your country or elsewhere, been the subject of any civil action relating to your professional or business activities which has resulted in a finding against you by a court, or a settlement being agreed?
-                                    If so, give particulars: *</label>
+                                    If so, give particulars: </label>
                                 <input type="text" id="legal6" th:value="${legal.legal6}"/>
                                 <label class="fieldlabels">Have you ever been disqualified by a court from being a director, or from acting in the management or conduct of the affairs of any company?
-                                    If so, give particulars: *</label>
+                                    If so, give particulars: </label>
                                 <input type="text" id="legal7" th:value="${legal.legal7}"/>
                             </div>
                             <div class="form-card">
@@ -327,31 +330,31 @@
                                     </div>
                                 </div>
                                 <label class="fieldlabels">Have you, in your country or elsewhere, ever been refused the right or been restricted in the right to carry on any trade, business or profession for which a specific licence, registration or other authority is required?
-                                    If so, give particulars: *</label>
+                                    If so, give particulars: </label>
                                 <input type="text" id="legal8" th:value="${legal.legal8}"/>
                                 <label class="fieldlabels">Have you, in your country or elsewhere, ever been investigated about allegations of misconduct or malpractice in connection with your professional activities which resulted in a formal complaint being proved but no disciplinary order being made?
-                                    If so, give particulars: *</label>
+                                    If so, give particulars: </label>
                                 <input type="text" id="legal9" th:value="${legal.legal9}"/>
                                 <label class="fieldlabels">Have you, in your country or elsewhere, ever been the subject of disciplinary procedures by a professional body or employer resulting in a finding against you?
-                                    If so, give particulars: *</label>
+                                    If so, give particulars: </label>
                                 <input type="text" id="legal10" th:value="${legal.legal10}"/>
                                 <label class="fieldlabels">Have you, in your country or elsewhere, ever been reprimanded, excluded, disciplined or publicly criticised by any professional body which you belong or have belonged to?
-                                    If so, give particulars: *</label>
+                                    If so, give particulars: </label>
                                 <input type="text" id="legal11" th:value="${legal.legal11}"/>
                                 <label class="fieldlabels">Have you, in your country or elsewhere, ever been refused entry to or excluded from membership of any profession or vocation?
                                     If so, give details.</label>
                                 <input type="text" id="legal12" th:value="${legal.legal12}"/>
                                 <label class="fieldlabels">Have you, in your country or elsewhere, ever been dismissed from any office (other than as auditor) or employment or requested to resign from any office, employment or partnership?
-                                    If so, give particulars. *</label>
+                                    If so, give particulars. </label>
                                 <input type="text" id="legal13" th:value="${legal.legal13}"/>
                                 <label class="fieldlabels">Have you, in your country or elsewhere, ever been reprimanded, warned about future conduct, disciplined, or publicly criticised by any regulatory body, or any officially appointed enquiry concerned with the regulation of a financial, professional or other business activity?
-                                    If so, give particulars. *</label>
+                                    If so, give particulars. </label>
                                 <input type="text" id="legal14" th:value="${legal.legal14}"/>
                                 <label class="fieldlabels">Have you, in your country or elsewhere, ever been the subject of a court order at the instigation of any regulatory body or any officially appointed enquiry concerned with the regulation of a financial, professional or other business activity?
-                                    If so, give particulars. *</label>
+                                    If so, give particulars. </label>
                                 <input type="text" id="legal15" th:value="${legal.legal15}"/>
                                 <label class="fieldlabels">Are you currently undergoing any investigation or disciplinary procedure as described in 8-15 above?
-                                    If so, give particulars. *</label>
+                                    If so, give particulars. </label>
                                 <input type="text" id="legal16" th:value="${legal.legal16}"/>
                                 <br>
                                 <input type="hidden" id="rowId2" th:value="${legal.id}"/>
@@ -369,158 +372,171 @@
                                         <h2 class="steps">Step 3 - 8</h2>
                                     </div>
                                 </div>
-                                <label class="fieldlabels">Annual and quarterly financial and bank statements</label>
+                                <label class="fieldlabels">Annual and quarterly financial and bank statements <span style="color: red;">*</span> </label>
                                 <input type="button" id="fin1" value="Upload Files"/>
 								<table id="fin1Table">
 									<tr th:each="finDoc1 : ${finDoc1List}">
 								      <td th:text="${finDoc1.id}" style="display: none"></td>
 								      <td th:text="${finDoc1.fileName}"></td>
+								      <td style="width: 5%"></td>
 								      <td>
-								      	<button type="button" name ="fin1DltBtn" id ="fin1DltBtn" style= "border:none">X</button>
+								      	<button type="button" name ="fin1DltBtn" id ="fin1DltBtn" style= "border:none; color: red;">X</button>
 								      </td>
 								    </tr>
 								</table>
 								<br>
-                                <label class="fieldlabels">Investment and hedging policies</label>
+                                <label class="fieldlabels">Investment and hedging policies <span style="color: red;">*</span> </label>
                                 <input type="button" id="fin2" value="Upload Files"/>
 								<table id="fin2Table">
 									<tr th:each="finDoc2 : ${finDoc2List}">
 								      <td th:text="${finDoc2.id}" style="display: none"></td>
 								      <td th:text="${finDoc2.fileName}"></td>
+								      <td style="width: 5%"></td>
 								      <td>
-								      	<button type="button" name ="fin2DltBtn" id ="fin2DltBtn" style= "border:none">X</button>
+								      	<button type="button" name ="fin2DltBtn" id ="fin2DltBtn" style= "border:none; color: red;">X</button>
 								      </td>
 								    </tr>
 								</table>
 								<br>
-                                <label class="fieldlabels">Sales and profits by product, channel and geography</label>
+                                <label class="fieldlabels">Sales and profits by product, channel and geography <span style="color: red;">*</span> </label>
                                 <input type="button" id="fin3" value="Upload Files"/>
 								<table id="fin3Table">
 									<tr th:each="finDoc3 : ${finDoc3List}">
 								      <td th:text="${finDoc3.id}" style="display: none"></td>
 								      <td th:text="${finDoc3.fileName}"></td>
+								      <td style="width: 5%"></td>
 								      <td>
-								      	<button type="button" name ="fin3DltBtn" id ="fin3DltBtn" style= "border:none">X</button>
+								      	<button type="button" name ="fin3DltBtn" id ="fin3DltBtn" style= "border:none; color: red;">X</button>
 								      </td>
 								    </tr>
 								</table>
 								<br>
-                                <label class="fieldlabels">Accounts receivable</label>
+                                <label class="fieldlabels">Accounts receivable <span style="color: red;">*</span> </label>
                                 <input type="button" id="fin4" value="Upload Files"/>
 								<table id="fin4Table">
 									<tr th:each="finDoc4 : ${finDoc4List}">
 								      <td th:text="${finDoc4.id}" style="display: none"></td>
 								      <td th:text="${finDoc4.fileName}"></td>
+								      <td style="width: 5%"></td>
 								      <td>
-								      	<button type="button" name ="fin4DltBtn" id ="fin4DltBtn" style= "border:none">X</button>
+								      	<button type="button" name ="fin4DltBtn" id ="fin4DltBtn" style= "border:none; color: red;">X</button>
 								      </td>
 								    </tr>
 								</table>
 								<br>
-                                <label class="fieldlabels">Capital structure</label>
+                                <label class="fieldlabels">Capital structure <span style="color: red;">*</span> </label>
                                 <input type="button" id="fin5" value="Upload Files"/>
 								<table id="fin5Table">
 									<tr th:each="finDoc5 : ${finDoc5List}">
 								      <td th:text="${finDoc5.id}" style="display: none"></td>
 								      <td th:text="${finDoc5.fileName}"></td>
+								      <td style="width: 5%"></td>
 								      <td>
-								      	<button type="button" name ="fin5DltBtn" id ="fin5DltBtn" style= "border:none">X</button>
+								      	<button type="button" name ="fin5DltBtn" id ="fin5DltBtn" style= "border:none; color: red;">X</button>
 								      </td>
 								    </tr>
 								</table>
 								<br>
-                                <label class="fieldlabels">Summary of debt instruments</label>
+                                <label class="fieldlabels">Summary of debt instruments <span style="color: red;">*</span> </label>
                                 <input type="button" id="fin6" value="Upload Files"/>
 								<table id="fin6Table">
 									<tr th:each="finDoc6 : ${finDoc6List}">
 								      <td th:text="${finDoc6.id}" style="display: none"></td>
 								      <td th:text="${finDoc6.fileName}"></td>
+								      <td style="width: 5%"></td>
 								      <td>
-								      	<button type="button" name ="fin6DltBtn" id ="fin6DltBtn" style= "border:none">X</button>
+								      	<button type="button" name ="fin6DltBtn" id ="fin6DltBtn" style= "border:none; color: red;">X</button>
 								      </td>
 								    </tr>
 								</table>
 								<br>
-                                <label class="fieldlabels">Financial projections</label>
+                                <label class="fieldlabels">Financial projections <span style="color: red;">*</span> </label>
                                 <input type="button" id="fin7" value="Upload Files"/>
 								<table id="fin7Table">
 									<tr th:each="finDoc7 : ${finDoc7List}">
 								      <td th:text="${finDoc7.id}" style="display: none"></td>
 								      <td th:text="${finDoc7.fileName}"></td>
+								      <td style="width: 5%"></td>
 								      <td>
-								      	<button type="button" name ="fin7DltBtn" id ="fin7DltBtn" style= "border:none">X</button>
+								      	<button type="button" name ="fin7DltBtn" id ="fin7DltBtn" style= "border:none; color: red;">X</button>
 								      </td>
 								    </tr>
 								</table>
 								<br>
-                                <label class="fieldlabels">Revenue by product type, customers and channel</label>
+                                <label class="fieldlabels">Revenue by product type, customers and channel <span style="color: red;">*</span> </label>
                                 <input type="button" id="fin8" value="Upload Files"/>
 								<table id="fin8Table">
 									<tr th:each="finDoc8 : ${finDoc8List}">
 								      <td th:text="${finDoc8.id}" style="display: none"></td>
 								      <td th:text="${finDoc8.fileName}"></td>
+								      <td style="width: 5%"></td>
 								      <td>
-								      	<button type="button" name ="fin8DltBtn" id ="fin8DltBtn" style= "border:none">X</button>
+								      	<button type="button" name ="fin8DltBtn" id ="fin8DltBtn" style= "border:none; color: red;">X</button>
 								      </td>
 								    </tr>
 								</table>
 								<br>
-                                <label class="fieldlabels">Major growth drivers and prospects</label>
+                                <label class="fieldlabels">Major growth drivers and prospects <span style="color: red;">*</span> </label>
                                 <input type="button" id="fin9" value="Upload Files"/>
 								<table id="fin9Table">
 									<tr th:each="finDoc9 : ${finDoc9List}">
 								      <td th:text="${finDoc9.id}" style="display: none"></td>
 								      <td th:text="${finDoc9.fileName}"></td>
+								      <td style="width: 5%"></td>
 								      <td>
-								      	<button type="button" name ="fin9DltBtn" id ="fin9DltBtn" style= "border:none">X</button>
+								      	<button type="button" name ="fin9DltBtn" id ="fin9DltBtn" style= "border:none; color: red;">X</button>
 								      </td>
 								    </tr>
 								</table>
 								<br>
-								<label class="fieldlabels">Industry and company pricing policies</label>
+								<label class="fieldlabels">Industry and company pricing policies <span style="color: red;">*</span> </label>
                                 <input type="button" id="fin10" value="Upload Files"/>
 								<table id="fin10Table">
 									<tr th:each="finDoc10 : ${finDoc10List}">
 								      <td th:text="${finDoc10.id}" style="display: none"></td>
 								      <td th:text="${finDoc10.fileName}"></td>
+								      <td style="width: 5%"></td>
 								      <td>
-								      	<button type="button" name ="fin10DltBtn" id ="fin10DltBtn" style= "border:none">X</button>
+								      	<button type="button" name ="fin10DltBtn" id ="fin10DltBtn" style= "border:none; color: red;">X</button>
 								      </td>
 								    </tr>
 								</table>
 								<br>
-                                <label class="fieldlabels">Summary of current tax positions</label>
+                                <label class="fieldlabels">Summary of current tax positions <span style="color: red;">*</span> </label>
                                 <input type="button" id="fin11" value="Upload Files"/>
 								<table id="fin11Table">
 									<tr th:each="finDoc11 : ${finDoc11List}">
 								      <td th:text="${finDoc11.id}" style="display: none"></td>
 								      <td th:text="${finDoc11.fileName}"></td>
+								      <td style="width: 5%"></td>
 								      <td>
-								      	<button type="button" name ="fin11DltBtn" id ="fin11DltBtn" style= "border:none">X</button>
+								      	<button type="button" name ="fin11DltBtn" id ="fin11DltBtn" style= "border:none; color: red;">X</button>
 								      </td>
 								    </tr>
 								</table>
 								<br>
-                                <label class="fieldlabels">Accounting policies</label>
+                                <label class="fieldlabels">Accounting policies <span style="color: red;">*</span> </label>
                                 <input type="button" id="fin12" value="Upload Files"/>
 								<table id="fin12Table">
 									<tr th:each="finDoc12 : ${finDoc12List}">
 								      <td th:text="${finDoc12.id}" style="display: none"></td>
 								      <td th:text="${finDoc12.fileName}"></td>
+								      <td style="width: 5%"></td>
 								      <td>
-								      	<button type="button" name ="fin12DltBtn" id ="fin12DltBtn" style= "border:none">X</button>
+								      	<button type="button" name ="fin12DltBtn" id ="fin12DltBtn" style= "border:none; color: red;">X</button>
 								      </td>
 								    </tr>
 								</table>
 								<br>
-                                <label class="fieldlabels">Financing history for equity, warrants and debt</label>
+                                <label class="fieldlabels">Financing history for equity, warrants and debt <span style="color: red;">*</span> </label>
                                 <input type="button" id="fin13" value="Upload Files"/>
 								<table id="fin13Table">
 									<tr th:each="finDoc13 : ${finDoc13List}">
 								      <td th:text="${finDoc13.id}" style="display: none"></td>
 								      <td th:text="${finDoc13.fileName}"></td>
+								      <td style="width: 5%"></td>
 								      <td>
-								      	<button type="button" name ="fin13DltBtn" id ="fin13DltBtn" style= "border:none">X</button>
+								      	<button type="button" name ="fin13DltBtn" id ="fin13DltBtn" style= "border:none; color: red;">X</button>
 								      </td>
 								    </tr>
 								</table>
@@ -545,8 +561,9 @@
 									<tr th:each="contracts : ${contractsList}">
 								      <td th:text="${contracts.id}" style="display: none"></td>
 								      <td th:text="${contracts.fileName}"></td>
+								      <td style="width: 5%"></td>
 								      <td>
-								      	<button type="button" name ="revBtn" id ="revBtn" style= "border:none">X</button>
+								      	<button type="button" name ="revBtn" id ="revBtn" style= "border:none; color: red;">X</button>
 								      </td>
 								    </tr>
 								</table>
@@ -583,8 +600,9 @@
 									<tr th:each="incorporationDoc : ${incorporationDocList}">
 								      <td th:text="${incorporationDoc.id}" style="display: none"></td>
 								      <td th:text="${incorporationDoc.fileName}"></td>
+								      <td style="width: 5%"></td>
 								      <td>
-								      	<button type="button" name ="techBtn" id ="techBtn" style= "border:none">X</button>
+								      	<button type="button" name ="techBtn" id ="techBtn" style= "border:none; color: red;">X</button>
 								      </td>
 								    </tr>
 								</table>
@@ -702,6 +720,7 @@
 									<tr th:each="ipDoc1 : ${ipDoc1List}">
 								      <td th:text="${ipDoc1.id}" style="display: none"></td>
 								      <td th:text="${ipDoc1.fileName}"></td>
+								      <td style="width: 5%"></td>
 								      <td>
 								      	<button type="button" name ="ipBtn1" id ="ipBtn1" style= "border:none">X</button>
 								      </td>
@@ -714,6 +733,7 @@
 									<tr th:each="ipDoc2 : ${ipDoc2List}">
 								      <td th:text="${ipDoc2.id}" style="display: none"></td>
 								      <td th:text="${ipDoc2.fileName}"></td>
+								      <td style="width: 5%"></td>
 								      <td>
 								      	<button type="button" name ="ipBtn2" id ="ipBtn2" style= "border:none">X</button>
 								      </td>
@@ -827,11 +847,11 @@
                 <form id="contactForm" name="contact" role="form">
                     <div class="modal-body">				
                         <div class="form-group">
-                            <label for="oName">Full Name or Company Legal Name (in English) *</label>
+                            <label for="oName">Full Name or Company Legal Name (in English) <span style="color: red;">*</span> </label>
                             <input type="text" name="oName" class="form-control" id="oName">
                         </div>
                         <div class="form-group">
-                            <label for="oAltName">Does this person or entity have an alias or alternate name in another language? *</label>
+                            <label for="oAltName">Does this person or entity have an alias or alternate name in another language? <span style="color: red;">*</span> </label>
                             <br>
                             <div class="d-flex align-items-center col-md-12">
                                 <input class="col-md-1" type="radio" name="mRadio1" id="r9" value="yes">
@@ -844,7 +864,7 @@
                             <input type="text" name="oAltName" class="form-control" id="oAltName" placeholder="Please specify *">
                         </div>
                         <div class="form-group">
-                            <label for="ownPercent">Indicate Ownership % (in numbers) or Type of Control *</label>
+                            <label for="ownPercent">Indicate Ownership % (in numbers) or Type of Control <span style="color: red;">*</span> </label>
                             <input type="text" name="ownPercent" class="form-control" id="ownPercent">
                         </div>					
                     </div>
@@ -871,7 +891,7 @@
                             <input type="text" name="bodName" class="form-control" id="bodName">
                         </div>
                         <div class="form-group">
-                            <label for="bodAltName">Does this person or entity have an alias or alternate name in another language? *</label>
+                            <label for="bodAltName">Does this person or entity have an alias or alternate name in another language? <span style="color: red;">*</span> </label>
                             <br>
                             <div class="d-flex align-items-center col-md-12">
                                 <input class="col-md-1" type="radio" name="mRadio2" id="r11" value="yes">
@@ -883,7 +903,7 @@
                             <input type="text" name="bodAltName" class="form-control" id="bodAltName" placeholder="Please specify *">
                         </div>
                         <div class="form-group">
-                            <label for="bodPosition">Indicate Title/Position *</label>
+                            <label for="bodPosition">Indicate Title/Position <span style="color: red;">*</span> </label>
                             <input type="text" name="bodPosition" class="form-control" id="bodPosition">
                         </div>					
                     </div>
@@ -910,7 +930,7 @@
                             <input type="text" name="docType" class="form-control" id="docType">
                         </div>
                         <div class="form-group">
-                            <label for="selectFile">Select file from directory</label>
+                            <label for="selectFile">Select file from directory <span style="color: red;">*</span> </label>
                             <input type="file" name="selectFile" class="form-control" id="selectFile">
                         </div>					
                     </div>
@@ -937,7 +957,7 @@
                             <input type="text" name="docType1" class="form-control" id="docType1">
                         </div>
                         <div class="form-group">
-                            <label for="selectFile1">Select file from directory</label>
+                            <label for="selectFile1">Select file from directory <span style="color: red;">*</span> </label>
                             <input type="file" name="selectFile1" class="form-control" id="selectFile1">
                         </div>					
                     </div>
@@ -964,7 +984,7 @@
                             <input type="text" name="docType2" class="form-control" id="docType2">
                         </div>
                         <div class="form-group">
-                            <label for="selectFile2">Select file from directory</label>
+                            <label for="selectFile2">Select file from directory <span style="color: red;">*</span> </label>
                             <input type="file" name="selectFile2" class="form-control" id="selectFile2">
                         </div>					
                     </div>
@@ -991,7 +1011,7 @@
                             <input type="text" name="docType3" class="form-control" id="docType3">
                         </div>
                         <div class="form-group">
-                            <label for="selectFile3">Select file from directory</label>
+                            <label for="selectFile3">Select file from directory <span style="color: red;">*</span> </label>
                             <input type="file" name="selectFile3" class="form-control" id="selectFile3">
                         </div>					
                     </div>
@@ -1018,7 +1038,7 @@
                             <input type="text" name="docType4" class="form-control" id="docType4">
                         </div>
                         <div class="form-group">
-                            <label for="selectFile4">Select file from directory</label>
+                            <label for="selectFile4">Select file from directory <span style="color: red;">*</span> </label>
                             <input type="file" name="selectFile4" class="form-control" id="selectFile4">
                         </div>					
                     </div>
@@ -1045,7 +1065,7 @@
                             <input type="text" name="docType5" class="form-control" id="docType5">
                         </div>
                         <div class="form-group">
-                            <label for="selectFile5">Select file from directory</label>
+                            <label for="selectFile5">Select file from directory <span style="color: red;">*</span> </label>
                             <input type="file" name="selectFile5" class="form-control" id="selectFile5">
                         </div>					
                     </div>
@@ -1072,7 +1092,7 @@
                             <input type="text" name="docType6" class="form-control" id="docType6">
                         </div>
                         <div class="form-group">
-                            <label for="selectFile6">Select file from directory</label>
+                            <label for="selectFile6">Select file from directory <span style="color: red;">*</span> </label>
                             <input type="file" name="selectFile6" class="form-control" id="selectFile6">
                         </div>					
                     </div>
@@ -1099,7 +1119,7 @@
                             <input type="text" name="docType7" class="form-control" id="docType7">
                         </div>
                         <div class="form-group">
-                            <label for="selectFile7">Select file from directory</label>
+                            <label for="selectFile7">Select file from directory <span style="color: red;">*</span> </label>
                             <input type="file" name="selectFile7" class="form-control" id="selectFile7">
                         </div>					
                     </div>
@@ -1126,7 +1146,7 @@
                             <input type="text" name="docType8" class="form-control" id="docType8">
                         </div>
                         <div class="form-group">
-                            <label for="selectFile8">Select file from directory</label>
+                            <label for="selectFile8">Select file from directory <span style="color: red;">*</span> </label>
                             <input type="file" name="selectFile8" class="form-control" id="selectFile8">
                         </div>					
                     </div>
@@ -1153,7 +1173,7 @@
                             <input type="text" name="docType9" class="form-control" id="docType9">
                         </div>
                         <div class="form-group">
-                            <label for="selectFile9">Select file from directory</label>
+                            <label for="selectFile9">Select file from directory <span style="color: red;">*</span> </label>
                             <input type="file" name="selectFile9" class="form-control" id="selectFile9">
                         </div>					
                     </div>
@@ -1180,7 +1200,7 @@
                             <input type="text" name="docType10" class="form-control" id="docType10">
                         </div>
                         <div class="form-group">
-                            <label for="selectFile10">Select file from directory</label>
+                            <label for="selectFile10">Select file from directory <span style="color: red;">*</span> </label>
                             <input type="file" name="selectFile10" class="form-control" id="selectFile10">
                         </div>					
                     </div>
@@ -1207,7 +1227,7 @@
                             <input type="text" name="docType11" class="form-control" id="docType11">
                         </div>
                         <div class="form-group">
-                            <label for="selectFile11">Select file from directory</label>
+                            <label for="selectFile11">Select file from directory <span style="color: red;">*</span> </label>
                             <input type="file" name="selectFile11" class="form-control" id="selectFile11">
                         </div>					
                     </div>
@@ -1234,7 +1254,7 @@
                             <input type="text" name="docType12" class="form-control" id="docType12">
                         </div>
                         <div class="form-group">
-                            <label for="selectFile12">Select file from directory</label>
+                            <label for="selectFile12">Select file from directory <span style="color: red;">*</span> </label>
                             <input type="file" name="selectFile12" class="form-control" id="selectFile12">
                         </div>					
                     </div>
@@ -1261,7 +1281,7 @@
                             <input type="text" name="docType13" class="form-control" id="docType13">
                         </div>
                         <div class="form-group">
-                            <label for="selectFile13">Select file from directory</label>
+                            <label for="selectFile13">Select file from directory <span style="color: red;">*</span> </label>
                             <input type="file" name="selectFile13" class="form-control" id="selectFile13">
                         </div>					
                     </div>
@@ -1288,7 +1308,7 @@
                             <input type="text" name="docType14" class="form-control" id="docType14">
                         </div>
                         <div class="form-group">
-                            <label for="selectFile14">Select file from directory</label>
+                            <label for="selectFile14">Select file from directory <span style="color: red;">*</span> </label>
                             <input type="file" name="selectFile14" class="form-control" id="selectFile14">
                         </div>					
                     </div>
@@ -1315,7 +1335,7 @@
                             <input type="text" name="docType15" class="form-control" id="docType15">
                         </div>
                         <div class="form-group">
-                            <label for="selectFile15">Select file from directory</label>
+                            <label for="selectFile15">Select file from directory <span style="color: red;">*</span> </label>
                             <input type="file" name="selectFile15" class="form-control" id="selectFile15">
                         </div>					
                     </div>
@@ -1342,7 +1362,7 @@
                             <input type="text" name="docType16" class="form-control" id="docType16">
                         </div>
                         <div class="form-group">
-                            <label for="selectFile16">Select file from directory</label>
+                            <label for="selectFile16">Select file from directory <span style="color: red;">*</span> </label>
                             <input type="file" name="selectFile16" class="form-control" id="selectFile16">
                         </div>					
                     </div>
@@ -1664,9 +1684,12 @@
             			var cell1 = row.insertCell(0);
             			var cell2 = row.insertCell(1);
             			var cell3 = row.insertCell(2);
+            			var cell4 = row.insertCell(3);
             			 cell1.innerHTML = rowId;
             			 cell2.innerHTML = selectFile;
-            			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'revBtn' + ' id = ' + 'revBtn' + ' style= ' + 'border:none'+ '>X</button>';
+            			 cell3.innerHTML = "";
+            			 cell3.style.width = "5%";
+            			 cell4.innerHTML = '<button type= "button" name = "revBtn" id = "revBtn" style= "border:none; color: red">X</button>';
             			
             			 $("td:nth-child(1)").hide();
             			
@@ -1715,9 +1738,12 @@
             			var cell1 = row.insertCell(0);
             			var cell2 = row.insertCell(1);
             			var cell3 = row.insertCell(2);
+            			var cell4 = row.insertCell(3);
             			 cell1.innerHTML = rowId;
             			 cell2.innerHTML = selectFile;
-            			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'techBtn' + ' id = ' + 'techBtn' + ' style= ' + 'border:none'+ '>X</button>';
+            			 cell3.innerHTML = "";
+            			 cell3.style.width = "5%";
+            			 cell4.innerHTML = '<button type= "button" name = "techBtn" id = "techBtn" style= "border:none; color: red">X</button>';
             			
             			 $("td:nth-child(1)").hide();
             			
@@ -1767,9 +1793,12 @@
             			var cell1 = row.insertCell(0);
             			var cell2 = row.insertCell(1);
             			var cell3 = row.insertCell(2);
+            			var cell4 = row.insertCell(3);            			
             			 cell1.innerHTML = rowId;
             			 cell2.innerHTML = selectFile;
-            			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'ipBtn1' + ' id = ' + 'ipBtn1' + ' style= ' + 'border:none'+ '>X</button>';
+            			 cell3.innerHTML = "";
+            			 cell3.style.width = "5%";
+            			 cell4.innerHTML = '<button type= "button" name = "ipBtn1" id = "ipBtn1" style= "border:none; color: red">X</button>';;
             			
             			 $("td:nth-child(1)").hide();
             			
@@ -1819,9 +1848,12 @@
             			var cell1 = row.insertCell(0);
             			var cell2 = row.insertCell(1);
             			var cell3 = row.insertCell(2);
+            			var cell4 = row.insertCell(3);
             			 cell1.innerHTML = rowId;
             			 cell2.innerHTML = selectFile;
-            			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'ipBtn2' + ' id = ' + 'ipBtn2' + ' style= ' + 'border:none'+ '>X</button>';
+            			 cell3.innerHTML = "";
+            			 cell3.style.width = "5%";
+            			 cell4.innerHTML = '<button type= "button" name = "ipBtn2" id = "ipBtn2" style= "border:none; color: red">X</button>';
             			
             			 $("td:nth-child(1)").hide();
             			
@@ -1862,18 +1894,21 @@
                        else{
                        	var rowId = data["message"];
                        	var docType = $("#docType3").val();
-                           var selectFile = $("#selectFile4").val().split(/(\\|\/)/g).pop();
+                        var selectFile = $("#selectFile4").val().split(/(\\|\/)/g).pop();
 
-                           $("#docType4").val("");
+                        $("#docType4").val("");
                			$("#selectFile4").val("");
                			
                			var row = table4.insertRow(0);
                			var cell1 = row.insertCell(0);
-               			var cell2 = row.insertCell(1);
-               			var cell3 = row.insertCell(2);
+            			var cell2 = row.insertCell(1);
+            			var cell3 = row.insertCell(2);
+            			var cell4 = row.insertCell(3);
                			 cell1.innerHTML = rowId;
                			 cell2.innerHTML = selectFile;
-               			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin1DltBtn' + ' id = ' + 'fin1DltBtn' + ' style= ' + 'border:none'+ '>X</button>';
+	               		 cell3.innerHTML = "";
+	           			 cell3.style.width = "5%";
+               			 cell4.innerHTML = '<button type= "button" name = "fin1DltBtn" id = "fin1DltBtn" style= "border:none; color: red">X</button>';
                			
                			 $("td:nth-child(1)").hide();
                			
@@ -1922,9 +1957,12 @@
                			var cell1 = row.insertCell(0);
                			var cell2 = row.insertCell(1);
                			var cell3 = row.insertCell(2);
+               			var cell4 = row.insertCell(3);
                			 cell1.innerHTML = rowId;
                			 cell2.innerHTML = selectFile;
-               			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin2DltBtn' + ' id = ' + 'fin2DltBtn' + ' style= ' + 'border:none'+ '>X</button>';
+               			 cell3.innerHTML = "";
+            			 cell3.style.width = "5%";
+            			 cell4.innerHTML = '<button type= "button" name = "fin2DltBtn" id = "fin2DltBtn" style= "border:none; color: red">X</button>';
                			
                			 $("td:nth-child(1)").hide();
                			
@@ -1971,12 +2009,14 @@
                			
                			var row = table6.insertRow(0);
                			var cell1 = row.insertCell(0);
-               			var cell2 = row.insertCell(1);
-               			var cell3 = row.insertCell(2);
-               			 cell1.innerHTML = rowId;
-               			 cell2.innerHTML = selectFile;
-               			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin3DltBtn' + ' id = ' + 'fin3DltBtn' + ' style= ' + 'border:none'+ '>X</button>';
-               			
+            			var cell2 = row.insertCell(1);
+            			var cell3 = row.insertCell(2);
+            			var cell4 = row.insertCell(3);
+            			 cell1.innerHTML = rowId;
+            			 cell2.innerHTML = selectFile;
+            			 cell3.innerHTML = "";
+            			 cell3.style.width = "5%";
+            			 cell4.innerHTML = '<button type= "button" name = "fin3DltBtn" id = "fin3DltBtn" style= "border:none; color: red">X</button>';               			
                			 $("td:nth-child(1)").hide();
                			
                			$('#modelWindow8').modal('hide');
@@ -2022,12 +2062,14 @@
                			
                			var row = table7.insertRow(0);
                			var cell1 = row.insertCell(0);
-               			var cell2 = row.insertCell(1);
-               			var cell3 = row.insertCell(2);
-               			 cell1.innerHTML = rowId;
-               			 cell2.innerHTML = selectFile;
-               			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin4DltBtn' + ' id = ' + 'fin4DltBtn' + ' style= ' + 'border:none'+ '>X</button>';
-               			
+            			var cell2 = row.insertCell(1);
+            			var cell3 = row.insertCell(2);
+            			var cell4 = row.insertCell(3);
+            			 cell1.innerHTML = rowId;
+            			 cell2.innerHTML = selectFile;
+            			 cell3.innerHTML = "";
+            			 cell3.style.width = "5%";
+            			 cell4.innerHTML = '<button type= "button" name = "fin4DltBtn" id = "fin4DltBtn" style= "border:none; color: red">X</button>';               			
                			 $("td:nth-child(1)").hide();
                			
                			$('#modelWindow9').modal('hide');
@@ -2073,12 +2115,14 @@
                			
                			var row = table8.insertRow(0);
                			var cell1 = row.insertCell(0);
-               			var cell2 = row.insertCell(1);
-               			var cell3 = row.insertCell(2);
-               			 cell1.innerHTML = rowId;
-               			 cell2.innerHTML = selectFile;
-               			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin5DltBtn' + ' id = ' + 'fin5DltBtn' + ' style= ' + 'border:none'+ '>X</button>';
-               			
+            			var cell2 = row.insertCell(1);
+            			var cell3 = row.insertCell(2);
+            			var cell4 = row.insertCell(3);
+            			 cell1.innerHTML = rowId;
+            			 cell2.innerHTML = selectFile;
+            			 cell3.innerHTML = "";
+            			 cell3.style.width = "5%";
+            			 cell4.innerHTML = '<button type= "button" name = "fin5DltBtn" id = "fin5DltBtn" style= "border:none; color: red">X</button>';               			
                			 $("td:nth-child(1)").hide();
                			
                			$('#modelWindow10').modal('hide');
@@ -2124,11 +2168,14 @@
                			
                			var row = table9.insertRow(0);
                			var cell1 = row.insertCell(0);
-               			var cell2 = row.insertCell(1);
-               			var cell3 = row.insertCell(2);
-               			 cell1.innerHTML = rowId;
-               			 cell2.innerHTML = selectFile;
-               			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin6DltBtn' + ' id = ' + 'fin6DltBtn' + ' style= ' + 'border:none'+ '>X</button>';
+            			var cell2 = row.insertCell(1);
+            			var cell3 = row.insertCell(2);
+            			var cell4 = row.insertCell(3);
+            			 cell1.innerHTML = rowId;
+            			 cell2.innerHTML = selectFile;
+            			 cell3.innerHTML = "";
+            			 cell3.style.width = "5%";
+            			 cell4.innerHTML = '<button type= "button" name = "fin6DltBtn" id = "fin6DltBtn" style= "border:none; color: red">X</button>';
                			
                			 $("td:nth-child(1)").hide();
                			
@@ -2175,12 +2222,14 @@
              			
              			var row = table10.insertRow(0);
              			var cell1 = row.insertCell(0);
-             			var cell2 = row.insertCell(1);
-             			var cell3 = row.insertCell(2);
-             			 cell1.innerHTML = rowId;
-             			 cell2.innerHTML = selectFile;
-             			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin7DltBtn' + ' id = ' + 'fin7DltBtn' + ' style= ' + 'border:none'+ '>X</button>';
-             			
+            			var cell2 = row.insertCell(1);
+            			var cell3 = row.insertCell(2);
+            			var cell4 = row.insertCell(3);
+            			 cell1.innerHTML = rowId;
+            			 cell2.innerHTML = selectFile;
+            			 cell3.innerHTML = "";
+            			 cell3.style.width = "5%";
+            			 cell4.innerHTML = '<button type= "button" name = "fin7DltBtn" id = "fin7DltBtn" style= "border:none; color: red">X</button>';             			
              			 $("td:nth-child(1)").hide();
              			
              			$('#modelWindow12').modal('hide');
@@ -2226,12 +2275,14 @@
              			
              			var row = table11.insertRow(0);
              			var cell1 = row.insertCell(0);
-             			var cell2 = row.insertCell(1);
-             			var cell3 = row.insertCell(2);
-             			 cell1.innerHTML = rowId;
-             			 cell2.innerHTML = selectFile;
-             			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin8DltBtn' + ' id = ' + 'fin8DltBtn' + ' style= ' + 'border:none'+ '>X</button>';
-             			
+            			var cell2 = row.insertCell(1);
+            			var cell3 = row.insertCell(2);
+            			var cell4 = row.insertCell(3);
+            			 cell1.innerHTML = rowId;
+            			 cell2.innerHTML = selectFile;
+            			 cell3.innerHTML = "";
+            			 cell3.style.width = "5%";
+            			 cell4.innerHTML = '<button type= "button" name = "fin8DltBtn" id = "fin8DltBtn" style= "border:none; color: red">X</button>';             			
              			 $("td:nth-child(1)").hide();
              			
              			$('#modelWindow13').modal('hide');
@@ -2277,12 +2328,14 @@
              			
              			var row = table12.insertRow(0);
              			var cell1 = row.insertCell(0);
-             			var cell2 = row.insertCell(1);
-             			var cell3 = row.insertCell(2);
-             			 cell1.innerHTML = rowId;
-             			 cell2.innerHTML = selectFile;
-             			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin9DltBtn' + ' id = ' + 'fin9DltBtn' + ' style= ' + 'border:none'+ '>X</button>';
-             			
+            			var cell2 = row.insertCell(1);
+            			var cell3 = row.insertCell(2);
+            			var cell4 = row.insertCell(3);
+            			 cell1.innerHTML = rowId;
+            			 cell2.innerHTML = selectFile;
+            			 cell3.innerHTML = "";
+            			 cell3.style.width = "5%";
+            			 cell4.innerHTML = '<button type= "button" name = "fin9DltBtn" id = "fin9DltBtn" style= "border:none; color: red">X</button>';             			
              			 $("td:nth-child(1)").hide();
              			
              			$('#modelWindow14').modal('hide');
@@ -2328,12 +2381,14 @@
              			
              			var row = table13.insertRow(0);
              			var cell1 = row.insertCell(0);
-             			var cell2 = row.insertCell(1);
-             			var cell3 = row.insertCell(2);
-             			 cell1.innerHTML = rowId;
-             			 cell2.innerHTML = selectFile;
-             			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin10DltBtn' + ' id = ' + 'fin10DltBtn' + ' style= ' + 'border:none'+ '>X</button>';
-             			
+            			var cell2 = row.insertCell(1);
+            			var cell3 = row.insertCell(2);
+            			var cell4 = row.insertCell(3);
+            			 cell1.innerHTML = rowId;
+            			 cell2.innerHTML = selectFile;
+            			 cell3.innerHTML = "";
+            			 cell3.style.width = "5%";
+            			 cell4.innerHTML = '<button type= "button" name = "fin10DltBtn" id = "fin10DltBtn" style= "border:none; color: red">X</button>';             			
              			 $("td:nth-child(1)").hide();
              			
              			$('#modelWindow15').modal('hide');
@@ -2381,10 +2436,12 @@
             			var cell1 = row.insertCell(0);
             			var cell2 = row.insertCell(1);
             			var cell3 = row.insertCell(2);
+            			var cell4 = row.insertCell(3);
             			 cell1.innerHTML = rowId;
             			 cell2.innerHTML = selectFile;
-            			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin11DltBtn' + ' id = ' + 'fin11DltBtn' + ' style= ' + 'border:none'+ '>X</button>';
-            			
+            			 cell3.innerHTML = "";
+            			 cell3.style.width = "5%";
+            			 cell4.innerHTML = '<button type= "button" name = "fin11DltBtn" id = "fin11DltBtn" style= "border:none; color: red">X</button>';            			
             			 $("td:nth-child(1)").hide();
             			
             			$('#modelWindow16').modal('hide');
@@ -2432,10 +2489,12 @@
             			var cell1 = row.insertCell(0);
             			var cell2 = row.insertCell(1);
             			var cell3 = row.insertCell(2);
+            			var cell4 = row.insertCell(3);
             			 cell1.innerHTML = rowId;
             			 cell2.innerHTML = selectFile;
-            			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin12DltBtn' + ' id = ' + 'fin12DltBtn' + ' style= ' + 'border:none'+ '>X</button>';
-            			
+            			 cell3.innerHTML = "";
+            			 cell3.style.width = "5%";
+            			 cell4.innerHTML = '<button type= "button" name = "fin12DltBtn" id = "fin12DltBtn" style= "border:none; color: red">X</button>';            			
             			 $("td:nth-child(1)").hide();
             			
             			$('#modelWindow17').modal('hide');
@@ -2483,10 +2542,12 @@
             			var cell1 = row.insertCell(0);
             			var cell2 = row.insertCell(1);
             			var cell3 = row.insertCell(2);
+            			var cell4 = row.insertCell(3);
             			 cell1.innerHTML = rowId;
             			 cell2.innerHTML = selectFile;
-            			 cell3.innerHTML = '<button type=' + 'button' + ' name =' + 'fin13DltBtn' + ' id = ' + 'fin13DltBtn' + ' style= ' + 'border:none'+ '>X</button>';
-            			
+            			 cell3.innerHTML = "";
+            			 cell3.style.width = "5%";
+            			 cell4.innerHTML = '<button type= "button" name = "fin13DltBtn" id = "fin13DltBtn" style= "border:none; color: red">X</button>';            			
             			 $("td:nth-child(1)").hide();
             			
             			$('#modelWindow18').modal('hide');

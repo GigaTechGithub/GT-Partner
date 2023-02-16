@@ -35,6 +35,27 @@ public class Users {
 	    
 	    @Column(name="DILIGENCE_ID", nullable=false, length=20)
 	    private String diligenceId;
+	    
+	    @Column(name="STATUS")
+	    private int status;
+
+		public Users() {
+			super();
+			// TODO Auto-generated constructor stub
+		}
+
+		public Users(Long id, String name, String username, String password, String email, String mobile,
+				String diligenceId, int status) {
+			super();
+			this.id = id;
+			this.name = name;
+			this.username = username;
+			this.password = password;
+			this.email = email;
+			this.mobile = mobile;
+			this.diligenceId = diligenceId;
+			this.status = status;
+		}
 
 		public Long getId() {
 			return id;
@@ -92,30 +113,15 @@ public class Users {
 			this.diligenceId = diligenceId;
 		}
 
-		public Users() {
-			super();
+		public int getStatus() {
+			return status;
 		}
 
-		public Users(Long id, String name, String username, String password, String email, String mobile,
-				String diligenceId) {
-			super();
-			this.id = id;
-			this.name = name;
-			this.username = username;
-			this.password = password;
-			this.email = email;
-			this.mobile = mobile;
-			this.diligenceId = diligenceId;
-		}
-
-		@Override
-		public String toString() {
-			return "Users [id=" + id + ", name=" + name + ", username=" + username + ", password=" + password
-					+ ", email=" + email + ", mobile=" + mobile + ", diligenceId=" + diligenceId + "]";
+		public void setStatus(int status) {
+			this.status = status;
 		}
 
 		
-	    
 	    
 	    
 }
