@@ -24,6 +24,18 @@ public class Diligence {
     @Column(name="PROFILE_STATUS")
     private Integer profileStatus;
     
+    @Column(name="EMAIL")
+    private String email;
+    
+    @Column(name="MOBILE")
+    private String mobile;
+    
+    @Column(name="WEBSITE")
+    private String website;
+    
+    @Column(name="ADDRESS")
+    private String address;
+    
     
 	public Diligence() {
 		super();
@@ -31,15 +43,18 @@ public class Diligence {
 	}
 
 
-
-	public Diligence(Long id, String name, Integer status, Integer profileStatus) {
+	public Diligence(Long id, String name, Integer status, Integer profileStatus, String email, String mobile,
+			String website, String address) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.status = status;
 		this.profileStatus = profileStatus;
+		this.email = email;
+		this.mobile = mobile;
+		this.website = website;
+		this.address = address;
 	}
-
 
 
 	public Long getId() {
@@ -47,11 +62,9 @@ public class Diligence {
 	}
 
 
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 
 
 	public String getName() {
@@ -59,11 +72,9 @@ public class Diligence {
 	}
 
 
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 
 
 	public Integer getStatus() {
@@ -71,11 +82,9 @@ public class Diligence {
 	}
 
 
-
 	public void setStatus(Integer status) {
 		this.status = status;
 	}
-
 
 
 	public Integer getProfileStatus() {
@@ -83,13 +92,52 @@ public class Diligence {
 	}
 
 
-
 	public void setProfileStatus(Integer profileStatus) {
 		this.profileStatus = profileStatus;
 	}
 
-	
 
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public String getMobile() {
+		return mobile;
+	}
+
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+
+	public String getWebsite() {
+		return website;
+	}
+
+
+	public void setWebsite(String website) {
+		this.website = website;
+	}
+
+
+	public String getAddress() {
+		return address;
+	}
+
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+
+	
 	
     
 }
