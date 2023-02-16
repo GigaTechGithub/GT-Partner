@@ -20,7 +20,7 @@ public class AdminController {
         return "admin-view/home/admin-home";
     }
 	
-	@GetMapping("/partners")
+	@GetMapping("/activePartnersList")
     public String partnerList(Model model) {
 		List<Diligence> diligenceList = diligenceService.findBystatus(1);
 		
