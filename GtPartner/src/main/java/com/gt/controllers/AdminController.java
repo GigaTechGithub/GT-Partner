@@ -28,4 +28,15 @@ public class AdminController {
 		
         return "admin-view/partners/partnerList";
     }
+	
+	
+	@GetMapping("/partnerCreate")
+    public String partnerCreate() {
+        return "admin-view/partner/partner-create";
+    }
+    
+	
+	
+	
+	
 }
