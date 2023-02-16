@@ -69,7 +69,7 @@ public class AuthController {
     
     @GetMapping("/admin")
     public String products() {
-        return "view/admin-hom e";
+        return "view/admin-home";
     }
     
 }
