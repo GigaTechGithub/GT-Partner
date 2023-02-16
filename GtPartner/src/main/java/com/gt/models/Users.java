@@ -38,6 +38,9 @@ public class Users {
 	    
 	    @Column(name="STATUS")
 	    private int status;
+	    
+	    @Column(name="ISADMIN")
+	    private String isAdmin;
 
 		public Users() {
 			super();
@@ -45,7 +48,7 @@ public class Users {
 		}
 
 		public Users(Long id, String name, String username, String password, String email, String mobile,
-				String diligenceId, int status) {
+				String diligenceId, int status, String isAdmin) {
 			super();
 			this.id = id;
 			this.name = name;
@@ -55,6 +58,7 @@ public class Users {
 			this.mobile = mobile;
 			this.diligenceId = diligenceId;
 			this.status = status;
+			this.isAdmin = isAdmin;
 		}
 
 		public Long getId() {
@@ -121,7 +125,14 @@ public class Users {
 			this.status = status;
 		}
 
+		public String getIsAdmin() {
+			return isAdmin;
+		}
+
+		public void setIsAdmin(String isAdmin) {
+			this.isAdmin = isAdmin;
+		}
+
 		
-	    
 	    
 }

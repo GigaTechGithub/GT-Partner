@@ -44,6 +44,7 @@ public class AuthController {
     		session.setAttribute("email", user.getEmail()); 
     		session.setAttribute("mobile", user.getMobile());
     		session.setAttribute("diligenceId", user.getDiligenceId());
+    		session.setAttribute("isAdmin", user.getIsAdmin());
     		
     		if (user.getPassword().equals(request.getPassword())) {
         		return "redirect:/home";
