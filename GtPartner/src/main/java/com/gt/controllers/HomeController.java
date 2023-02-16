@@ -184,7 +184,7 @@ public class HomeController {
 	@GetMapping({"/home"})
     public String getHomePage(Model model) {
 		if(isAdmin().contentEquals("Y")) {
-			return "view/admin-home";
+			return "redirect:/admin";
 		}
 		
 		else {

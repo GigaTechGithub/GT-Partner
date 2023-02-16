@@ -76,9 +76,4 @@ public class AuthController {
         return "redirect:/login";
     }
     
-    @GetMapping("/admin")
-    public String products() {
-        return "view/admin-home";
-    }
-    
 }
