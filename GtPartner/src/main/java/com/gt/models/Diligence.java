@@ -25,7 +25,6 @@ public class Diligence {
     private Integer profileStatus;
     
     
-
 	public Diligence() {
 		super();
 		// TODO Auto-generated constructor stub
