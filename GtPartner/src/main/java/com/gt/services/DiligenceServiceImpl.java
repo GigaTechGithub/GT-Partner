@@ -21,7 +21,8 @@ public class DiligenceServiceImpl implements DiligenceService{
 	public String saveDiligence(Diligence diligence) {
 		try {
 			diligenceRepository.save(diligence);
-			return "Success";
+			String diligenceId = diligence.getId().toString();
+			return diligenceId;
 		}
 		
 		catch (Exception e) {

@@ -36,6 +36,9 @@ public class Diligence {
     @Column(name="ADDRESS")
     private String address;
     
+    @Column(name="CREAATED_BY")
+    private Integer createdBy;
+    
     
 	public Diligence() {
 		super();
@@ -44,7 +47,7 @@ public class Diligence {
 
 
 	public Diligence(Long id, String name, Integer status, Integer profileStatus, String email, String mobile,
-			String website, String address) {
+			String website, String address, Integer createdBy) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -54,6 +57,7 @@ public class Diligence {
 		this.mobile = mobile;
 		this.website = website;
 		this.address = address;
+		this.createdBy = createdBy;
 	}
 
 
@@ -137,7 +141,25 @@ public class Diligence {
 	}
 
 
+	public Integer getCreatedBy() {
+		return createdBy;
+	}
+
+
+	public void setCreatedBy(Integer createdById) {
+		this.createdBy = createdById;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Diligence [id=" + id + ", name=" + name + ", status=" + status + ", profileStatus=" + profileStatus
+				+ ", email=" + email + ", mobile=" + mobile + ", website=" + website + ", address=" + address
+				+ ", createdBy=" + createdBy + "]";
+	}
+
+
 	
 	
-    
+	
 }
