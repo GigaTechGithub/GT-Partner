@@ -48,7 +48,6 @@ import com.gt.models.Owner;
 import com.gt.models.Revenue;
 import com.gt.models.Technology;
 import com.gt.models.Users;
-import com.gt.repo.UserRepository;
 import com.gt.services.BodService;
 import com.gt.services.CompanyService;
 import com.gt.services.ContractsService;
