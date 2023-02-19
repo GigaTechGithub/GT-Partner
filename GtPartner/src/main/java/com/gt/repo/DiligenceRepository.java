@@ -9,4 +9,5 @@ import com.gt.models.Diligence;
 public interface DiligenceRepository extends JpaRepository<Diligence, Long>{
 	List<Diligence> findByid(long id);
 	List<Diligence> findBystatus(int status);
+	List<Diligence> findByStatusAndProfileStatus(int status, int profileStatus);
 }

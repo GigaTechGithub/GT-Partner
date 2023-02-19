@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html layout:decorator="layouts/admin-layout" lang="en" xmlns:layout="http://www.w3.org/1999/xhtml">
+ <head>
+   <title>User Management</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+</head>
+
+<body>
+
+<div layout:fragment="content">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	  
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+	
+	<div>
+		<input type="button" id="addUserBtn" value="Add New User">
+		<br>
+		<br>
+		<form>
+			<table id="userList" class="display" cellspacing="0" width="100%">
+		       <thead>
+		           <tr>
+			           <th style="display: none">ID</th>
+			           <th>Name</th>
+		               <th>UserName</th>
+		               <th>Company Name</th>
+		               <th>Email</th>
+		               <th>Mobile</th>
+		               <th>Status</th>
+		               <th>Action</th>
+		           </tr>                                        
+		       </thead>
+		       <tbody id="tableBody">
+			        <tr th:each="user : ${userList}">
+			           	<td th:text="${user.id}"></td>
+					    <td th:text="${user.name}"></td>
+						<td th:text="${user.username}"></td>
+						<th th:text="${user.companyName}">
+					    <td th:text="${user.email}"></td>
+					    <td th:text="${user.mobile}"></td>
+					    <td>
+					    	<span th:if="${user.status == 0}">Inactive</span>
+					    	<span th:if="${user.status == 1}">Active</span>
+					    </td>
+					    <td>
+					    	<input type="button" value="Edit User" id="editBtn">
+					    	<input type="button" value="Delete User" id="dltBtn" style="background-color: yellow">
+					    </td>
+			  		</tr>
+		       </tbody>
+		   </table>
+		</form>		
+	</div>
+	
+	<div class="modal fade" id="modalWindow1" role="dialog" data-backdrop="static">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">                  
+                    <h3>Add User</h3>
+                    <a class="close" data-dismiss="modal">×</a>
+                </div>
+                <form id="contactForm" name="contact" role="form">
+                    <div class="modal-body">				
+                        <div class="form-group">
+                            <label for="fullName">Name <span style="color: red;">*</span> </label>
+                            <input type="text" name="fullName" class="form-control" id="fullName">
+                        </div>
+                        <div class="form-group">
+                            <label for="userName">Username <span style="color: red;">*</span> </label>
+                            <input type="text" name="userName" class="form-control" id="userName">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password <span style="color: red;">*</span> </label>
+                            <input type="text" name="password" class="form-control" id="password">
+                        </div>
+                        <div class="form-group">
+                            <label for="oName">Email <span style="color: red;">*</span> </label>
+                            <input type="text" name="email" class="form-control" id="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="oName">Mobile<span style="color: red;">*</span> </label>
+                            <input type="text" name="mobile" class="form-control" id="mobile">
+                        </div>
+                        <div class="form-group">
+                            <label for="oAltName">Admin User <span style="color: red;">*</span> </label>
+                            <br>
+                            <div class="d-flex align-items-center col-md-12">
+                                <input class="col-md-1" type="radio" name="mRadio1" id="r1" value="yes">
+                                <label class="col-md-1" for="inlineRadio1">Yes</label>
+                                <input class="col-md-1" type="radio" name="mRadio1" id="r2" value="no">
+                                <label class="col-md-1" for="inlineRadio1">No</label>
+                            </div>                            
+                        </div>
+                        
+                        <div class="form-group" id="companyDiv" style="display: none">
+                            <label for="selectCompany">Please select company <span style="color: red;">*</span></label>
+                            <select class="selectCompany" id="selectCompany" name="selectCompany" style="width: 100%">
+					             <option value=""> -- </option>
+					             <option th:each="diligence : ${dilList}" th:value="${diligence.id}" th:text="${diligence.name}"></option>
+					        </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="selectStatus">Status <span style="color: red;">*</span></label>
+                            <select class="selectStatus" id="selectStatus" name="selectStatus" style="width: 100%">
+					             <option value="1">Active</option>
+					             <option value="0">Inactive</option>
+					        </select>
+                        </div>					
+                    </div>
+                    <div class="modal-footer">					
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <input type="button" class="btn btn-success" id="addBtn" value="Add">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="modalWindow2" role="dialog" data-backdrop="static">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">                  
+                    <h3>Update User</h3>
+                    <a class="close" data-dismiss="modal">×</a>
+                </div>
+                <form id="contactForm" name="contact" role="form">
+                    <div class="modal-body">				
+                        <div class="form-group">
+                            <label for="editFullName">Name <span style="color: red;">*</span> </label>
+                            <input type="text" name="editFullName" class="form-control" id="editFullName">
+                        </div>
+                        <div class="form-group">
+                            <label for="editUserName">Username <span style="color: red;">*</span> </label>
+                            <input type="text" name="editUserName" class="form-control" id="editUserName">
+                        </div>
+                        <div class="form-group">
+                            <label for="editPassword">Password <span style="color: red;">*</span> </label>
+                            <input type="text" name="editPassword" class="form-control" id="editPassword">
+                        </div>
+                        <div class="form-group">
+                            <label for="editEmail">Email <span style="color: red;">*</span> </label>
+                            <input type="text" name="editEmail" class="form-control" id="editEmail">
+                        </div>
+                        <div class="form-group">
+                            <label for="editMobile">Mobile<span style="color: red;">*</span> </label>
+                            <input type="text" name="editMobile" class="form-control" id="editMobile">
+                        </div>
+                        <div class="form-group">
+                            <label>Admin User <span style="color: red;">*</span> </label>
+                            <br>
+                            <div class="d-flex align-items-center col-md-12">
+                                <input class="col-md-1" type="radio" name="mRadio1" id="r3" value="yes">
+                                <label class="col-md-1" for="inlineRadio1">Yes</label>
+                                <input class="col-md-1" type="radio" name="mRadio1" id="r4" value="no">
+                                <label class="col-md-1" for="inlineRadio1" checked>No</label>
+                            </div>                            
+                        </div>
+                        
+                        <div class="form-group" id="companyDiv" style="display: none">
+                            <label for="editSelectCompany">Please select company <span style="color: red;">*</span></label>
+                            <select class="editSelectCompany" id="editSelectCompany" name="editSelectCompany" style="width: 100%">
+					             <option value=""> -- </option>
+					             <option th:each="diligence : ${dilList}" th:value="${diligence.id}" th:text="${diligence.name}"></option>
+					        </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="editSelectStatus">Status <span style="color: red;">*</span></label>
+                            <select class="editSelectStatus" id="editSelectStatus" name="editSelectStatus" style="width: 100%">
+					             <option value="1">Active</option>
+					             <option value="0">Inactive</option>
+					        </select>
+                        </div>					
+                    </div>
+                    <div class="modal-footer">					
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <input type="button" class="btn btn-success" id="upadteBtn" value="Add">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+	
+	<script>
+		  var t = $('#userList').DataTable();
+		  
+		  $('#addUserBtn').click(function() {
+	            $('#modalWindow1').modal('show');
+	      });
+		  
+		  
+		  $('#editBtn').click(function() {
+	            $('#modalWindow2').modal('show');
+	      });
+		  
+		  $(document).ready(function(){
+			  t.column(0).visible(false);
+			  
+			  $("#r1").click(function () {
+		            $("#companyDiv").hide();
+		      });
+			  
+			  $("#r2").click(function () {
+		            $("#companyDiv").show();
+		      });
+			  
+			  $("#addBtn").click(function () {
+		            var fullName = document.getElementById("fullName");
+		            var userName = document.getElementById("userName");
+		            var password = document.getElementById("password");
+		            var email = document.getElementById("email");
+		            var mobile = document.getElementById("mobile");
+		            var admin = document.querySelector('input[name = "mRadio1"]:checked') == null ? "" : document.querySelector('input[name = "mRadio1"]:checked').value;
+		            var selectCompany = document.getElementById("selectCompany");
+		            var selectStatus = document.getElementById("selectStatus");
+		            
+		            if(fullName == "" || userName == "" || password == "" || email == "" || mobile ==  "" || admin == "" || selectStatus == ""){
+	            		alert("Please fill up mandatory fields");
+	            	}
+		            
+		            else{
+		            	if(mRadio1 == "yes" && selectCompany == ""){
+		            		alert("Please fill up mandatory fields");
+		            	}
+		            	else{
+		            		var user = {};
+		                	user["name"] = fullName;
+		                	user["username"] = userName;
+		                	user["password"] = password;    
+		                	user["email"] = email;
+		                	user["mobile"] = mobile;
+		                	user["isAdmin"] = document.querySelector('input[name = "mRadio1"]:checked') == null ? 'N' : 'Y';
+		                	user["diligenceId"] = selectCompany;
+		                	user["status"] = selectStatus;
+		                    
+		                    $.ajax({
+		                        type: "POST",
+		                        contentType: "application/json",
+		                        url: "/saveUser",
+		                        data: JSON.stringify(user),
+		                        dataType: 'json',
+		                        cache: false,
+		                        timeout: 600000,
+		                        success: function (data) {
+		                            console.log(data["message"]);
+		                            if(data["message"]=="Failed"){
+		                            	alert("Failed to save data. Please try again");
+		                            }
+		                            
+		                            else{
+		                                var rowId = data["message"];                   	
+		                            	$("#fullName").val("");
+		                                $("#userName").val("");
+		                                $("#password").val("");
+		                                $("#email").val("");
+		                                $("#mobile").val("");
+		                                $("#selectCompany").val("");
+		                                $("#selectStatus").val("");
+		                                
+		                                var td = $('<td>').append('<input type=' + 'button' + ' value =' + 'Edit User' + ' id = ' + 'editBtn' + ' />', '<input type=' + 'button' + ' value =' + 'Delete User' + ' id = ' + 'dltBtn' + 'style =' + 'background-color: yellow' + ' />');
+
+		                                t.row.add([rowId, fullName, userName, selectCompany, email, mobile, status, td]).draw();
+
+		                                $('#modelWindow1').modal('hide');
+		                            }
+
+		                        },
+		                        error: function (e) {
+
+		                            alert("Failed to save data. Please try again");
+
+		                        }
+		                    });
+		            	}
+		            }
+		      });
+		  });
+	</script>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html layout:decorator="layouts/admin-layout" lang="en" xmlns:layout="http://www.w3.org/1999/xhtml">
+ <head>
+   <title>Financial Information</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+</head>
+
+<body>
+
+<div layout:fragment="content">
+	<fieldset id="fieldset3">
+        <div class="form-card">
+        	<div class="row">
+                <div class="col-7">
+                    <h2 class="fs-title">Company Name: <span th:text="${companyName}"></span></h2>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-7">
+                    <h2 class="fs-title">FINANCIAL</h2>
+                </div>
+            </div>
+            <hr>
+            <label class="fieldlabels">Annual and quarterly financial and bank statements <span style="color: red;">*</span> </label>
+			<table id="fin1Table">
+				<tr th:each="finDoc1 : ${finDoc1List}">
+      				<td th:text="${finDoc1.id}" style="display: none"></td>
+      				<td th:text="${finDoc1.filePath}" style="display: none"></td>
+					<td th:text="${finDoc1.fileName}"></td>					
+			    </tr>
+			</table>
+			<br>
+			<hr>
+            <label class="fieldlabels">Investment and hedging policies <span style="color: red;">*</span> </label>
+			<table id="fin2Table">
+				<tr th:each="finDoc2 : ${finDoc2List}">
+			        <td th:text="${finDoc2.id}" style="display: none"></td>
+					<td th:text="${finDoc2.fileName}"></td>
+				</tr>
+			</table>
+			<br>
+			<hr>
+            <label class="fieldlabels">Sales and profits by product, channel and geography <span style="color: red;">*</span> </label>
+			<table id="fin3Table">
+				<tr th:each="finDoc3 : ${finDoc3List}">
+			      	<td th:text="${finDoc3.id}" style="display: none"></td>
+					<td th:text="${finDoc3.fileName}"></td>
+			    </tr>
+			</table>
+			<br>
+			<hr>
+            <label class="fieldlabels">Accounts receivable <span style="color: red;">*</span> </label>
+			<table id="fin4Table">
+				<tr th:each="finDoc4 : ${finDoc4List}">
+   			        <td th:text="${finDoc4.id}" style="display: none"></td>
+					<td th:text="${finDoc4.fileName}"></td>
+			    </tr>
+			</table>
+			<br>
+			<hr>
+            <label class="fieldlabels">Capital structure <span style="color: red;">*</span> </label>
+			<table id="fin5Table">
+				<tr th:each="finDoc5 : ${finDoc5List}">
+			        <td th:text="${finDoc5.id}" style="display: none"></td>
+					<td th:text="${finDoc5.fileName}"></td>
+			    </tr>
+			</table>
+			<br>
+			<hr>
+            <label class="fieldlabels">Summary of debt instruments <span style="color: red;">*</span> </label>
+			<table id="fin6Table">
+				<tr th:each="finDoc6 : ${finDoc6List}">
+			        <td th:text="${finDoc6.id}" style="display: none"></td>
+					<td th:text="${finDoc6.fileName}"></td>
+    			</tr>
+			</table>
+			<br>
+			<hr>
+            <label class="fieldlabels">Financial projections <span style="color: red;">*</span> </label>
+			<table id="fin7Table">
+				<tr th:each="finDoc7 : ${finDoc7List}">
+			      	<td th:text="${finDoc7.id}" style="display: none"></td>
+					<td th:text="${finDoc7.fileName}"></td>
+			    </tr>
+			</table>
+			<br>
+			<hr>
+            <label class="fieldlabels">Revenue by product type, customers and channel <span style="color: red;">*</span> </label>
+			<table id="fin8Table">
+				<tr th:each="finDoc8 : ${finDoc8List}">
+			      	<td th:text="${finDoc8.id}" style="display: none"></td>
+					<td th:text="${finDoc8.fileName}"></td>
+			    </tr>
+			</table>
+			<br>
+			<hr>
+            <label class="fieldlabels">Major growth drivers and prospects <span style="color: red;">*</span> </label>
+			<table id="fin9Table">
+				<tr th:each="finDoc9 : ${finDoc9List}">
+			      	<td th:text="${finDoc9.id}" style="display: none"></td>
+					<td th:text="${finDoc9.fileName}"></td>
+			    </tr>
+			</table>
+			<br>
+			<hr>
+			<label class="fieldlabels">Industry and company pricing policies <span style="color: red;">*</span> </label>
+			<table id="fin10Table">
+				<tr th:each="finDoc10 : ${finDoc10List}">
+			      	<td th:text="${finDoc10.id}" style="display: none"></td>
+					<td th:text="${finDoc10.fileName}"></td>
+				</tr>
+			</table>
+			<br>
+			<hr>
+            <label class="fieldlabels">Summary of current tax positions <span style="color: red;">*</span> </label>
+			<table id="fin11Table">
+				<tr th:each="finDoc11 : ${finDoc11List}">
+			      	<td th:text="${finDoc11.id}" style="display: none"></td>
+					<td th:text="${finDoc11.fileName}"></td>
+			    </tr>
+			</table>
+			<br>
+			<hr>
+            <label class="fieldlabels">Accounting policies <span style="color: red;">*</span> </label>
+			<table id="fin12Table">
+				<tr th:each="finDoc12 : ${finDoc12List}">
+			      	<td th:text="${finDoc12.id}" style="display: none"></td>
+					<td th:text="${finDoc12.fileName}"></td>
+    			</tr>
+			</table>
+			<br>
+			<hr>
+            <label class="fieldlabels">Financing history for equity, warrants and debt <span style="color: red;">*</span> </label>
+			<table id="fin13Table">
+				<tr th:each="finDoc13 : ${finDoc13List}">
+			      	<td th:text="${finDoc13.id}" style="display: none"></td>
+					<td th:text="${finDoc13.fileName}"></td>
+			    </tr>
+			</table>
+            <br>
+            <hr>
+     	</div>
+  </fieldset>
+</div>
+
+</body>
+</html>

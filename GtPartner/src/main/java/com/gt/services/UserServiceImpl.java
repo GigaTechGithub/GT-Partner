@@ -37,4 +37,27 @@ public class UserServiceImpl implements UserService{
             return null;
         }
 	}
+
+	@Override
+	public String saveUser(Users user) {
+		try {
+			userRepository.save(user);
+			String rowId = user.getId().toString();
+			return rowId;
+		}
+		
+		catch(Exception e) {
+			return "Failed";
+		}
+	}
+
+	@Override
+	public void deleteUser(long id) {
+		userRepository.deleteById(id);		
+	}
+
+	@Override
+	public List<Users> findAll() {
+		return userRepository.findAll();
+	}
 }

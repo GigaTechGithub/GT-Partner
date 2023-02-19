@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html layout:decorator="layouts/admin-layout" lang="en" xmlns:layout="http://www.w3.org/1999/xhtml">
+ <head>
+   <title>Legal Information</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+</head>
+
+<body>
+
+<div layout:fragment="content">
+
+	<div class="container-fluid">
+        <div class="row justify-content-center">
+        	<fieldset id="fieldset2">
+                <div class="form-card">
+                	<div class="row">
+                        <div class="col-7">
+                            <h2 class="fs-title">Company Name: <span th:text="${companyName}"></span></h2>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-7">
+                            <h2 class="fs-title">Financial Integrity and Reliability:</h2>
+                        </div>
+                    </div>
+                    <label class="fieldlabels">In the last ten years has a court, in your country or elsewhere, given any judgement against you about a debt?
+                        If so, give particulars: </label>
+                    <br>
+                    <input type="text" id="legal1" th:value="${legal.legal1}" style="width: 100%" readonly/>
+                    <br>
+                    <br>
+                    <label class="fieldlabels">In the last ten years have you made any compromise arrangement with your creditors?
+                        If so, give particulars: </label>
+                    <br>
+                    <input type="text" id="legal2" th:value="${legal.legal2}" style="width: 100%" readonly/>
+                    <br>
+                    <br>
+                    <label class="fieldlabels">Have you ever been declared bankrupt or been the subject of a bankruptcy court order in your country or elsewhere, or has a bankruptcy petition ever been served on you?
+                        If so, give particulars: </label>
+                    <br>
+                    <input type="text" id="legal3" th:value="${legal.legal3}" style="width: 100%" readonly/>
+                    <br>
+                    <br>
+                    <label class="fieldlabels">Have you ever signed a trust deed for a creditor, made an assignment for the benefit of creditors or made any arrangements for the payment of a composition to creditors?
+                        If so, give particulars: </label>
+                    <br>
+                    <input type="text" id="legal4" th:value="${legal.legal4}" style="width: 100%" readonly/>
+                </div>
+                <hr>
+                <div class="form-card">
+                    <div class="row">
+                        <div class="col-7">
+                            <h2 class="fs-title">Convictions or Civil Liabilities: </h2>
+                            <h2 class="fs-title">Note: offenders committed before the age of 17, unless committed within the last 10 years, and any road traffic offence that did not lead to a disqualification or prison sentence, may be excluded</h2>
+                        </div>
+                    </div>
+                    <label class="fieldlabels">Have you at any time pleaded guilty to or been found guilty of any offence?
+                        If so, give details of the court which convicted you, the offence, the penalty imposed and date of conviction: </label>
+                    <br>
+                    <input type="text" id="legal5" th:value="${legal.legal5}" style="width: 100%" readonly/>
+                    <br>
+                    <br>
+                    <label class="fieldlabels">In the last five years have you, in your country or elsewhere, been the subject of any civil action relating to your professional or business activities which has resulted in a finding against you by a court, or a settlement being agreed?
+                        If so, give particulars: </label>
+                    <br>
+                    <input type="text" id="legal6" th:value="${legal.legal6}" style="width: 100%" readonly/>
+                    <br>
+                    <br>
+                    <label class="fieldlabels">Have you ever been disqualified by a court from being a director, or from acting in the management or conduct of the affairs of any company?
+                        If so, give particulars: </label>
+                    <br>
+                    <input type="text" id="legal7" th:value="${legal.legal7}" style="width: 100%" readonly/>
+                </div>
+                <hr>
+                <div class="form-card">
+                    <div class="row">
+                        <div class="col-7">
+                            <h2 class="fs-title">Good Reputation and Character:</h2>
+                        </div>
+                    </div>
+                    <label class="fieldlabels">Have you, in your country or elsewhere, ever been refused the right or been restricted in the right to carry on any trade, business or profession for which a specific licence, registration or other authority is required?
+                        If so, give particulars: </label>
+                    <br>
+                    <input type="text" id="legal8" th:value="${legal.legal8}" style="width: 100%" readonly/>
+                    <br>
+                    <br>
+                    <label class="fieldlabels">Have you, in your country or elsewhere, ever been investigated about allegations of misconduct or malpractice in connection with your professional activities which resulted in a formal complaint being proved but no disciplinary order being made?
+                        If so, give particulars: </label>
+                    <br>
+                    <input type="text" id="legal9" th:value="${legal.legal9}" style="width: 100%" readonly/>
+                    <br>
+                    <br>
+                    <label class="fieldlabels">Have you, in your country or elsewhere, ever been the subject of disciplinary procedures by a professional body or employer resulting in a finding against you?
+                        If so, give particulars: </label>
+                    <br>
+                    <input type="text" id="legal10" th:value="${legal.legal10}" style="width: 100%" readonly/>
+                    <br>
+                    <br>
+                    <label class="fieldlabels">Have you, in your country or elsewhere, ever been reprimanded, excluded, disciplined or publicly criticised by any professional body which you belong or have belonged to?
+                        If so, give particulars: </label>
+                    <br>
+                    <input type="text" id="legal11" th:value="${legal.legal11}" style="width: 100%" readonly/>
+                    <br>
+                    <br>
+                    <label class="fieldlabels">Have you, in your country or elsewhere, ever been refused entry to or excluded from membership of any profession or vocation?
+                        If so, give details.</label>
+                    <br>
+                    <input type="text" id="legal12" th:value="${legal.legal12}" style="width: 100%" readonly/>
+                    <br>
+                    <br>
+                    <label class="fieldlabels">Have you, in your country or elsewhere, ever been dismissed from any office (other than as auditor) or employment or requested to resign from any office, employment or partnership?
+                        If so, give particulars. </label>
+                    <br>
+                    <input type="text" id="legal13" th:value="${legal.legal13}" style="width: 100%" readonly/>
+                    <br>
+                    <br>
+                    <label class="fieldlabels">Have you, in your country or elsewhere, ever been reprimanded, warned about future conduct, disciplined, or publicly criticised by any regulatory body, or any officially appointed enquiry concerned with the regulation of a financial, professional or other business activity?
+                        If so, give particulars. </label>
+                    <br>
+                    <input type="text" id="legal14" th:value="${legal.legal14}" style="width: 100%" readonly/>
+                    <br>
+                    <br>
+                    <label class="fieldlabels">Have you, in your country or elsewhere, ever been the subject of a court order at the instigation of any regulatory body or any officially appointed enquiry concerned with the regulation of a financial, professional or other business activity?
+                        If so, give particulars. </label>
+                    <br>
+                    <input type="text" id="legal15" th:value="${legal.legal15}" style="width: 100%" readonly/>
+                    <br>
+                    <br>
+                    <label class="fieldlabels">Are you currently undergoing any investigation or disciplinary procedure as described in 8-15 above?
+                        If so, give particulars. </label>
+                    <br>
+                    <input type="text" id="legal16" th:value="${legal.legal16}" style="width: 100%" readonly/>
+                    <br>
+                    <br>
+                    <input type="hidden" id="rowId2" th:value="${legal.id}"/>
+                </div>
+                <hr>
+            </fieldset>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

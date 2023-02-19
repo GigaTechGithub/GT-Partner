@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html layout:decorator="layouts/admin-layout" lang="en" xmlns:layout="http://www.w3.org/1999/xhtml">
+ <head>
+   <title>Revenue Information</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+</head>
+
+<body>
+
+<div layout:fragment="content">
+<fieldset id="fieldset4">
+	   <div class="form-card">
+	   		<div class="row">
+                <div class="col-7">
+                    <h2 class="fs-title">Company Name: <span th:text="${companyName}"></span></h2>
+                </div>
+            </div>
+            <hr>
+	        <div class="row">
+	           <div class="col-7">
+	               <h2 class="fs-title">Revenue</h2>
+	           </div>
+	        </div>
+	        <hr>
+			<label class="fieldlabels">Copies of the 5 largest contracts for the current year.</label>
+			<table id="revTable">
+				<tr th:each="contracts : ${contractsList}">
+			      <td th:text="${contracts.id}" style="display: none"></td>
+			      <td th:text="${contracts.fileName}"></td>
+			    </tr>
+			</table>
+			<br>
+	        <label class="fieldlabels">Description of the procedures for contracting and billing maintenance.</label>
+	        <input type="text" id="revenue1" th:value="${revenue.revenue1}" style="width: 100%" readonly/>
+	        <br>
+	        <br>
+	        <label class="fieldlabels">Detail of revenue for last 12 months.</label>
+	        <input type="text" id="revenue2" th:value="${revenue.revenue2}" style="width: 100%" readonly/>
+	        <br>
+	        <br>
+	        <label class="fieldlabels">Pipeline information.</label>
+	        <input type="text" id="revenue3" th:value="${revenue.revenue3}" style="width: 100%" readonly/>
+	        <br>
+	        <br>
+	        <label class="fieldlabels">List of any customers with annual revenue > 10%</label>
+	        <input type="text" id="revenue4" th:value="${revenue.revenue4}" style="width: 100%" readonly/>
+	        <br>
+	        <br>
+	        <input type="hidden" id="rowId4" th:value="${revenue.id}"/>
+	        <hr>
+	    </div>
+	</fieldset>
+</div>
+
+</body>
+</html>

@@ -9,9 +9,9 @@ import com.gt.models.Users;
 
 public interface UserService {
 
-//	void saveUser(Users user);
+	String saveUser(Users user);
 	List<Users> usersList();
-//	void updateUser(Users userModel);
-//	void deleteUser(long id);
+	void deleteUser(long id);
 	Users findByusername(String userName);
+	List<Users> findAll();
 }

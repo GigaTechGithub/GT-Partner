@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html layout:decorator="layouts/admin-layout" lang="en" xmlns:layout="http://www.w3.org/1999/xhtml">
+ <head>
+   <title>IT Information</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+</head>
+
+<body>
+
+<div layout:fragment="content">
+	<fieldset id="fieldset7">
+          <div class="form-card">
+          	  <div class="row">
+                <div class="col-7">
+                    <h2 class="fs-title">Company Name: <span th:text="${companyName}"></span></h2>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                  <div class="col-7">
+                      <h2 class="fs-title">IT Security</h2>
+                  </div>
+              </div>
+              <hr>
+              <label class="fieldlabels">What is the level of detail of IT documentation?</label>
+              <input type="text" id="it1" th:value="${it.it1}" style="width: 100%" readonly/>
+              <br><br>
+              <label class="fieldlabels">Is the IT documentation available to the necessary people?</label>
+              <input type="text" id="it2" th:value="${it.it2}" style="width: 100%" readonly/>
+              <br><br>
+              <label class="fieldlabels">Have penetration tests been carried out?</label>
+              <input type="text" id="it3" th:value="${it.it3}" style="width: 100%" readonly/>
+              <br><br>
+              <label class="fieldlabels">Has FOSS scanning been carried out?</label>
+              <input type="text" id="it4" th:value="${it.it4}" style="width: 100%" readonly/>
+			  <br><br>
+			  <label class="fieldlabels">Is real-time monitoring available?</label>
+              <input type="text" id="it5" th:value="${it.it5}" style="width: 100%" readonly/>
+          </div>
+		  <hr>
+		  <div class="form-card">
+              <div class="row">
+                  <div class="col-7">
+                      <h2 class="fs-title">IT Process</h2>
+                  </div>
+              </div>
+              <hr>
+              <label class="fieldlabels">What are the procedures for handling personal data? Are they GDPR compliant on all levels?</label>
+              <input type="text" id="it6" th:value="${it.it6}" style="width: 100%" readonly/>
+              <br><br>
+              <label class="fieldlabels">Who has access to backups and the production environment?</label>
+              <input type="text" id="it7" th:value="${it.it7}" style="width: 100%" readonly/>
+              <br><br>
+              <label class="fieldlabels">What is the incident response plan?</label>
+              <input type="text" id="it8" th:value="${it.it8}" style="width: 100%" readonly/>
+              <br><br>
+              <label class="fieldlabels">What disaster recovery procedures are in place?</label>
+              <input type="text" id="it9" th:value="${it.it9}" style="width: 100%" readonly/>
+			  <br><br>
+			  <label class="fieldlabels" >What is the procedure/cadence for backups/read-backs?</label>
+              <input type="text" id="it10" th:value="${it.it10}" style="width: 100%" readonly/>
+              <br>
+              <input type="hidden" id="rowId7" th:value="${it.id}"/>
+          </div>
+          <hr>
+      </fieldset>
+</div>
+
+</body>
+</html>

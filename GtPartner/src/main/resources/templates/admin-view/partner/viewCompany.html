@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html layout:decorator="layouts/admin-layout" lang="en" xmlns:layout="http://www.w3.org/1999/xhtml">
+ <head>
+   <title>Company Information</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+</head>
+
+<body>
+
+<div layout:fragment="content">
+	
+	<div class="container-fluid">
+        <div class="row justify-content-center">
+        	<fieldset id="fieldset1">
+                <div class="form-card">
+                	<div class="row">
+                        <div class="col-7">
+                            <h2 class="fs-title">Company Name: <span th:text="${companyName}"></span></h2>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-7">
+                            <h2 class="fs-title">01. Company Information:</h2>
+                        </div>
+                    </div>
+                    <label class="fieldlabels">Company Legal Name: <span style="color: red;">*</span> </label>
+                    <input type="text" name="comLegalName" id="comLegalName" th:value="${company.companyName}" style="width: 100%" readonly/>
+                    <br>
+                    <br>
+                    <label class="fieldlabels">Does the Company have other Trading/Business Name or name in another language?: <span style="color: red;">*</span> </label>           
+                    <br>
+                    <div class="d-flex align-items-center col-md-12">
+                        <input class="col-md-1" type="radio" name="radio1" id="r1" value="yes">
+                        <label class="col-md-1" for="inlineRadio1">Yes</label>
+                        <input class="col-md-1" type="radio" name="radio1" id="r2" value="no">
+                        <label class="col-md-1" for="inlineRadio1">No</label>
+                    </div>
+                    <br>
+                    <br>
+                    <input id="secondComName" type="text" placeholder="Please specify *" th:value="${company.companySecondName}" style="width: 100%" readonly/>
+                    <br>
+                    <br>                          
+                    <label class="fieldlabels">Country of Registration: <span style="color: red;">*</span> </label><br>                                
+                    <select th:field="${company.country}" id="countryOfReg" style="width: 100%">
+				       <option value=""> -- </option>
+				       <option th:each="country : ${getCountries}" th:value="${country.value}" th:text="${country.value}"></option>
+				  	</select>
+                    <br>
+                    <br>
+                    <label class="fieldlabels">State or Province of Registration, if applicable: </label>
+                    <input type="text" id="state" th:value="${company.province}" style="width: 100%" readonly/>
+                    <br>
+                    <br>
+                    <label class="fieldlabels">Date of Incorporation or Registration with local authorities(mm/dd/yyyy): <span style="color: red;">*</span> </label>
+                    <input type="date" id="regDate" th:value="${company.incorporation_date}" style="width: 100%" readonly/>
+                    <br>
+                    <br>
+                    <label class="fieldlabels">Tax ID Number: <span style="color: red;">*</span> </label>
+                    <input type="text" id="taxId" th:value="${company.taxId}" style="width: 100%" readonly/>
+                    <br>
+                    <br>
+                    <label class="fieldlabels">Legal Address: <span style="color: red;">*</span> </label>
+                    <input type="text" id="legalAddr" th:value="${company.address}" style="width: 100%" readonly/>
+                    <br>
+                    <br>
+                    <label class="fieldlabels">Does the Company have other Business Address or Place of Business? <span style="color: red;">*</span> </label>
+                    <br>
+                    <br>
+                    <div class="d-flex align-items-center col-md-12">
+                        <input class="col-md-1" type="radio" name="radio2" id="r3" value="yes">
+                        <label class="col-md-1" for="inlineRadio1">Yes</label>
+                        <input class="col-md-1" type="radio" name="radio2" id="r4" value="no">
+                        <label class="col-md-1" for="inlineRadio1">No</label>
+                    </div>
+                    <br>
+                    <input id="secondAddr" type="text" placeholder="Please specify *" th:value="${company.secondAddress}" style="width: 100%" readonly/>                              
+                    <br>
+                    <br>
+                    <label class="fieldlabels">Business Telephone: <span style="color: red;">*</span> </label>
+                    <input type="text" id="telephone" th:value="${company.telephone}" style="width: 100%" readonly/>
+                    <br>
+                    <br>
+                    <label class="fieldlabels">Business Website: <span style="color: red;">*</span> </label>
+                    <input type="text" id="website" th:value="${company.website}" style="width: 100%" readonly/>
+                    <br>
+                    <br>
+                    <label class="fieldlabels">Number of full-time Employees locally employed by the Company: <span style="color: red;">*</span> </label>
+                    <input type="text" id="employeeCount" th:value="${company.noOfEmployees}" style="width: 100%" readonly/>
+                    <br>
+                    <br>
+                </div>
+                <hr>
+                <div class="form-card">
+                    <div class="row">
+                        <div class="col-7">
+                            <h2 class="fs-title">02. Parent Company Information: </h2>
+                        </div>
+                    </div>
+                    <label class="fieldlabels">Parent Company Legal Name: </label>
+                    <input type="text" name="pComLegalName" id="pComLegalName" th:value="${company.parentCompanyName}" style="width: 100%" readonly/>
+                    <br>
+                    <br>
+                    <label class="fieldlabels">Does the Parent Company have an alternate legal name in another language?: </label>  
+                    <br>
+                    <br>
+                    <div class="d-flex align-items-center col-md-12">
+                        <input class="col-md-1" type="radio" name="radio3" id="r5" value="yes">
+                        <label class="col-md-1" for="inlineRadio1">Yes</label>
+                        <input class="col-md-1" type="radio" name="radio3" id="r6" value="no">
+                        <label class="col-md-1" for="inlineRadio1">No</label>
+                    </div>
+                    <br>
+                    <input type="text" id="parentSecondName" placeholder="Please specify *" th:value="${company.parentCompanySecondName}" style="width: 100%" readonly/>
+                    <br>
+                    <br>                          
+                    <label class="fieldlabels">Location of Parent Company (Country): </label><br>
+                    <select th:field="${company.parentCompanyLocation}" id="parentLocation" style="width: 100%">
+				       <option value=""> -- </option>
+				       <option th:each="country : ${getCountries}" th:value="${country.value}" th:text="${country.value}"></option>
+				    </select>
+				    <br>
+                    <br>
+                    <label class="fieldlabels">Global Ultimate Name: </label>
+                    <input type="text" id="globalName" th:value="${company.parentCompanyGlobalName}" style="width: 100%" readonly/>
+                    <br>
+                    <br>
+                    <label class="fieldlabels">Does the Global Ultimate have an alternate legal name in another language?: </label>
+                    <br>
+                    <div class="d-flex align-items-center col-md-12">
+                        <input class="col-md-1" type="radio" name="radio4" id="r7" value="yes">
+                        <label class="col-md-1" for="inlineRadio1">Yes</label>
+                        <input class="col-md-1" type="radio" name="radio4" id="r8" value="no">
+                        <label class="col-md-1" for="inlineRadio1">No</label>
+                    </div>
+                    <br>
+                    <input type="text" id="secondGlobalName" placeholder="Please specify *" th:value="${company.parentCompanySecondGlobalName}" style="width: 100%" readonly/>
+                    <br>
+                    <br>
+                    <label class="fieldlabels">Location of Global Ultimate (Country): </label>
+                    <select th:field="${company.parentCompanyGlobalLocation}" id="globalLocation" style="width: 100%">
+				       <option value=""> -- </option>
+				       <option th:each="country : ${getCountries}" th:value="${country.value}" th:text="${country.value}"></option>
+				  	</select>	
+                    <br>
+                    <br>
+                </div>
+                <hr>
+                <div class="form-card">
+                    <div class="row">
+                        <div class="col-7">
+                            <h2 class="fs-title">03. Direct Ownership & Control</h2>
+                        </div>
+                    </div>
+                    <label class="fieldlabels">Are there any Owners or Shareholders that directly own or control 10% or more of the Company or have the right to appoint Board members? Please note that you will have to enter each individual’s or entity’s information below:</label>
+                    <br>
+                    <table id="ownerTable" class="display" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                            	<th>ID</th>
+                                <th>Full Name</th>
+                                <th>Alternate Name</th>
+                                <th>Ownership %</th>
+                            </tr>                                        
+                        </thead>
+                        <tbody id="tableBody">
+                            <tr th:each="owner : ${ownerList}">
+							   <td th:text="${owner.id}"></td>
+							   <td th:text="${owner.ownerName}"></td>
+							   <td th:text="${owner.ownerSecondName}"></td>
+							   <td th:text="${owner.ownerPercent}"></td>							   
+							 </tr>	
+                        </tbody>
+                    </table>
+                    <br>
+                    
+                </div>
+                <hr>
+                <div class="form-card">
+                    <div class="row">
+                        <div class="col-7">
+                            <h2 class="fs-title">04. Company Governance - Board of Directors</h2>
+                        </div>
+                    </div>
+                    <label class="fieldlabels">How many members of the Board of Directors or key decision makers does the Company have? Please note that you will have to enter their information below one by one. <span style="color: red;">*</span> </label>  
+                    <input type="text" id="bodCount" th:value="${company.noOfBod}" style="width: 100%" readonly/>
+                    <br>
+                    <br>
+                    <table id="bodTable" class="display" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                            	<th>ID</th>
+                                <th>Full Name</th>
+                                <th>Alternate Name</th>
+                                <th>Title/Position</th>
+                            </tr>                                        
+                        </thead>
+                        <tbody id="tableBody">
+                            <tr th:each="bod : ${bodList}">
+							   <td th:text="${bod.id}"></td>
+							   <td th:text="${bod.bodName}"></td>
+							   <td th:text="${bod.BodSecondName}"></td>
+							   <td th:text="${bod.tile}"></td>							   
+							 </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                </div>
+                <hr>
+                <div class="form-card">
+                    <div class="row">
+                        <div class="col-7">
+                            <h2 class="fs-title">05. Personal Connections</h2>
+                        </div>
+                    </div>
+                    <label class="fieldlabels">To the best of your knowledge, do any of the individuals or entities named in Section 2 to 4 or any employees of your company or your affiliates or subsidiaries, have a financial interest (i.e. ownership interest, partnership arrangement, any agreement or obligation to make a payment, finder's fee, commission etc.) or personal connection (i.e. marriage, family) with any officer, director or employee of the GT / BCL? <span style="color: red;">*</span> </label>  
+                    <input type="text" id="personalConnection" th:value="${company.personalConnection}" style="width: 100%" readonly/>
+                    <br>
+                </div>
+                <hr>
+                <div class="form-card">
+                    <div class="row">
+                        <div class="col-7">
+                            <h2 class="fs-title">06. Government Connections</h2>
+                        </div>
+                    </div>
+                    <label class="fieldlabels">To the best of your knowledge, are any of the individuals named in Sections 2 to 4 government officials or public sector employees, or do they have connections (family, business or otherwise) with government officials or public sector employees? <span style="color: red;">*</span> </label>  
+                    <input type="text" id="isGovCon" th:value="${company.isGovCon}" style="width: 100%" readonly/>
+                    <br>
+                    <br>
+                    <label class="fieldlabels">Is the Company directly or indirectly owned or controlled, in whole or in part, by the government or is it a public sector entity? <span style="color: red;">*</span> </label>  
+                    <input type="text" id="isGov" th:value="${company.isGov}" style="width: 100%" readonly/>
+                    <br>
+                    <br>
+                </div>
+                <hr>
+                <div class="form-card">
+                    <div class="row">
+                        <div class="col-7">
+                            <h2 class="fs-title">07. Ethical Considerations</h2>
+                        </div>
+                    </div>
+                    <label class="fieldlabels">To the best of your knowledge, during the last five years, has the Company or any of the individuals named in Sections 2 to 4 been accused, investigated, prosecuted by law enforcement or any government agency, or entered into any agreements to avoid prosecution from law enforcement for any government regarding alleged violations of anti-corruption laws? <span style="color: red;">*</span> </label>  
+                    <input type="text" id="ethical1" th:value="${company.ethical1}" style="width: 100%" readonly/>
+                    <br>
+                    <br>
+                    <label class="fieldlabels">To the best of your knowledge, during the last five (5) years, has the Company or any of the individuals named in Sections 2 to 4 been debarred from competing for or bidding on government contracts? <span style="color: red;">*</span> </label>  
+                    <input type="text" id="ethical2" th:value="${company.ethical2}" style="width: 100%" readonly/>
+                    <br>
+                    <br>
+                </div>
+                <hr>
+                <div class="form-card">
+                    <div class="row">
+                        <div class="col-7">
+                            <h2 class="fs-title">08. Export Controls</h2>
+                        </div>
+                    </div>
+                    <label class="fieldlabels">To the best of your knowledge, during the last five (5) years, has the Company or Parent Company: a) been fined, or subject to any other enforcement action, including a no action letter or warning/cautionary letter, by any government agency in relation to the import, export or supply of goods, technology, software or services (e.g., under export controls, customs laws or sanctions/embargoes)? <span style="color: red;">*</span> </label>  
+                    <input type="text" id="export1" th:value="${company.export1}" style="width: 100%" readonly/>
+                    <br>
+                    <br>
+                    <label class="fieldlabels">b) had any operations in, done business with, or shipped, transferred or supplied any goods, technology, software, or services, either directly or indirectly, to Crimea, Cuba, Iran, North Korea or Syria ("Restricted Territories")? NOTE: This includes products/services to a customer in another country that does business using GT/BCL products/services in a Restricted Territory. <span style="color: red;">*</span> </label>  
+                    <input type="text" id="export2" th:value="${company.export2}" style="width: 100%" readonly/>
+                    <br>
+                    <input type="hidden" id="rowId" th:value="${company.id}"/>
+                </div>
+                <hr>
+            </fieldset>
+        </div>
+    </div>
+    <script th:inline="javascript">
+	
+    var t = $('#ownerTable').DataTable({searching: false, paging: false, info: false, sorting: false});
+    var t1 = $('#bodTable').DataTable({searching: false, paging: false, info: false, sorting: false});
+	
+    $(document).ready(function(){
+    	     
+    	t.column(0).visible(false);
+    	t1.column(0).visible(false);
+    	
+    	//$("#secondComName").hide();
+        //$("#secondAddr").hide();
+        //$("#parentSecondName").hide();
+        //$("#secondGlobalName").hide();
+        $("#oAltName").hide();
+        $("#bodAltName").hide();
+        
+        var secondComName = $("#secondComName").val();
+        var secondAddr = $("#secondAddr").val();
+        var parentSecondName = $("#parentSecondName").val();
+        var secondGlobalName = $("#secondGlobalName").val();
+        
+        functionsecondComName();
+        functionsecondAddr();
+        functionparentSecondName();
+        functionsecondGlobalName();
+        
+        function functionsecondComName(){
+        	if(secondComName == ""){
+        		$("#secondComName").hide();
+        		$("#r2").prop("checked", true);                
+        	}
+        	else{
+        		$("#secondComName").show();
+        		$("#r1").prop("checked", true);
+        	}
+        }
+        
+        function functionsecondAddr(){
+        	if(secondAddr == ""){
+        		$("#secondAddr").hide();
+        		$("#r4").prop("checked", true);
+        	}
+        	else{
+        		$("#secondAddr").show();
+        		$("#r3").prop("checked", true);
+        	}
+        }
+
+        function functionparentSecondName(){
+        	if(parentSecondName == ""){
+        		$("#parentSecondName").hide();
+        		$("#r6").prop("checked", true);
+        	}
+        	else{
+        		$("#parentSecondName").show();
+        		$("#r5").prop("checked", true);
+        	}
+        }
+        
+        function functionsecondGlobalName(){
+        	if(secondGlobalName == ""){
+        		$("#secondGlobalName").hide();
+        		$("#r8").prop("checked", true);
+        	}
+        	else{
+        		$("#secondGlobalName").show();
+        		$("#r7").prop("checked", true);
+        	}
+        }
+        
+    });
+    
+    </script>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html layout:decorator="layouts/admin-layout" lang="en" xmlns:layout="http://www.w3.org/1999/xhtml">
+ <head>
+   <title>IP Information</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+</head>
+
+<body>
+
+<div layout:fragment="content">
+	<fieldset id="fieldset6">
+	      <div class="form-card">
+	      	  <div class="row">
+                <div class="col-7">
+                    <h2 class="fs-title">Company Name: <span th:text="${companyName}"></span></h2>
+                </div>
+              </div>
+              <hr>
+	          <div class="row">
+	              <div class="col-7">
+	                  <h2 class="fs-title">IP</h2>
+	              </div>
+	          </div>
+			  <hr>	
+	          <label class="fieldlabels">Schedule of owned or proprietary technology (including software, databases, and systems).</label>
+	          <input type="text" id="ip1" th:value="${ip.ip1}" style="width: 100%" readonly/>
+	          <br><br>
+	          <label class="fieldlabels">Schedule and copies (if applicable) of the following (common law, registered and issued, and foreign and domestic):
+				i. tradenames, brand names, trademarks, service marks, logos, and slogans;
+				ii. internet domain names (including lower-level domain names);
+				iii. patents, patent rights, innovations, and designs;
+				iv. copyrights;
+				v. trade secrets and other industrial property rights, including all processes, know-how, technical data, and shop rights; and
+				vi. registrations, issuances, applications, additions, affidavits, continuations, divisions and other filings related to the foregoing items. </label>
+				<table id="ipTable">
+					<tr th:each="ipDoc1 : ${ipDoc1List}">
+				      <td th:text="${ipDoc1.id}" style="display: none"></td>
+				      <td th:text="${ipDoc1.fileName}"></td>
+				    </tr>
+				</table>
+				<br>
+                <label class="fieldlabels">Copies of searches, counsel’s opinion letters, and application file histories (or file wrappers) for the items requested in the preceding</label>
+				<table id="ipTable2">
+					<tr th:each="ipDoc2 : ${ipDoc2List}">
+				      <td th:text="${ipDoc2.id}" style="display: none"></td>
+				      <td th:text="${ipDoc2.fileName}"></td>
+				    </tr>
+				</table>
+				<br>
+                <label class="fieldlabels">Schedule of all material ongoing or planned software, databases, and/or network development projects.</label>
+                <input type="text" id="ip2" th:value="${ip.ip2}" style="width: 100%" readonly/>
+				<br><br>
+				<label class="fieldlabels">Schedule of third-party intellectual property sold, licensed, or otherwise distributed by the Company.</label>
+                <input type="text" id="ip3" th:value="${ip.ip3}" style="width: 100%" readonly/>
+				<br><br>
+				<label class="fieldlabels">Schedule of third-party software and other intellectual property incorporated in, embedded in, or otherwise necessary for the use of the Company’s intellectual property.</label>
+                <input type="text" id="ip4" th:value="${ip.ip4}" style="width: 100%" readonly/>
+				<br><br>
+				<label class="fieldlabels">Product documentation and manuals for the Company’s software, databases, and networks (or other description of primary capabilities).</label>
+                <input type="text" id="ip5" th:value="${ip.ip5}" style="width: 100%" readonly/>
+				<br><br>
+				<label class="fieldlabels">Schedule of third-party intellectual property necessary for the Company to conduct business in the ordinary course.</label>
+                <input type="text" id="ip6" th:value="${ip.ip6}" style="width: 100%" readonly/>
+				<br><br>
+				<label class="fieldlabels">Schedule of software authors and other creators of the Company’s software products and other intellectual property, with a notation next to each name indicating whether such author/creator made his/her contribution 
+				(a) as an employee within the scope of his/her employment, 
+				(b) outside his/her scope of employment or 
+				(c) as a consultant or other independent contractor.</label>
+                <input type="text" id="ip7" th:value="${ip.ip7}" style="width: 100%" readonly/>
+				<br><br>
+				<label class="fieldlabels">The name(s), address(es), and phone number(s) of counsel and any other person(s) responsible for the application, maintenance, and protection of trademarks, copyrights, patents, and other intellectual property rights.</label>
+                <input type="text" id="ip8" th:value="${ip.ip8}" style="width: 100%" readonly/>
+				<br><br>
+				<label class="fieldlabels">Internal memoranda, correspondence, and other documentation setting forth or relating to the Year 2000 compliance of the operating codes, programs, and other software, database, hardware, and systems sold or licensed by or to the Company, or otherwise used by the Company in its business.</label>
+                <input type="text" id="ip9" th:value="${ip.ip9}" style="width: 100%" readonly/>
+                <br>
+                <input type="hidden" id="rowId6" th:value="${ip.id}"/>
+            </div>
+            <hr>
+        </fieldset>
+</div>
+
+</body>
+</html>

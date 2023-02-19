@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Formula;
+
 @Entity
 @Table(name="T_users")
 public class Users {
@@ -36,11 +38,17 @@ public class Users {
 	    @Column(name="DILIGENCE_ID", nullable=false, length=20)
 	    private String diligenceId;
 	    
+	    @Formula("(select T_DILIGENCE.DILIGENCE_NAME from T_DILIGENCE where T_DILIGENCE.ID = DILIGENCE_ID)")
+	    private String companyName;
+	    
 	    @Column(name="STATUS")
 	    private int status;
 	    
 	    @Column(name="ISADMIN")
 	    private String isAdmin;
+	    
+	    @Column(name="CREATED_BY")
+	    private String createdBy;
 
 		public Users() {
 			super();
@@ -48,7 +56,7 @@ public class Users {
 		}
 
 		public Users(Long id, String name, String username, String password, String email, String mobile,
-				String diligenceId, int status, String isAdmin) {
+				String diligenceId, String companyName, int status, String isAdmin, String createdBy) {
 			super();
 			this.id = id;
 			this.name = name;
@@ -57,8 +65,10 @@ public class Users {
 			this.email = email;
 			this.mobile = mobile;
 			this.diligenceId = diligenceId;
+			this.companyName = companyName;
 			this.status = status;
 			this.isAdmin = isAdmin;
+			this.createdBy = createdBy;
 		}
 
 		public Long getId() {
@@ -117,6 +127,14 @@ public class Users {
 			this.diligenceId = diligenceId;
 		}
 
+		public String getCompanyName() {
+			return companyName;
+		}
+
+		public void setCompanyName(String companyName) {
+			this.companyName = companyName;
+		}
+
 		public int getStatus() {
 			return status;
 		}
@@ -133,6 +151,11 @@ public class Users {
 			this.isAdmin = isAdmin;
 		}
 
-		
-	    
+		public String getCreatedBy() {
+			return createdBy;
+		}
+
+		public void setCreatedBy(String createdBy) {
+			this.createdBy = createdBy;
+		}	    
 }

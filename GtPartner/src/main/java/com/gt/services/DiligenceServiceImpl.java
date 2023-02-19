@@ -43,5 +43,10 @@ public class DiligenceServiceImpl implements DiligenceService{
 	public List<Diligence> findAll() {
 		return diligenceRepository.findAll();
 	}
+
+	@Override
+	public List<Diligence> findByStatusAndProfileStatus(int status, int profileStatus) {
+		return diligenceRepository.findByStatusAndProfileStatus(status, profileStatus);
+	}
 	
 }

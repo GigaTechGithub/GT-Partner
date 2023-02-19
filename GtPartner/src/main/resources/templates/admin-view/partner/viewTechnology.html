@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html layout:decorator="layouts/admin-layout" lang="en" xmlns:layout="http://www.w3.org/1999/xhtml">
+ <head>
+   <title>Technology Information</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+</head>
+
+<body>
+
+<div layout:fragment="content">
+	<fieldset id="fieldset5">
+        <div class="form-card">
+        	<div class="row">
+                <div class="col-7">
+                    <h2 class="fs-title">Company Name: <span th:text="${companyName}"></span></h2>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-7">
+                    <h2 class="fs-title">TECHNOLOGY</h2>
+                </div>
+            </div>
+            <hr>
+			<label class="fieldlabels">Help Desk approach & Change Management processes</label>
+            <input type="text" id="tech1" th:value="${technology.tech1}" style="width: 100%" readonly/>
+            <br><br>
+			<label class="fieldlabels">Incorporation Documents of the Company</label>
+			<table id="techTable">
+				<tr th:each="incorporationDoc : ${incorporationDocList}">
+		      		<td th:text="${incorporationDoc.id}" style="display: none"></td>
+					<td th:text="${incorporationDoc.fileName}"></td>
+				</tr>
+			</table>
+			<br>
+             <label class="fieldlabels">IT Organization chart & Client structure (quantity, type, location)</label>
+             <input type="text" id="tech2" th:value="${technology.tech2}" style="width: 100%" readonly/>
+             <br><br>
+             <label class="fieldlabels">Key support issues & challenges</label>
+             <input type="text" id="tech3" th:value="${technology.tech3}" style="width: 100%" readonly/>
+             <br><br>
+             <label class="fieldlabels">Audited and unaudited consolidated financial statements of the business</label>
+             <input type="text" id="tech4" th:value="${technology.tech4}" style="width: 100%" readonly/>
+             <br><br>
+             <label class="fieldlabels">Budget projections and business plans</label>
+             <input type="text" id="tech5" th:value="${technology.tech5}" style="width: 100%" readonly/>
+ 			 <br><br>
+ 			 <label class="fieldlabels">Compared past budgets with actual experience to check accuracy of projections</label>
+             <input type="text" id="tech6" th:value="${technology.tech6}" style="width: 100%" readonly/>
+             <br><br>
+             <label class="fieldlabels">CPU’s & location</label>
+             <input type="text" id="tech7" th:value="${technology.tech7}" style="width: 100%" readonly/>
+             <br><br>
+             <label class="fieldlabels">Database</label>
+             <input type="text" id="tech8" th:value="${technology.tech8}" style="width: 100%" readonly/>
+             <br><br>
+             <label class="fieldlabels">Networks by location (LAN/WAN)</label>
+             <input type="text" id="tech9" th:value="${technology.tech9}" style="width: 100%" readonly/>
+ 			 <br><br>
+ 			 <label class="fieldlabels">Stability? Life expectancy? Replacement/upgrade strategy?</label>
+             <input type="text" id="tech10" th:value="${technology.tech10}" style="width: 100%" readonly/>
+             <br><br>
+             <label class="fieldlabels">Telecommunications/connectivity approach</label>
+             <input type="text" id="tech11" th:value="${technology.tech11}" style="width: 100%" readonly/>
+             <br><br>
+             <label class="fieldlabels">Application systems development software</label>
+             <input type="text" id="tech12" th:value="${technology.tech12}" style="width: 100%" readonly/>
+             <br><br>
+             <label class="fieldlabels">Current technology? Life expectancy? Replacement/upgrade strategy?</label>
+             <input type="text" id="tech13" th:value="${technology.tech13}" style="width: 100%" readonly/>
+ 			 <br><br>
+ 			 <label class="fieldlabels">Database Management systems</label>
+             <input type="text" id="tech14" th:value="${technology.tech14}" style="width: 100%" readonly/>
+             <br><br>
+             <label class="fieldlabels">Operating systems</label>
+             <input type="text" id="tech15" th:value="${technology.tech15}" style="width: 100%" readonly/>
+             <br><br>
+             <label class="fieldlabels">Security</label>
+             <input type="text" id="tech16" th:value="${technology.tech16}" style="width: 100%" readonly/>
+             <br><br>
+             <label class="fieldlabels">Architecture Review</label>
+             <input type="text" id="tech17" th:value="${technology.tech17}" style="width: 100%" readonly/>
+ 			 <br><br>
+ 			 <label class="fieldlabels">Code Quality</label>
+             <input type="text" id="tech18" th:value="${technology.tech18}" style="width: 100%" readonly/>
+             <br><br>
+             <label class="fieldlabels">Legacy Components</label>
+             <input type="text" id="tech19" th:value="${technology.tech19}" style="width: 100%" readonly/>
+             <br><br>
+             <label class="fieldlabels">Third-party/open source components</label>
+             <input type="text" id="tech20" th:value="${technology.tech20}" style="width: 100%" readonly/>
+             <br><br>
+             <label class="fieldlabels">Application systems (Quantify all in use)</label>
+             <input type="text" id="tech21" th:value="${technology.tech21}" style="width: 100%" readonly/>
+ 			 <br><br>
+ 			 <label class="fieldlabels">Approach to release management</label>
+             <input type="text" id="tech22" th:value="${technology.tech22}" style="width: 100%" readonly/>
+             <br><br>
+             <label class="fieldlabels">Electronic interfaces</label>
+             <input type="text" id="tech23" th:value="${technology.tech23}" style="width: 100%" readonly/>
+             <br><br>
+             <label class="fieldlabels">Report Writing capabilities</label>
+             <input type="text" id="tech24" th:value="${technology.tech24}" style="width: 100%" readonly/>
+             <br><br>
+             <label class="fieldlabels">Special processes</label>
+             <input type="text" id="tech25" th:value="${technology.tech25}" style="width: 100%" readonly/>
+ 			 <br><br>
+ 			 <label class="fieldlabels">Stability? Life expectancy? Replacement/upgrade strategy?</label>
+             <input type="text" id="tech26" th:value="${technology.tech26}" style="width: 100%" readonly/>
+             <br><br>
+             <label class="fieldlabels">Standard across the network?</label>
+             <input type="text" id="tech27" th:value="${technology.tech27}" style="width: 100%" readonly/>
+             <br><br>
+             <label class="fieldlabels">Support approach & known issues</label>
+             <input type="text" id="tech28" th:value="${technology.tech28}" style="width: 100%" readonly/>
+             <br><br>
+             <label class="fieldlabels">Client requirements</label>
+             <input type="text" id="tech29" th:value="${technology.tech29}" style="width: 100%" readonly/>
+ 			 <br><br>
+ 			 <label class="fieldlabels">Consulting and/or contractor needs anticipated (next 12 months)</label>
+             <input type="text" id="tech30" th:value="${technology.tech30}" style="width: 100%" readonly/>
+             <br><br>
+             <label class="fieldlabels">Large scale projects – i.e., reengineering, new systems, SW development</label>
+             <input type="text" id="tech31" th:value="${technology.tech31}" style="width: 100%" readonly/>
+             <br><br>
+             <label class="fieldlabels">Mid-range enhancements</label>
+             <input type="text" id="tech32" th:value="${technology.tech32}" style="width: 100%" readonly/>
+             <br><br>
+             <label class="fieldlabels">New business development needs</label>
+             <input type="text" id="tech33" th:value="${technology.tech33}" style="width: 100%" readonly/>
+ 			 <br><br>
+ 			 <label class="fieldlabels">New technology R&D</label>
+             <input type="text" id="tech34" th:value="${technology.tech34}" style="width: 100%" readonly/>
+             <br><br>
+             <label class="fieldlabels">Productivity enhancements</label>
+             <input type="text" id="tech35" th:value="${technology.tech35}" style="width: 100%" readonly/>
+             <br><br>
+             <label class="fieldlabels">Software support backlog</label>
+             <input type="text" id="tech36" th:value="${technology.tech36}" style="width: 100%" readonly/>
+             <br><br>
+             <label class="fieldlabels">Consulting/contractors</label>
+             <input type="text" id="tech37" th:value="${technology.tech37}" style="width: 100%" readonly/>
+ 			 <br><br>
+ 			 <label class="fieldlabels">Data Communications</label>
+             <input type="text" id="tech38" th:value="${technology.tech38}" style="width: 100%" readonly/>
+             <br><br>
+             <label class="fieldlabels">Equipment leases & rental</label>
+             <input type="text" id="tech39" th:value="${technology.tech39}" style="width: 100%" readonly/>
+             <br><br>
+             <label class="fieldlabels">Hardware maintenance</label>
+             <input type="text" id="tech40" th:value="${technology.tech40}" style="width: 100%" readonly/>
+             <br><br>
+             <label class="fieldlabels">Material technology-related expenses due to the company’s industry</label>
+             <input type="text" id="tech41" th:value="${technology.tech41}" style="width: 100%" readonly/>
+ 			 <br><br>
+ 			 <label class="fieldlabels">Outside contractors</label>
+             <input type="text" id="tech42" th:value="${technology.tech42}" style="width: 100%" readonly/>
+             <br>
+             <input type="hidden" id="rowId5" th:value="${technology.id}"/>
+         </div>
+         <hr>
+     </fieldset>
+   </div>
+</body>
+</html>

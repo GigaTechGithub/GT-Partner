@@ -9,4 +9,5 @@ public interface DiligenceService {
 	List<Diligence> findByid(long id);
 	List<Diligence> findBystatus(int status);
 	List<Diligence> findAll();
+	List<Diligence> findByStatusAndProfileStatus(int status, int profileStatus);
 }
