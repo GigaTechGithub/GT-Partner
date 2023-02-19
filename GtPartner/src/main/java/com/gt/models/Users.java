@@ -20,19 +20,19 @@ public class Users {
 	 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Long id;
 	     
-	    @Column(name="name")
+	    @Column(name="NAME")
 	    private String name;
 	     
-	    @Column(name="username", nullable=false, length=100)
+	    @Column(name="USERNAME", nullable=false, length=100)
 	    private String username;
 	     
-	    @Column(name="password")
+	    @Column(name="PASSWORD")
 	    private String password;
 	    
-	    @Column(name="email")
+	    @Column(name="EMAIL")
 	    private String email;
 	    
-	    @Column(name="mobile")
+	    @Column(name="MOBILE")
 	    private String mobile;
 	    
 	    @Column(name="DILIGENCE_ID", nullable=false, length=20)

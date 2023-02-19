@@ -9,7 +9,7 @@ import com.gt.models.Users;
 
 @Repository
 public interface UserRepository extends JpaRepository<Users, Long>{
-
+	Users findByid(long id);
 	Users findByusername(String userName);
 	List<Users> findAll();
 }

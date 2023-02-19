@@ -8,7 +8,7 @@ import com.gt.models.Users;
 
 
 public interface UserService {
-
+	Users findByid(long id);
 	String saveUser(Users user);
 	List<Users> usersList();
 	void deleteUser(long id);

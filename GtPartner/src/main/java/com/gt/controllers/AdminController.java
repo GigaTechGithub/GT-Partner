@@ -1,5 +1,6 @@
 package com.gt.controllers;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -372,8 +374,20 @@ public class AdminController {
 	public ResponseEntity<?> saveUser(@RequestBody Users users, Errors errors) {
 		AjaxResponse response = new AjaxResponse();
 		try {
-			userService.saveUser(users);
-			response.setMessage("Success");
+			users.setCreatedBy(createdById ().toString());
+			String result = userService.saveUser(users);
+			
+			if(users.getDiligenceId().contentEquals("0")) {
+				response.setadditionalInfo("");
+			}
+			
+			else {
+				Diligence diligence = diligenceService.findByid(Integer.parseInt(users.getDiligenceId())).get(0);
+				response.setadditionalInfo(diligence.getName());
+			}
+			
+			response.setMessage(result);
+			
 			return ResponseEntity.ok(response);
 		}
 		

@@ -203,29 +203,30 @@
 			  t.column(0).visible(false);
 			  
 			  $("#r1").click(function () {
-		            $("#companyDiv").hide();
+				  $("#selectCompany").val("");
+		          $("#companyDiv").hide();
 		      });
 			  
 			  $("#r2").click(function () {
-		            $("#companyDiv").show();
+		          $("#companyDiv").show();
 		      });
 			  
 			  $("#addBtn").click(function () {
-		            var fullName = document.getElementById("fullName");
-		            var userName = document.getElementById("userName");
-		            var password = document.getElementById("password");
-		            var email = document.getElementById("email");
-		            var mobile = document.getElementById("mobile");
+		            var fullName = $("#fullName").val();
+		            var userName = $("#userName").val();
+		            var password = $("#password").val();
+		            var email = $("#email").val();
+		            var mobile = $("#mobile").val();
 		            var admin = document.querySelector('input[name = "mRadio1"]:checked') == null ? "" : document.querySelector('input[name = "mRadio1"]:checked').value;
-		            var selectCompany = document.getElementById("selectCompany");
-		            var selectStatus = document.getElementById("selectStatus");
+		            var selectCompany = $("#selectCompany").val();
+		            var selectStatus = $("#selectStatus").val();
 		            
 		            if(fullName == "" || userName == "" || password == "" || email == "" || mobile ==  "" || admin == "" || selectStatus == ""){
 	            		alert("Please fill up mandatory fields");
 	            	}
 		            
 		            else{
-		            	if(mRadio1 == "yes" && selectCompany == ""){
+		            	if(admin == "no" && selectCompany == ""){
 		            		alert("Please fill up mandatory fields");
 		            	}
 		            	else{
@@ -235,8 +236,8 @@
 		                	user["password"] = password;    
 		                	user["email"] = email;
 		                	user["mobile"] = mobile;
-		                	user["isAdmin"] = document.querySelector('input[name = "mRadio1"]:checked') == null ? 'N' : 'Y';
-		                	user["diligenceId"] = selectCompany;
+		                	user["isAdmin"] = (admin=="yes"?"1":"0");
+		                	user["diligenceId"] = (selectCompany==""?0:selectCompany);
 		                	user["status"] = selectStatus;
 		                    
 		                    $.ajax({
@@ -248,13 +249,14 @@
 		                        cache: false,
 		                        timeout: 600000,
 		                        success: function (data) {
-		                            console.log(data["message"]);
 		                            if(data["message"]=="Failed"){
 		                            	alert("Failed to save data. Please try again");
 		                            }
 		                            
 		                            else{
-		                                var rowId = data["message"];                   	
+		                                var rowId = data["message"];
+		                                var companyName = data["additionalInfo"];
+		                                
 		                            	$("#fullName").val("");
 		                                $("#userName").val("");
 		                                $("#password").val("");
@@ -263,9 +265,10 @@
 		                                $("#selectCompany").val("");
 		                                $("#selectStatus").val("");
 		                                
-		                                var td = $('<td>').append('<input type=' + 'button' + ' value =' + 'Edit User' + ' id = ' + 'editBtn' + ' />', '<input type=' + 'button' + ' value =' + 'Delete User' + ' id = ' + 'dltBtn' + 'style =' + 'background-color: yellow' + ' />');
-
-		                                t.row.add([rowId, fullName, userName, selectCompany, email, mobile, status, td]).draw();
+		                                var companyName = data["additionalInfo"];
+		                                var status = (selectStatus==0?"Inactive":"Active");
+		                                
+		                                t.row.add([rowId, fullName, userName, companyName, email, mobile, status, '<input type="button" value="Edit User" id="editBtn" />' +' '+ '<input type="button" value="Delete User" id="dltBtn" style="background-color: yellow" />']).draw();
 
 		                                $('#modelWindow1').modal('hide');
 		                            }
