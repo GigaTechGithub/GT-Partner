@@ -95,6 +95,24 @@ public class AdminController {
 		}
     }
 	
-	
+	@PostMapping({"/deletePartner"})
+    public ResponseEntity<?> deletePartner(@RequestBody Diligence request, Errors errors) {
+		AjaxResponse response = new AjaxResponse();
+		try {
+			
+	    	String result = diligenceService.deleteDiligence(request.getId());
+	    	
+	    	response.setMessage(result);
+	    	
+	    	return ResponseEntity.ok(response);
+		}
+    	
+		catch(Exception ex) {
+			response.setMessage("Failed");
+	    	
+	    	return ResponseEntity.ok(response);
+			
+		}
+    }
 	
 }

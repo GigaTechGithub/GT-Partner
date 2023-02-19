@@ -9,4 +9,5 @@ public interface DiligenceService {
 	List<Diligence> findByid(long id);
 	List<Diligence> findBystatus(int status);
 	List<Diligence> findAll();
+	String deleteDiligence(long id);
 }

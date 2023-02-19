@@ -189,6 +189,54 @@
 		      });
 		  });
 		  
+		  
+		  $('#partnersListTable tbody').on( 'click', '#deletePartnerBtn', function () {
+		        var r=confirm("Are you sure want to delete?");
+		        if (r==true)
+		        {
+		        	//t.row( $(this).parents('tr') ).remove().draw();
+		        	
+		      		var row = t.row( $(this).closest('tr') );                
+		            var partner = {};
+		            var rowData = row.data();
+		            console.log(rowData);
+		            partner['id'] = rowData[0];
+		            
+		            $.ajax({
+		                type: "POST",
+		                contentType: "application/json",
+		                url: "/deletePartner",
+		                data: JSON.stringify(partner),
+		                dataType: 'json',
+		                cache: false,
+		                timeout: 600000,
+		                success: function (data) {
+		                    console.log(data["message"]);
+		                    
+		                    if(data["message"]=="Failed"){
+		                    	alert("Failed to delete data. Please try again");
+		                    }
+		                    
+		                    else{
+		                    	row.remove().draw();
+		                    }
+
+		                },
+		                error: function (e) {
+
+		                    alert("Failed to delete data. Please try again");
+
+		                }
+		            });
+		            
+		        }
+		        else
+		        {
+		            
+		        }
+		        
+		    } );
+
 		
 	</script> 
 </div>
