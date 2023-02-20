@@ -40,14 +40,16 @@ public class Diligence {
     @Column(name="CREATED_BY")
     private String createdBy;
     
+    @Column(name="UPDATED_BY")
+    private String upadatedBy;
+    
 	public Diligence() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	public Diligence(Long id, String name, Integer status, Integer profileStatus, String email, String mobile,
-			String website, String address, String createdBy) {
-		
+			String website, String address, String createdBy, String upadatedBy) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -58,8 +60,9 @@ public class Diligence {
 		this.website = website;
 		this.address = address;
 		this.createdBy = createdBy;
+		this.upadatedBy = upadatedBy;
 	}
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -131,4 +134,21 @@ public class Diligence {
 	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
 	}
+
+	public String getUpadatedBy() {
+		return upadatedBy;
+	}
+
+	public void setUpadatedBy(String upadatedBy) {
+		this.upadatedBy = upadatedBy;
+	}
+
+	@Override
+	public String toString() {
+		return "Diligence [id=" + id + ", name=" + name + ", status=" + status + ", profileStatus=" + profileStatus
+				+ ", email=" + email + ", mobile=" + mobile + ", website=" + website + ", address=" + address
+				+ ", createdBy=" + createdBy + ", upadatedBy=" + upadatedBy + "]";
+	}
+	
+	
 }
