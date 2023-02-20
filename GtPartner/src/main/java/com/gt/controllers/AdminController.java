@@ -229,11 +229,11 @@ public class AdminController {
 		List<Diligence> diligenceList = diligenceService.findAll();
 		
 		model.addAttribute("partners", diligenceList);
-        return "admin-view/partners/createPartner";
+        return "admin-view/partner/createPartner";
     }
     
 	
-	@PostMapping({"/createDiligence"})
+	@PostMapping({"/creatOrUpdateeDiligence"})
     public ResponseEntity<?> addDiligence(@RequestBody Diligence request, Errors errors) {
 		AjaxResponse response = new AjaxResponse();
 		try {

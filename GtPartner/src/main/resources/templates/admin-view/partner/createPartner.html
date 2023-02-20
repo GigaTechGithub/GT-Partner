@@ -65,7 +65,7 @@
 					    	<span th:if="${p.status == 1}">Active</span>
 					    </td>
 					    <td>
-					    	<input type="button" value="Edit" id="editPartnerBtn">
+					    	<input type="button" value="Edit" class="editPartnerBtn">
 					    	<input type="button" value="Delete" id="deletePartnerBtn" style="background-color: yellow">
 					    </td>
 			  		</tr>
@@ -119,10 +119,61 @@
         </div>
     </div>
     
+    <div class="modal fade" id="editPartnerModal" role="dialog" data-backdrop="static">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">                  
+                    <h3>Edit Partner</h3>
+                    <a class="close" data-dismiss="modal">×</a>
+                </div>
+                <form id="editForm" name="edit" role="form">
+                    <div class="modal-body">				
+                        <div class="form-group">
+                            <input type="text" name="editRowId" class="form-control" id="editRowId">
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Name <span style="color: red;">*</span> </label>
+                            <input type="text" name="editName" class="form-control" id="editName">
+                        </div>
+                        <div class="form-group">
+                            <label for="oName">Email</label>
+                            <input type="text" name="editEmail" class="form-control" id="editEail">
+                        </div>
+                        <div class="form-group">
+                            <label for="oName">Mobile</label>
+                            <input type="text" name="editMobile" class="form-control" id="editMobile">
+                        </div>
+                        <div class="form-group">
+                            <label for="oName">Website </label>
+                            <input type="text" name="editWebsite" class="form-control" id="editWebsite">
+                        </div>
+                        <div class="form-group">
+                            <label for="oName">Address</label>
+                            <input type="text" name="editAddress" class="form-control" id="editAdress">
+                        </div>
+                        <div class="form-group">
+                            <label for="selectStatus">Status</label>
+                            <select class="selectStatus" id="editStatus" name="editStatus" style="width: 100%">
+					             <option value="1">Active</option>
+					             <option value="0">Inactive</option>
+					        </select>
+                        </div>					
+                    </div>
+                    <div class="modal-footer">					
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <input type="button" class="btn btn-success" id="partnerModalUpdateBtn" value="Update">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    
+    
     
     
 	<script>
-		  var t = $('#partnersListTable').DataTable();
+		  var t = $('#partnersListTable').DataTable({paging: true,searching: true,ordering: true});
 		  
 		  $('#addPartnerBtn').click(function() {
 	            $('#createPartnerModal').modal('show');
@@ -157,7 +208,7 @@
 	                    $.ajax({
 	                        type: "POST",
 	                        contentType: "application/json",
-	                        url: "/createDiligence",
+	                        url: "/creatOrUpdateeDiligence",
 	                        data: JSON.stringify(partnerArray),
 	                        dataType: 'json',
 	                        cache: false,
@@ -172,7 +223,7 @@
 	                            else{
 	                            	var rowId = data["message"];
 
-	                                t.row.add([rowId, nameVal, emailVal, mobileVal, websiteVal, addressVal, statusVal, '<input type="button" value="Edit" id="editPartnerBtn" />' +' '+ '<input type="button" value="Delete" id="deletePartnerBtn" style="background-color: yellow" />']).draw();
+	                                t.row.add([rowId, nameVal, emailVal, mobileVal, websiteVal, addressVal, statusVal==1?"Active":"Inactive", '<input type="button" value="Edit" class="editPartnerBtn" />' +' '+ '<input type="button" value="Delete" id="deletePartnerBtn" style="background-color: yellow" />']).draw();
 
 	                                $('#createPartnerModal').modal('hide');
 	                            }
@@ -184,8 +235,8 @@
 
 	                        }
 	                    });
-	                    //end else
 		            }
+		            //end else
 		      });
 		  });
 		  
@@ -236,9 +287,106 @@
 		        }
 		        
 		    } );
-
+		  
+		 
+		$('.editPartnerBtn').click(function() {
+			  
+			 t.column(0).visible(false);
+			
+			  var row = t.row( $(this).closest('tr'));
+			  var rowData = row.data();
+			  var rowId = rowData[0];
+			  var name = rowData[1];
+			  var email = rowData[2];
+			  var mobile = rowData[3];
+			  var website = rowData[4];
+			  var address = rowData[5];
+			  var status = (rowData[6]=="<span>Active</span>"? 1: 0);
+			  
+			  $('#editPartnerModal').modal('show');
+			  
+			  $('.modal-body #editRowId').val(rowId);
+			  $('.modal-body #editName').val(name);
+			  $('.modal-body #editEail').val(email);
+			  $('.modal-body #editMobile').val(mobile);
+			  $('.modal-body #editWebsite').val(website);
+			  $('.modal-body #editAdress').val(address);		
+			  $('.modal-body #editStatus').val(status);
+			  
+		  });
 		
-	</script> 
+	  $("#partnerModalUpdateBtn").click(function () {
+		  
+		  	var thisRow = $(this).closest('tr');
+		  	
+		    var idVal = $("#editRowId").val();
+		    var nameVal = $("#editName").val();
+			var emailVal = $("#editEail").val();
+			var mobileVal = $("#editMobile").val();
+			var websiteVal = $("#editWebsite").val();
+			var addressVal = $("#editAdress").val();
+			var statusVal = $("#editStatus").val();
+          
+          if(nameVal == ""){
+      		alert("Please fill up mandatory field");
+      	}
+          
+          else{
+      		var partnerArray= {};
+      		partnerArray["id"] = idVal;
+      		partnerArray["name"] = nameVal;
+      		partnerArray["email"] = emailVal;
+      		partnerArray["mobile"] = mobileVal;
+      		partnerArray["website"] =  websiteVal;
+      		partnerArray["address"] = addressVal;
+      		partnerArray["status"] = statusVal;
+              
+              $.ajax({
+                  type: "POST",
+                  contentType: "application/json",
+                  url: "/creatOrUpdateeDiligence",
+                  data: JSON.stringify(partnerArray),
+                  dataType: 'json',
+                  cache: false,
+                  timeout: 600000,
+                  success: function (data) {
+                      console.log(data["message"]);
+                      console.log(data);
+                      if(data["message"]=="Failed"){
+                      	alert("Failed to update data. Please try again");
+                      }
+                      
+                      else{
+	                   	   	var rowId = data["message"];
+	
+	                   	   	t.rows().eq(0).each(function (index) { // loop through all the rows
+                              var row = t.row(index);
+                              var rowData = row.data(); // get the data for the current row
+                              if (rowData[0] === idVal) { // check if the current row has the desired column value
+                                  row.remove(); // remove the row from the DataTable
+                              }
+                          	});
+                          
+                          	t.draw();
+                          	t.row.add([rowId, nameVal, emailVal, mobileVal, websiteVal, addressVal, statusVal==1?"Active":"Inactive", '<input type="button" value="Edit" class="editPartnerBtn" />' +' '+ '<input type="button" value="Delete" id="deletePartnerBtn" style="background-color: yellow" />']).draw();
+							$('#editPartnerModal').modal('hide');
+                         	
+                      }
+
+                  },
+                  error: function (e) {
+
+                      alert("Failed to save data. Please try again. May be your session has out");
+
+                  }
+              });
+          }
+	  
+  });
+  
+  
+	          
+	</script>
 </div>
 
 </body>
