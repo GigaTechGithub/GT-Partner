@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html layout:decorator="layouts/admin-layout" lang="en" xmlns:layout="http://www.w3.org/1999/xhtml">
+ <head>
+   <title>Partner Create</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+</head>
+
+<body>
+
+<div layout:fragment="content">
+	
+	<!--  <div class="pagetitle">
+        <h1>Create Partners</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/"><i class="bi bi-house-door"></i></a></li>
+                <li class="breadcrumb-item active">Add</li>
+            </ol>
+        </nav>
+    </div>End Page Title
+
+   
+	
+</div> -->
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	  
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+	
+	<div>
+		<input type="button" id="addPartnerBtn" value="Add New Partner">
+		<br>
+		<br>
+		<form>
+			<table id="partnersListTable" class="display" cellspacing="0" width="100%" bo>
+		       <thead>
+		           <tr>
+			           <th>ID</th>
+			           <th>Name</th>
+		               <th>Email</th>
+		               <th>Mobile</th>
+		               <th>Web site</th>
+		               <th>Address</th>
+		               <th>Status</th>
+		               <th>Action</th>
+		            </tr>                                       
+		        </thead>
+		        <tbody id="tableBody" border="1">
+		            <tr th:each="p : ${partners}">
+					    <td th:text="${p.id}"></td>
+					    <td th:text="${p.name}"></td>
+					    <td th:text="${p.email}"></td>
+	                    <td th:text="${p.mobile}"></td>
+	                    <td th:text="${p.website}"></td>
+	                    <td th:text="${p.address}"></td>
+					    <td>
+					    	<span th:if="${p.status == 0}">Inactive</span>
+					    	<span th:if="${p.status == 1}">Active</span>
+					    </td>
+					    <td>
+					    	<input type="button" value="Edit" id="editPartnerBtn">
+					    	<input type="button" value="Delete" id="deletePartnerBtn" style="background-color: yellow">
+					    </td>
+			  		</tr>
+		       </tbody>
+		   </table>
+		</form>		
+	</div>
+	<div class="modal fade" id="createPartnerModal" role="dialog" data-backdrop="static">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">                  
+                    <h3>Add Partner</h3>
+                    <a class="close" data-dismiss="modal">×</a>
+                </div>
+                <form id="contactForm" name="contact" role="form">
+                    <div class="modal-body">				
+                        <div class="form-group">
+                            <label for="fullName">Name <span style="color: red;">*</span> </label>
+                            <input type="text" name="name" class="form-control" id="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="oName">Email</label>
+                            <input type="text" name="email" class="form-control" id="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="oName">Mobile</label>
+                            <input type="text" name="mobile" class="form-control" id="mobile">
+                        </div>
+                        <div class="form-group">
+                            <label for="oName">Website </label>
+                            <input type="text" name="website" class="form-control" id="website">
+                        </div>
+                        <div class="form-group">
+                            <label for="oName">Address</label>
+                            <input type="text" name="address" class="form-control" id="address">
+                        </div>
+                        <div class="form-group">
+                            <label for="selectStatus">Status</label>
+                            <select class="selectStatus" id="selectStatus" name="selectStatus" style="width: 100%">
+					             <option value="1">Active</option>
+					             <option value="0">Inactive</option>
+					        </select>
+                        </div>					
+                    </div>
+                    <div class="modal-footer">					
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <input type="button" class="btn btn-success" id="createPartnerModalAddBtn" value="Add">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+	<script>
+		  var t = $('#partnersListTable').DataTable();
+		  
+		  $('#addPartnerBtn').click(function() {
+	            $('#createPartnerModal').modal('show');
+	      });
+		  
+		  $(document).ready(function(){
+			  
+			  t.column(0).visible(false);
+			  
+			  $("#createPartnerModalAddBtn").click(function () {
+				  
+				  	var nameVal = $("#name").val();
+					var emailVal = $("#email").val();
+					var mobileVal = $("#mobile").val();
+					var websiteVal = $("#website").val();
+					var addressVal = $("#address").val();
+					var statusVal = $("#selectStatus").val();
+		            
+		            if(nameVal == ""){
+	            		alert("Please fill up mandatory field");
+	            	}
+		            
+		            else{
+	            		var partnerArray= {};
+	            		partnerArray["name"] = nameVal;
+	            		partnerArray["email"] = emailVal;
+	            		partnerArray["mobile"] = mobileVal;
+	            		partnerArray["website"] =  websiteVal;
+	            		partnerArray["address"] = addressVal;
+	            		partnerArray["status"] = statusVal;
+	                    
+	                    $.ajax({
+	                        type: "POST",
+	                        contentType: "application/json",
+	                        url: "/createDiligence",
+	                        data: JSON.stringify(partnerArray),
+	                        dataType: 'json',
+	                        cache: false,
+	                        timeout: 600000,
+	                        success: function (data) {
+	                            console.log(data["message"]);
+	                            console.log(data);
+	                            if(data["message"]=="Failed"){
+	                            	alert("Failed to save data. Please try again");
+	                            }
+	                            
+	                            else{
+	                            	var rowId = data["message"];
+
+	                                t.row.add([rowId, nameVal, emailVal, mobileVal, websiteVal, addressVal, statusVal, '<input type="button" value="Edit" id="editPartnerBtn" />' +' '+ '<input type="button" value="Delete" id="deletePartnerBtn" style="background-color: yellow" />']).draw();
+
+	                                $('#createPartnerModal').modal('hide');
+	                            }
+
+	                        },
+	                        error: function (e) {
+
+	                            alert("Failed to save data. Please try again. May be your session has out");
+
+	                        }
+	                    });
+	                    //end else
+		            }
+		      });
+		  });
+		  
+		  
+		  $('#partnersListTable tbody').on( 'click', '#deletePartnerBtn', function () {
+		        var r=confirm("Are you sure want to delete?");
+		        if (r==true)
+		        {
+		        	//t.row( $(this).parents('tr') ).remove().draw();
+		        	
+		      		var row = t.row( $(this).closest('tr') );                
+		            var partner = {};
+		            var rowData = row.data();
+		            console.log(rowData);
+		            partner['id'] = rowData[0];
+		            
+		            $.ajax({
+		                type: "POST",
+		                contentType: "application/json",
+		                url: "/deletePartner",
+		                data: JSON.stringify(partner),
+		                dataType: 'json',
+		                cache: false,
+		                timeout: 600000,
+		                success: function (data) {
+		                    console.log(data["message"]);
+		                    
+		                    if(data["message"]=="Failed"){
+		                    	alert("Failed to delete data. Please try again");
+		                    }
+		                    
+		                    else{
+		                    	row.remove().draw();
+		                    }
+
+		                },
+		                error: function (e) {
+
+		                    alert("Failed to delete data. Please try again");
+
+		                }
+		            });
+		            
+		        }
+		        else
+		        {
+		            
+		        }
+		        
+		    } );
+
+		
+	</script> 
+</div>
+
+</body>
+</html>

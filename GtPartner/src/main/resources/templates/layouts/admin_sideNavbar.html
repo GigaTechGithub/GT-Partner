@@ -1,0 +1,40 @@
+<div th:fragment = "admin-side-nav-bar">
+   	   	<nav id="sidebar" class="admin-sidebar">
+			<div class="p-4 pt-5">
+	  		<!-- <a href="#" class="img logo rounded-circle mb-8" style="background-image: url(images/company-logo.png);"></a> -->
+	  		<a href="#" class="img logo" style="background-image: url(images/company-logo.png); background-size: 80%;"></a>
+       <ul class="list-unstyled components mb-5">
+	       <li class="active">
+	            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+	            <ul class="collapse list-unstyled" id="homeSubmenu">
+                <li>
+                   <a href="#">Home 1</a>
+               </li>
+               <li>
+                   <a href="#">Home 2</a>
+               </li>
+               <li>
+                   <a href="#">Home 3</a>
+               </li>
+            </ul>
+          </li>
+          <li class="active">
+	            <a href="#partnersSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Partners Management</a>
+	            <ul class="collapse list-unstyled" id="partnersSubmenu">
+                <li>
+                   <a th:href="@{/partnerCreate}">Create Partners</a>
+               </li>
+               <li>
+                   <a th:href="@{/activePartnersList}">Partners Information</a>
+               </li>
+            </ul>
+          </li>
+          <li>
+             <a th:href="@{/userList}">Users Management</a>
+          </li>
+        </ul>
+
+      </div>
+   	</nav>
+   	
+</div>

@@ -39,7 +39,7 @@ public class Diligence {
     
     @Column(name="CREATED_BY")
     private String createdBy;
-        
+    
 	public Diligence() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -47,6 +47,7 @@ public class Diligence {
 
 	public Diligence(Long id, String name, Integer status, Integer profileStatus, String email, String mobile,
 			String website, String address, String createdBy) {
+		
 		super();
 		this.id = id;
 		this.name = name;
@@ -130,8 +131,4 @@ public class Diligence {
 	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
 	}
-
-	
-
-		    
 }

@@ -10,4 +10,5 @@ public interface DiligenceService {
 	List<Diligence> findBystatus(int status);
 	List<Diligence> findAll();
 	List<Diligence> findByStatusAndProfileStatus(int status, int profileStatus);
+	String deleteDiligence(long id);
 }

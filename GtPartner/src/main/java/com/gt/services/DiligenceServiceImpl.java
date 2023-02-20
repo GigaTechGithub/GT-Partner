@@ -21,7 +21,8 @@ public class DiligenceServiceImpl implements DiligenceService{
 	public String saveDiligence(Diligence diligence) {
 		try {
 			diligenceRepository.save(diligence);
-			return "Success";
+			String diligenceId = diligence.getId().toString();
+			return diligenceId;
 		}
 		
 		catch (Exception e) {
@@ -47,6 +48,11 @@ public class DiligenceServiceImpl implements DiligenceService{
 	@Override
 	public List<Diligence> findByStatusAndProfileStatus(int status, int profileStatus) {
 		return diligenceRepository.findByStatusAndProfileStatus(status, profileStatus);
+	}
+
+	public String deleteDiligence(long id) {
+		 diligenceRepository.deleteById(id);
+		 return "Success";
 	}
 	
 }
