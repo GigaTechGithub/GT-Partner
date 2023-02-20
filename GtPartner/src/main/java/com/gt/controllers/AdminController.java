@@ -237,16 +237,10 @@ public class AdminController {
     public ResponseEntity<?> addDiligence(@RequestBody Diligence request, Errors errors) {
 		AjaxResponse response = new AjaxResponse();
 		try {
-			Diligence diligence = new Diligence();
-			diligence.setName(request.getName());
-			diligence.setEmail(request.getEmail());
-			diligence.setMobile(request.getMobile());
-			diligence.setWebsite(request.getWebsite());
-			diligence.setAddress(request.getAddress());
-			diligence.setStatus(request.getStatus());
-			diligence.setCreatedBy(createdById().toString());
+			request.setCreatedBy(createdById().toString());
+			request.setProfileStatus(0);
 	    	
-	    	String result = diligenceService.saveDiligence(diligence);
+	    	String result = diligenceService.saveDiligence(request);
 	    	
 	    	response.setMessage(result);
 	    	
