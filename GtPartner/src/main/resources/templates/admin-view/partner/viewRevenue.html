@@ -9,6 +9,7 @@
 <body>
 
 <div layout:fragment="content">
+<div>
 <fieldset id="fieldset4">
 	   <div class="form-card">
 	   		<div class="row">
@@ -27,7 +28,16 @@
 			<table id="revTable">
 				<tr th:each="contracts : ${contractsList}">
 			      <td th:text="${contracts.id}" style="display: none"></td>
-			      <td th:text="${contracts.fileName}"></td>
+			      <td th:text="${contracts.filePath}" style="display: none"></td>
+				  <td th:text="${contracts.fileName}"></td>
+				  <td style="width: 5%"></td>
+				  <td>
+					  <button type="button" name ="contractsViewBtn" id ="contractsViewBtn" style="border: none">View</button>
+				  </td>
+				  <td style="width: 2%"></td>
+				  <td>
+					  <button type="button" name ="contractsDownloadBtn" id ="contractsDownloadBtn" style="border: none">Download</button>
+				  </td>
 			    </tr>
 			</table>
 			<br>
@@ -51,6 +61,69 @@
 	        <hr>
 	    </div>
 	</fieldset>
+</div>
+
+<div class="modal fade" id="pleaseWaitDialog" data-backdrop="static" role="dialog" aria-labelledby="pleaseWaitDialogLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="pleaseWaitDialogLabel">Please Wait</h5>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex justify-content-center">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Updating...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+	
+	
+<script>
+	$(document).on('click', '#contractsViewBtn', function(){
+		var row = $(this).parents('tr');;
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		var url = '/viewFile?filename=' + encodeURIComponent(filePath);
+	    window.open(url, '_blank');
+		});
+		
+	$(document).on('click', '#contractsDownloadBtn', function(){
+		var row = $(this).parents('tr');;
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		$('#pleaseWaitDialog').modal('show');
+		
+		$.ajax({
+		    url: '/download',
+		    type: 'POST',
+		    data: { filename: filePath },
+		    success: function(data) {
+		      // Hide "please wait" sign here
+		      $('#pleaseWaitDialog').modal('hide');
+	
+		      // Trigger the download by creating a temporary link and clicking it
+		      var link = document.createElement('a');
+		      var blob = new Blob([data]);
+		      link.href = window.URL.createObjectURL(blob);
+		      link.download = fileName;
+		      document.body.appendChild(link);
+		      link.click();
+		      document.body.removeChild(link);
+		    },
+		    error: function() {
+		      // Handle error here
+		    }
+		  });
+		
+		});
+</script>
 </div>
 
 </body>

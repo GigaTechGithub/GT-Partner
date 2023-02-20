@@ -9,6 +9,7 @@
 <body>
 
 <div layout:fragment="content">
+  <div>
 	<fieldset id="fieldset3">
         <div class="form-card">
         	<div class="row">
@@ -28,7 +29,15 @@
 				<tr th:each="finDoc1 : ${finDoc1List}">
       				<td th:text="${finDoc1.id}" style="display: none"></td>
       				<td th:text="${finDoc1.filePath}" style="display: none"></td>
-					<td th:text="${finDoc1.fileName}"></td>					
+					<td th:text="${finDoc1.fileName}"></td>
+					<td style="width: 5%"></td>
+					<td>
+						<button type="button" name ="fin1ViewBtn" id ="fin1ViewBtn" style="border: none">View</button>
+					</td>
+					<td style="width: 2%"></td>
+					<td>
+						<button type="button" name ="fin1DownloadBtn" id ="fin1DownloadBtn" style="border: none">Download</button>
+					</td>					
 			    </tr>
 			</table>
 			<br>
@@ -37,7 +46,16 @@
 			<table id="fin2Table">
 				<tr th:each="finDoc2 : ${finDoc2List}">
 			        <td th:text="${finDoc2.id}" style="display: none"></td>
+					<td th:text="${finDoc2.filePath}" style="display: none"></td>
 					<td th:text="${finDoc2.fileName}"></td>
+					<td style="width: 5%"></td>
+					<td>
+						<button type="button" name ="fin2ViewBtn" id ="fin2ViewBtn" style="border: none">View</button>
+					</td>
+					<td style="width: 2%"></td>
+					<td>
+						<button type="button" name ="fin2DownloadBtn" id ="fin2DownloadBtn" style="border: none">Download</button>
+					</td>
 				</tr>
 			</table>
 			<br>
@@ -46,7 +64,16 @@
 			<table id="fin3Table">
 				<tr th:each="finDoc3 : ${finDoc3List}">
 			      	<td th:text="${finDoc3.id}" style="display: none"></td>
+					<td th:text="${finDoc3.filePath}" style="display: none"></td>
 					<td th:text="${finDoc3.fileName}"></td>
+					<td style="width: 5%"></td>
+					<td>
+						<button type="button" name ="fin3ViewBtn" id ="fin3ViewBtn" style="border: none">View</button>
+					</td>
+					<td style="width: 2%"></td>
+					<td>
+						<button type="button" name ="fin3DownloadBtn" id ="fin3DownloadBtn" style="border: none">Download</button>
+					</td>
 			    </tr>
 			</table>
 			<br>
@@ -55,7 +82,16 @@
 			<table id="fin4Table">
 				<tr th:each="finDoc4 : ${finDoc4List}">
    			        <td th:text="${finDoc4.id}" style="display: none"></td>
+					<td th:text="${finDoc4.filePath}" style="display: none"></td>
 					<td th:text="${finDoc4.fileName}"></td>
+					<td style="width: 5%"></td>
+					<td>
+						<button type="button" name ="fin4ViewBtn" id ="fin4ViewBtn" style="border: none">View</button>
+					</td>
+					<td style="width: 2%"></td>
+					<td>
+						<button type="button" name ="fin4DownloadBtn" id ="fin4DownloadBtn" style="border: none">Download</button>
+					</td>
 			    </tr>
 			</table>
 			<br>
@@ -64,7 +100,16 @@
 			<table id="fin5Table">
 				<tr th:each="finDoc5 : ${finDoc5List}">
 			        <td th:text="${finDoc5.id}" style="display: none"></td>
+					<td th:text="${finDoc5.filePath}" style="display: none"></td>
 					<td th:text="${finDoc5.fileName}"></td>
+					<td style="width: 5%"></td>
+					<td>
+						<button type="button" name ="fin5ViewBtn" id ="fin5ViewBtn" style="border: none">View</button>
+					</td>
+					<td style="width: 2%"></td>
+					<td>
+						<button type="button" name ="fin5DownloadBtn" id ="fin5DownloadBtn" style="border: none">Download</button>
+					</td>
 			    </tr>
 			</table>
 			<br>
@@ -73,7 +118,16 @@
 			<table id="fin6Table">
 				<tr th:each="finDoc6 : ${finDoc6List}">
 			        <td th:text="${finDoc6.id}" style="display: none"></td>
+					<td th:text="${finDoc6.filePath}" style="display: none"></td>
 					<td th:text="${finDoc6.fileName}"></td>
+					<td style="width: 5%"></td>
+					<td>
+						<button type="button" name ="fin6ViewBtn" id ="fin6ViewBtn" style="border: none">View</button>
+					</td>
+					<td style="width: 2%"></td>
+					<td>
+						<button type="button" name ="fin6DownloadBtn" id ="fin6DownloadBtn" style="border: none">Download</button>
+					</td>
     			</tr>
 			</table>
 			<br>
@@ -82,7 +136,16 @@
 			<table id="fin7Table">
 				<tr th:each="finDoc7 : ${finDoc7List}">
 			      	<td th:text="${finDoc7.id}" style="display: none"></td>
+					<td th:text="${finDoc7.filePath}" style="display: none"></td>
 					<td th:text="${finDoc7.fileName}"></td>
+					<td style="width: 5%"></td>
+					<td>
+						<button type="button" name ="fin7ViewBtn" id ="fin7ViewBtn" style="border: none">View</button>
+					</td>
+					<td style="width: 2%"></td>
+					<td>
+						<button type="button" name ="fin7DownloadBtn" id ="fin7DownloadBtn" style="border: none">Download</button>
+					</td>
 			    </tr>
 			</table>
 			<br>
@@ -91,7 +154,16 @@
 			<table id="fin8Table">
 				<tr th:each="finDoc8 : ${finDoc8List}">
 			      	<td th:text="${finDoc8.id}" style="display: none"></td>
+					<td th:text="${finDoc8.filePath}" style="display: none"></td>
 					<td th:text="${finDoc8.fileName}"></td>
+					<td style="width: 5%"></td>
+					<td>
+						<button type="button" name ="fin8ViewBtn" id ="fin8ViewBtn" style="border: none">View</button>
+					</td>
+					<td style="width: 2%"></td>
+					<td>
+						<button type="button" name ="fin8DownloadBtn" id ="fin8DownloadBtn" style="border: none">Download</button>
+					</td>
 			    </tr>
 			</table>
 			<br>
@@ -100,7 +172,16 @@
 			<table id="fin9Table">
 				<tr th:each="finDoc9 : ${finDoc9List}">
 			      	<td th:text="${finDoc9.id}" style="display: none"></td>
+					<td th:text="${finDoc9.filePath}" style="display: none"></td>
 					<td th:text="${finDoc9.fileName}"></td>
+					<td style="width: 5%"></td>
+					<td>
+						<button type="button" name ="fin9ViewBtn" id ="fin9ViewBtn" style="border: none">View</button>
+					</td>
+					<td style="width: 2%"></td>
+					<td>
+						<button type="button" name ="fin9DownloadBtn" id ="fin9DownloadBtn" style="border: none">Download</button>
+					</td>
 			    </tr>
 			</table>
 			<br>
@@ -109,7 +190,16 @@
 			<table id="fin10Table">
 				<tr th:each="finDoc10 : ${finDoc10List}">
 			      	<td th:text="${finDoc10.id}" style="display: none"></td>
+					<td th:text="${finDoc10.filePath}" style="display: none"></td>
 					<td th:text="${finDoc10.fileName}"></td>
+					<td style="width: 5%"></td>
+					<td>
+						<button type="button" name ="fin10ViewBtn" id ="fin10ViewBtn" style="border: none">View</button>
+					</td>
+					<td style="width: 2%"></td>
+					<td>
+						<button type="button" name ="fin10DownloadBtn" id ="fin10DownloadBtn" style="border: none">Download</button>
+					</td>
 				</tr>
 			</table>
 			<br>
@@ -118,7 +208,16 @@
 			<table id="fin11Table">
 				<tr th:each="finDoc11 : ${finDoc11List}">
 			      	<td th:text="${finDoc11.id}" style="display: none"></td>
+					<td th:text="${finDoc11.filePath}" style="display: none"></td>
 					<td th:text="${finDoc11.fileName}"></td>
+					<td style="width: 5%"></td>
+					<td>
+						<button type="button" name ="fin11ViewBtn" id ="fin11ViewBtn" style="border: none">View</button>
+					</td>
+					<td style="width: 2%"></td>
+					<td>
+						<button type="button" name ="fin11DownloadBtn" id ="fin11DownloadBtn" style="border: none">Download</button>
+					</td>
 			    </tr>
 			</table>
 			<br>
@@ -127,7 +226,16 @@
 			<table id="fin12Table">
 				<tr th:each="finDoc12 : ${finDoc12List}">
 			      	<td th:text="${finDoc12.id}" style="display: none"></td>
+					<td th:text="${finDoc12.filePath}" style="display: none"></td>
 					<td th:text="${finDoc12.fileName}"></td>
+					<td style="width: 5%"></td>
+					<td>
+						<button type="button" name ="fin12ViewBtn" id ="fin12ViewBtn" style="border: none">View</button>
+					</td>
+					<td style="width: 2%"></td>
+					<td>
+						<button type="button" name ="fin12DownloadBtn" id ="fin12DownloadBtn" style="border: none">Download</button>
+					</td>
     			</tr>
 			</table>
 			<br>
@@ -136,13 +244,600 @@
 			<table id="fin13Table">
 				<tr th:each="finDoc13 : ${finDoc13List}">
 			      	<td th:text="${finDoc13.id}" style="display: none"></td>
+					<td th:text="${finDoc13.filePath}" style="display: none"></td>
 					<td th:text="${finDoc13.fileName}"></td>
+					<td style="width: 5%"></td>
+					<td>
+						<button type="button" name ="fin13ViewBtn" id ="fin13ViewBtn" style="border: none">View</button>
+					</td>
+					<td style="width: 2%"></td>
+					<td>
+						<button type="button" name ="fin13DownloadBtn" id ="fin13DownloadBtn" style="border: none">Download</button>
+					</td>
 			    </tr>
 			</table>
             <br>
             <hr>
      	</div>
   </fieldset>
+ </div>
+ <div class="modal fade" id="pleaseWaitDialog" data-backdrop="static" role="dialog" aria-labelledby="pleaseWaitDialogLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="pleaseWaitDialogLabel">Please Wait</h5>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex justify-content-center">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Updating...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ <script>
+ 	$(document).on('click', '#fin1ViewBtn', function(){
+ 		var row = $(this).parents('tr');;
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		var url = '/viewFile?filename=' + encodeURIComponent(filePath);
+	    window.open(url, '_blank');
+ 	});
+ 	
+	$(document).on('click', '#fin1DownloadBtn', function(){
+		var row = $(this).parents('tr');;
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		$('#pleaseWaitDialog').modal('show');
+		
+		$.ajax({
+		    url: '/download',
+		    type: 'POST',
+		    data: { filename: filePath },
+		    success: function(data) {
+		      // Hide "please wait" sign here
+		      $('#pleaseWaitDialog').modal('hide');
+
+		      // Trigger the download by creating a temporary link and clicking it
+		      var link = document.createElement('a');
+		      var blob = new Blob([data]);
+		      link.href = window.URL.createObjectURL(blob);
+		      link.download = fileName;
+		      document.body.appendChild(link);
+		      link.click();
+		      document.body.removeChild(link);
+		    },
+		    error: function() {
+		      // Handle error here
+		    }
+		  });
+		
+ 	});
+	
+	
+	$(document).on('click', '#fin2ViewBtn', function(){
+ 		var row = $(this).parents('tr');;
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		var url = '/viewFile?filename=' + encodeURIComponent(filePath);
+	    window.open(url, '_blank');
+ 	});
+ 	
+	$(document).on('click', '#fin2DownloadBtn', function(){
+		var row = $(this).parents('tr');;
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		$('#pleaseWaitDialog').modal('show');
+		
+		$.ajax({
+		    url: '/download',
+		    type: 'POST',
+		    data: { filename: filePath },
+		    success: function(data) {
+		      // Hide "please wait" sign here
+		      $('#pleaseWaitDialog').modal('hide');
+
+		      // Trigger the download by creating a temporary link and clicking it
+		      var link = document.createElement('a');
+		      var blob = new Blob([data]);
+		      link.href = window.URL.createObjectURL(blob);
+		      link.download = fileName;
+		      document.body.appendChild(link);
+		      link.click();
+		      document.body.removeChild(link);
+		    },
+		    error: function() {
+		      // Handle error here
+		    }
+		  });
+		
+ 	});
+	
+	
+	
+	$(document).on('click', '#fin3ViewBtn', function(){
+ 		var row = $(this).parents('tr');;
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		var url = '/viewFile?filename=' + encodeURIComponent(filePath);
+	    window.open(url, '_blank');
+ 	});
+ 	
+	$(document).on('click', '#fin3DownloadBtn', function(){
+		var row = $(this).parents('tr');;
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		$('#pleaseWaitDialog').modal('show');
+		
+		$.ajax({
+		    url: '/download',
+		    type: 'POST',
+		    data: { filename: filePath },
+		    success: function(data) {
+		      // Hide "please wait" sign here
+		      $('#pleaseWaitDialog').modal('hide');
+
+		      // Trigger the download by creating a temporary link and clicking it
+		      var link = document.createElement('a');
+		      var blob = new Blob([data]);
+		      link.href = window.URL.createObjectURL(blob);
+		      link.download = fileName;
+		      document.body.appendChild(link);
+		      link.click();
+		      document.body.removeChild(link);
+		    },
+		    error: function() {
+		      // Handle error here
+		    }
+		  });
+		
+ 	});
+	
+	
+	$(document).on('click', '#fin4ViewBtn', function(){
+ 		var row = $(this).parents('tr');;
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		var url = '/viewFile?filename=' + encodeURIComponent(filePath);
+	    window.open(url, '_blank');
+ 	});
+ 	
+	$(document).on('click', '#fin4DownloadBtn', function(){
+		var row = $(this).parents('tr');;
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		$('#pleaseWaitDialog').modal('show');
+		
+		$.ajax({
+		    url: '/download',
+		    type: 'POST',
+		    data: { filename: filePath },
+		    success: function(data) {
+		      // Hide "please wait" sign here
+		      $('#pleaseWaitDialog').modal('hide');
+
+		      // Trigger the download by creating a temporary link and clicking it
+		      var link = document.createElement('a');
+		      var blob = new Blob([data]);
+		      link.href = window.URL.createObjectURL(blob);
+		      link.download = fileName;
+		      document.body.appendChild(link);
+		      link.click();
+		      document.body.removeChild(link);
+		    },
+		    error: function() {
+		      // Handle error here
+		    }
+		  });
+		
+ 	});
+	
+	
+	$(document).on('click', '#fin5ViewBtn', function(){
+ 		var row = $(this).parents('tr');;
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		var url = '/viewFile?filename=' + encodeURIComponent(filePath);
+	    window.open(url, '_blank');
+ 	});
+ 	
+	$(document).on('click', '#fin5DownloadBtn', function(){
+		var row = $(this).parents('tr');;
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		$('#pleaseWaitDialog').modal('show');
+		
+		$.ajax({
+		    url: '/download',
+		    type: 'POST',
+		    data: { filename: filePath },
+		    success: function(data) {
+		      // Hide "please wait" sign here
+		      $('#pleaseWaitDialog').modal('hide');
+
+		      // Trigger the download by creating a temporary link and clicking it
+		      var link = document.createElement('a');
+		      var blob = new Blob([data]);
+		      link.href = window.URL.createObjectURL(blob);
+		      link.download = fileName;
+		      document.body.appendChild(link);
+		      link.click();
+		      document.body.removeChild(link);
+		    },
+		    error: function() {
+		      // Handle error here
+		    }
+		  });
+		
+ 	});
+	
+	
+	$(document).on('click', '#fin6ViewBtn', function(){
+ 		var row = $(this).parents('tr');;
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		var url = '/viewFile?filename=' + encodeURIComponent(filePath);
+	    window.open(url, '_blank');
+ 	});
+ 	
+	$(document).on('click', '#fin6DownloadBtn', function(){
+		var row = $(this).parents('tr');;
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		$('#pleaseWaitDialog').modal('show');
+		
+		$.ajax({
+		    url: '/download',
+		    type: 'POST',
+		    data: { filename: filePath },
+		    success: function(data) {
+		      // Hide "please wait" sign here
+		      $('#pleaseWaitDialog').modal('hide');
+
+		      // Trigger the download by creating a temporary link and clicking it
+		      var link = document.createElement('a');
+		      var blob = new Blob([data]);
+		      link.href = window.URL.createObjectURL(blob);
+		      link.download = fileName;
+		      document.body.appendChild(link);
+		      link.click();
+		      document.body.removeChild(link);
+		    },
+		    error: function() {
+		      // Handle error here
+		    }
+		  });
+		
+ 	});
+	
+	
+	$(document).on('click', '#fin7ViewBtn', function(){
+ 		var row = $(this).parents('tr');;
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		var url = '/viewFile?filename=' + encodeURIComponent(filePath);
+	    window.open(url, '_blank');
+ 	});
+ 	
+	$(document).on('click', '#fin7DownloadBtn', function(){
+		var row = $(this).parents('tr');;
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		$('#pleaseWaitDialog').modal('show');
+		
+		$.ajax({
+		    url: '/download',
+		    type: 'POST',
+		    data: { filename: filePath },
+		    success: function(data) {
+		      // Hide "please wait" sign here
+		      $('#pleaseWaitDialog').modal('hide');
+
+		      // Trigger the download by creating a temporary link and clicking it
+		      var link = document.createElement('a');
+		      var blob = new Blob([data]);
+		      link.href = window.URL.createObjectURL(blob);
+		      link.download = fileName;
+		      document.body.appendChild(link);
+		      link.click();
+		      document.body.removeChild(link);
+		    },
+		    error: function() {
+		      // Handle error here
+		    }
+		  });
+		
+ 	});
+	
+	
+	$(document).on('click', '#fin8ViewBtn', function(){
+ 		var row = $(this).parents('tr');;
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		var url = '/viewFile?filename=' + encodeURIComponent(filePath);
+	    window.open(url, '_blank');
+ 	});
+ 	
+	$(document).on('click', '#fin8DownloadBtn', function(){
+		var row = $(this).parents('tr');;
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		$('#pleaseWaitDialog').modal('show');
+		
+		$.ajax({
+		    url: '/download',
+		    type: 'POST',
+		    data: { filename: filePath },
+		    success: function(data) {
+		      // Hide "please wait" sign here
+		      $('#pleaseWaitDialog').modal('hide');
+
+		      // Trigger the download by creating a temporary link and clicking it
+		      var link = document.createElement('a');
+		      var blob = new Blob([data]);
+		      link.href = window.URL.createObjectURL(blob);
+		      link.download = fileName;
+		      document.body.appendChild(link);
+		      link.click();
+		      document.body.removeChild(link);
+		    },
+		    error: function() {
+		      // Handle error here
+		    }
+		  });
+		
+ 	});
+	
+	
+	$(document).on('click', '#fin9ViewBtn', function(){
+ 		var row = $(this).parents('tr');;
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		var url = '/viewFile?filename=' + encodeURIComponent(filePath);
+	    window.open(url, '_blank');
+ 	});
+ 	
+	$(document).on('click', '#fin9DownloadBtn', function(){
+		var row = $(this).parents('tr');;
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		$('#pleaseWaitDialog').modal('show');
+		
+		$.ajax({
+		    url: '/download',
+		    type: 'POST',
+		    data: { filename: filePath },
+		    success: function(data) {
+		      // Hide "please wait" sign here
+		      $('#pleaseWaitDialog').modal('hide');
+
+		      // Trigger the download by creating a temporary link and clicking it
+		      var link = document.createElement('a');
+		      var blob = new Blob([data]);
+		      link.href = window.URL.createObjectURL(blob);
+		      link.download = fileName;
+		      document.body.appendChild(link);
+		      link.click();
+		      document.body.removeChild(link);
+		    },
+		    error: function() {
+		      // Handle error here
+		    }
+		  });
+		
+ 	});
+	
+	
+	$(document).on('click', '#fin10ViewBtn', function(){
+ 		var row = $(this).parents('tr');;
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		var url = '/viewFile?filename=' + encodeURIComponent(filePath);
+	    window.open(url, '_blank');
+ 	});
+ 	
+	$(document).on('click', '#fin10DownloadBtn', function(){
+		var row = $(this).parents('tr');;
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		$('#pleaseWaitDialog').modal('show');
+		
+		$.ajax({
+		    url: '/download',
+		    type: 'POST',
+		    data: { filename: filePath },
+		    success: function(data) {
+		      // Hide "please wait" sign here
+		      $('#pleaseWaitDialog').modal('hide');
+
+		      // Trigger the download by creating a temporary link and clicking it
+		      var link = document.createElement('a');
+		      var blob = new Blob([data]);
+		      link.href = window.URL.createObjectURL(blob);
+		      link.download = fileName;
+		      document.body.appendChild(link);
+		      link.click();
+		      document.body.removeChild(link);
+		    },
+		    error: function() {
+		      // Handle error here
+		    }
+		  });
+		
+ 	});
+	
+	
+	$(document).on('click', '#fin11ViewBtn', function(){
+ 		var row = $(this).parents('tr');;
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		var url = '/viewFile?filename=' + encodeURIComponent(filePath);
+	    window.open(url, '_blank');
+ 	});
+ 	
+	$(document).on('click', '#fin11DownloadBtn', function(){
+		var row = $(this).parents('tr');;
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		$('#pleaseWaitDialog').modal('show');
+		
+		$.ajax({
+		    url: '/download',
+		    type: 'POST',
+		    data: { filename: filePath },
+		    success: function(data) {
+		      // Hide "please wait" sign here
+		      $('#pleaseWaitDialog').modal('hide');
+
+		      // Trigger the download by creating a temporary link and clicking it
+		      var link = document.createElement('a');
+		      var blob = new Blob([data]);
+		      link.href = window.URL.createObjectURL(blob);
+		      link.download = fileName;
+		      document.body.appendChild(link);
+		      link.click();
+		      document.body.removeChild(link);
+		    },
+		    error: function() {
+		      // Handle error here
+		    }
+		  });
+		
+ 	});
+	
+	
+	$(document).on('click', '#fin12ViewBtn', function(){
+ 		var row = $(this).parents('tr');;
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		var url = '/viewFile?filename=' + encodeURIComponent(filePath);
+	    window.open(url, '_blank');
+ 	});
+ 	
+	$(document).on('click', '#fin12DownloadBtn', function(){
+		var row = $(this).parents('tr');;
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		$('#pleaseWaitDialog').modal('show');
+		
+		$.ajax({
+		    url: '/download',
+		    type: 'POST',
+		    data: { filename: filePath },
+		    success: function(data) {
+		      // Hide "please wait" sign here
+		      $('#pleaseWaitDialog').modal('hide');
+
+		      // Trigger the download by creating a temporary link and clicking it
+		      var link = document.createElement('a');
+		      var blob = new Blob([data]);
+		      link.href = window.URL.createObjectURL(blob);
+		      link.download = fileName;
+		      document.body.appendChild(link);
+		      link.click();
+		      document.body.removeChild(link);
+		    },
+		    error: function() {
+		      // Handle error here
+		    }
+		  });
+		
+ 	});
+	
+	
+	$(document).on('click', '#fin13ViewBtn', function(){
+ 		var row = $(this).parents('tr');;
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		var url = '/viewFile?filename=' + encodeURIComponent(filePath);
+	    window.open(url, '_blank');
+ 	});
+ 	
+	$(document).on('click', '#fin13DownloadBtn', function(){
+		var row = $(this).parents('tr');;
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		$('#pleaseWaitDialog').modal('show');
+		
+		$.ajax({
+		    url: '/download',
+		    type: 'POST',
+		    data: { filename: filePath },
+		    success: function(data) {
+		      // Hide "please wait" sign here
+		      $('#pleaseWaitDialog').modal('hide');
+
+		      // Trigger the download by creating a temporary link and clicking it
+		      var link = document.createElement('a');
+		      var blob = new Blob([data]);
+		      link.href = window.URL.createObjectURL(blob);
+		      link.download = fileName;
+		      document.body.appendChild(link);
+		      link.click();
+		      document.body.removeChild(link);
+		    },
+		    error: function() {
+		      // Handle error here
+		    }
+		  });
+		
+ 	});
+	
+ </script>
 </div>
 
 </body>

@@ -9,6 +9,7 @@
 <body>
 
 <div layout:fragment="content">
+  <div>
 	<fieldset id="fieldset6">
 	      <div class="form-card">
 	      	  <div class="row">
@@ -36,7 +37,16 @@
 				<table id="ipTable">
 					<tr th:each="ipDoc1 : ${ipDoc1List}">
 				      <td th:text="${ipDoc1.id}" style="display: none"></td>
-				      <td th:text="${ipDoc1.fileName}"></td>
+				      <td th:text="${ipDoc1.filePath}" style="display: none"></td>
+						<td th:text="${ipDoc1.fileName}"></td>
+						<td style="width: 5%"></td>
+						<td>
+							<button type="button" name ="ipDoc1ViewBtn" id ="ipDoc1ViewBtn" style="border: none">View</button>
+						</td>
+						<td style="width: 2%"></td>
+						<td>
+							<button type="button" name ="ipDoc1DownloadBtn" id ="ipDoc1DownloadBtn" style="border: none">Download</button>
+						</td>
 				    </tr>
 				</table>
 				<br>
@@ -44,7 +54,16 @@
 				<table id="ipTable2">
 					<tr th:each="ipDoc2 : ${ipDoc2List}">
 				      <td th:text="${ipDoc2.id}" style="display: none"></td>
-				      <td th:text="${ipDoc2.fileName}"></td>
+				      <td th:text="${ipDoc2.filePath}" style="display: none"></td>
+						<td th:text="${ipDoc2.fileName}"></td>
+						<td style="width: 5%"></td>
+						<td>
+							<button type="button" name ="ipDoc2ViewBtn" id ="ipDoc2ViewBtn" style="border: none">View</button>
+						</td>
+						<td style="width: 2%"></td>
+						<td>
+							<button type="button" name ="ipDoc2DownloadBtn" id ="ipDoc2DownloadBtn" style="border: none">Download</button>
+						</td>
 				    </tr>
 				</table>
 				<br>
@@ -79,6 +98,109 @@
             </div>
             <hr>
         </fieldset>
+    </div>
+    <div class="modal fade" id="pleaseWaitDialog" data-backdrop="static" role="dialog" aria-labelledby="pleaseWaitDialogLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="pleaseWaitDialogLabel">Please Wait</h5>
+	      </div>
+	      <div class="modal-body">
+	        <div class="d-flex justify-content-center">
+	          <div class="spinner-border" role="status">
+	            <span class="sr-only">Updating...</span>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+    <script>
+    $(document).on('click', '#ipDoc1ViewBtn', function(){
+ 		var row = $(this).parents('tr');;
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		var url = '/viewFile?filename=' + encodeURIComponent(filePath);
+	    window.open(url, '_blank');
+ 	});
+ 	
+	$(document).on('click', '#ipDoc1DownloadBtn', function(){
+		var row = $(this).parents('tr');;
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		$('#pleaseWaitDialog').modal('show');
+		
+		$.ajax({
+		    url: '/download',
+		    type: 'POST',
+		    data: { filename: filePath },
+		    success: function(data) {
+		      // Hide "please wait" sign here
+		      $('#pleaseWaitDialog').modal('hide');
+
+		      // Trigger the download by creating a temporary link and clicking it
+		      var link = document.createElement('a');
+		      var blob = new Blob([data]);
+		      link.href = window.URL.createObjectURL(blob);
+		      link.download = fileName;
+		      document.body.appendChild(link);
+		      link.click();
+		      document.body.removeChild(link);
+		    },
+		    error: function() {
+		      // Handle error here
+		    }
+		  });
+		
+ 	});
+	
+	
+	$(document).on('click', '#ipDoc2ViewBtn', function(){
+ 		var row = $(this).parents('tr');;
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		var url = '/viewFile?filename=' + encodeURIComponent(filePath);
+	    window.open(url, '_blank');
+ 	});
+ 	
+	$(document).on('click', '#ipDoc2DownloadBtn', function(){
+		var row = $(this).parents('tr');;
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		$('#pleaseWaitDialog').modal('show');
+		
+		$.ajax({
+		    url: '/download',
+		    type: 'POST',
+		    data: { filename: filePath },
+		    success: function(data) {
+		      // Hide "please wait" sign here
+		      $('#pleaseWaitDialog').modal('hide');
+
+		      // Trigger the download by creating a temporary link and clicking it
+		      var link = document.createElement('a');
+		      var blob = new Blob([data]);
+		      link.href = window.URL.createObjectURL(blob);
+		      link.download = fileName;
+		      document.body.appendChild(link);
+		      link.click();
+		      document.body.removeChild(link);
+		    },
+		    error: function() {
+		      // Handle error here
+		    }
+		  });
+		
+ 	});
+    </script>
 </div>
 
 </body>

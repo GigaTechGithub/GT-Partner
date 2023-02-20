@@ -12,6 +12,15 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+    
+    <style>
+		.spinner-border {
+		  width: 2rem;
+		  height: 2rem;
+		  color: #007bff;
+		}
+	</style>
+
 
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -35,6 +44,9 @@
 		               <th>Mobile</th>
 		               <th>Status</th>
 		               <th>Action</th>
+		               <th>Company Id</th>
+		               <th>Is Admin?</th>
+		               <th>Password</th>
 		           </tr>                                        
 		       </thead>
 		       <tbody id="tableBody">
@@ -53,6 +65,9 @@
 					    	<input type="button" value="Edit User" id="editBtn">
 					    	<input type="button" value="Delete User" id="dltBtn" style="background-color: yellow">
 					    </td>
+					    <td th:text="${user.diligenceId}"></td>
+					    <td th:text="${user.isAdmin}"></td>
+					    <td th:text="${user.password}"></td>
 			  		</tr>
 		       </tbody>
 		   </table>
@@ -131,7 +146,8 @@
                     <a class="close" data-dismiss="modal">×</a>
                 </div>
                 <form id="contactForm" name="contact" role="form">
-                    <div class="modal-body">				
+                    <div class="modal-body">
+                    	<input type="hidden" id="rowId">				
                         <div class="form-group">
                             <label for="editFullName">Name <span style="color: red;">*</span> </label>
                             <input type="text" name="editFullName" class="form-control" id="editFullName">
@@ -156,14 +172,14 @@
                             <label>Admin User <span style="color: red;">*</span> </label>
                             <br>
                             <div class="d-flex align-items-center col-md-12">
-                                <input class="col-md-1" type="radio" name="mRadio1" id="r3" value="yes">
+                                <input class="col-md-1" type="radio" name="nRadio1" id="r3" value="yes">
                                 <label class="col-md-1" for="inlineRadio1">Yes</label>
-                                <input class="col-md-1" type="radio" name="mRadio1" id="r4" value="no">
+                                <input class="col-md-1" type="radio" name="nRadio1" id="r4" value="no">
                                 <label class="col-md-1" for="inlineRadio1" checked>No</label>
                             </div>                            
                         </div>
                         
-                        <div class="form-group" id="companyDiv" style="display: none">
+                        <div class="form-group" id="editCompanyDiv" style="display: none">
                             <label for="editSelectCompany">Please select company <span style="color: red;">*</span></label>
                             <select class="editSelectCompany" id="editSelectCompany" name="editSelectCompany" style="width: 100%">
 					             <option value=""> -- </option>
@@ -180,12 +196,29 @@
                     </div>
                     <div class="modal-footer">					
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <input type="button" class="btn btn-success" id="upadteBtn" value="Add">
+                        <input type="button" class="btn btn-success" id="upadteBtn" value="Update">
                     </div>
                 </form>
             </div>
         </div>
     </div>
+    
+    <div class="modal fade" id="pleaseWaitDialog" data-backdrop="static" role="dialog" aria-labelledby="pleaseWaitDialogLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="pleaseWaitDialogLabel">Please Wait</h5>
+	      </div>
+	      <div class="modal-body">
+	        <div class="d-flex justify-content-center">
+	          <div class="spinner-border" role="status">
+	            <span class="sr-only">Updating...</span>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 	
 	<script>
 		  var t = $('#userList').DataTable();
@@ -195,12 +228,11 @@
 	      });
 		  
 		  
-		  $('#editBtn').click(function() {
-	            $('#modalWindow2').modal('show');
-	      });
-		  
 		  $(document).ready(function(){
 			  t.column(0).visible(false);
+			  t.column(8).visible(false);
+			  t.column(9).visible(false);
+			  t.column(10).visible(false);
 			  
 			  $("#r1").click(function () {
 				  $("#selectCompany").val("");
@@ -211,7 +243,17 @@
 		          $("#companyDiv").show();
 		      });
 			  
+			  $("#r3").click(function () {
+				  $("#editSelectCompany").val("");
+		          $("#editCompanyDiv").hide();
+		      });
+			  
+			  $("#r4").click(function () {
+		          $("#editCompanyDiv").show();
+		      });
+			  
 			  $("#addBtn").click(function () {
+				    $('#pleaseWaitDialog').modal('show');
 		            var fullName = $("#fullName").val();
 		            var userName = $("#userName").val();
 		            var password = $("#password").val();
@@ -236,7 +278,7 @@
 		                	user["password"] = password;    
 		                	user["email"] = email;
 		                	user["mobile"] = mobile;
-		                	user["isAdmin"] = (admin=="yes"?"1":"0");
+		                	user["isAdmin"] = (admin=="yes"?"Y":"N");
 		                	user["diligenceId"] = (selectCompany==""?0:selectCompany);
 		                	user["status"] = selectStatus;
 		                    
@@ -267,10 +309,12 @@
 		                                
 		                                var companyName = data["additionalInfo"];
 		                                var status = (selectStatus==0?"Inactive":"Active");
-		                                
-		                                t.row.add([rowId, fullName, userName, companyName, email, mobile, status, '<input type="button" value="Edit User" id="editBtn" />' +' '+ '<input type="button" value="Delete User" id="dltBtn" style="background-color: yellow" />']).draw();
+		                                var isAdmin = (admin=="yes"?"Y":"N");
 
-		                                $('#modelWindow1').modal('hide');
+		                                t.row.add([rowId, fullName, userName, companyName, email, mobile, status, '<input type="button" value="Edit User" id="editBtn" />' +' '+ '<input type="button" value="Delete User" id="dltBtn" style="background-color: yellow" />', selectCompany, isAdmin, password]).draw();
+
+		                                $('#modalWindow1').modal('hide');
+		                                $('#pleaseWaitDialog').modal('hide');
 		                            }
 
 		                        },
@@ -283,6 +327,170 @@
 		            	}
 		            }
 		      });
+			  
+			  $("#upadteBtn").click(function () {
+				  	var rowId = $("#rowId").val();
+		            var fullName = $("#editFullName").val();
+		            var userName = $("#editUserName").val();
+		            var password = $("#editPassword").val();
+		            var email = $("#editEmail").val();
+		            var mobile = $("#editMobile").val();
+		            var admin = document.querySelector('input[name = "nRadio1"]:checked') == null ? "" : document.querySelector('input[name = "nRadio1"]:checked').value;
+		            var selectCompany = $("#editSelectCompany").val();
+		            var selectStatus = $("#editSelectStatus").val();
+		            
+		            if(fullName == "" || userName == "" || password == "" || email == "" || mobile ==  "" || admin == "" || selectStatus == ""){
+	            		alert("Please fill up mandatory fields");
+	            	}
+		            
+		            else{
+		            	if(admin == "no" && selectCompany == ""){
+		            		alert("Please fill up mandatory fields");
+		            	}
+		            	else{
+		            		var user = {};
+		            		user["id"] = rowId;
+		                	user["name"] = fullName;
+		                	user["username"] = userName;
+		                	user["password"] = password;    
+		                	user["email"] = email;
+		                	user["mobile"] = mobile;
+		                	user["isAdmin"] = (admin=="yes"?"Y":"N");
+		                	user["diligenceId"] = (selectCompany==""?0:selectCompany);
+		                	user["status"] = selectStatus;
+		                    
+		                    $.ajax({
+		                        type: "POST",
+		                        contentType: "application/json",
+		                        url: "/saveUser",
+		                        data: JSON.stringify(user),
+		                        dataType: 'json',
+		                        cache: false,
+		                        timeout: 600000,
+		                        success: function (data) {
+		                            if(data["message"]=="Failed"){
+		                            	alert("Failed to update data. Please try again");
+		                            }
+		                            
+		                            else{
+		                                var rowId = data["message"];
+		                                var companyName = data["additionalInfo"];
+		                                
+		                            	$("#fullName").val("");
+		                                $("#userName").val("");
+		                                $("#password").val("");
+		                                $("#email").val("");
+		                                $("#mobile").val("");
+		                                $("#selectCompany").val("");
+		                                $("#selectStatus").val("");
+		                                
+		                                var companyName = data["additionalInfo"];
+		                                var status = (selectStatus==0?"Inactive":"Active");
+		                                var isAdmin = (admin=="yes"?"Y":"N");
+		                                
+		                                t.rows().eq(0).each(function (index) { // loop through all the rows
+		                                    var row = t.row(index);
+		                                    var rowData = row.data(); // get the data for the current row
+		                                    if (rowData[0] === rowId) { // check if the current row has the desired column value
+		                                        row.remove(); // remove the row from the DataTable
+		                                    }
+		                                });
+		                                
+		                                t.draw();
+		                                
+		                                t.row.add([rowId, fullName, userName, companyName, email, mobile, status, '<input type="button" value="Edit User" id="editBtn" />' +' '+ '<input type="button" value="Delete User" id="dltBtn" style="background-color: yellow" />', selectCompany, isAdmin, password]).draw();
+
+		                                $('#modalWindow2').modal('hide');
+		                            }
+
+		                        },
+		                        error: function (e) {
+
+		                            alert("Failed to update data. Please try again");
+
+		                        }
+		                    });
+		            	}
+		            }
+		      });
+			  
+		  });
+		  
+		  $(document).on('click', '#dltBtn', function(){
+			  
+			  
+			  var r=confirm("Are you sure want to delete this user?");
+			  if (r==true)
+			  {
+				  var row = t.row( $(this).closest('tr'));
+				  var rowData = row.data();
+				  var rowId = rowData[0];
+				  var user = {};
+				  user["id"] = rowId;
+				  
+				  $.ajax({
+                      type: "POST",
+                      contentType: "application/json",
+                      url: "/deleteUser",
+                      data: JSON.stringify(user),
+                      dataType: 'json',
+                      cache: false,
+                      timeout: 600000,
+                      success: function (data) {
+                          if(data["message"]=="Failed"){
+                          	  alert("Failed to delete data. Please try again");
+                          }
+                          
+                          else{
+                        	  row.remove().draw();
+                          }
+
+                      },
+                      error: function (e) {
+
+                          alert("Failed to delete data. Please try again");
+
+                      }
+                  });
+			  }
+			  
+			  else{
+				  
+			  }
+		  });
+		  
+		  $(document).on('click', '#editBtn', function(){
+			  var row = t.row( $(this).closest('tr'));
+			  var rowData = row.data();
+			  var rowId = rowData[0];
+			  var fullName = rowData[1];
+			  var username = rowData[2];
+			  var password = rowData[10];
+			  var email = rowData[4];
+			  var mobile = rowData[5];
+			  var admin = rowData[9];
+			  var company = rowData[8];
+			  var status = (rowData[6]=="Active"? 1: 0);
+			  
+			  $('#modalWindow2').modal('show');
+			  
+			  $('.modal-body #rowId').val(rowId);
+			  $('.modal-body #editFullName').val(fullName);
+			  $('.modal-body #editUserName').val(username);
+			  $('.modal-body #editPassword').val(password);
+			  $('.modal-body #editEmail').val(email);
+			  $('.modal-body #editMobile').val(mobile);			  
+			  $('.modal-body #editSelectCompany').val(company);
+			  $('.modal-body #editSelectCompanyStatus').val(status);
+			  
+			  if(admin == "N"){
+				  $("#editCompanyDiv").show();
+				  $("#r4").prop("checked", true); 
+			  }
+			  else{
+				  $("#editCompanyDiv").hide();
+				  $("#r3").prop("checked", true);
+			  }
 		  });
 	</script>
 </div>
