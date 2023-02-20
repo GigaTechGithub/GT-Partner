@@ -4,7 +4,7 @@
 	  		<!-- <a href="#" class="img logo rounded-circle mb-8" style="background-image: url(images/company-logo.png);"></a> -->
 	  		<a href="#" class="img logo" style="background-image: url(images/company-logo.png); background-size: 80%;"></a>
        <ul class="list-unstyled components mb-5">
-	       <li class="active">
+	       <li th:classappend="${#request.requestURI.startsWith('/home') ? 'active' : ''}">
 	            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
 	            <ul class="collapse list-unstyled" id="homeSubmenu">
                 <li>
@@ -18,18 +18,18 @@
                </li>
             </ul>
           </li>
-          <li class="active">
+          <li>
 	            <a href="#partnersSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Partners Management</a>
 	            <ul class="collapse list-unstyled" id="partnersSubmenu">
-                <li>
+                <li th:classappend="${#request.requestURI.startsWith('/partnerCreate') ? 'active' : ''}">
                    <a th:href="@{/partnerCreate}">Create Partners</a>
                </li>
-               <li>
+               <li th:classappend="${#request.requestURI.startsWith('/activePartnersList') ? 'active' : ''}">
                    <a th:href="@{/activePartnersList}">Partners Information</a>
                </li>
             </ul>
           </li>
-          <li>
+          <li th:classappend="${#request.requestURI.startsWith('/userList') ? 'active' : ''}">
              <a th:href="@{/userList}">Users Management</a>
           </li>
         </ul>
