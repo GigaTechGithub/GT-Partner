@@ -220,7 +220,7 @@ public class AdminController {
 		
 		model.addAttribute("diligenceList", diligenceList);
 		
-        return "admin-view/partners/partnerList";
+        return "admin-view/partner/partnerList";
     }
 	
 	

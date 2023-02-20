@@ -99,22 +99,7 @@
             <hr>
         </fieldset>
     </div>
-    <div class="modal fade" id="pleaseWaitDialog" data-backdrop="static" role="dialog" aria-labelledby="pleaseWaitDialogLabel" aria-hidden="true">
-	  <div class="modal-dialog modal-dialog-centered" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h5 class="modal-title" id="pleaseWaitDialogLabel">Please Wait</h5>
-	      </div>
-	      <div class="modal-body">
-	        <div class="d-flex justify-content-center">
-	          <div class="spinner-border" role="status">
-	            <span class="sr-only">Updating...</span>
-	          </div>
-	        </div>
-	      </div>
-	    </div>
-	  </div>
-	</div>
+    
     <script>
     $(document).on('click', '#ipDoc1ViewBtn', function(){
  		var row = $(this).parents('tr');;
@@ -132,15 +117,11 @@
 		var filePath = row.find('td:eq(1)').text();
 		var fileName = row.find('td:eq(2)').text();
 		
-		$('#pleaseWaitDialog').modal('show');
-		
 		$.ajax({
 		    url: '/download',
 		    type: 'POST',
 		    data: { filename: filePath },
 		    success: function(data) {
-		      // Hide "please wait" sign here
-		      $('#pleaseWaitDialog').modal('hide');
 
 		      // Trigger the download by creating a temporary link and clicking it
 		      var link = document.createElement('a');
