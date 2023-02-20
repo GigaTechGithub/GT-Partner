@@ -356,8 +356,10 @@
 		                	user["email"] = email;
 		                	user["mobile"] = mobile;
 		                	user["isAdmin"] = (admin=="yes"?"Y":"N");
-		                	user["diligenceId"] = (selectCompany==""?0:selectCompany);
+		                	user["diligenceId"] = (selectCompany==null?0:selectCompany);
 		                	user["status"] = selectStatus;
+		                	
+		                	console.log(user["diligenceId"]);
 		                    
 		                    $.ajax({
 		                        type: "POST",

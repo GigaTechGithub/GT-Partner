@@ -448,14 +448,23 @@ public class AdminController {
 		}
 		
 		try {
-			users.setCreatedBy(createdById ().toString());
-			String result = userService.saveUser(users);
+			String result = null;
 			
 			if(users.getDiligenceId().contentEquals("0")) {
 				response.setadditionalInfo("");
 				
 				if(flag == 1) {
+					users.setCreatedBy(createdById().toString());
+					users.setUpdatedBy(createdById().toString());
+					result = userService.saveUser(users);
 					emailService.sendEmail(users.getEmail(), users.getName(), users.getUsername(), users.getPassword());
+				}
+				
+				else {
+					Users user = userService.findByid(users.getId());
+					users.setCreatedBy(user.getCreatedBy());
+					users.setUpdatedBy(createdById().toString());
+					result = userService.saveUser(users);
 				}
 			}
 			

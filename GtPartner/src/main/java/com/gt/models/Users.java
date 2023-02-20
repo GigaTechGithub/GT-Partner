@@ -49,6 +49,9 @@ public class Users {
 	    
 	    @Column(name="CREATED_BY")
 	    private String createdBy;
+	    
+	    @Column(name="UPDATED_BY")
+	    private String updatedBy;
 
 		public Users() {
 			super();
@@ -56,7 +59,8 @@ public class Users {
 		}
 
 		public Users(Long id, String name, String username, String password, String email, String mobile,
-				String diligenceId, String companyName, int status, String isAdmin, String createdBy) {
+				String diligenceId, String companyName, int status, String isAdmin, String createdBy,
+				String updatedBy) {
 			super();
 			this.id = id;
 			this.name = name;
@@ -69,6 +73,7 @@ public class Users {
 			this.status = status;
 			this.isAdmin = isAdmin;
 			this.createdBy = createdBy;
+			this.updatedBy = updatedBy;
 		}
 
 		public Long getId() {
@@ -157,5 +162,15 @@ public class Users {
 
 		public void setCreatedBy(String createdBy) {
 			this.createdBy = createdBy;
-		}	    
+		}
+
+		public String getUpdatedBy() {
+			return updatedBy;
+		}
+
+		public void setUpdatedBy(String updatedBy) {
+			this.updatedBy = updatedBy;
+		}
+
+			    
 }
