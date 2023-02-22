@@ -1564,9 +1564,6 @@ public class ProfileFormController {
 	    	return ResponseEntity.ok(response);
 			
 		}
-    }
-	
-	
-	
+    }	
 	
 }
