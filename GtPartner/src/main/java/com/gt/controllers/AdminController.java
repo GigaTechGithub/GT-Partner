@@ -184,12 +184,12 @@ public class AdminController {
 	}
 	
 	
-	public Integer createdById () {
+	public Integer getLoginUser() {
 		return Integer.parseInt(getSession().getAttribute("id").toString());
 	}
 	
 	
-	public Integer diligenceId () {
+	public Integer getDiligenceId () {
 		return Integer.parseInt(getSession().getAttribute("diligenceId").toString());
 	}
 	
@@ -237,7 +237,16 @@ public class AdminController {
     public ResponseEntity<?> addDiligence(@RequestBody Diligence request, Errors errors) {
 		AjaxResponse response = new AjaxResponse();
 		try {
-			request.setCreatedBy(createdById().toString());
+			if(request.getId() != null) {
+				List<Diligence> dbDiligence = diligenceService.findByid(request.getId());
+				
+				request.setCreatedBy(dbDiligence.get(0).getCreatedBy().toString());
+				request.setUpadatedBy(getLoginUser().toString());
+			}else {
+				request.setCreatedBy(getLoginUser().toString());
+				request.setUpadatedBy(getLoginUser().toString());
+			}
+			
 			request.setProfileStatus(0);
 	    	
 	    	String result = diligenceService.saveDiligence(request);
@@ -454,8 +463,8 @@ public class AdminController {
 				response.setadditionalInfo("");
 				
 				if(flag == 1) {
-					users.setCreatedBy(createdById().toString());
-					users.setUpdatedBy(createdById().toString());
+					users.setCreatedBy(getLoginUser().toString());
+					users.setUpdatedBy(getLoginUser().toString());
 					result = userService.saveUser(users);
 					emailService.sendEmail(users.getEmail(), users.getName(), users.getUsername(), users.getPassword());
 				}
@@ -463,7 +472,7 @@ public class AdminController {
 				else {
 					Users user = userService.findByid(users.getId());
 					users.setCreatedBy(user.getCreatedBy());
-					users.setUpdatedBy(createdById().toString());
+					users.setUpdatedBy(getLoginUser().toString());
 					result = userService.saveUser(users);
 				}
 			}

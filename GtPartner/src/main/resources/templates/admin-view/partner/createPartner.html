@@ -214,8 +214,7 @@
 	                        cache: false,
 	                        timeout: 600000,
 	                        success: function (data) {
-	                            console.log(data["message"]);
-	                            console.log(data);
+	                        	
 	                            if(data["message"]=="Failed"){
 	                            	alert("Failed to save data. Please try again");
 	                            }
@@ -288,10 +287,10 @@
 		        
 		    } );
 		  
-		 
-		$('.editPartnerBtn').click(function() {
+		  $('#partnersListTable').on('click', '.editPartnerBtn', function() {
+		//$('.editPartnerBtn').click(function() {
 			  
-			 t.column(0).visible(false);
+			  $("#editRowId").hide();
 			
 			  var row = t.row( $(this).closest('tr'));
 			  var rowData = row.data();
