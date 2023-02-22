@@ -30,6 +30,26 @@ public class Bod {
 	    
 	    @Column(name="TILE", nullable=false, length=100)
 	    private String tile;
+	    
+	    @Column(name="IS_SECOND_NAME")
+	    private String isSecondName;
+
+		public Bod() {
+			super();
+			// TODO Auto-generated constructor stub
+		}
+
+		public Bod(Long id, String bodName, String bodSecondName, Integer createdBy, Integer diligenceId, String tile,
+				String isSecondName) {
+			super();
+			this.id = id;
+			this.bodName = bodName;
+			BodSecondName = bodSecondName;
+			this.createdBy = createdBy;
+			this.diligenceId = diligenceId;
+			this.tile = tile;
+			this.isSecondName = isSecondName;
+		}
 
 		public Long getId() {
 			return id;
@@ -79,28 +99,14 @@ public class Bod {
 			this.tile = tile;
 		}
 
-		public Bod() {
-			super();
+		public String getIsSecondName() {
+			return isSecondName;
+		}
+
+		public void setIsSecondName(String isSecondName) {
+			this.isSecondName = isSecondName;
 		}
 
 		
-		public Bod(Long id, String bodName, String bodSecondName, Integer createdBy, Integer diligenceId, String tile) {
-			super();
-			this.id = id;
-			this.bodName = bodName;
-			BodSecondName = bodSecondName;
-			this.createdBy = createdBy;
-			this.diligenceId = diligenceId;
-			this.tile = tile;
-		}
-
-		@Override
-		public String toString() {
-			return "Bod [id=" + id + ", bodName=" + bodName + ", BodSecondName=" + BodSecondName + ", createdBy="
-					+ createdBy + ", diligenceId=" + diligenceId + ", tile=" + tile + "]";
-		}
-
-		
-	    
 
 }

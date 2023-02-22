@@ -30,6 +30,26 @@ public class Owner {
      
     @Column(name="OWNER_PERCENT", nullable=false)
     private float ownerPercent;
+    
+    @Column(name="IS_SECOND_NAME")
+    private String isSecondName;
+
+	public Owner() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Owner(Long id, Integer diligenceId, Integer createdBy, String ownerName, String ownerSecondName,
+			float ownerPercent, String isSecondName) {
+		super();
+		this.id = id;
+		this.diligenceId = diligenceId;
+		this.createdBy = createdBy;
+		this.ownerName = ownerName;
+		this.ownerSecondName = ownerSecondName;
+		this.ownerPercent = ownerPercent;
+		this.isSecondName = isSecondName;
+	}
 
 	public Long getId() {
 		return id;
@@ -79,27 +99,13 @@ public class Owner {
 		this.ownerPercent = ownerPercent;
 	}
 
-	public Owner() {
-		super();
+	public String getIsSecondName() {
+		return isSecondName;
 	}
 
-	public Owner(Long id, Integer diligenceId, Integer createdBy, String ownerName, String ownerSecondName,
-			float ownerPercent) {
-		super();
-		this.id = id;
-		this.diligenceId = diligenceId;
-		this.createdBy = createdBy;
-		this.ownerName = ownerName;
-		this.ownerSecondName = ownerSecondName;
-		this.ownerPercent = ownerPercent;
-	}
-
-	@Override
-	public String toString() {
-		return "Owner [id=" + id + ", diligenceId=" + diligenceId + ", createdBy=" + createdBy + ", ownerName="
-				+ ownerName + ", ownerSecondName=" + ownerSecondName + ", ownerPercent=" + ownerPercent + "]";
+	public void setIsSecondName(String isSecondName) {
+		this.isSecondName = isSecondName;
 	}
 
 	
-    
 }

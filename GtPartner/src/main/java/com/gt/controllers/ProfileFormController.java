@@ -181,6 +181,7 @@ public class ProfileFormController {
 	    	owner.setOwnerPercent(request.getOwnerPercent());
 	    	owner.setCreatedBy(createdById());
 	    	owner.setDiligenceId(diligenceId());
+	    	owner.setIsSecondName(request.getIsSecondName());
 	    	
 	    	String result = ownerService.saveOwner(owner);
 	    	
@@ -227,6 +228,7 @@ public class ProfileFormController {
 			bod.setTile(request.getTile());
 			bod.setCreatedBy(createdById());
 			bod.setDiligenceId(diligenceId());
+			bod.setIsSecondName(request.getIsSecondName());
 	    	
 	    	String result = bodService.saveBod(bod);
 	    	
@@ -296,7 +298,11 @@ public class ProfileFormController {
 			company.setSecondAddress(request.getSecondAddress());
 			company.setTaxId(request.getTaxId());
 			company.setTelephone(request.getTelephone());
-			company.setWebsite(request.getWebsite());			
+			company.setWebsite(request.getWebsite());	
+			company.setIsCompanySecondName(request.getIsCompanySecondName());
+			company.setIsSecondAddress(request.getIsSecondAddress());
+			company.setIsParentCopanySecondName(request.getIsParentCopanySecondName());
+			company.setIsParentCompanySecondGlobalName(request.getIsParentCompanySecondGlobalName());
 	    	
 	    	String result = companyService.saveCompany(company);
 	    	

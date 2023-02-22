@@ -1587,7 +1587,8 @@
                 	var owner = {};
                 	owner["ownerName"] = ownerName;
                 	owner["ownerSecondName"] = altName;
-                	owner["ownerPercent"] = ownPercent;                       
+                	owner["ownerPercent"] = ownPercent;
+                	owner["isSecondName"] = (altName==""?'N':'Y');
                     
                     $.ajax({
                         type: "POST",
@@ -1632,44 +1633,57 @@
             var bodPosition = $("#bodPosition").val();
             var mRadio2 = document.querySelector('input[name = "mRadio2"]:checked') == null ? "" : document.querySelector('input[name = "mRadio2"]:checked').value;               
             
-            var bod = {};
-        	bod["bodName"] = bodName;
-        	bod["BodSecondName"] = bodAltName;
-        	bod["tile"] = bodPosition;                       
-            
-            $.ajax({
-                type: "POST",
-                contentType: "application/json",
-                url: "/addBod",
-                data: JSON.stringify(bod),
-                dataType: 'json',
-                cache: false,
-                timeout: 600000,
-                success: function (data) {
+            if (bodName == "" || bodPosition == "" || mRadio2 == "") {
+                alert("Please fill up mandatory fields");
+            }
 
-                    if(data["message"]=="Failed"){
-                    	alert("Failed to save data. Please try again");
-                    }
-                    
-                    else{
-                        var rowId = data["message"];
-                        
-                        $("#bodName").val("");
-                        $("#bodAltName").val("");
-                        $("#bodPosition").val("");
-
-                        t1.row.add([rowId, bodName, bodAltName, bodPosition, '<input type=' + 'button' +' name ='+ 'dRmBtn' + ' value =' + 'Remove' + ' id = '+'dRmBtn'+' />']).draw();
-                        
-                        $('#modelWindow1').modal('hide');
-                    }
-
-                },
-                error: function (e) {
-
-                    alert("Failed to save data. Please try again");
-
+            else {
+                if (mRadio2 == "yes" && bodAltName == "") {
+                    alert("Please fill up mandatory fields");
                 }
-            });
+
+                else {
+                	var bod = {};
+                	bod["bodName"] = bodName;
+                	bod["BodSecondName"] = bodAltName;
+                	bod["tile"] = bodPosition;
+                	bod["isSecondName"] = (bodAltName==""?'N':'Y');
+                    
+                    $.ajax({
+                        type: "POST",
+                        contentType: "application/json",
+                        url: "/addBod",
+                        data: JSON.stringify(bod),
+                        dataType: 'json',
+                        cache: false,
+                        timeout: 600000,
+                        success: function (data) {
+
+                            if(data["message"]=="Failed"){
+                            	alert("Failed to save data. Please try again");
+                            }
+                            
+                            else{
+                                var rowId = data["message"];
+                                
+                                $("#bodName").val("");
+                                $("#bodAltName").val("");
+                                $("#bodPosition").val("");
+
+                                t1.row.add([rowId, bodName, bodAltName, bodPosition, '<input type=' + 'button' +' name ='+ 'dRmBtn' + ' value =' + 'Remove' + ' id = '+'dRmBtn'+' />']).draw();
+                                
+                                $('#modelWindow1').modal('hide');
+                            }
+
+                        },
+                        error: function (e) {
+
+                            alert("Failed to save data. Please try again");
+
+                        }
+                    });
+                }
+            }            
 
         });
         

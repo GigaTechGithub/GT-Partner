@@ -85,6 +85,10 @@ $(document).ready(function(){
     			company["taxId"] = taxId;
     			company["telephone"] = telephone;
     			company["website"] = website;
+    			company["isCompanySecondName"] = (secondComName==""?'N':'Y');
+    			company["isSecondAddress"] = (secondAddr==""?'N':'Y');
+    			company["isParentCopanySecondName"] = (parentSecondName==""?'N':'Y');
+    			company["isParentCompanySecondGlobalName"] = (secondGlobalName==""?'N':'Y');
                 
                 $.ajax({
                     type: "POST",

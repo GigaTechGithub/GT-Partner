@@ -101,6 +101,18 @@ public class Company {
     
     @Column(name="WEBSITE", nullable=true, length=50)
     private String website;
+    
+    @Column(name="IS_COMPANY_SECOND_NAME", nullable=true, length=255)
+    private String isCompanySecondName;
+    
+    @Column(name="IS_SECOND_ADDRESS", nullable=true, length=255)
+    private String isSecondAddress;
+    
+    @Column(name="IS_PARENT_COMPANY_SECOND_NAME", nullable=true, length=255)
+    private String isParentCopanySecondName;
+    
+    @Column(name="IS_PARENT_COMPANY_SECOND_GLOBAL_NAME", nullable=true, length=255)
+    private String isParentCompanySecondGlobalName;
 
 	public Company() {
 		super();
@@ -113,7 +125,8 @@ public class Company {
 			String parentCompanyGlobalLocation, String parentCompanyGlobalName, String parentCompanyLocation,
 			String parentCompanyName, String parentCompanySecondGlobalName, String parentCompanySecondName,
 			String personalConnection, String province, String secondAddress, String taxId, String telephone,
-			String website) {
+			String website, String isCompanySecondName, String isSecondAddress, String isParentCopanySecondName,
+			String isParentCompanySecondGlobalName) {
 		super();
 		this.id = id;
 		this.address = address;
@@ -143,6 +156,10 @@ public class Company {
 		this.taxId = taxId;
 		this.telephone = telephone;
 		this.website = website;
+		this.isCompanySecondName = isCompanySecondName;
+		this.isSecondAddress = isSecondAddress;
+		this.isParentCopanySecondName = isParentCopanySecondName;
+		this.isParentCompanySecondGlobalName = isParentCompanySecondGlobalName;
 	}
 
 	public Long getId() {
@@ -368,5 +385,38 @@ public class Company {
 	public void setWebsite(String website) {
 		this.website = website;
 	}
+
+	public String getIsCompanySecondName() {
+		return isCompanySecondName;
+	}
+
+	public void setIsCompanySecondName(String isCompanySecondName) {
+		this.isCompanySecondName = isCompanySecondName;
+	}
+
+	public String getIsSecondAddress() {
+		return isSecondAddress;
+	}
+
+	public void setIsSecondAddress(String isSecondAddress) {
+		this.isSecondAddress = isSecondAddress;
+	}
+
+	public String getIsParentCopanySecondName() {
+		return isParentCopanySecondName;
+	}
+
+	public void setIsParentCopanySecondName(String isParentCopanySecondName) {
+		this.isParentCopanySecondName = isParentCopanySecondName;
+	}
+
+	public String getIsParentCompanySecondGlobalName() {
+		return isParentCompanySecondGlobalName;
+	}
+
+	public void setIsParentCompanySecondGlobalName(String isParentCompanySecondGlobalName) {
+		this.isParentCompanySecondGlobalName = isParentCompanySecondGlobalName;
+	}
+
 	
 }
