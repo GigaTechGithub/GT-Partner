@@ -107,35 +107,36 @@
 		var filePath = row.find('td:eq(1)').text();
 		var fileName = row.find('td:eq(2)').text();
 		
-		var url = '/viewFile?filename=' + encodeURIComponent(filePath);
+		var url = '/viewFile?filepath=' + encodeURIComponent(filePath);
 	    window.open(url, '_blank');
  	});
  	
 	$(document).on('click', '#ipDoc1DownloadBtn', function(){
-		var row = $(this).parents('tr');;
-		var rowData = row.data();
-		var filePath = row.find('td:eq(1)').text();
-		var fileName = row.find('td:eq(2)').text();
-		
-		$.ajax({
-		    url: '/download',
-		    type: 'POST',
-		    data: { filename: filePath },
-		    success: function(data) {
-
-		      // Trigger the download by creating a temporary link and clicking it
-		      var link = document.createElement('a');
-		      var blob = new Blob([data]);
-		      link.href = window.URL.createObjectURL(blob);
-		      link.download = fileName;
-		      document.body.appendChild(link);
-		      link.click();
-		      document.body.removeChild(link);
-		    },
-		    error: function() {
-		      // Handle error here
-		    }
-		  });
+		var row = $(this).parents('tr');
+	    var filePath = row.find('td:eq(1)').text();
+	    var fileName = row.find('td:eq(2)').text();
+	    var xhr = new XMLHttpRequest();
+	    xhr.open('POST', '/download', true);
+	    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	    xhr.responseType = 'arraybuffer';
+	    xhr.onload = function () {
+	        if (this.status === 200) {
+	            var blob = new Blob([this.response], {type: 'application/octet-stream'});
+	            if (typeof window.navigator.msSaveBlob !== 'undefined') {
+	                // For IE and Edge browsers
+	                window.navigator.msSaveBlob(blob, fileName);
+	            } else {
+	                // For other browsers
+	                var url = window.URL.createObjectURL(blob);
+	                var link = document.createElement('a');
+	                link.href = url;
+	                link.download = fileName;
+	                link.click();
+	                window.URL.revokeObjectURL(url);
+	            }
+	        }
+	    };
+	    xhr.send($.param({filepath: filePath, filename: fileName}));
 		
  	});
 	
@@ -146,39 +147,36 @@
 		var filePath = row.find('td:eq(1)').text();
 		var fileName = row.find('td:eq(2)').text();
 		
-		var url = '/viewFile?filename=' + encodeURIComponent(filePath);
+		var url = '/viewFile?filepath=' + encodeURIComponent(filePath);
 	    window.open(url, '_blank');
  	});
  	
 	$(document).on('click', '#ipDoc2DownloadBtn', function(){
-		var row = $(this).parents('tr');;
-		var rowData = row.data();
-		var filePath = row.find('td:eq(1)').text();
-		var fileName = row.find('td:eq(2)').text();
-		
-		$('#pleaseWaitDialog').modal('show');
-		
-		$.ajax({
-		    url: '/download',
-		    type: 'POST',
-		    data: { filename: filePath },
-		    success: function(data) {
-		      // Hide "please wait" sign here
-		      $('#pleaseWaitDialog').modal('hide');
-
-		      // Trigger the download by creating a temporary link and clicking it
-		      var link = document.createElement('a');
-		      var blob = new Blob([data]);
-		      link.href = window.URL.createObjectURL(blob);
-		      link.download = fileName;
-		      document.body.appendChild(link);
-		      link.click();
-		      document.body.removeChild(link);
-		    },
-		    error: function() {
-		      // Handle error here
-		    }
-		  });
+		var row = $(this).parents('tr');
+	    var filePath = row.find('td:eq(1)').text();
+	    var fileName = row.find('td:eq(2)').text();
+	    var xhr = new XMLHttpRequest();
+	    xhr.open('POST', '/download', true);
+	    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	    xhr.responseType = 'arraybuffer';
+	    xhr.onload = function () {
+	        if (this.status === 200) {
+	            var blob = new Blob([this.response], {type: 'application/octet-stream'});
+	            if (typeof window.navigator.msSaveBlob !== 'undefined') {
+	                // For IE and Edge browsers
+	                window.navigator.msSaveBlob(blob, fileName);
+	            } else {
+	                // For other browsers
+	                var url = window.URL.createObjectURL(blob);
+	                var link = document.createElement('a');
+	                link.href = url;
+	                link.download = fileName;
+	                link.click();
+	                window.URL.revokeObjectURL(url);
+	            }
+	        }
+	    };
+	    xhr.send($.param({filepath: filePath, filename: fileName}));
 		
  	});
     </script>

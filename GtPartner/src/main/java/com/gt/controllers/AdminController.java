@@ -1,7 +1,10 @@
 package com.gt.controllers;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.nio.file.Files;
+import java.io.InputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
@@ -11,8 +14,10 @@ import java.util.Objects;
 import java.util.TreeMap;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -514,30 +519,28 @@ public class AdminController {
 	}
 	
 	@PostMapping("/download")
-	  public ResponseEntity<byte[]> downloadFile(@RequestParam("filename") String filename) throws IOException {
-	    // Read the file from the file system or database
-	    byte[] fileBytes = Files.readAllBytes(Paths.get(filename));
-
-	    // Set the response headers to trigger a download
+	public ResponseEntity<byte[]> downloadFile(@RequestParam("filepath") String filepath, @RequestParam("filename") String filename) throws IOException {
+	    File file = new File(filepath);
+	    InputStream inputStream = new BufferedInputStream(new FileInputStream(file));
+	    byte[] fileBytes = IOUtils.toByteArray(inputStream);
 	    HttpHeaders headers = new HttpHeaders();
 	    headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
 	    headers.setContentDisposition(ContentDisposition.builder("attachment").filename(filename).build());
-
-	    // Return the file bytes as a response
+	    headers.setContentLength(fileBytes.length);
 	    return new ResponseEntity<>(fileBytes, headers, HttpStatus.OK);
-	  }
+	}
 	  
 	  @GetMapping("/viewFile")
-	  public ResponseEntity<Resource> viewFile(@RequestParam("filename") String filename) throws IOException {
+	  public ResponseEntity<Resource> viewFile(@RequestParam("filepath") String filepath) throws IOException {
 	      // Read the file from the file system or database
-	      Path filePath = Paths.get(filename);
+	      Path filePath = Paths.get(filepath);
 	      Resource resource = new UrlResource(filePath.toUri());
-
+	
 	      // Set the response headers to display the file in a new tab
 	      HttpHeaders headers = new HttpHeaders();
 	      headers.setContentType(MediaType.APPLICATION_PDF);
-	      headers.set(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=" + filename);
-
+	      headers.set(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=" + filepath);
+	
 	      // Return the file contents as a response
 	      return new ResponseEntity<>(resource, headers, HttpStatus.OK);
 	  }
