@@ -216,7 +216,7 @@ public class AdminController {
 	
 	@GetMapping("/activePartnersList")
     public String partnerList(Model model) {
-		List<Diligence> diligenceList = diligenceService.findBystatus(1);
+		List<Diligence> diligenceList = diligenceService.findByStatusAndProfileStatus(1, 90);
 		
 		model.addAttribute("diligenceList", diligenceList);
 		
