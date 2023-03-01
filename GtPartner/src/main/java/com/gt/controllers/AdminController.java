@@ -294,67 +294,22 @@ public class AdminController {
 		String[] values = viewPartnerInfo.split(",");
 		int dilId = Integer.parseInt(values[0]);
 		String companyName = values[1];
-		int selectedValue = Integer.parseInt(values[2]);
 		
-		if(selectedValue == 1) {			
-			return this.viewCompany(dilId, companyName, model);
-		}
-		
-		else if(selectedValue == 2) {
-			return this.viewLegal(dilId, companyName, model);
-		}
-		
-		else if(selectedValue == 3) {
-			return this.viewFinancial(dilId, companyName, model);
-		}
-		
-		else if(selectedValue == 4) {
-
-			return this.viewRevenue(dilId, companyName, model);
-		}
-		
-		else if(selectedValue == 5) {
-			return this.viewTechnology(dilId, companyName, model);
-		}
-		
-		else if(selectedValue == 6) {
-			return this.viewIP(dilId, companyName, model);
-		}
-		
-		else {
-			return this.viewIT(dilId, companyName, model);
-		}
-		
-    }
-    
-	@PostMapping("/viewCompany")
-    public String viewCompany(int dilId, String companyName, Model model) {
 		Company company = companyService.findBydiligenceId(dilId).get(0);
+		
 		List<Owner> ownerList = ownerService.findBydiligenceId(dilId);
-		List<Bod> bodList = bodService.findBydiligenceId(dilId);
-		model.addAttribute("companyName", companyName);
+		List<Bod> bodList = bodService.findBydiligenceId(dilId);		
 		model.addAttribute("company", company);
 		model.addAttribute("ownerList", ownerList);
 		model.addAttribute("bodList", bodList);
-		model.addAttribute("getCountries", getCountries());
-		model.addAttribute("dilId", dilId);
 		
-        return "admin-view/partner/viewCompany";
-    }
-	
-	@PostMapping("/viewLegal")
-    public String viewLegal(int dilId, String companyName, Model model) {
-		Legal legal = legalService.findBydiligenceId(dilId).get(0);
 		model.addAttribute("companyName", companyName);
-		model.addAttribute("legal", legal);
 		model.addAttribute("getCountries", getCountries());
 		model.addAttribute("dilId", dilId);
 		
-        return "admin-view/partner/viewLegal";
-    }
-	
-	@PostMapping("/viewFinancial")
-    public String viewFinancial(int dilId, String companyName, Model model) {
+		Legal legal = legalService.findBydiligenceId(dilId).get(0);
+		model.addAttribute("legal", legal);
+		
 		List<FinDoc1> finDoc1List = finDoc1Service.findBydiligenceId(dilId);
 		List<FinDoc2> finDoc2List = finDoc2Service.findBydiligenceId(dilId);
 		List<FinDoc3> finDoc3List = finDoc3Service.findBydiligenceId(dilId);
@@ -369,7 +324,6 @@ public class AdminController {
 		List<FinDoc12> finDoc12List = finDoc12Service.findBydiligenceId(dilId);
 		List<FinDoc13> finDoc13List = finDoc13Service.findBydiligenceId(dilId);
 		
-		model.addAttribute("companyName", companyName);
 		model.addAttribute("finDoc1List", finDoc1List);
 		model.addAttribute("finDoc2List", finDoc2List);
 		model.addAttribute("finDoc3List", finDoc3List);
@@ -383,62 +337,29 @@ public class AdminController {
 		model.addAttribute("finDoc11List", finDoc11List);
 		model.addAttribute("finDoc12List", finDoc12List);
 		model.addAttribute("finDoc13List", finDoc13List);
-		model.addAttribute("getCountries", getCountries());
-		model.addAttribute("dilId", dilId);
 		
-		return "admin-view/partner/viewFinancial";
-    }
-	
-	@PostMapping("/viewRevenue")
-    public String viewRevenue(int dilId, String companyName, Model model) {
 		Revenue revenue = revenueService.findBydiligenceId(dilId).get(0);
 		List<Contracts> contractsList = contractsService.findBydiligenceId(dilId);
-		model.addAttribute("companyName", companyName);
 		model.addAttribute("revenue", revenue);
 		model.addAttribute("contractsList", contractsList);
-		model.addAttribute("getCountries", getCountries());
-		model.addAttribute("dilId", dilId);
 		
-		return "admin-view/partner/viewRevenue";
-    }
-	
-	@PostMapping("/viewTechnology")
-    public String viewTechnology(int dilId, String companyName, Model model) {
 		Technology technology = technologyService.findBydiligenceId(dilId).get(0);
 		List<IncorporationDoc> incorporationDocList = incorporationDocService.findBydiligenceId(dilId);
-		model.addAttribute("companyName", companyName);
 		model.addAttribute("technology", technology);
 		model.addAttribute("incorporationDocList", incorporationDocList);
-		model.addAttribute("getCountries", getCountries());
-		model.addAttribute("dilId", dilId);
 		
-		return "admin-view/partner/viewTechnology";
-    }
-	
-	@PostMapping("/viewIP")
-    public String viewIP(int dilId, String companyName, Model model) {
 		Ip ip = ipService.findBydiligenceId(dilId).get(0);
 		List<IpDoc1> ipDoc1List = ipDoc1Service.findBydiligenceId(dilId);
 		List<IpDoc2> ipDoc2List = ipDoc2Service.findBydiligenceId(dilId);
-		model.addAttribute("companyName", companyName);
 		model.addAttribute("ip", ip);
 		model.addAttribute("ipDoc1List", ipDoc1List);
 		model.addAttribute("ipDoc2List", ipDoc2List);
-		model.addAttribute("getCountries", getCountries());
-		model.addAttribute("dilId", dilId);
 		
-		return "admin-view/partner/viewIP";
-    }
-	
-	@PostMapping("/viewIT")
-    public String viewIT(int dilId, String companyName, Model model) {
 		It it = itService.findBydiligenceId(dilId).get(0);
-		model.addAttribute("companyName", companyName);
 		model.addAttribute("it", it);
-		model.addAttribute("getCountries", getCountries());
-		model.addAttribute("dilId", dilId);
 		
-        return "admin-view/partner/viewIT";
+		return "admin-view/partner/partnerInfo";
+		
     }
 	
 	@GetMapping("/userList")
@@ -484,6 +405,7 @@ public class AdminController {
 			
 			else {
 				Diligence diligence = diligenceService.findByid(Integer.parseInt(users.getDiligenceId())).get(0);
+				result = userService.saveUser(users);
 				response.setadditionalInfo(diligence.getName());
 				if(flag == 1) {
 					emailService.sendEmail(users.getEmail(), users.getName(), users.getUsername(), users.getPassword());

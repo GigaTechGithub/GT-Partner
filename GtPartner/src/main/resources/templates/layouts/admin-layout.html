@@ -12,8 +12,8 @@
   </head>
   
   <body>
-    <div class="wrapper d-flex align-items-stretch">
-    <div id="products-nav" th:replace="~{/layouts/admin_sideNavbar :: admin-side-nav-bar}"></div>
+    <div class="wrapper d-flex align-items-stretch hide-sidebar">
+    	<div id="products-nav" th:replace="~{/layouts/admin_sideNavbar :: admin-side-nav-bar}"></div>
 	    <div style="width:100%">
 		    <div id="products-header" th:replace="~{/layouts/admin_header :: admin-header}"></div>
 	      	<div id="content" style="margin-left: 30px; margin-right: 30px; width: 90%" layout:fragment="content"></div>

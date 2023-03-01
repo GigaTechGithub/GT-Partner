@@ -1,0 +1,1836 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <title>Company Detailed Information</title>
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"/>
+	<style>
+	@media (min-width: 576px) {
+	  .rounded-nav {
+	    border-radius: 50rem !important;
+	  }
+	}
+	
+	@media (min-width: 576px) {
+	  .rounded-nav .nav-link {
+	    border-radius: 50rem !important;
+	  }
+	}
+	
+	/* With arrow tabs */
+	
+	.with-arrow .nav-link.active {
+	  position: relative;
+	}
+	
+	.with-arrow .nav-link.active::after {
+	  content: '';
+	  border-left: 6px solid transparent;
+	  border-right: 6px solid transparent;
+	  border-top: 6px solid #2b90d9;
+	  position: absolute;
+	  bottom: -6px;
+	  left: 50%;
+	  transform: translateX(-50%);
+	  display: block;
+	}
+	
+	/* lined tabs */
+	
+	.lined .nav-link {
+	  border: none;
+	  border-bottom: 3px solid transparent;
+	}
+	
+	.lined .nav-link:hover {
+	  border: none;
+	  border-bottom: 3px solid transparent;
+	}
+	
+	.lined .nav-link.active {
+	  background: none;
+	  color: #555;
+	  border-color: #2b90d9;
+	}
+	
+	/*
+	*
+	* ==========================================
+	* FOR DEMO PURPOSE
+	* ==========================================
+	*
+	*/
+	
+	body {
+	  background: #304352;
+	  background: -webkit-linear-gradient(to right, #304352, #d7d2cc);
+	  background: linear-gradient(to right, #304352, #d7d2cc);
+	  min-height: 100vh;
+	}
+	
+	.nav-pills .nav-link {
+	  color: #555;
+	}
+	.text-uppercase {
+	  letter-spacing: 0.1em;
+	}
+	
+	table {
+	  border-collapse: separate;
+	  border-spacing: 0;
+	}
+	
+	td {
+	  border-right: 1px solid #ccc;
+	}
+	
+	th:last-child,
+	td:last-child {
+	  border-right: none;
+	}
+	</style>
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+</head>
+
+<body>
+
+<div style="width: 100%">
+  <div class="p-5 bg-white rounded shadow mb-5">
+	<div style="text-align: center; margin: 0 auto;">
+		<h3>Company Name: <span th:text="${companyName}"></h3>
+	</div>
+	<hr>
+    <!-- Rounded tabs -->
+    <ul id="myTab" role="tablist" class="nav nav-tabs nav-pills flex-column flex-sm-row text-center bg-light border-0 rounded-nav">
+      <li class="nav-item flex-sm-fill">
+        <a id="com-tab" data-toggle="tab" href="#com-info" role="tab" aria-controls="company" aria-selected="true" class="nav-link border-0 text-uppercase font-weight-bold active">Company Info</a>
+      </li>
+      <li class="nav-item flex-sm-fill">
+        <a id="legal-tab" data-toggle="tab" href="#legal" role="tab" aria-controls="legal" aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold">Legal</a>
+      </li>
+      <li class="nav-item flex-sm-fill">
+        <a id="fin-tab" data-toggle="tab" href="#financial" role="tab" aria-controls="financial" aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold">Financial</a>
+      </li>
+	  <li class="nav-item flex-sm-fill">
+        <a id="rev-tab" data-toggle="tab" href="#revenue" role="tab" aria-controls="revenue" aria-selected="true" class="nav-link border-0 text-uppercase font-weight-bold">Revenue</a>
+      </li>
+      <li class="nav-item flex-sm-fill">
+        <a id="tech-tab" data-toggle="tab" href="#technology" role="tab" aria-controls="technology" aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold">Technology</a>
+      </li>
+      <li class="nav-item flex-sm-fill">
+        <a id="ip-tab" data-toggle="tab" href="#ip" role="tab" aria-controls="ip" aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold">IP</a>
+      </li>
+	  <li class="nav-item flex-sm-fill">
+        <a id="it-tab" data-toggle="tab" href="#it" role="tab" aria-controls="it" aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold">IT</a>
+      </li>
+    </ul>
+	
+    <div id="myTabContent" class="tab-content">
+      <div id="com-info" role="tabpanel" aria-labelledby="com-tab" class="tab-pane fade px-4 py-5 show active">
+      	
+        <table id="company-table" class="display" cellspacing="0" width="100%">
+			<thead>
+				<tr>
+					<th style="width: 40%;">Particulars</th>
+					<th>Answers</th>
+				</tr>
+			</thead>			
+			<tbody>
+				<tr>
+					<td>Company Legal Name</td>
+					<td th:text="${company.companyName}"></td>
+				</tr>
+				<tr>
+					<td>Other Trading/Business Name or name in another language</td>
+					<td th:text="${company.companySecondName}"></td>
+				</tr>
+				<tr>
+					<td>Country of Registration</td>
+					<td th:text="${company.country}"></td>
+				</tr>
+				<tr>
+					<td>State or Province of Registration, if applicable</td>
+					<td th:text="${company.province}"></td>
+				</tr>
+				<tr>
+					<td>Date of Incorporation or Registration with local authorities(yyyy-mm-dd)</td>
+					<td th:text="${company.incorporation_date}"></td>
+				</tr>
+				<tr>
+					<td>Tax ID Number</td>
+					<td th:text="${company.taxId}"></td>
+				</tr>
+				<tr>
+					<td>Legal Address</td>
+					<td th:text="${company.address}"></td>
+				</tr>
+				<tr>
+					<td>Other Business Address or Place of Business</td>
+					<td th:text="${company.secondAddress}"></td>
+				</tr>
+				<tr>
+					<td>Business Telephone</td>
+					<td th:text="${company.telephone}"></td>
+				</tr>
+				<tr>
+					<td>Business Website</td>
+					<td th:text="${company.website}"></td>
+				</tr>
+				<tr>
+					<td>Number of full-time Employees locally employed by the Company</td>
+					<td th:text="${company.noOfEmployees}"></td>
+				</tr>
+				<tr>
+					<td>Parent Company Legal Name</td>
+					<td th:text="${company.parentCompanyName}"></td>
+				</tr>
+				<tr>
+					<td>Parent Company alternate legal name in another language</td>
+					<td th:text="${company.parentCompanySecondName}"></td>
+				</tr>
+				<tr>
+					<td>Location of Parent Company (Country)</td>
+					<td th:text="${company.parentCompanyLocation}"></td>
+				</tr>
+				<tr>
+					<td>Global Ultimate Name</td>
+					<td th:text="${company.parentCompanyGlobalName}"></td>
+				</tr>
+				<tr>
+					<td>Alternate legal name of Global Ultimate in another language</td>
+					<td th:text="${company.parentCompanySecondGlobalName}"></td>
+				</tr>
+				<tr>
+					<td>Location of Global Ultimate (Country)</td>
+					<td th:text="${company.parentCompanyGlobalLocation}"></td>
+				</tr>
+				<tr>
+					<td>Owners or Shareholders that directly own or control 10% or more of the Company or have the right to appoint Board members</td>
+					<td id="ownerBtn"><input type="button" class="ownerListBtn" id="ownerListBtn" value="Owner/Shareholders List"></td>
+				</tr>
+				<tr>
+					<td>How many members of the Board of Directors or key decision makers does the Company have?</td>
+					<td th:text="${company.noOfBod}"></td>
+				</tr>
+				<tr>
+					<td>Board of Directors List</td>
+					<td><input type="button" id="bodListBtn" value="Board of Directors List"></td>
+				</tr>
+				<tr>
+					<td>To the best of your knowledge, do any of the individuals or entities named in Section 2 to 4 or any employees of your company or your affiliates or subsidiaries, have a financial interest (i.e. ownership interest, partnership arrangement, any agreement or obligation to make a payment, finder's fee, commission etc.) or personal connection (i.e. marriage, family) with any officer, director or employee of the GT / BCL?</td>
+					<td th:text="${company.personalConnection}"></td>
+				</tr>
+				<tr>
+					<td>To the best of your knowledge, are any of the individuals named in Sections 2 to 4 government officials or public sector employees, or do they have connections (family, business or otherwise) with government officials or public sector employees?</td>
+					<td th:text="${company.isGovCon}"></td>
+				</tr>
+				<tr>
+					<td>Is the Company directly or indirectly owned or controlled, in whole or in part, by the government or is it a public sector entity?</td>
+					<td th:text="${company.isGov}"></td>
+				</tr>
+				<tr>
+					<td>To the best of your knowledge, during the last five years, has the Company or any of the individuals named in Sections 2 to 4 been accused, investigated, prosecuted by law enforcement or any government agency, or entered into any agreements to avoid prosecution from law enforcement for any government regarding alleged violations of anti-corruption laws?</td>
+					<td th:text="${company.ethical1}"></td>
+				</tr>
+				<tr>
+					<td>To the best of your knowledge, during the last five (5) years, has the Company or any of the individuals named in Sections 2 to 4 been debarred from competing for or bidding on government contracts?</td>
+					<td th:text="${company.ethical2}"></td>
+				</tr>
+				<tr>
+					<td>To the best of your knowledge, during the last five (5) years, has the Company or Parent Company: a) been fined, or subject to any other enforcement action, including a no action letter or warning/cautionary letter, by any government agency in relation to the import, export or supply of goods, technology, software or services (e.g., under export controls, customs laws or sanctions/embargoes)?</td>
+					<td th:text="${company.export1}"></td>
+				</tr>
+				<tr>
+					<td>b) had any operations in, done business with, or shipped, transferred or supplied any goods, technology, software, or services, either directly or indirectly, to Crimea, Cuba, Iran, North Korea or Syria ("Restricted Territories")? NOTE: This includes products/services to a customer in another country that does business using GT/BCL products/services in a Restricted Territory. </td>
+					<td th:text="${company.export2}"></td>
+				</tr>
+			</tbody>
+		</table>
+      </div>
+	  
+	  
+	  
+      <div id="legal" role="tabpanel" aria-labelledby="legal-tab" class="tab-pane fade px-4 py-5">
+        <table id="legal-table" class="display" cellspacing="0" width="100%">
+			<thead>
+				<tr>
+					<th style="width: 40%;">Particulars</th>
+					<th>Answers</th>
+				</tr>
+			</thead>			
+			<tbody>
+				<tr>
+					<td>In the last ten years has a court, in your country or elsewhere, given any judgement against you about a debt? If so, give particulars:
+					</td>
+					<td th:text="${legal.legal1}"></td>
+				</tr>
+				<tr>
+					<td>In the last ten years have you made any compromise arrangement with your creditors? If so, give particulars:
+					</td>
+					<td th:text="${legal.legal2}"></td>
+				</tr>
+				<tr>
+					<td>Have you ever been declared bankrupt or been the subject of a bankruptcy court order in your country or elsewhere, or has a bankruptcy petition ever been served on you? If so, give particulars:
+					</td>
+					<td th:text="${legal.legal3}"></td>
+				</tr>
+				<tr>
+					<td>Have you ever signed a trust deed for a creditor, made an assignment for the benefit of creditors or made any arrangements for the payment of a composition to creditors? If so, give particulars:
+					</td>
+					<td th:text="${legal.legal4}"></td>
+				</tr>
+				<tr>
+					<td>Have you at any time pleaded guilty to or been found guilty of any offence? If so, give details of the court which convicted you, the offence, the penalty imposed and date of conviction:
+					</td>
+					<td th:text="${legal.legal5}"></td>
+				</tr>
+				<tr>
+					<td>In the last five years have you, in your country or elsewhere, been the subject of any civil action relating to your professional or business activities which has resulted in a finding against you by a court, or a settlement being agreed? If so, give particulars:
+					</td>
+					<td th:text="${legal.legal6}"></td>
+				</tr>
+				<tr>
+					<td>Have you ever been disqualified by a court from being a director, or from acting in the management or conduct of the affairs of any company? If so, give particulars:
+					</td>
+					<td th:text="${legal.legal7}"></td>
+				</tr>
+				<tr>
+					<td>Have you, in your country or elsewhere, ever been refused the right or been restricted in the right to carry on any trade, business or profession for which a specific licence, registration or other authority is required? If so, give particulars:
+					</td>
+					<td th:text="${legal.legal8}"></td>
+				</tr>
+				<tr>
+					<td>Have you, in your country or elsewhere, ever been investigated about allegations of misconduct or malpractice in connection with your professional activities which resulted in a formal complaint being proved but no disciplinary order being made? If so, give particulars:
+					</td>
+					<td th:text="${legal.legal9}"></td>
+				</tr>
+				<tr>
+					<td>Have you, in your country or elsewhere, ever been the subject of disciplinary procedures by a professional body or employer resulting in a finding against you? If so, give particulars:
+					</td>
+					<td th:text="${legal.legal10}"></td>
+				</tr>
+				<tr>
+					<td>Have you, in your country or elsewhere, ever been reprimanded, excluded, disciplined or publicly criticised by any professional body which you belong or have belonged to? If so, give particulars:
+					</td>
+					<td th:text="${legal.legal11}"></td>
+				</tr>
+				<tr>
+					<td>Have you, in your country or elsewhere, ever been refused entry to or excluded from membership of any profession or vocation? If so, give details.
+					</td>
+					<td th:text="${legal.legal12}"></td>
+				</tr>
+				<tr>
+					<td>Have you, in your country or elsewhere, ever been dismissed from any office (other than as auditor) or employment or requested to resign from any office, employment or partnership? If so, give particulars. 
+					</td>
+					<td th:text="${legal.legal13}"></td>
+				</tr>
+				<tr>
+					<td>Have you, in your country or elsewhere, ever been reprimanded, warned about future conduct, disciplined, or publicly criticised by any regulatory body, or any officially appointed enquiry concerned with the regulation of a financial, professional or other business activity? If so, give particulars.
+					</td>
+					<td th:text="${legal.legal14}"></td>
+				</tr>
+				<tr>
+					<td>Have you, in your country or elsewhere, ever been the subject of a court order at the instigation of any regulatory body or any officially appointed enquiry concerned with the regulation of a financial, professional or other business activity? If so, give particulars.
+					</td>
+					<td th:text="${legal.legal15}"></td>
+				</tr>
+				<tr>
+					<td>Are you currently undergoing any investigation or disciplinary procedure as described in 8-15 above? If so, give particulars.
+					</td>
+					<td th:text="${legal.legal16}"></td>
+				</tr>
+			</tbody>
+		</table>
+      </div>
+	  
+      <div id="financial" role="tabpanel" aria-labelledby="fin-tab" class="tab-pane fade px-4 py-5">
+        <table id="fin-table" class="display" cellspacing="0" width="100%">
+			<thead>
+				<tr>
+					<th style="width: 40%;">Particulars</th>
+					<th>Answers</th>
+				</tr>
+			</thead>			
+			<tbody>
+				<tr>
+					<td>Annual and quarterly financial and bank statements
+					</td>
+					<td>
+						<table id="fin1Table">
+							<tr th:each="finDoc1 : ${finDoc1List}">
+			      				<td th:text="${finDoc1.id}" style="display: none"></td>
+			      				<td th:text="${finDoc1.filePath}" style="display: none"></td>
+								<td th:text="${finDoc1.fileName}"></td>
+								<td>
+									<button type="button" name ="fin1ViewBtn" id ="fin1ViewBtn" style="border: none">View</button>
+								</td>
+								<td>
+									<button type="button" name ="fin1DownloadBtn" id ="fin1DownloadBtn" style="border: none">Download</button>
+								</td>					
+						    </tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>Investment and hedging policies
+					</td>
+					<td>
+						<table id="fin2Table">
+							<tr th:each="finDoc2 : ${finDoc2List}">
+						        <td th:text="${finDoc2.id}" style="display: none"></td>
+								<td th:text="${finDoc2.filePath}" style="display: none"></td>
+								<td th:text="${finDoc2.fileName}"></td>
+								<td>
+									<button type="button" name ="fin2ViewBtn" id ="fin2ViewBtn" style="border: none">View</button>
+								</td>
+								<td>
+									<button type="button" name ="fin2DownloadBtn" id ="fin2DownloadBtn" style="border: none">Download</button>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>Sales and profits by product, channel and geography
+					</td>
+					<td>
+						<table id="fin3Table">
+							<tr th:each="finDoc3 : ${finDoc3List}">
+						      	<td th:text="${finDoc3.id}" style="display: none"></td>
+								<td th:text="${finDoc3.filePath}" style="display: none"></td>
+								<td th:text="${finDoc3.fileName}"></td>
+								<td>
+									<button type="button" name ="fin3ViewBtn" id ="fin3ViewBtn" style="border: none">View</button>
+								</td>
+								<td>
+									<button type="button" name ="fin3DownloadBtn" id ="fin3DownloadBtn" style="border: none">Download</button>
+								</td>
+						    </tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>Accounts receivable
+					</td>
+					<td>
+						<table id="fin4Table">
+							<tr th:each="finDoc4 : ${finDoc4List}">
+			   			        <td th:text="${finDoc4.id}" style="display: none"></td>
+								<td th:text="${finDoc4.filePath}" style="display: none"></td>
+								<td th:text="${finDoc4.fileName}"></td>
+								<td>
+									<button type="button" name ="fin4ViewBtn" id ="fin4ViewBtn" style="border: none">View</button>
+								</td>
+								<td>
+									<button type="button" name ="fin4DownloadBtn" id ="fin4DownloadBtn" style="border: none">Download</button>
+								</td>
+						    </tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>Capital structure
+					</td>
+					<td>
+						<table id="fin5Table">
+							<tr th:each="finDoc5 : ${finDoc5List}">
+						        <td th:text="${finDoc5.id}" style="display: none"></td>
+								<td th:text="${finDoc5.filePath}" style="display: none"></td>
+								<td th:text="${finDoc5.fileName}"></td>
+								<td>
+									<button type="button" name ="fin5ViewBtn" id ="fin5ViewBtn" style="border: none">View</button>
+								</td>
+								<td>
+									<button type="button" name ="fin5DownloadBtn" id ="fin5DownloadBtn" style="border: none">Download</button>
+								</td>
+						    </tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>Summary of debt instruments
+					</td>
+					<td>
+						<table id="fin6Table">
+							<tr th:each="finDoc6 : ${finDoc6List}">
+						        <td th:text="${finDoc6.id}" style="display: none"></td>
+								<td th:text="${finDoc6.filePath}" style="display: none"></td>
+								<td th:text="${finDoc6.fileName}"></td>
+								<td>
+									<button type="button" name ="fin6ViewBtn" id ="fin6ViewBtn" style="border: none">View</button>
+								</td>
+								<td>
+									<button type="button" name ="fin6DownloadBtn" id ="fin6DownloadBtn" style="border: none">Download</button>
+								</td>
+			    			</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>Financial projections
+					</td>
+					<td>
+						<table id="fin7Table">
+							<tr th:each="finDoc7 : ${finDoc7List}">
+						      	<td th:text="${finDoc7.id}" style="display: none"></td>
+								<td th:text="${finDoc7.filePath}" style="display: none"></td>
+								<td th:text="${finDoc7.fileName}"></td>
+								<td>
+									<button type="button" name ="fin7ViewBtn" id ="fin7ViewBtn" style="border: none">View</button>
+								</td>
+								<td>
+									<button type="button" name ="fin7DownloadBtn" id ="fin7DownloadBtn" style="border: none">Download</button>
+								</td>
+						    </tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>Revenue by product type, customers and channel
+					</td>
+					<td>
+						<table id="fin8Table">
+							<tr th:each="finDoc8 : ${finDoc8List}">
+						      	<td th:text="${finDoc8.id}" style="display: none"></td>
+								<td th:text="${finDoc8.filePath}" style="display: none"></td>
+								<td th:text="${finDoc8.fileName}"></td>
+								<td>
+									<button type="button" name ="fin8ViewBtn" id ="fin8ViewBtn" style="border: none">View</button>
+								</td>
+								<td>
+									<button type="button" name ="fin8DownloadBtn" id ="fin8DownloadBtn" style="border: none">Download</button>
+								</td>
+						    </tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>Major growth drivers and prospects
+					</td>
+					<td>
+						<table id="fin9Table">
+							<tr th:each="finDoc9 : ${finDoc9List}">
+						      	<td th:text="${finDoc9.id}" style="display: none"></td>
+								<td th:text="${finDoc9.filePath}" style="display: none"></td>
+								<td th:text="${finDoc9.fileName}"></td>
+								<td>
+									<button type="button" name ="fin9ViewBtn" id ="fin9ViewBtn" style="border: none">View</button>
+								</td>
+								<td>
+									<button type="button" name ="fin9DownloadBtn" id ="fin9DownloadBtn" style="border: none">Download</button>
+								</td>
+						    </tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>Industry and company pricing policies
+					</td>
+					<td>
+						<table id="fin10Table">
+							<tr th:each="finDoc10 : ${finDoc10List}">
+						      	<td th:text="${finDoc10.id}" style="display: none"></td>
+								<td th:text="${finDoc10.filePath}" style="display: none"></td>
+								<td th:text="${finDoc10.fileName}"></td>
+								<td>
+									<button type="button" name ="fin10ViewBtn" id ="fin10ViewBtn" style="border: none">View</button>
+								</td>
+								<td>
+									<button type="button" name ="fin10DownloadBtn" id ="fin10DownloadBtn" style="border: none">Download</button>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>Summary of current tax positions
+					</td>
+					<td>
+						<table id="fin11Table">
+							<tr th:each="finDoc11 : ${finDoc11List}">
+						      	<td th:text="${finDoc11.id}" style="display: none"></td>
+								<td th:text="${finDoc11.filePath}" style="display: none"></td>
+								<td th:text="${finDoc11.fileName}"></td>
+								<td>
+									<button type="button" name ="fin11ViewBtn" id ="fin11ViewBtn" style="border: none">View</button>
+								</td>
+								<td>
+									<button type="button" name ="fin11DownloadBtn" id ="fin11DownloadBtn" style="border: none">Download</button>
+								</td>
+						    </tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>Accounting policies
+					</td>
+					<td>
+						<table id="fin12Table">
+							<tr th:each="finDoc12 : ${finDoc12List}">
+						      	<td th:text="${finDoc12.id}" style="display: none"></td>
+								<td th:text="${finDoc12.filePath}" style="display: none"></td>
+								<td th:text="${finDoc12.fileName}"></td>
+								<td>
+									<button type="button" name ="fin12ViewBtn" id ="fin12ViewBtn" style="border: none">View</button>
+								</td>
+								<td>
+									<button type="button" name ="fin12DownloadBtn" id ="fin12DownloadBtn" style="border: none">Download</button>
+								</td>
+			    			</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>Financing history for equity, warrants and debt
+					</td>
+					<td>
+						<table id="fin13Table">
+							<tr th:each="finDoc13 : ${finDoc13List}">
+						      	<td th:text="${finDoc13.id}" style="display: none"></td>
+								<td th:text="${finDoc13.filePath}" style="display: none"></td>
+								<td th:text="${finDoc13.fileName}"></td>
+								<td>
+									<button type="button" name ="fin13ViewBtn" id ="fin13ViewBtn" style="border: none">View</button>
+								</td>
+								<td>
+									<button type="button" name ="fin13DownloadBtn" id ="fin13DownloadBtn" style="border: none">Download</button>
+								</td>
+						    </tr>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+      </div>
+	  
+	  <div id="revenue" role="tabpanel" aria-labelledby="rev-tab" class="tab-pane fade px-4 py-5">
+        <table id="rev-table" class="display" cellspacing="0" width="100%">
+			<thead>
+				<tr>
+					<th style="width: 40%;">Particulars</th>
+					<th>Answers</th>
+				</tr>
+			</thead>			
+			<tbody>
+				<tr>
+					<td>Copies of the 5 largest contracts for the current year.
+					</td>
+					<td>
+						<table id="revTable">
+							<tr th:each="contracts : ${contractsList}">
+						      <td th:text="${contracts.id}" style="display: none"></td>
+						      <td th:text="${contracts.filePath}" style="display: none"></td>
+							  <td th:text="${contracts.fileName}"></td>
+							  <td>
+								  <button type="button" name ="contractsViewBtn" id ="contractsViewBtn" style="border: none">View</button>
+							  </td>
+							  <td>
+								  <button type="button" name ="contractsDownloadBtn" id ="contractsDownloadBtn" style="border: none">Download</button>
+							  </td>
+						    </tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>Description of the procedures for contracting and billing maintenance.
+					</td>
+					<td th:text="${revenue.revenue1}"></td>
+				</tr>
+				<tr>
+					<td>Detail of revenue for last 12 months.
+					</td>
+					<td th:text="${revenue.revenue2}"></td>
+				</tr>
+				<tr>
+					<td>Pipeline information.
+					</td>
+					<td th:text="${revenue.revenue3}"></td>
+				</tr>
+				<tr>
+					<td>List of any customers with annual revenue > 10%
+					</td>
+					<td th:text="${revenue.revenue4}"></td>
+				</tr>
+			</tbody>
+		</table>
+      </div>
+	  
+	  
+	  
+      <div id="technology" role="tabpanel" aria-labelledby="tech-tab" class="tab-pane fade px-4 py-5">
+        <table id="tech-table" class="display" cellspacing="0" width="100%">
+			<thead>
+				<tr>
+					<th style="width: 40%;">Particulars</th>
+					<th>Answers</th>
+				</tr>
+			</thead>			
+			<tbody>
+				<tr>
+					<td>Help Desk approach & Change Management processes
+					</td>
+					<td th:text="${technology.tech1}"></td>
+				</tr>
+				<tr>
+					<td>Incorporation Documents of the Company
+					</td>
+					<td>
+						<table id="techTable">
+							<tr th:each="incorporationDoc : ${incorporationDocList}">
+					      		<td th:text="${incorporationDoc.id}" style="display: none"></td>
+								<td th:text="${incorporationDoc.filePath}" style="display: none"></td>
+								<td th:text="${incorporationDoc.fileName}"></td>
+								<td>
+									<button type="button" name ="incorporationDocViewBtn" id ="incorporationDocViewBtn" style="border: none">View</button>
+								</td>
+								<td>
+									<button type="button" name ="incorporationDocDownloadBtn" id ="incorporationDocDownloadBtn" style="border: none">Download</button>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>IT Organization chart & Client structure (quantity, type, location)
+					</td>
+					<td th:text="${technology.tech2}"></td>
+				</tr>
+				<tr>
+					<td>Key support issues & challenges
+					</td>
+					<td th:text="${technology.tech3}"></td>
+				</tr>
+				<tr>
+					<td>Audited and unaudited consolidated financial statements of the business
+					</td>
+					<td th:text="${technology.tech4}"></td>
+				</tr>
+				<tr>
+					<td>Budget projections and business plans
+					</td>
+					<td th:text="${technology.tech5}"></td>
+				</tr>
+				<tr>
+					<td>Compared past budgets with actual experience to check accuracy of projections
+					</td>
+					<td th:text="${technology.tech6}"></td>
+				</tr>
+				<tr>
+					<td>CPU’s & location
+					</td>
+					<td th:text="${technology.tech7}"></td>
+				</tr>
+				<tr>
+					<td>Database
+					</td>
+					<td th:text="${technology.tech8}"></td>
+				</tr>
+				<tr>
+					<td>Networks by location (LAN/WAN)
+					</td>
+					<td th:text="${technology.tech9}"></td>
+				</tr>
+				<tr>
+					<td>Stability? Life expectancy? Replacement/upgrade strategy?
+					</td>
+					<td th:text="${technology.tech10}"></td>
+				</tr>
+				<tr>
+					<td>Telecommunications/connectivity approach
+					</td>
+					<td th:text="${technology.tech11}"></td>
+				</tr>
+				<tr>
+					<td>Application systems development software
+					</td>
+					<td th:text="${technology.tech12}"></td>
+				</tr>
+				<tr>
+					<td>Current technology? Life expectancy? Replacement/upgrade strategy?
+					</td>
+					<td th:text="${technology.tech13}"></td>
+				</tr>
+				<tr>
+					<td>Database Management systems
+					</td>
+					<td th:text="${technology.tech14}"></td>
+				</tr>
+				<tr>
+					<td>Operating systems
+					</td>
+					<td th:text="${technology.tech15}"></td>
+				</tr>
+				<tr>
+					<td>Security
+					</td>
+					<td th:text="${technology.tech16}"></td>
+				</tr>
+				<tr>
+					<td>Architecture Review
+					</td>
+					<td th:text="${technology.tech17}"></td>
+				</tr>
+				<tr>
+					<td>Code Quality
+					</td>
+					<td th:text="${technology.tech18}"></td>
+				</tr>
+				<tr>
+					<td>Legacy Components
+					</td>
+					<td th:text="${technology.tech19}"></td>
+				</tr>
+				<tr>
+					<td>Third-party/open source components
+					</td>
+					<td th:text="${technology.tech20}"></td>
+				</tr>
+				<tr>
+					<td>Application systems (Quantify all in use)
+					</td>
+					<td th:text="${technology.tech21}"></td>
+				</tr>
+				<tr>
+					<td>Approach to release management
+					</td>
+					<td th:text="${technology.tech22}"></td>
+				</tr>
+				<tr>
+					<td>Electronic interfaces
+					</td>
+					<td th:text="${technology.tech23}"></td>
+				</tr>
+				<tr>
+					<td>Report Writing capabilities
+					</td>
+					<td th:text="${technology.tech24}"></td>
+				</tr>
+				<tr>
+					<td>Special processes
+					</td>
+					<td th:text="${technology.tech25}"></td>
+				</tr>
+				<tr>
+					<td>Stability? Life expectancy? Replacement/upgrade strategy?
+					</td>
+					<td th:text="${technology.tech26}"></td>
+				</tr>
+				<tr>
+					<td>Standard across the network?
+					</td>
+					<td th:text="${technology.tech27}"></td>
+				</tr>
+				<tr>
+					<td>Support approach & known issues
+					</td>
+					<td th:text="${technology.tech28}"></td>
+				</tr>
+				<tr>
+					<td>Client requirements
+					</td>
+					<td th:text="${technology.tech29}"></td>
+				</tr>
+				<tr>
+					<td>Consulting and/or contractor needs anticipated (next 12 months)
+					</td>
+					<td th:text="${technology.tech30}"></td>
+				</tr>
+				<tr>
+					<td>Large scale projects – i.e., reengineering, new systems, SW development
+					</td>
+					<td th:text="${technology.tech31}"></td>
+				</tr>
+				<tr>
+					<td>Mid-range enhancements
+					</td>
+					<td th:text="${technology.tech32}"></td>
+				</tr>
+				<tr>
+					<td>New business development needs
+					</td>
+					<td th:text="${technology.tech33}"></td>
+				</tr>
+				<tr>
+					<td>New technology R&D
+					</td>
+					<td th:text="${technology.tech34}"></td>
+				</tr>
+				<tr>
+					<td>Productivity enhancements
+					</td>
+					<td th:text="${technology.tech35}"></td>
+				</tr>
+				<tr>
+					<td>Software support backlog
+					</td>
+					<td th:text="${technology.tech36}"></td>
+				</tr>
+				<tr>
+					<td>Consulting/contractors
+					</td>
+					<td th:text="${technology.tech37}"></td>
+				</tr>
+				<tr>
+					<td>Data Communications
+					</td>
+					<td th:text="${technology.tech38}"></td>
+				</tr>
+				<tr>
+					<td>Equipment leases & rental
+					</td>
+					<td th:text="${technology.tech39}"></td>
+				</tr>
+				<tr>
+					<td>Hardware maintenance
+					</td>
+					<td th:text="${technology.tech40}"></td>
+				</tr>
+				<tr>
+					<td>Material technology-related expenses due to the company’s industry
+					</td>
+					<td th:text="${technology.tech41}"></td>
+				</tr>
+				<tr>
+					<td>Outside contractors
+					</td>
+					<td th:text="${technology.tech42}"></td>
+				</tr>
+			</tbody>
+		</table>
+      </div>
+	  
+      <div id="ip" role="tabpanel" aria-labelledby="ip-tab" class="tab-pane fade px-4 py-5">
+        <table id="ip-table" class="display" cellspacing="0" width="100%">
+			<thead>
+				<tr>
+					<th style="width: 40%;">Particulars</th>
+					<th>Answers</th>
+				</tr>
+			</thead>			
+			<tbody>
+				<tr>
+					<td>Schedule of owned or proprietary technology (including software, databases, and systems).
+					</td>
+					<td th:text="${ip.ip1}"></td>
+				</tr>
+				<tr>
+					<td>Schedule and copies (if applicable) of the following (common law, registered and issued, and foreign and domestic): i. tradenames, brand names, trademarks, service marks, logos, and slogans; ii. internet domain names (including lower-level domain names); iii. patents, patent rights, innovations, and designs; iv. copyrights; v. trade secrets and other industrial property rights, including all processes, know-how, technical data, and shop rights; and vi. registrations, issuances, applications, additions, affidavits, continuations, divisions and other filings related to the foregoing items.
+					</td>
+					<td>
+						<table id="ipTable">
+							<tr th:each="ipDoc1 : ${ipDoc1List}">
+						      <td th:text="${ipDoc1.id}" style="display: none"></td>
+						      <td th:text="${ipDoc1.filePath}" style="display: none"></td>
+								<td th:text="${ipDoc1.fileName}"></td>
+								<td>
+									<button type="button" name ="ipDoc1ViewBtn" id ="ipDoc1ViewBtn" style="border: none">View</button>
+								</td>
+								<td>
+									<button type="button" name ="ipDoc1DownloadBtn" id ="ipDoc1DownloadBtn" style="border: none">Download</button>
+								</td>
+						    </tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>Copies of searches, counsel’s opinion letters, and application file histories (or file wrappers) for the items requested in the preceding
+					</td>
+					<td>
+						<table id="ipTable2">
+							<tr th:each="ipDoc2 : ${ipDoc2List}">
+						      <td th:text="${ipDoc2.id}" style="display: none"></td>
+						      <td th:text="${ipDoc2.filePath}" style="display: none"></td>
+								<td th:text="${ipDoc2.fileName}"></td>
+								<td>
+									<button type="button" name ="ipDoc2ViewBtn" id ="ipDoc2ViewBtn" style="border: none">View</button>
+								</td>
+								<td>
+									<button type="button" name ="ipDoc2DownloadBtn" id ="ipDoc2DownloadBtn" style="border: none">Download</button>
+								</td>
+						    </tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>Schedule of all material ongoing or planned software, databases, and/or network development projects.
+					</td>
+					<td th:text="${ip.ip2}"></td>
+				</tr>
+				<tr>
+					<td>Schedule of third-party intellectual property sold, licensed, or otherwise distributed by the Company.
+					</td>
+					<td th:text="${ip.ip3}"></td>
+				</tr>
+				<tr>
+					<td>Schedule of third-party software and other intellectual property incorporated in, embedded in, or otherwise necessary for the use of the Company’s intellectual property.
+					</td>
+					<td th:text="${ip.ip4}"></td>
+				</tr>
+				<tr>
+					<td>Product documentation and manuals for the Company’s software, databases, and networks (or other description of primary capabilities).
+					</td>
+					<td th:text="${ip.ip5}"></td>
+				</tr>
+				<tr>
+					<td>Schedule of third-party intellectual property necessary for the Company to conduct business in the ordinary course.
+					</td>
+					<td th:text="${ip.ip6}"></td>
+				</tr>
+				<tr>
+					<td>Schedule of software authors and other creators of the Company’s software products and other intellectual property, with a notation next to each name indicating whether such author/creator made his/her contribution (a) as an employee within the scope of his/her employment, (b) outside his/her scope of employment or (c) as a consultant or other independent contractor.
+					</td>
+					<td th:text="${ip.ip7}"></td>
+				</tr>
+				<tr>
+					<td>The name(s), address(es), and phone number(s) of counsel and any other person(s) responsible for the application, maintenance, and protection of trademarks, copyrights, patents, and other intellectual property rights.
+					</td>
+					<td th:text="${ip.ip8}"></td>
+				</tr>
+				<tr>
+					<td>Internal memoranda, correspondence, and other documentation setting forth or relating to the Year 2000 compliance of the operating codes, programs, and other software, database, hardware, and systems sold or licensed by or to the Company, or otherwise used by the Company in its business.
+					</td>
+					<td th:text="${ip.ip9}"></td>
+				</tr>
+			</tbody>
+		</table>
+      </div>
+	  
+	  <div id="it" role="tabpanel" aria-labelledby="it-tab" class="tab-pane fade px-4 py-5">
+        <table id="it-table" class="display" cellspacing="0" width="100%">
+			<thead>
+				<tr>
+					<th style="width: 40%;">Particulars</th>
+					<th>Answers</th>
+				</tr>
+			</thead>			
+			<tbody>
+				<tr>
+					<td>What is the level of detail of IT documentation?
+					</td>
+					<td th:text="${it.it1}"></td>
+				</tr>
+				<tr>
+					<td>Is the IT documentation available to the necessary people?
+					</td>
+					<td th:text="${it.it2}"></td>
+				</tr>
+				<tr>
+					<td>Have penetration tests been carried out?
+					</td>
+					<td th:text="${it.it3}"></td>
+				</tr>
+				<tr>
+					<td>Has FOSS scanning been carried out?
+					</td>
+					<td th:text="${it.it4}"></td>
+				</tr>
+				<tr>
+					<td>Is real-time monitoring available?
+					</td>
+					<td th:text="${it.it5}"></td>
+				</tr>
+				<tr>
+					<td>What are the procedures for handling personal data? Are they GDPR compliant on all levels?
+					</td>
+					<td th:text="${it.it6}"></td>
+				</tr>
+				<tr>
+					<td>Who has access to backups and the production environment?
+					</td>
+					<td th:text="${it.it7}"></td>
+				</tr>
+				<tr>
+					<td>What is the incident response plan?
+					</td>
+					<td th:text="${it.it8}"></td>
+				</tr>
+				<tr>
+					<td>What disaster recovery procedures are in place?
+					</td>
+					<td th:text="${it.it9}"></td>
+				</tr>
+				<tr>
+					<td>What is the procedure/cadence for backups/read-backs?
+					</td>
+					<td th:text="${it.it10}"></td>
+				</tr>
+			</tbody>
+		</table>
+      </div>
+    </div>
+    <!-- End rounded tabs -->
+  </div>
+</div>
+
+<div class="modal fade" id="modalWindow1" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">                  
+				<h3>Owner/Shareholders</h3>
+				<a class="close" data-dismiss="modal">&times;</a>
+			</div>
+			<div class="modal-body">
+			<table id="ownerTable" class="display" cellspacing="0" width="100%">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Full Name</th>
+						<th>Alternate Name</th>
+						<th>Ownership %</th>
+					</tr>                                        
+				</thead>
+				<tbody id="tableBody">
+					<tr th:each="owner : ${ownerList}">
+					   <td th:text="${owner.id}"></td>
+					   <td th:text="${owner.ownerName}"></td>
+					   <td th:text="${owner.ownerSecondName}"></td>
+					   <td th:text="${owner.ownerPercent}"></td>							   
+					</tr>
+				</tbody>
+			</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="modalWindow2" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">                  
+				<h3>Board of Directors</h3>
+				<a class="close" data-dismiss="modal">&times;</a>
+			</div>
+			<div class="modal-body">
+			<table id="bodTable" class="display" cellspacing="0" width="100%">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Full Name</th>
+						<th>Alternate Name</th>
+						<th>Title/Position</th>
+					</tr>                                        
+				</thead>
+				<tbody id="tableBody">
+					<tr th:each="bod : ${bodList}">
+					   <td th:text="${bod.id}"></td>
+					   <td th:text="${bod.bodName}"></td>
+					   <td th:text="${bod.BodSecondName}"></td>
+					   <td th:text="${bod.tile}"></td>							   
+					 </tr>
+				</tbody>
+			</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	var t1 = $('#company-table').DataTable({sorting: false});
+	var t2 = $('#legal-table').DataTable({sorting: false});
+	var t3 = $('#fin-table').DataTable({sorting: false});
+	var t4 = $('#rev-table').DataTable({sorting: false});
+	var t5 = $('#tech-table').DataTable({sorting: false});
+	var t6 = $('#ip-table').DataTable({sorting: false});
+	var t7 = $('#it-table').DataTable({sorting: false});
+	var ownerTable = $('#ownerTable').DataTable();
+	var bodTable = $('#bodTable').DataTable();		
+	
+	$(document).ready(function(){	
+    	ownerTable.column(0).visible(false);
+    	bodTable.column(0).visible(false);
+    	
+    	t1.on( 'click', '.ownerListBtn', function( event ) {
+	    	$('#modalWindow1').modal('show');   
+	    });
+    	
+    	t1.on( 'click', '#bodListBtn', function( event ) {
+	    	$('#modalWindow2').modal('show');   
+	    });
+	});
+	
+	$(document).on('click', '#fin1ViewBtn', function(){
+ 		var row = $(this).closest('td').parent('tr');
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		var url = '/viewFile?filepath=' + encodeURIComponent(filePath);
+	    window.open(url, '_blank');
+ 	});
+ 	
+	$(document).on('click', '#fin1DownloadBtn', function(){
+		var row = $(this).closest('td').parent('tr');
+	    var filePath = row.find('td:eq(1)').text();
+	    var fileName = row.find('td:eq(2)').text();
+	    var xhr = new XMLHttpRequest();
+	    xhr.open('POST', '/download', true);
+	    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	    xhr.responseType = 'arraybuffer';
+	    xhr.onload = function () {
+	        if (this.status === 200) {
+	            var blob = new Blob([this.response], {type: 'application/octet-stream'});
+	            if (typeof window.navigator.msSaveBlob !== 'undefined') {
+	                // For IE and Edge browsers
+	                window.navigator.msSaveBlob(blob, fileName);
+	            } else {
+	                // For other browsers
+	                var url = window.URL.createObjectURL(blob);
+	                var link = document.createElement('a');
+	                link.href = url;
+	                link.download = fileName;
+	                link.click();
+	                window.URL.revokeObjectURL(url);
+	            }
+	        }
+	    };
+	    xhr.send($.param({filepath: filePath, filename: fileName}));
+		
+ 	});
+	
+	
+	$(document).on('click', '#fin2ViewBtn', function(){
+ 		var row = $(this).closest('td').parent('tr');
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		var url = '/viewFile?filepath=' + encodeURIComponent(filePath);
+	    window.open(url, '_blank');
+ 	});
+ 	
+	$(document).on('click', '#fin2DownloadBtn', function(){
+		var row = $(this).closest('td').parent('tr');
+	    var filePath = row.find('td:eq(1)').text();
+	    var fileName = row.find('td:eq(2)').text();
+	    var xhr = new XMLHttpRequest();
+	    xhr.open('POST', '/download', true);
+	    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	    xhr.responseType = 'arraybuffer';
+	    xhr.onload = function () {
+	        if (this.status === 200) {
+	            var blob = new Blob([this.response], {type: 'application/octet-stream'});
+	            if (typeof window.navigator.msSaveBlob !== 'undefined') {
+	                // For IE and Edge browsers
+	                window.navigator.msSaveBlob(blob, fileName);
+	            } else {
+	                // For other browsers
+	                var url = window.URL.createObjectURL(blob);
+	                var link = document.createElement('a');
+	                link.href = url;
+	                link.download = fileName;
+	                link.click();
+	                window.URL.revokeObjectURL(url);
+	            }
+	        }
+	    };
+	    xhr.send($.param({filepath: filePath, filename: fileName}));
+		
+ 	});
+	
+	
+	
+	$(document).on('click', '#fin3ViewBtn', function(){
+ 		var row = $(this).closest('td').parent('tr');
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		var url = '/viewFile?filepath=' + encodeURIComponent(filePath);
+	    window.open(url, '_blank');
+ 	});
+ 	
+	$(document).on('click', '#fin3DownloadBtn', function(){
+		var row = $(this).closest('td').parent('tr');
+	    var filePath = row.find('td:eq(1)').text();
+	    var fileName = row.find('td:eq(2)').text();
+	    var xhr = new XMLHttpRequest();
+	    xhr.open('POST', '/download', true);
+	    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	    xhr.responseType = 'arraybuffer';
+	    xhr.onload = function () {
+	        if (this.status === 200) {
+	            var blob = new Blob([this.response], {type: 'application/octet-stream'});
+	            if (typeof window.navigator.msSaveBlob !== 'undefined') {
+	                // For IE and Edge browsers
+	                window.navigator.msSaveBlob(blob, fileName);
+	            } else {
+	                // For other browsers
+	                var url = window.URL.createObjectURL(blob);
+	                var link = document.createElement('a');
+	                link.href = url;
+	                link.download = fileName;
+	                link.click();
+	                window.URL.revokeObjectURL(url);
+	            }
+	        }
+	    };
+	    xhr.send($.param({filepath: filePath, filename: fileName}));
+		
+ 	});
+	
+	
+	$(document).on('click', '#fin4ViewBtn', function(){
+ 		var row = $(this).closest('td').parent('tr');
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		var url = '/viewFile?filepath=' + encodeURIComponent(filePath);
+	    window.open(url, '_blank');
+ 	});
+ 	
+	$(document).on('click', '#fin4DownloadBtn', function(){
+		var row = $(this).closest('td').parent('tr');
+	    var filePath = row.find('td:eq(1)').text();
+	    var fileName = row.find('td:eq(2)').text();
+	    var xhr = new XMLHttpRequest();
+	    xhr.open('POST', '/download', true);
+	    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	    xhr.responseType = 'arraybuffer';
+	    xhr.onload = function () {
+	        if (this.status === 200) {
+	            var blob = new Blob([this.response], {type: 'application/octet-stream'});
+	            if (typeof window.navigator.msSaveBlob !== 'undefined') {
+	                // For IE and Edge browsers
+	                window.navigator.msSaveBlob(blob, fileName);
+	            } else {
+	                // For other browsers
+	                var url = window.URL.createObjectURL(blob);
+	                var link = document.createElement('a');
+	                link.href = url;
+	                link.download = fileName;
+	                link.click();
+	                window.URL.revokeObjectURL(url);
+	            }
+	        }
+	    };
+	    xhr.send($.param({filepath: filePath, filename: fileName}));
+		
+ 	});
+	
+	
+	$(document).on('click', '#fin5ViewBtn', function(){
+ 		var row = $(this).closest('td').parent('tr');
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		var url = '/viewFile?filepath=' + encodeURIComponent(filePath);
+	    window.open(url, '_blank');
+ 	});
+ 	
+	$(document).on('click', '#fin5DownloadBtn', function(){
+		var row = $(this).closest('td').parent('tr');
+	    var filePath = row.find('td:eq(1)').text();
+	    var fileName = row.find('td:eq(2)').text();
+	    var xhr = new XMLHttpRequest();
+	    xhr.open('POST', '/download', true);
+	    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	    xhr.responseType = 'arraybuffer';
+	    xhr.onload = function () {
+	        if (this.status === 200) {
+	            var blob = new Blob([this.response], {type: 'application/octet-stream'});
+	            if (typeof window.navigator.msSaveBlob !== 'undefined') {
+	                // For IE and Edge browsers
+	                window.navigator.msSaveBlob(blob, fileName);
+	            } else {
+	                // For other browsers
+	                var url = window.URL.createObjectURL(blob);
+	                var link = document.createElement('a');
+	                link.href = url;
+	                link.download = fileName;
+	                link.click();
+	                window.URL.revokeObjectURL(url);
+	            }
+	        }
+	    };
+	    xhr.send($.param({filepath: filePath, filename: fileName}));
+		
+ 	});
+	
+	
+	$(document).on('click', '#fin6ViewBtn', function(){
+ 		var row = $(this).closest('td').parent('tr');
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		var url = '/viewFile?filepath=' + encodeURIComponent(filePath);
+	    window.open(url, '_blank');
+ 	});
+ 	
+	$(document).on('click', '#fin6DownloadBtn', function(){
+		var row = $(this).closest('td').parent('tr');
+	    var filePath = row.find('td:eq(1)').text();
+	    var fileName = row.find('td:eq(2)').text();
+	    var xhr = new XMLHttpRequest();
+	    xhr.open('POST', '/download', true);
+	    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	    xhr.responseType = 'arraybuffer';
+	    xhr.onload = function () {
+	        if (this.status === 200) {
+	            var blob = new Blob([this.response], {type: 'application/octet-stream'});
+	            if (typeof window.navigator.msSaveBlob !== 'undefined') {
+	                // For IE and Edge browsers
+	                window.navigator.msSaveBlob(blob, fileName);
+	            } else {
+	                // For other browsers
+	                var url = window.URL.createObjectURL(blob);
+	                var link = document.createElement('a');
+	                link.href = url;
+	                link.download = fileName;
+	                link.click();
+	                window.URL.revokeObjectURL(url);
+	            }
+	        }
+	    };
+	    xhr.send($.param({filepath: filePath, filename: fileName}));
+		
+ 	});
+	
+	
+	$(document).on('click', '#fin7ViewBtn', function(){
+ 		var row = $(this).closest('td').parent('tr');
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		var url = '/viewFile?filepath=' + encodeURIComponent(filePath);
+	    window.open(url, '_blank');
+ 	});
+ 	
+	$(document).on('click', '#fin7DownloadBtn', function(){
+		var row = $(this).closest('td').parent('tr');
+	    var filePath = row.find('td:eq(1)').text();
+	    var fileName = row.find('td:eq(2)').text();
+	    var xhr = new XMLHttpRequest();
+	    xhr.open('POST', '/download', true);
+	    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	    xhr.responseType = 'arraybuffer';
+	    xhr.onload = function () {
+	        if (this.status === 200) {
+	            var blob = new Blob([this.response], {type: 'application/octet-stream'});
+	            if (typeof window.navigator.msSaveBlob !== 'undefined') {
+	                // For IE and Edge browsers
+	                window.navigator.msSaveBlob(blob, fileName);
+	            } else {
+	                // For other browsers
+	                var url = window.URL.createObjectURL(blob);
+	                var link = document.createElement('a');
+	                link.href = url;
+	                link.download = fileName;
+	                link.click();
+	                window.URL.revokeObjectURL(url);
+	            }
+	        }
+	    };
+	    xhr.send($.param({filepath: filePath, filename: fileName}));
+		
+ 	});
+	
+	
+	$(document).on('click', '#fin8ViewBtn', function(){
+ 		var row = $(this).closest('td').parent('tr');
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		var url = '/viewFile?filepath=' + encodeURIComponent(filePath);
+	    window.open(url, '_blank');
+ 	});
+ 	
+	$(document).on('click', '#fin8DownloadBtn', function(){
+		var row = $(this).closest('td').parent('tr');
+	    var filePath = row.find('td:eq(1)').text();
+	    var fileName = row.find('td:eq(2)').text();
+	    var xhr = new XMLHttpRequest();
+	    xhr.open('POST', '/download', true);
+	    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	    xhr.responseType = 'arraybuffer';
+	    xhr.onload = function () {
+	        if (this.status === 200) {
+	            var blob = new Blob([this.response], {type: 'application/octet-stream'});
+	            if (typeof window.navigator.msSaveBlob !== 'undefined') {
+	                // For IE and Edge browsers
+	                window.navigator.msSaveBlob(blob, fileName);
+	            } else {
+	                // For other browsers
+	                var url = window.URL.createObjectURL(blob);
+	                var link = document.createElement('a');
+	                link.href = url;
+	                link.download = fileName;
+	                link.click();
+	                window.URL.revokeObjectURL(url);
+	            }
+	        }
+	    };
+	    xhr.send($.param({filepath: filePath, filename: fileName}));
+		
+ 	});
+	
+	
+	$(document).on('click', '#fin9ViewBtn', function(){
+ 		var row = $(this).closest('td').parent('tr');
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		var url = '/viewFile?filepath=' + encodeURIComponent(filePath);
+	    window.open(url, '_blank');
+ 	});
+ 	
+	$(document).on('click', '#fin9DownloadBtn', function(){
+		var row = $(this).closest('td').parent('tr');
+	    var filePath = row.find('td:eq(1)').text();
+	    var fileName = row.find('td:eq(2)').text();
+	    var xhr = new XMLHttpRequest();
+	    xhr.open('POST', '/download', true);
+	    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	    xhr.responseType = 'arraybuffer';
+	    xhr.onload = function () {
+	        if (this.status === 200) {
+	            var blob = new Blob([this.response], {type: 'application/octet-stream'});
+	            if (typeof window.navigator.msSaveBlob !== 'undefined') {
+	                // For IE and Edge browsers
+	                window.navigator.msSaveBlob(blob, fileName);
+	            } else {
+	                // For other browsers
+	                var url = window.URL.createObjectURL(blob);
+	                var link = document.createElement('a');
+	                link.href = url;
+	                link.download = fileName;
+	                link.click();
+	                window.URL.revokeObjectURL(url);
+	            }
+	        }
+	    };
+	    xhr.send($.param({filepath: filePath, filename: fileName}));
+		
+ 	});
+	
+	
+	$(document).on('click', '#fin10ViewBtn', function(){
+ 		var row = $(this).closest('td').parent('tr');
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		var url = '/viewFile?filepath=' + encodeURIComponent(filePath);
+	    window.open(url, '_blank');
+ 	});
+ 	
+	$(document).on('click', '#fin10DownloadBtn', function(){
+		var row = $(this).closest('td').parent('tr');
+	    var filePath = row.find('td:eq(1)').text();
+	    var fileName = row.find('td:eq(2)').text();
+	    var xhr = new XMLHttpRequest();
+	    xhr.open('POST', '/download', true);
+	    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	    xhr.responseType = 'arraybuffer';
+	    xhr.onload = function () {
+	        if (this.status === 200) {
+	            var blob = new Blob([this.response], {type: 'application/octet-stream'});
+	            if (typeof window.navigator.msSaveBlob !== 'undefined') {
+	                // For IE and Edge browsers
+	                window.navigator.msSaveBlob(blob, fileName);
+	            } else {
+	                // For other browsers
+	                var url = window.URL.createObjectURL(blob);
+	                var link = document.createElement('a');
+	                link.href = url;
+	                link.download = fileName;
+	                link.click();
+	                window.URL.revokeObjectURL(url);
+	            }
+	        }
+	    };
+	    xhr.send($.param({filepath: filePath, filename: fileName}));
+		
+ 	});
+	
+	
+	$(document).on('click', '#fin11ViewBtn', function(){
+ 		var row = $(this).closest('td').parent('tr');
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		var url = '/viewFile?filepath=' + encodeURIComponent(filePath);
+	    window.open(url, '_blank');
+ 	});
+ 	
+	$(document).on('click', '#fin11DownloadBtn', function(){
+		var row = $(this).closest('td').parent('tr');
+	    var filePath = row.find('td:eq(1)').text();
+	    var fileName = row.find('td:eq(2)').text();
+	    var xhr = new XMLHttpRequest();
+	    xhr.open('POST', '/download', true);
+	    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	    xhr.responseType = 'arraybuffer';
+	    xhr.onload = function () {
+	        if (this.status === 200) {
+	            var blob = new Blob([this.response], {type: 'application/octet-stream'});
+	            if (typeof window.navigator.msSaveBlob !== 'undefined') {
+	                // For IE and Edge browsers
+	                window.navigator.msSaveBlob(blob, fileName);
+	            } else {
+	                // For other browsers
+	                var url = window.URL.createObjectURL(blob);
+	                var link = document.createElement('a');
+	                link.href = url;
+	                link.download = fileName;
+	                link.click();
+	                window.URL.revokeObjectURL(url);
+	            }
+	        }
+	    };
+	    xhr.send($.param({filepath: filePath, filename: fileName}));
+		
+ 	});
+	
+	
+	$(document).on('click', '#fin12ViewBtn', function(){
+ 		var row = $(this).closest('td').parent('tr');
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		var url = '/viewFile?filepath=' + encodeURIComponent(filePath);
+	    window.open(url, '_blank');
+ 	});
+ 	
+	$(document).on('click', '#fin12DownloadBtn', function(){
+		var row = $(this).closest('td').parent('tr');
+	    var filePath = row.find('td:eq(1)').text();
+	    var fileName = row.find('td:eq(2)').text();
+	    var xhr = new XMLHttpRequest();
+	    xhr.open('POST', '/download', true);
+	    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	    xhr.responseType = 'arraybuffer';
+	    xhr.onload = function () {
+	        if (this.status === 200) {
+	            var blob = new Blob([this.response], {type: 'application/octet-stream'});
+	            if (typeof window.navigator.msSaveBlob !== 'undefined') {
+	                // For IE and Edge browsers
+	                window.navigator.msSaveBlob(blob, fileName);
+	            } else {
+	                // For other browsers
+	                var url = window.URL.createObjectURL(blob);
+	                var link = document.createElement('a');
+	                link.href = url;
+	                link.download = fileName;
+	                link.click();
+	                window.URL.revokeObjectURL(url);
+	            }
+	        }
+	    };
+	    xhr.send($.param({filepath: filePath, filename: fileName}));
+		
+ 	});
+	
+	
+	$(document).on('click', '#fin13ViewBtn', function(){
+ 		var row = $(this).closest('td').parent('tr');
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		var url = '/viewFile?filepath=' + encodeURIComponent(filePath);
+	    window.open(url, '_blank');
+ 	});
+ 	
+	$(document).on('click', '#fin13DownloadBtn', function(){
+		var row = $(this).closest('td').parent('tr');
+	    var filePath = row.find('td:eq(1)').text();
+	    var fileName = row.find('td:eq(2)').text();
+	    var xhr = new XMLHttpRequest();
+	    xhr.open('POST', '/download', true);
+	    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	    xhr.responseType = 'arraybuffer';
+	    xhr.onload = function () {
+	        if (this.status === 200) {
+	            var blob = new Blob([this.response], {type: 'application/octet-stream'});
+	            if (typeof window.navigator.msSaveBlob !== 'undefined') {
+	                // For IE and Edge browsers
+	                window.navigator.msSaveBlob(blob, fileName);
+	            } else {
+	                // For other browsers
+	                var url = window.URL.createObjectURL(blob);
+	                var link = document.createElement('a');
+	                link.href = url;
+	                link.download = fileName;
+	                link.click();
+	                window.URL.revokeObjectURL(url);
+	            }
+	        }
+	    };
+	    xhr.send($.param({filepath: filePath, filename: fileName}));
+		
+ 	});
+	
+	$(document).on('click', '#contractsViewBtn', function(){
+		var row = $(this).closest('td').parent('tr');
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		var url = '/viewFile?filepath=' + encodeURIComponent(filePath);
+	    window.open(url, '_blank');
+		});
+		
+	$(document).on('click', '#contractsDownloadBtn', function(){
+		var row = $(this).closest('td').parent('tr');
+	    var filePath = row.find('td:eq(1)').text();
+	    var fileName = row.find('td:eq(2)').text();
+	    var xhr = new XMLHttpRequest();
+	    xhr.open('POST', '/download', true);
+	    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	    xhr.responseType = 'arraybuffer';
+	    xhr.onload = function () {
+	        if (this.status === 200) {
+	            var blob = new Blob([this.response], {type: 'application/octet-stream'});
+	            if (typeof window.navigator.msSaveBlob !== 'undefined') {
+	                // For IE and Edge browsers
+	                window.navigator.msSaveBlob(blob, fileName);
+	            } else {
+	                // For other browsers
+	                var url = window.URL.createObjectURL(blob);
+	                var link = document.createElement('a');
+	                link.href = url;
+	                link.download = fileName;
+	                link.click();
+	                window.URL.revokeObjectURL(url);
+	            }
+	        }
+	    };
+	    xhr.send($.param({filepath: filePath, filename: fileName}));
+		
+	});
+	
+	$(document).on('click', '#incorporationDocViewBtn', function(){
+		var row = $(this).closest('td').parent('tr');
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		var url = '/viewFile?filepath=' + encodeURIComponent(filePath);
+	    window.open(url, '_blank');
+	});
+	
+	$(document).on('click', '#incorporationDocDownloadBtn', function(){
+		var row = $(this).closest('td').parent('tr');
+	    var filePath = row.find('td:eq(1)').text();
+	    var fileName = row.find('td:eq(2)').text();
+	    var xhr = new XMLHttpRequest();
+	    xhr.open('POST', '/download', true);
+	    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	    xhr.responseType = 'arraybuffer';
+	    xhr.onload = function () {
+	        if (this.status === 200) {
+	            var blob = new Blob([this.response], {type: 'application/octet-stream'});
+	            if (typeof window.navigator.msSaveBlob !== 'undefined') {
+	                // For IE and Edge browsers
+	                window.navigator.msSaveBlob(blob, fileName);
+	            } else {
+	                // For other browsers
+	                var url = window.URL.createObjectURL(blob);
+	                var link = document.createElement('a');
+	                link.href = url;
+	                link.download = fileName;
+	                link.click();
+	                window.URL.revokeObjectURL(url);
+	            }
+	        }
+	    };
+	    xhr.send($.param({filepath: filePath, filename: fileName}));
+		
+	});
+	
+	
+	$(document).on('click', '#ipDoc1ViewBtn', function(){
+ 		var row = $(this).closest('td').parent('tr');
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		var url = '/viewFile?filepath=' + encodeURIComponent(filePath);
+	    window.open(url, '_blank');
+ 	});
+ 	
+	$(document).on('click', '#ipDoc1DownloadBtn', function(){
+		var row = $(this).closest('td').parent('tr');
+	    var filePath = row.find('td:eq(1)').text();
+	    var fileName = row.find('td:eq(2)').text();
+	    var xhr = new XMLHttpRequest();
+	    xhr.open('POST', '/download', true);
+	    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	    xhr.responseType = 'arraybuffer';
+	    xhr.onload = function () {
+	        if (this.status === 200) {
+	            var blob = new Blob([this.response], {type: 'application/octet-stream'});
+	            if (typeof window.navigator.msSaveBlob !== 'undefined') {
+	                // For IE and Edge browsers
+	                window.navigator.msSaveBlob(blob, fileName);
+	            } else {
+	                // For other browsers
+	                var url = window.URL.createObjectURL(blob);
+	                var link = document.createElement('a');
+	                link.href = url;
+	                link.download = fileName;
+	                link.click();
+	                window.URL.revokeObjectURL(url);
+	            }
+	        }
+	    };
+	    xhr.send($.param({filepath: filePath, filename: fileName}));
+		
+ 	});
+	
+	
+	$(document).on('click', '#ipDoc2ViewBtn', function(){
+ 		var row = $(this).closest('td').parent('tr');
+		var rowData = row.data();
+		var filePath = row.find('td:eq(1)').text();
+		var fileName = row.find('td:eq(2)').text();
+		
+		var url = '/viewFile?filepath=' + encodeURIComponent(filePath);
+	    window.open(url, '_blank');
+ 	});
+ 	
+	$(document).on('click', '#ipDoc2DownloadBtn', function(){
+		var row = $(this).closest('td').parent('tr');
+	    var filePath = row.find('td:eq(1)').text();
+	    var fileName = row.find('td:eq(2)').text();
+	    var xhr = new XMLHttpRequest();
+	    xhr.open('POST', '/download', true);
+	    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	    xhr.responseType = 'arraybuffer';
+	    xhr.onload = function () {
+	        if (this.status === 200) {
+	            var blob = new Blob([this.response], {type: 'application/octet-stream'});
+	            if (typeof window.navigator.msSaveBlob !== 'undefined') {
+	                // For IE and Edge browsers
+	                window.navigator.msSaveBlob(blob, fileName);
+	            } else {
+	                // For other browsers
+	                var url = window.URL.createObjectURL(blob);
+	                var link = document.createElement('a');
+	                link.href = url;
+	                link.download = fileName;
+	                link.click();
+	                window.URL.revokeObjectURL(url);
+	            }
+	        }
+	    };
+	    xhr.send($.param({filepath: filePath, filename: fileName}));
+		
+ 	});
+</script>
+
+</body>
+</html>

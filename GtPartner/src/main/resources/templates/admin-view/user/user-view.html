@@ -102,7 +102,7 @@
                             <input type="text" name="email" class="form-control" id="email">
                         </div>
                         <div class="form-group">
-                            <label for="oName">Mobile<span style="color: red;">*</span> </label>
+                            <label for="oName">Mobile</label>
                             <input type="text" name="mobile" class="form-control" id="mobile">
                         </div>
                         <div class="form-group">
@@ -256,6 +256,8 @@
 		  
 		  $('#addUserBtn').click(function() {
 	            $('#modalWindow1').modal('show');
+	            $('#userName').val('');
+	            $('#password').val('');
 	      });
 		  
 		  
@@ -294,7 +296,7 @@
 		            var selectCompany = $("#selectCompany").val();
 		            var selectStatus = $("#selectStatus").val();
 		            
-		            if(fullName == "" || userName == "" || password == "" || email == "" || mobile ==  "" || admin == "" || selectStatus == ""){
+		            if(fullName == "" || userName == "" || password == "" || email == "" || admin == "" || selectStatus == ""){
 	            		alert("Please fill up mandatory fields");
 	            	}
 		            

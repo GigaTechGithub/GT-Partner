@@ -21,14 +21,13 @@
 	<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 	
 	
-	<div>
+	<div style="width: 80%; margin-left: 10%;">
 		<form th:action="@{/getPartnerData}" method="post" target="_blank">
 			<table id="partnerList" class="display" cellspacing="0" width="100%">
 		       <thead>
 		           <tr>
 			           <th style="display: none">ID</th>
 			           <th>Company Name</th>
-		               <th>Select Step</th>
 		               <th>Action</th>
 		           </tr>                                        
 		       </thead>
@@ -36,18 +35,6 @@
 			        <tr th:each="diligence : ${diligenceList}">
 			           	<td th:text="${diligence.id}" style="display:none"></td>
 					    <td th:text="${diligence.name}"></td>
-					    <td>
-					    	<select name="stepSelection" style="width: 100%">
-					             <option value=""> -- </option>
-					             <option value="1" text="Company">Company</option>
-					             <option value="2" text="Legal">Legal</option>
-					             <option value="3" text="Financial">Financial</option>
-					             <option value="4" text="Revenue">Revenue</option>
-					             <option value="5" text="Technology">Technology</option>
-					             <option value="6" text="IP">IP</option>
-					             <option value="7" text="IT">IT</option>
-					        </select>
-					    </td>
 					    <td>
 					    	<button type="submit" name="viewPartnerInfo" class="viewPartnerInfo" th:value="${diligence.id}">View</button>
 					    </td>
@@ -67,9 +54,8 @@
 			        var row = $(this).closest('tr');
 			        var rowId = row.find('td:eq(0)').text();
 			        var companyName = row.find('td:eq(1)').text();
-			        var rowSelection = row.find("select").val();
 		        	var tableBtn = document.getElementsByClassName('.viewPartnerInfo');
-			        $(this).prop('value', rowId+','+companyName+','+rowSelection);			        
+			        $(this).prop('value', rowId+','+companyName);			        
 			    });
 			});
 	</script>

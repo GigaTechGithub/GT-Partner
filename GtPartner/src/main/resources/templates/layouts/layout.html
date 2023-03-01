@@ -13,18 +13,17 @@
   
   <body>
     <div class="wrapper d-flex align-items-stretch">
-    <div id="products-nav" th:replace="~{/layouts/_sideNavbar :: left-side-nav-bar}"></div>
+	    <!-- <div id="products-nav" th:replace="~{/layouts/_sideNavbar :: left-side-nav-bar}"></div> -->
 	    <div style="width:100%">
 		    <div id="products-header" th:replace="~{/layouts/_header :: top-header}"></div>
-	      	<div id="content" style="margin-left: 30px; margin-right: 30px; width: 90%" layout:fragment="content"></div>
+	      	<div id="content" style="width: 90%; margin: 0 auto;" layout:fragment="content"></div>
 		   <div id="products-footer" th:replace="~{/layouts/_footer :: bottom-footer}"></div>
-	   </div>
+	    </div>
     </div>
 	
     <script src="nav-js/popper.js"></script>
     <script src="nav-js/bootstrap.min.js"></script>
     <script src="nav-js/main.js"></script>
-    
     
   </body>
 </html>

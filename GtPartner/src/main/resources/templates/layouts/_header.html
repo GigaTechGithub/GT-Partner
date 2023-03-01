@@ -7,18 +7,22 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light" >
           <div class="container-fluid">
 
-            <button type="button" id="sidebarCollapse" class="btn btn-primary">
+            <!-- <button type="button" id="sidebarCollapse" class="btn btn-primary">
               <i class="fa fa-bars"></i>
               <span class="sr-only">Toggle Menu</span>
-            </button>
-                <div class="nav-item">
-                	<form action="/logout" method="post">
-					    <button type="submit" style=" background-color: transparent; border: none; ">
-						  <i class="fa fa-sign-out"></i> 
-						  	Logout
-						</button>
-					</form>
-                </div>
+            </button> -->
+            <div class="navbar-brand d-flex justify-content-center align-items-center" style="margin-left:47.5%">
+		      <img th:src="@{/images/company-logo.png}" alt="Your Image" class="img-fluid" style="height: 100px; width: 90px">
+		    </div>
+            <div class="nav-item" style="margin-right:5%">
+            	<form action="/logout" method="post">
+	    			<button type="submit" style=" background-color: transparent; border: none; ">
+		  			<i class="fa fa-sign-out"></i> 
+		  			Logout
+					</button>
+				</form>
+            </div>
+            
           </div>
         </nav>
     </div>
