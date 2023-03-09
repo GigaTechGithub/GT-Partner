@@ -43,18 +43,18 @@ public class AuthController {
 				.getRequestAttributes()).getRequest();
 		HttpSession session = servRequest.getSession(true);
 		
-		Users user = userService.findByusername(request.getUsername().toString());
-    	if(user !=null) {
-    		if(user.getStatus() == 1) {       		
-        		if (user.getPassword().equals(request.getPassword())) {
-        			
-        			if (!kaptchaService.validateCaptchaCode(req, kaptcha)) {
-        				
-        				redirectAttributes.addFlashAttribute("message", "Wrong captcha code");
-        				return "redirect:/";
-        		    }
-        			
-        			else {
+		if (!kaptchaService.validateCaptchaCode(req, kaptcha)) {
+			
+			redirectAttributes.addFlashAttribute("message", "Wrong captcha code");
+			return "redirect:/";
+	    }
+		
+		else {
+			Users user = userService.findByusername(request.getUsername().toString());
+	    	if(user !=null) {
+	    		if(user.getStatus() == 1) {       		
+	        		if (user.getPassword().equals(request.getPassword())) {
+	        			
         				session.setAttribute("id", user.getId()); 
 	            		session.setAttribute("name", user.getName()); 
 	            		session.setAttribute("username", user.getUsername()); 
@@ -63,25 +63,28 @@ public class AuthController {
 	            		session.setAttribute("diligenceId", user.getDiligenceId());
 	            		session.setAttribute("isAdmin", user.getIsAdmin());
 	            		
-	            		return "redirect:/home";
-        			}	        			
-            		
-        		}else {
-        			redirectAttributes.addFlashAttribute("message", "Invalid Username or Password");
-        			return "redirect:/";
-        		}
-    		}
-    		
-    		else {
-    			redirectAttributes.addFlashAttribute("message", "Invalid Username or Password");
-    			return "redirect:/";
-    		}
-    		
-    	}
-    	else {
-			redirectAttributes.addFlashAttribute("message", "Invalid Username or Password");
-			return "redirect:/";
+	            		return "redirect:/home";        			
+	            		
+	        		}else {
+	        			redirectAttributes.addFlashAttribute("message", "Invalid Username or Password");
+	        			return "redirect:/";
+	        		}
+	    		}
+	    		
+	    		else {
+	    			redirectAttributes.addFlashAttribute("message", "Invalid Username or Password");
+	    			return "redirect:/";
+	    		}
+	    		
+	    	}
+	    	else {
+				redirectAttributes.addFlashAttribute("message", "Invalid Username or Password");
+				return "redirect:/";
+			}
+	    	
 		}
+		
+		
 	}   	
     
     @PostMapping("/logout")
