@@ -19,6 +19,7 @@ public class KaptchaService {
 
     public String generateCaptchaCode(HttpServletRequest request) {
         String captchaCode = captchaProducer.createText();
+        request.getSession().removeAttribute(Constants.KAPTCHA_SESSION_KEY);
         request.getSession().setAttribute(Constants.KAPTCHA_SESSION_KEY, captchaCode);
         return captchaCode;
     }

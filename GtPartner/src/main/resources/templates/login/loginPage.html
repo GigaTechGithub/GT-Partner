@@ -30,7 +30,7 @@
 	            	<h1><strong>Login</strong></h1>
 	           	</div>
 	            
-	            <form method="post" th:action="@{/login}">
+	            <form id="loginForm" method="post" th:action="@{/login}">
 	              <div class="form-group first">
 	                <label for="username">Username</label>
 	                <input type="text" class="form-control" placeholder="your-email@gmail.com" id="username" name="username" required>
@@ -52,7 +52,10 @@
 					    <input type="text" class="form-control" placeholder="Please insert the code written in the image" id="kaptcha" name="kaptcha" required/>
 					</div>
 	              </div>
-	              <input type="submit" value="Login" class="btn btn-block btn-primary">
+	              <div id="errorMsg">
+	              	<p style="color: red;">Wrong captcha code</p>
+	              </div>
+	              <input id="loginBtn" type="submit" value="Login" class="btn btn-block btn-primary">
 	            </form>
           </div>
         </div>
@@ -79,7 +82,7 @@
 	  });
 	  
 	  $(document).ready(function() {
-		  
+		  $('#errorMsg').hide();
 		  var intervalId = setInterval(function() {
 		    $('#captchaImage').attr('src', '/kaptcha.jpg?' + new Date().getTime());
 		  }, 300000); // Refresh every 1 minute (60,000 milliseconds)
@@ -91,6 +94,34 @@
 		    }, 300000); // Start a new interval from the beginning
 		    $('#captchaImage').attr('src', '/kaptcha.jpg?' + new Date().getTime()); // Refresh the captcha image immediately
 		  });
+		  
+		  $('#loginForm').submit(function(event) {
+			  event.preventDefault();
+			  var captchaCode = document.getElementById("kaptcha").value;
+			  var userName = document.getElementById("username").value;
+			  var pass = document.getElementById("password").value;
+			  var form = this;
+			  
+			  $.ajax({
+				  type: 'POST',
+				  url: '/checkCaptcha?captchaCode=' + captchaCode,
+				  success: function(response) {
+				      if(response == 400){
+				    	  event.preventDefault();
+				    	  $('#errorMsg').show();
+				      }
+				      
+				      else{
+				    	  form.submit();
+				      }
+				  },
+				  error: function(xhr, status, error) {
+					  event.preventDefault();
+					  $('#errorMsg').show();
+				  }
+			  });
+		  });
+		  
 	   });
     </script>
   </body>

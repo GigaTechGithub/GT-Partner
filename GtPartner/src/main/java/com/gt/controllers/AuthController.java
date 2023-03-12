@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,54 +38,43 @@ public class AuthController {
 
     
     @PostMapping({"/login"})
-    public String getLoginUser(Model m, @ModelAttribute("UserLogin") Users request, RedirectAttributes redirectAttributes, @RequestParam("kaptcha") String kaptcha, HttpServletRequest req) {
+    public String getLoginUser(Model m, @ModelAttribute("UserLogin") Users request, RedirectAttributes redirectAttributes, HttpServletRequest req) {
     	
     	HttpServletRequest servRequest = ((ServletRequestAttributes) RequestContextHolder
 				.getRequestAttributes()).getRequest();
 		HttpSession session = servRequest.getSession(true);
 		
-		if (!kaptchaService.validateCaptchaCode(req, kaptcha)) {
-			
-			redirectAttributes.addFlashAttribute("message", "Wrong captcha code");
+		Users user = userService.findByusername(request.getUsername().toString());
+    	if(user !=null) {
+    		if(user.getStatus() == 1) {       		
+        		if (user.getPassword().equals(request.getPassword())) {
+        			
+    				session.setAttribute("id", user.getId()); 
+            		session.setAttribute("name", user.getName()); 
+            		session.setAttribute("username", user.getUsername()); 
+            		session.setAttribute("email", user.getEmail()); 
+            		session.setAttribute("mobile", user.getMobile());
+            		session.setAttribute("diligenceId", user.getDiligenceId());
+            		session.setAttribute("isAdmin", user.getIsAdmin());
+            		
+            		return "redirect:/home";        			
+            		
+        		}else {
+        			redirectAttributes.addFlashAttribute("message", "Invalid Username or Password");
+        			return "redirect:/";
+        		}
+    		}
+    		
+    		else {
+    			redirectAttributes.addFlashAttribute("message", "Invalid Username or Password");
+    			return "redirect:/";
+    		}
+    		
+    	}
+    	else {
+			redirectAttributes.addFlashAttribute("message", "Invalid Username or Password");
 			return "redirect:/";
-	    }
-		
-		else {
-			Users user = userService.findByusername(request.getUsername().toString());
-	    	if(user !=null) {
-	    		if(user.getStatus() == 1) {       		
-	        		if (user.getPassword().equals(request.getPassword())) {
-	        			
-        				session.setAttribute("id", user.getId()); 
-	            		session.setAttribute("name", user.getName()); 
-	            		session.setAttribute("username", user.getUsername()); 
-	            		session.setAttribute("email", user.getEmail()); 
-	            		session.setAttribute("mobile", user.getMobile());
-	            		session.setAttribute("diligenceId", user.getDiligenceId());
-	            		session.setAttribute("isAdmin", user.getIsAdmin());
-	            		
-	            		return "redirect:/home";        			
-	            		
-	        		}else {
-	        			redirectAttributes.addFlashAttribute("message", "Invalid Username or Password");
-	        			return "redirect:/";
-	        		}
-	    		}
-	    		
-	    		else {
-	    			redirectAttributes.addFlashAttribute("message", "Invalid Username or Password");
-	    			return "redirect:/";
-	    		}
-	    		
-	    	}
-	    	else {
-				redirectAttributes.addFlashAttribute("message", "Invalid Username or Password");
-				return "redirect:/";
-			}
-	    	
-		}
-		
-		
+		}		
 	}   	
     
     @PostMapping("/logout")
@@ -94,6 +84,18 @@ public class AuthController {
             session.invalidate();
         }
         return "redirect:/";
+    }
+    
+    @PostMapping("/checkCaptcha")
+    public ResponseEntity<Integer> checkCaptcha(@RequestParam("captchaCode") String captchaCode, HttpServletRequest req) {
+    	if (!kaptchaService.validateCaptchaCode(req, captchaCode)) {			
+			return ResponseEntity.ok(400);
+	    }
+		
+		else {
+			return ResponseEntity.ok(200);
+		}
+        
     }
     
 }
