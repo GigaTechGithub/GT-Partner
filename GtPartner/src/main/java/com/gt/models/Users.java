@@ -29,6 +29,9 @@ public class Users {
 	    @Column(name="PASSWORD")
 	    private String password;
 	    
+	    @Column(name="CLEARPASSWORD")
+	    private String clearPassword;
+	    
 	    @Column(name="EMAIL")
 	    private String email;
 	    
@@ -52,20 +55,41 @@ public class Users {
 	    
 	    @Column(name="UPDATED_BY")
 	    private String updatedBy;
+	    
+	    @Column(name="ROLE")
+	    private String role;
 
 		public Users() {
 			super();
 			// TODO Auto-generated constructor stub
 		}
 
-		public Users(Long id, String name, String username, String password, String email, String mobile,
-				String diligenceId, String companyName, int status, String isAdmin, String createdBy,
-				String updatedBy) {
+//		public Users(Long id, String name, String username, String password, String email, String mobile,
+//				String diligenceId, String companyName, int status, String isAdmin, String createdBy,
+//				String updatedBy) {
+//			super();
+//			this.id = id;
+//			this.name = name;
+//			this.username = username;
+//			this.password = password;
+//			this.email = email;
+//			this.mobile = mobile;
+//			this.diligenceId = diligenceId;
+//			this.companyName = companyName;
+//			this.status = status;
+//			this.isAdmin = isAdmin;
+//			this.createdBy = createdBy;
+//			this.updatedBy = updatedBy;
+//		}
+		public Users(Long id, String name, String username, String password, String clearPassword, String email,
+				String mobile, String diligenceId, String companyName, int status, String isAdmin, String createdBy,
+				String updatedBy, String role) {
 			super();
 			this.id = id;
 			this.name = name;
 			this.username = username;
 			this.password = password;
+			this.clearPassword = clearPassword;
 			this.email = email;
 			this.mobile = mobile;
 			this.diligenceId = diligenceId;
@@ -74,12 +98,13 @@ public class Users {
 			this.isAdmin = isAdmin;
 			this.createdBy = createdBy;
 			this.updatedBy = updatedBy;
+			this.role = role;
 		}
 
 		public Long getId() {
 			return id;
 		}
-
+		
 		public void setId(Long id) {
 			this.id = id;
 		}
@@ -106,6 +131,14 @@ public class Users {
 
 		public void setPassword(String password) {
 			this.password = password;
+		}
+
+		public String getClearPassword() {
+			return clearPassword;
+		}
+
+		public void setClearPassword(String clearPassword) {
+			this.clearPassword = clearPassword;
 		}
 
 		public String getEmail() {
@@ -171,6 +204,16 @@ public class Users {
 		public void setUpdatedBy(String updatedBy) {
 			this.updatedBy = updatedBy;
 		}
+
+		public String getRole() {
+			return role;
+		}
+
+		public void setRole(String role) {
+			this.role = role;
+		}
+		
+		
 
 			    
 }

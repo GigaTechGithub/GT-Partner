@@ -95,7 +95,7 @@
 		    $('#captchaImage').attr('src', '/kaptcha.jpg?' + new Date().getTime()); // Refresh the captcha image immediately
 		  });
 		  
-		  $('#loginForm').submit(function(event) {
+		 $('#loginForm').submit(function(event) {
 			  event.preventDefault();
 			  var captchaCode = document.getElementById("kaptcha").value;
 			  var form = this;
