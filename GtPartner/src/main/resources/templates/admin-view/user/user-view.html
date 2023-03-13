@@ -347,7 +347,7 @@
 		                                var status = (selectStatus==0?"Inactive":"Active");
 		                                var isAdmin = (admin=="yes"?"Y":"N");
 
-		                                t.row.add([rowId, fullName, userName, companyName, email, mobile, status, '<input type="button" value="Edit User" id="editBtn" />' +' '+ '<input type="button" value="Delete User" id="dltBtn" style="background-color: yellow" />', selectCompany, isAdmin, password]).draw();
+		                                t.row.add([rowId, fullName, userName, companyName, email, mobile, status, '<input type="button" value="Edit User" id="editBtn" />' +' '+ '<input type="button" value="Delete User" id="dltBtn" style="background-color: yellow" />', selectCompany, isAdmin,password, password]).draw();
 
 		                                $('#modalWindow1').modal('hide');
 		                                $('#pleaseWaitDialog').modal('hide');
