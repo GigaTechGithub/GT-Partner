@@ -422,11 +422,11 @@ public class AdminController {
 		try {
 			String result = null;
 			
+			String salt = "random-salt";
+		    String encodedPassword = DigestUtils.sha256Hex(users.getPassword() + salt);
+			
 			if(users.getDiligenceId().contentEquals("0")) {
 				response.setadditionalInfo("");
-				
-				String salt = "random-salt";
-			    String encodedPassword = DigestUtils.sha256Hex(users.getPassword() + salt);
 				
 				if(flag == 1) {
 					users.setCreatedBy(getLoginUser().toString());
@@ -449,6 +449,8 @@ public class AdminController {
 			
 			else {
 				Diligence diligence = diligenceService.findByid(Integer.parseInt(users.getDiligenceId())).get(0);
+				users.setClearPassword(users.getPassword());
+				users.setPassword(encodedPassword);
 				result = userService.saveUser(users);
 				response.setadditionalInfo(diligence.getName());
 				if(flag == 1) {
