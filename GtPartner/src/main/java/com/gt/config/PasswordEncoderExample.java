@@ -1,6 +1,5 @@
 package com.gt.config;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class PasswordEncoderExample {
 

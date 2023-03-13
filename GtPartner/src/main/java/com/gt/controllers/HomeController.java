@@ -155,24 +155,24 @@ public class HomeController {
 	
 	
 	
-	public HttpSession getSession() {
-		HttpServletRequest servRequest = ((ServletRequestAttributes) RequestContextHolder
-				.getRequestAttributes()).getRequest();
-		HttpSession session = servRequest.getSession(true);
-		return session;
-	}
-	
-	public Integer createdById () {
-		return Integer.parseInt(getSession().getAttribute("id").toString());
-	}
-	
-	public Integer diligenceId () {
-		return Integer.parseInt(getSession().getAttribute("diligenceId").toString());
-	}
-	
-	public String isAdmin () {
-		return getSession().getAttribute("isAdmin").toString();
-	}
+//	public HttpSession getSession() {
+//		HttpServletRequest servRequest = ((ServletRequestAttributes) RequestContextHolder
+//				.getRequestAttributes()).getRequest();
+//		HttpSession session = servRequest.getSession(true);
+//		return session;
+//	}
+//	
+//	public Integer createdById () {
+//		return Integer.parseInt(getSession().getAttribute("id").toString());
+//	}
+//	
+//	public Integer diligenceId () {
+//		return Integer.parseInt(getSession().getAttribute("diligenceId").toString());
+//	}
+//	
+//	public String isAdmin () {
+//		return getSession().getAttribute("isAdmin").toString();
+//	}
 	
 	public Map<String, String> getCountries(){
 		String[] countryCodes = Locale.getISOCountries();
