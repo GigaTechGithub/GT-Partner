@@ -191,6 +191,13 @@ public class HomeController {
 	
 	@GetMapping({"/home"})
     public String getHomePage(Model model) {
+		HttpSession session = getSession();
+	    Object idAttribute = session.getAttribute("id");
+	    
+		if(idAttribute == null) {
+			return "redirect:/login";
+		}
+		
 		if(isAdmin().contentEquals("Y")) {
 			return "redirect:/admin";
 		}

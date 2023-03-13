@@ -216,11 +216,25 @@ public class AdminController {
 	
 	@GetMapping("/admin")
     public String home() {
+		HttpSession session = getSession();
+	    Object idAttribute = session.getAttribute("id");
+	    
+		if(idAttribute == null) {
+			return "redirect:/login";
+		}
+		
         return "admin-view/home/admin-home";
     }
 	
 	@GetMapping("/activePartnersList")
     public String partnerList(Model model) {
+		HttpSession session = getSession();
+	    Object idAttribute = session.getAttribute("id");
+	    
+		if(idAttribute == null) {
+			return "redirect:/login";
+		}
+		
 		List<Diligence> diligenceList = diligenceService.findByStatusAndProfileStatus(1, 90);
 		
 		model.addAttribute("diligenceList", diligenceList);
@@ -231,6 +245,13 @@ public class AdminController {
 	
 	@GetMapping("/partnerCreate")
     public String partnerCreate(Model model) {
+		HttpSession session = getSession();
+	    Object idAttribute = session.getAttribute("id");
+	    
+		if(idAttribute == null) {
+			return "redirect:/login";
+		}
+		
 		List<Diligence> diligenceList = diligenceService.findAll();
 		
 		model.addAttribute("partners", diligenceList);
@@ -240,6 +261,7 @@ public class AdminController {
 	
 	@PostMapping({"/creatOrUpdateeDiligence"})
     public ResponseEntity<?> addDiligence(@RequestBody Diligence request, Errors errors) {
+		
 		AjaxResponse response = new AjaxResponse();
 		try {
 			if(request.getId() != null) {
@@ -291,6 +313,13 @@ public class AdminController {
 	
 	@PostMapping("/getPartnerData")
     public String getPartnerData(@RequestParam("viewPartnerInfo") String viewPartnerInfo, Model model) {   
+		HttpSession session = getSession();
+	    Object idAttribute = session.getAttribute("id");
+	    
+		if(idAttribute == null) {
+			return "redirect:/login";
+		}
+		
 		String[] values = viewPartnerInfo.split(",");
 		int dilId = Integer.parseInt(values[0]);
 		String companyName = values[1];
@@ -364,6 +393,13 @@ public class AdminController {
 	
 	@GetMapping("/userList")
 	public String userList(Model model) {
+		HttpSession session = getSession();
+	    Object idAttribute = session.getAttribute("id");
+	    
+		if(idAttribute == null) {
+			return "redirect:/login";
+		}
+		
 		List<Users> userList = userService.findAll();
 		List<Diligence> dilList = diligenceService.findBystatus(1);
 		
