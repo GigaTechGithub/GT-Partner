@@ -24,8 +24,14 @@ public class CustomSessionConfig {
 		return Integer.parseInt(getSession().getAttribute("diligenceId").toString());
 	}
 	
-	public String isAdmin (HttpSession session) {
-		Object isAdmin= session.getAttribute("isAdmin");
-		return isAdmin.toString();
+	public String getUserRole () {
+		Object role= getSession().getAttribute("role");
+		if (role != null) {
+			return role.toString();
+		}else {
+			return "";
+		}
 	}
+	
+	
 }

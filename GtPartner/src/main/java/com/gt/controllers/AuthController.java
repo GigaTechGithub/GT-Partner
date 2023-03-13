@@ -55,6 +55,7 @@ public class AuthController {
             		session.setAttribute("mobile", user.getMobile());
             		session.setAttribute("diligenceId", user.getDiligenceId());
             		session.setAttribute("isAdmin", user.getIsAdmin());
+            		session.setAttribute("role", user.getRole());
             		
             		return "redirect:/home";        			
             		
