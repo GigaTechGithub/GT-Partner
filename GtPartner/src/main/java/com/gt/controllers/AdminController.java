@@ -439,7 +439,7 @@ public class AdminController {
 					users.setClearPassword(users.getPassword());
 					users.setPassword(encodedPassword);
 					result = userService.saveUser(users);
-					emailService.sendEmail(users.getEmail(), users.getName(), users.getUsername(), users.getPassword());
+					emailService.sendEmail(users.getEmail(), users.getName(), users.getUsername(), users.getClearPassword());
 				}
 				
 				else {
@@ -459,7 +459,7 @@ public class AdminController {
 				result = userService.saveUser(users);
 				response.setadditionalInfo(diligence.getName());
 				if(flag == 1) {
-					emailService.sendEmail(users.getEmail(), users.getName(), users.getUsername(), users.getPassword());
+					emailService.sendEmail(users.getEmail(), users.getName(), users.getUsername(), users.getClearPassword());
 				}
 			}
 			
