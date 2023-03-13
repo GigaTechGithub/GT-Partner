@@ -219,10 +219,11 @@ public class AdminController {
     public String home() {
 		HttpSession session = getSession();
 	    Object idAttribute = session.getAttribute("id");
-	    
-		if(idAttribute == null) {
-			return "redirect:/login";
-		}
+	    String isAdmin = (String) session.getAttribute("isAdmin");
+
+	    if (idAttribute == null || !"Y".equals(isAdmin)) {
+	        return "redirect:/logout";
+	    }
 		
         return "admin-view/home/admin-home";
     }
@@ -231,10 +232,11 @@ public class AdminController {
     public String partnerList(Model model) {
 		HttpSession session = getSession();
 	    Object idAttribute = session.getAttribute("id");
-	    
-		if(idAttribute == null) {
-			return "redirect:/login";
-		}
+	    String isAdmin = (String) session.getAttribute("isAdmin");
+
+	    if (idAttribute == null || !"Y".equals(isAdmin)) {
+	        return "redirect:/logout";
+	    }
 		
 		List<Diligence> diligenceList = diligenceService.findByStatusAndProfileStatus(1, 90);
 		
@@ -248,10 +250,11 @@ public class AdminController {
     public String partnerCreate(Model model) {
 		HttpSession session = getSession();
 	    Object idAttribute = session.getAttribute("id");
-	    
-		if(idAttribute == null) {
-			return "redirect:/login";
-		}
+	    String isAdmin = (String) session.getAttribute("isAdmin");
+
+	    if (idAttribute == null || !"Y".equals(isAdmin)) {
+	        return "redirect:/logout";
+	    }
 		
 		List<Diligence> diligenceList = diligenceService.findAll();
 		
@@ -316,10 +319,11 @@ public class AdminController {
     public String getPartnerData(@RequestParam("viewPartnerInfo") String viewPartnerInfo, Model model) {   
 		HttpSession session = getSession();
 	    Object idAttribute = session.getAttribute("id");
-	    
-		if(idAttribute == null) {
-			return "redirect:/login";
-		}
+	    String isAdmin = (String) session.getAttribute("isAdmin");
+
+	    if (idAttribute == null || !"Y".equals(isAdmin)) {
+	        return "redirect:/logout";
+	    }
 		
 		String[] values = viewPartnerInfo.split(",");
 		int dilId = Integer.parseInt(values[0]);
@@ -396,10 +400,11 @@ public class AdminController {
 	public String userList(Model model) {
 		HttpSession session = getSession();
 	    Object idAttribute = session.getAttribute("id");
-	    
-		if(idAttribute == null) {
-			return "redirect:/login";
-		}
+	    String isAdmin = (String) session.getAttribute("isAdmin");
+
+	    if (idAttribute == null || !"Y".equals(isAdmin)) {
+	        return "redirect:/logout";
+	    }
 		
 		List<Users> userList = userService.findAll();
 		List<Diligence> dilList = diligenceService.findBystatus(1);
