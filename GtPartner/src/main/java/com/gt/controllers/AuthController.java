@@ -45,9 +45,16 @@ public class AuthController {
 		HttpSession session = servRequest.getSession(true);
 		
 		Users user = userService.findByusername(request.getUsername().toString());
+		
+	    
     	if(user !=null) {
+    		
+    		String dbEncodedPassword = user.getPassword();
+    	    String salt = "random-salt";
+    	    String hashedPassword = DigestUtils.sha256Hex(request.getPassword() + salt);
+    		
     		if(user.getStatus() == 1) {       		
-        		if (user.getPassword().equals(request.getPassword())) {
+        		if (dbEncodedPassword.equals(hashedPassword)) {
         			
     				session.setAttribute("id", user.getId()); 
             		session.setAttribute("name", user.getName()); 
