@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.gt.config.CustomSessionConfig;
 import com.gt.models.Bod;
 import com.gt.models.Company;
 import com.gt.models.Contracts;
