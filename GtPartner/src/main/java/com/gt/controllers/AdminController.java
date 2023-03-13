@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -424,9 +425,14 @@ public class AdminController {
 			if(users.getDiligenceId().contentEquals("0")) {
 				response.setadditionalInfo("");
 				
+				String salt = "random-salt";
+			    String encodedPassword = DigestUtils.sha256Hex(users.getPassword() + salt);
+				
 				if(flag == 1) {
 					users.setCreatedBy(getLoginUser().toString());
 					users.setUpdatedBy(getLoginUser().toString());
+					users.setClearPassword(users.getPassword());
+					users.setPassword(encodedPassword);
 					result = userService.saveUser(users);
 					emailService.sendEmail(users.getEmail(), users.getName(), users.getUsername(), users.getPassword());
 				}
@@ -435,6 +441,8 @@ public class AdminController {
 					Users user = userService.findByid(users.getId());
 					users.setCreatedBy(user.getCreatedBy());
 					users.setUpdatedBy(getLoginUser().toString());
+					users.setClearPassword(users.getPassword());
+					users.setPassword(encodedPassword);
 					result = userService.saveUser(users);
 				}
 			}

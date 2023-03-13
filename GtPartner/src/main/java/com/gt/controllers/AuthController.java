@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -31,14 +32,7 @@ public class AuthController {
 	@Autowired
 	KaptchaService kaptchaService;
 	
-	public HttpSession getSession() {
-		HttpServletRequest servRequest = ((ServletRequestAttributes) RequestContextHolder
-				.getRequestAttributes()).getRequest();
-		HttpSession session = servRequest.getSession(true);
-		return session;
-	}
-	
-    @GetMapping({"/", "/login"})
+    @GetMapping({"/"})
     public String loginPage(Model model) {
         return "login/loginPage";
     }
@@ -88,17 +82,6 @@ public class AuthController {
     
     @PostMapping("/logout")
     public String logout(HttpServletRequest request) {
-		
-        HttpSession session = request.getSession(false);
-        if (session != null) {
-            session.invalidate();
-        }
-        return "redirect:/";
-    }
-    
-    @GetMapping("/logout")
-    public String getLogout(HttpServletRequest request) {
-		
         HttpSession session = request.getSession(false);
         if (session != null) {
             session.invalidate();
