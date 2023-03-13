@@ -150,9 +150,6 @@ public class HomeController {
 	@Autowired
 	FinDoc13Service finDoc13Service;
 	
-	@Autowired
-	CustomSessionConfig customSession;
-	
 	
 	
 	public HttpSession getSession() {
