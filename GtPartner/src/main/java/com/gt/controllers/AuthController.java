@@ -35,53 +35,7 @@ public class AuthController {
 	KaptchaService kaptchaService;
 	
 	@Autowired
-	private SecurityService securityService;
-	
-//    @GetMapping({"/"})
-//    public String loginPage(Model model) {
-//        return "login/loginPage";
-//    }
-//
-//    
-//    @PostMapping({"/login"})
-//    public String getLoginUser(Model m, @ModelAttribute("UserLogin") Users request, RedirectAttributes redirectAttributes, HttpServletRequest req) {
-//    	
-//    	HttpServletRequest servRequest = ((ServletRequestAttributes) RequestContextHolder
-//				.getRequestAttributes()).getRequest();
-//		HttpSession session = servRequest.getSession(true);
-//		
-//		Users user = userService.findByusername(request.getUsername().toString());
-//    	if(user !=null) {
-//    		if(user.getStatus() == 1) {       		
-//        		if (user.getPassword().equals(request.getPassword())) {
-//        			
-//    				session.setAttribute("id", user.getId()); 
-//            		session.setAttribute("name", user.getName()); 
-//            		session.setAttribute("username", user.getUsername()); 
-//            		session.setAttribute("email", user.getEmail()); 
-//            		session.setAttribute("mobile", user.getMobile());
-//            		session.setAttribute("diligenceId", user.getDiligenceId());
-//            		session.setAttribute("isAdmin", user.getIsAdmin());
-//            		
-//            		return "redirect:/home";        			
-//            		
-//        		}else {
-//        			redirectAttributes.addFlashAttribute("message", "Invalid Username or Password");
-//        			return "redirect:/";
-//        		}
-//    		}
-//    		
-//    		else {
-//    			redirectAttributes.addFlashAttribute("message", "Invalid Username or Password");
-//    			return "redirect:/";
-//    		}
-//    		
-//    	}
-//    	else {
-//			redirectAttributes.addFlashAttribute("message", "Invalid Username or Password");
-//			return "redirect:/";
-//		}		
-//	}   	
+	private SecurityService securityService;	
     
 	@GetMapping({"/", "/login"})
     public String loginPage(Model model) {
