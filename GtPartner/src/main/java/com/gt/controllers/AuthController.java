@@ -32,7 +32,7 @@ public class AuthController {
 	@Autowired
 	KaptchaService kaptchaService;
 	
-    @GetMapping({"/"})
+    @GetMapping({"/", "/login"})
     public String loginPage(Model model) {
         return "login/loginPage";
     }
@@ -46,7 +46,6 @@ public class AuthController {
 		
 		Users user = userService.findByusername(request.getUsername().toString());
 		
-	    
     	if(user !=null) {
     		
     		String dbEncodedPassword = user.getPassword();
@@ -85,10 +84,17 @@ public class AuthController {
 		}		
 	}   	
     
-	
+    @GetMapping("/logout")
+    public String getLogout(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate();
+        }
+        return "redirect:/";
+    }
     
     @PostMapping("/logout")
-    public String logout(HttpServletRequest request) {
+    public String postLogout(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         if (session != null) {
             session.invalidate();
