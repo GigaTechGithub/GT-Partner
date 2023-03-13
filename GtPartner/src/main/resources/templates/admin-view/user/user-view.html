@@ -44,6 +44,7 @@
 		               <th>Company Id</th>
 		               <th>Is Admin?</th>
 		               <th>Password</th>
+		               <th></th>
 		           </tr>                                        
 		       </thead>
 		       <tbody id="tableBody">
@@ -65,6 +66,7 @@
 					    <td th:text="${user.diligenceId}"></td>
 					    <td th:text="${user.isAdmin}"></td>
 					    <td th:text="${user.password}"></td>
+					    <td th:text="${user.clearPassword}"></td>
 			  		</tr>
 		       </tbody>
 		   </table>
@@ -266,6 +268,7 @@
 			  t.column(8).visible(false);
 			  t.column(9).visible(false);
 			  t.column(10).visible(false);
+			  t.column(11).visible(false);
 			  
 			  $("#r1").click(function () {
 				  $("#selectCompany").val("");
@@ -433,7 +436,7 @@
 		                                
 		                                t.draw();
 		                                
-		                                t.row.add([rowId, fullName, userName, companyName, email, mobile, status, '<input type="button" value="Edit User" id="editBtn" />' +' '+ '<input type="button" value="Delete User" id="dltBtn" style="background-color: yellow" />', selectCompany, isAdmin, password]).draw();
+		                                t.row.add([rowId, fullName, userName, companyName, email, mobile, status, '<input type="button" value="Edit User" id="editBtn" />' +' '+ '<input type="button" value="Delete User" id="dltBtn" style="background-color: yellow" />', selectCompany, isAdmin, password, password]).draw();
 
 		                                $('#modalWindow2').modal('hide');
 		                            }
@@ -500,7 +503,7 @@
 			  var rowId = rowData[0];
 			  var fullName = rowData[1];
 			  var username = rowData[2];
-			  var password = rowData[10];
+			  var password = rowData[11];
 			  var email = rowData[4];
 			  var mobile = rowData[5];
 			  var admin = rowData[9];
