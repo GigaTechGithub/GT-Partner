@@ -52,7 +52,7 @@
 			           	<td th:text="${user.id}"></td>
 					    <td th:text="${user.name}"></td>
 						<td th:text="${user.username}"></td>
-						<th th:text="${user.companyName}">
+						<td th:text="${user.companyName}"></td>
 					    <td th:text="${user.email}"></td>
 					    <td th:text="${user.mobile}"></td>
 					    <td>
@@ -392,7 +392,7 @@
 		                	user["email"] = email;
 		                	user["mobile"] = mobile;
 		                	user["isAdmin"] = (admin=="yes"?"Y":"N");
-		                	user["diligenceId"] = (selectCompany==null?0:selectCompany);
+		                	user["diligenceId"] = (selectCompany==null || selectCompany==""?"0":selectCompany);
 		                	user["status"] = selectStatus;
 		                	
 		                	console.log(user["diligenceId"]);

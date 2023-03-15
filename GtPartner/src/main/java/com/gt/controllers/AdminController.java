@@ -273,12 +273,14 @@ public class AdminController {
 				
 				request.setCreatedBy(dbDiligence.get(0).getCreatedBy().toString());
 				request.setUpadatedBy(getLoginUser().toString());
+				request.setProfileStatus(dbDiligence.get(0).getProfileStatus());
 			}else {
 				request.setCreatedBy(getLoginUser().toString());
 				request.setUpadatedBy(getLoginUser().toString());
+				request.setProfileStatus(0);
 			}
 			
-			request.setProfileStatus(0);
+			
 	    	
 	    	String result = diligenceService.saveDiligence(request);
 	    	
@@ -453,14 +455,17 @@ public class AdminController {
 			}
 			
 			else {
-				Diligence diligence = diligenceService.findByid(Integer.parseInt(users.getDiligenceId())).get(0);
-				users.setClearPassword(users.getPassword());
-				users.setPassword(encodedPassword);
-				result = userService.saveUser(users);
-				response.setadditionalInfo(diligence.getName());
-				if(flag == 1) {
-					emailService.sendEmail(users.getEmail(), users.getName(), users.getUsername(), users.getClearPassword());
-				}
+				
+					Diligence diligence = diligenceService.findByid(Integer.parseInt(users.getDiligenceId())).get(0);
+					users.setClearPassword(users.getPassword());
+					users.setPassword(encodedPassword);
+					result = userService.saveUser(users);
+					response.setadditionalInfo(diligence.getName());
+					if(flag == 1) {
+						emailService.sendEmail(users.getEmail(), users.getName(), users.getUsername(), users.getClearPassword());
+	
+				    }
+				
 			}
 			
 			
@@ -471,6 +476,7 @@ public class AdminController {
 		}
 		
 		catch(Exception e){
+			String error = e.getMessage();
 			response.setMessage("Failed");
 			return ResponseEntity.ok(response);
 		}
