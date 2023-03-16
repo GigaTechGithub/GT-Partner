@@ -43,7 +43,6 @@ function isValidPassword(password) {
 	  return false;
   }
   
-  
   passwordMsgLabel.get(0).style.display = "None";
   // Password meets all requirements
   return true;
