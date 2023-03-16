@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">  
 </head>
 
-<body>
+<body class="body-image">
 
 <div layout:fragment="content">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -21,12 +21,14 @@
 	<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script> 
 	<script src="js/profilecompleteform.js"></script>
 	<div class="container-fluid">
-        <div class="row justify-content-center">
+        <!-- <div class="row justify-content-center ""> -->
+        <div class="row row-center" >
             <div>
-                <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
-    				<h3>Please complete your company profile</h3>
-					<br>
-                    <form id="msform">
+                <!-- <div class="card px-0 pt-4 pb-0 mt-3 mb-3"> -->
+                <div >
+    				<h3>Please complete your company profile</h3><br>
+    				
+                    <form id="msform"> <!--  style="height: 20px; width: 50%;" -->
                         <!-- progressbar -->
                         <ul id="progressbar">
                             <li class="active" id="comInfo"><strong>Company</strong></li>
@@ -38,13 +40,14 @@
                             <li id="it"><strong>IT</strong></li>
                             <li id="completed"><strong>Completed</strong></li>
                         </ul>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <br>
+                         <br>
+                        <div class="progress" >
+	                        <div class="progress-bar progress-bar-striped progress-bar-animated"  role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+	                    </div>
+	                    <br>
                         <!-- fieldsets -->
-                        <fieldset id="fieldset1">
-                            <div class="form-card">
+                        <fieldset id="fieldset1" style=" padding: 20px;">
+                            <div class="form-card" >
                                 <div class="row">
                                     <div class="col-7">
                                         <h2 class="fs-title">01. Company Information:</h2>
