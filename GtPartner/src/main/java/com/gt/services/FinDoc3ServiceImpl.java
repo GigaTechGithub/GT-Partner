@@ -50,5 +50,9 @@ public class FinDoc3ServiceImpl implements FinDoc3Service{
 		return finDoc3List;
 	}
 
-	
+	@Override
+	public FinDoc3 findById(long id) {
+		FinDoc3 finDoc3 = finDoc3Repository.getById(id);
+		return finDoc3;
+	}
 }

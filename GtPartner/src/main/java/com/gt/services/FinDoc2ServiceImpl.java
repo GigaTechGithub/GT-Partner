@@ -49,4 +49,10 @@ public class FinDoc2ServiceImpl implements FinDoc2Service{
 		return finDoc2List;
 	}
 	
+	@Override
+	public FinDoc2 findById(long id) {
+		FinDoc2 finDoc2 = finDoc2Repository.getById(id);
+		return finDoc2;
+	}
+	
 }

@@ -48,4 +48,10 @@ public class IncorporationDocServiceImpl implements IncorporationDocService{
 		return incorporationDocList;
 	}
 
+	@Override
+	public IncorporationDoc findById(long id) {
+		IncorporationDoc incorporationDoc = incorporationDocRepository.getById(id);
+		return incorporationDoc;
+	}
+
 }

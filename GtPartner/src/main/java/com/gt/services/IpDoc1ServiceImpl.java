@@ -46,4 +46,10 @@ public class IpDoc1ServiceImpl implements IpDoc1Service{
 		return ipDoc1List;
 	}
 
+	@Override
+	public IpDoc1 findById(long id) {
+		IpDoc1 ipDoc1 = ipDoc1Repository.getById(id);
+		return ipDoc1;
+	}
+
 }

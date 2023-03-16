@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gt.models.Contracts;
+import com.gt.models.IpDoc1;
 import com.gt.repo.ContractsRepository;
 
 @Service
@@ -46,6 +47,12 @@ public class ContractsServiceImpl implements ContractsService{
 	public List<Contracts> findBydiligenceId(int dilId) {
 		List<Contracts> contractList = contractsRepository.findBydiligenceId(dilId);
 		return contractList;
+	}
+
+	@Override
+	public Contracts findById(long id) {
+		Contracts contracts = contractsRepository.getById(id);
+		return contracts;
 	}
 
 }

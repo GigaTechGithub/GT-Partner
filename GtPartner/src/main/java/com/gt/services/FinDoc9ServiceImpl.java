@@ -49,4 +49,10 @@ public class FinDoc9ServiceImpl implements FinDoc9Service{
 		return finDoc9List;
 	}
 	
+	@Override
+	public FinDoc9 findById(long id) {
+		FinDoc9 finDoc9 = finDoc9Repository.getById(id);
+		return finDoc9;
+	}
+	
 }

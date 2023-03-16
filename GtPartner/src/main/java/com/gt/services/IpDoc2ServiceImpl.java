@@ -5,6 +5,8 @@ import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.gt.models.IpDoc1;
 import com.gt.models.IpDoc2;
 import com.gt.repo.IpDoc2Repository;
 
@@ -43,6 +45,12 @@ public class IpDoc2ServiceImpl implements IpDoc2Service{
 	public List<IpDoc2> findBydiligenceId(int dilId) {
 		List<IpDoc2> ipDoc2List = ipDoc2Repository.findBydiligenceId(dilId);
 		return ipDoc2List;
+	}
+
+	@Override
+	public IpDoc2 findById(long id) {
+		IpDoc2 ipDoc2 = ipDoc2Repository.getById(id);
+		return ipDoc2;
 	}
 
 }

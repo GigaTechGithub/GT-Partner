@@ -49,4 +49,10 @@ public class FinDoc8ServiceImpl implements FinDoc8Service{
 		return finDoc8List;
 	}
 	
+	@Override
+	public FinDoc8 findById(long id) {
+		FinDoc8 finDoc8 = finDoc8Repository.getById(id);
+		return finDoc8;
+	}
+	
 }

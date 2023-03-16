@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.gt.models.FinDoc1;
 import com.gt.models.FinDoc4;
 import com.gt.models.FinDoc5;
 import com.gt.repo.FinDoc4Repository;
@@ -49,4 +50,9 @@ public class FinDoc5ServiceImpl implements FinDoc5Service{
 		return finDoc5List;
 	}
 	
+	@Override
+	public FinDoc5 findById(long id) {
+		FinDoc5 finDoc5 = finDoc5Repository.getById(id);
+		return finDoc5;
+	}
 }

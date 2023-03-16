@@ -8,4 +8,5 @@ public interface FinDoc1Service {
 	String saveFinDoc1(FinDoc1 incorporation);
 	String deleteFinDoc1(long id);
 	List<FinDoc1> findBydiligenceId(int dilId);
+	FinDoc1 findById(long id);
 }

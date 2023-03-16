@@ -836,8 +836,7 @@ public class ProfileFormController {
 		String fileName = selectFile.getOriginalFilename();
 		String filePath = "C:\\upload\\"+ diligenceId()+"-"+fileName;
 		try {
-			selectFile.transferTo( new File(filePath));
-			
+						
 			FinDoc1 finDoc1 = new FinDoc1();
 			
 			finDoc1.setCreatedBy(createdById());
@@ -847,6 +846,15 @@ public class ProfileFormController {
 			finDoc1.setFileType(docType);
 			
 	    	String result = finDoc1Service.saveFinDoc1(finDoc1);
+	    	
+	    	filePath = "C:\\upload\\"+ diligenceId()+"-"+result+"-"+fileName;
+	    	
+	    	finDoc1.setId(Long.parseLong(result));;
+	    	finDoc1.setFilePath(filePath);
+	    	
+	    	finDoc1Service.saveFinDoc1(finDoc1);
+	    	
+	    	selectFile.transferTo( new File(filePath));
 	    	
 	    	response.setMessage(result);
 	    	
@@ -1250,11 +1258,13 @@ public class ProfileFormController {
     public ResponseEntity<?> deleteFinDoc1(@RequestBody FinDoc1 request, Errors errors) {
 		AjaxResponse response = new AjaxResponse();
 		try {
+			
+			FinDoc1 finDoc1 = finDoc1Service.findById(request.getId());
 	    	
 	    	String result = finDoc1Service.deleteFinDoc1(request.getId());
 	    	
 	    	if(result == "Success") {		        
-		        Path path = Paths.get("C:\\upload\\"+ diligenceId()+"-"+request.getFileName());
+		        Path path = Paths.get(finDoc1.getFilePath());
 		        Files.delete(path);
 	    	}
 	    	
