@@ -1403,7 +1403,7 @@
     <script th:inline="javascript">
     var a = [[${diligenceStatus}]];
     
-    openDoc(a);
+    
 	
     var t = $('#ownerTable').DataTable({searching: false, paging: false, info: false, sorting: false});
     var t1 = $('#bodTable').DataTable({searching: false, paging: false, info: false, sorting: false});
@@ -1432,6 +1432,8 @@
     	t.column(0).visible(false);
     	t1.column(0).visible(false);
     	
+    	
+    	openDoc(a);
     	//$("#secondComName").hide();
         //$("#secondAddr").hide();
         //$("#parentSecondName").hide();
