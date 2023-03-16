@@ -10,7 +10,9 @@ html {
 p {
 	color: grey;
 }
-
+.body-image {
+  background-color: #e3edfd;
+}
 #heading {
 	text-transform: uppercase;
 	color: #673AB7;
@@ -29,7 +31,7 @@ p {
     border-radius: 0.5rem;
     box-sizing: border-box;
     width: 100%;
-    margin: 0;
+    /* margin-top: 20px; */
     padding-bottom: 20px;
 
     /*stacking fieldsets above each other*/
@@ -154,9 +156,9 @@ p {
 #progressbar li {
     list-style-type: none;
     font-size: 15px;
-    width: 25%;
+    width: 12.5%;
     float: left;
-    position: relative;
+   /*  position: relative; */
     font-weight: 400;
 }
 
@@ -245,4 +247,9 @@ p {
 .fit-image{
     width: 100%;
     object-fit: cover;
+}
+
+.row-center {
+  width: 60%;
+  margin: 0 auto;
 }
