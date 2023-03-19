@@ -7,7 +7,7 @@ function isValidPassword(password, passwordMsgLabel, confirmPassword, confirmPas
   // Check if password meets minimum length requirement
   if (password.length < 8) {
 	  passwordMsgLabel.style.display = "block";
-	  passwordMsgLabel.textContent = 'Password must include 8 characters eg, Abc@123';
+	  passwordMsgLabel.textContent = 'Password must include 8 characters eg, Abcd@123';
 	  passwordMsgLabel.style.color = "red";
 	  return false;
   }
@@ -20,25 +20,25 @@ function isValidPassword(password, passwordMsgLabel, confirmPassword, confirmPas
 	
   if (!hasLowerCase) {
 	  passwordMsgLabel.style.display = "block";
-	  passwordMsgLabel.textContent = 'Password must include a lowercase letter eg, Abc@123';
+	  passwordMsgLabel.textContent = 'Password must include a lowercase letter eg, Abcd@123';
 	  passwordMsgLabel.style.color = "red";
 	  return false;
   }
   if (!hasUpperCase) {
 	  passwordMsgLabel.style.display = "block";
-	  passwordMsgLabel.textContent = 'Password must include an uppercase letter eg, Abc@123';
+	  passwordMsgLabel.textContent = 'Password must include an uppercase letter eg, Abcd@123';
 	  passwordMsgLabel.style.color = "red";
 	  return false;
   }
   if (!hasDigit) {
 	  passwordMsgLabel.style.display = "block";
-	  passwordMsgLabel.textContent = 'Password must include a digit eg, Abc@123';
+	  passwordMsgLabel.textContent = 'Password must include a digit eg, Abcd@123';
 	  passwordMsgLabel.style.color = "red";
 	  return false;
   }
   if (!hasSpecialChar) {
 	  passwordMsgLabel.style.display = "block";
-	  passwordMsgLabel.textContent = 'Password must include a special character eg, Abc@123';
+	  passwordMsgLabel.textContent = 'Password must include a special character eg, Abcd@123';
 	  passwordMsgLabel.style.color = "red";
 	  return false;
   }
