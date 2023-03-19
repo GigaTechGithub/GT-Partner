@@ -70,9 +70,6 @@ function addUser() {
     var confirmPassword = $("#confirmPassword").val();
     var confirmPasswordLabel = $("#confirmedPasswordMsgLabel").get(0);
     
-    const isValid = isValidPassword(password, passwordMsgLabel, confirmPassword, confirmPasswordLabel);
-    
-    if (isValid) {
     	if(fullName == "" || userName == "" || password == "" || email == "" || admin == "" || selectStatus == ""){
     		alert("Please fill up mandatory fields");
     	}else{
@@ -80,17 +77,105 @@ function addUser() {
         		alert("Please fill up mandatory fields");
         	}
         	else{
-        		var user = {};
+        		var isValid = isValidPassword(password, passwordMsgLabel, confirmPassword, confirmPasswordLabel);
+        		if (isValid) {
+	        		var user = {};
+	            	user["name"] = fullName;
+	            	user["username"] = userName;
+	            	user["password"] = password;    
+	            	user["email"] = email;
+	            	user["mobile"] = mobile;
+	            	user["isAdmin"] = (admin=="yes"?"Y":"N");
+	            	user["diligenceId"] = (selectCompany==""?0:selectCompany);
+	            	user["status"] = selectStatus;
+	            	
+	            	$('#pleaseWaitDialog').modal('show');
+	                
+	                $.ajax({
+	                    type: "POST",
+	                    contentType: "application/json",
+	                    url: "/saveUser",
+	                    data: JSON.stringify(user),
+	                    dataType: 'json',
+	                    cache: false,
+	                    timeout: 600000,
+	                    success: function (data) {
+	                        if(data["message"]=="Failed"){
+	                        	alert("Failed to save data. Please try again");
+	                        }
+	                        
+	                        else{
+	                            var rowId = data["message"];
+	                            var companyName = data["additionalInfo"];
+	                            
+	                        	$("#fullName").val("");
+	                            $("#userName").val("");
+	                            $("#password").val("");
+	                            $("#email").val("");
+	                            $("#mobile").val("");
+	                            $("#selectCompany").val("");
+	                            $("#selectStatus").val("");
+	                            
+	                            var companyName = data["additionalInfo"];
+	                            var status = (selectStatus==0?"Inactive":"Active");
+	                            var isAdmin = (admin=="yes"?"Y":"N");
+	
+	                            t.row.add([rowId, fullName, userName, companyName, email, mobile, status, '<input type="button" value="Edit User" id="editBtn" />' +' '+ '<input type="button" value="Delete User" id="dltBtn" style="background-color: yellow" />', selectCompany, isAdmin,password, password]).draw();
+	
+	                            $('#modalWindow1').modal('hide');
+	                            $('#pleaseWaitDialog').modal('hide');
+	                        }
+	
+	                    },
+	                    error: function (e) {
+	
+	                        alert("Failed to save data. Please try again");
+	
+	                    }
+	                });
+	        	}
+        	}
+    	}
+    
+}
+
+function updateUser() {
+  	var rowId = $("#rowId").val();
+    var fullName = $("#editFullName").val();
+    var userName = $("#editUserName").val();
+    var password = $("#editPassword").val();
+    var email = $("#editEmail").val();
+    var mobile = $("#editMobile").val();
+    var admin = document.querySelector('input[name = "nRadio1"]:checked') == null ? "" : document.querySelector('input[name = "nRadio1"]:checked').value;
+    var selectCompany = $("#editSelectCompany").val();
+    var selectStatus = $("#editSelectStatus").val();
+    var epml = $("#editPasswordMsgLabel").get(0);
+    var confirmPassword = $("#editConfirmPassword").val();
+    var ecpml = $("#editConfirmPasswordMsgLabel").get(0);
+    
+    if(fullName == "" || userName == "" || password == "" || email == "" || mobile ==  "" || admin == "" || selectStatus == ""){
+		alert("Please fill up mandatory fields");
+	}
+    
+    else{
+    	if(admin == "no" && selectCompany == ""){
+    		alert("Please fill up mandatory fields");
+    	}
+    	else{
+    	    var isValid = isValidPassword(password, epml, confirmPassword, ecpml);
+    	    if (isValid) {
+    	    	var user = {};
+        		user["id"] = rowId;
             	user["name"] = fullName;
             	user["username"] = userName;
             	user["password"] = password;    
             	user["email"] = email;
             	user["mobile"] = mobile;
             	user["isAdmin"] = (admin=="yes"?"Y":"N");
-            	user["diligenceId"] = (selectCompany==""?0:selectCompany);
+            	user["diligenceId"] = (selectCompany==null || selectCompany==""?"0":selectCompany);
             	user["status"] = selectStatus;
             	
-            	$('#pleaseWaitDialog').modal('show');
+            	console.log(user["diligenceId"]);
                 
                 $.ajax({
                     type: "POST",
@@ -102,7 +187,7 @@ function addUser() {
                     timeout: 600000,
                     success: function (data) {
                         if(data["message"]=="Failed"){
-                        	alert("Failed to save data. Please try again");
+                        	alert("Failed to update data. Please try again");
                         }
                         
                         else{
@@ -120,26 +205,35 @@ function addUser() {
                             var companyName = data["additionalInfo"];
                             var status = (selectStatus==0?"Inactive":"Active");
                             var isAdmin = (admin=="yes"?"Y":"N");
+                            
+                            t.rows().eq(0).each(function (index) { // loop through all the rows
+                                var row = t.row(index);
+                                var rowData = row.data(); // get the data for the current row
+                                if (rowData[0] === rowId) { // check if the current row has the desired column value
+                                    row.remove(); // remove the row from the DataTable
+                                }
+                            });
+                            
+                            t.draw();
+                            
+                            t.row.add([rowId, fullName, userName, companyName, email, mobile, status, '<input type="button" value="Edit User" id="editBtn" />' +' '+ '<input type="button" value="Delete User" id="dltBtn" style="background-color: yellow" />', selectCompany, isAdmin, password, password]).draw();
 
-                            t.row.add([rowId, fullName, userName, companyName, email, mobile, status, '<input type="button" value="Edit User" id="editBtn" />' +' '+ '<input type="button" value="Delete User" id="dltBtn" style="background-color: yellow" />', selectCompany, isAdmin,password, password]).draw();
-
-                            $('#modalWindow1').modal('hide');
-                            $('#pleaseWaitDialog').modal('hide');
+                            $('#modalWindow2').modal('hide');
                         }
 
                     },
                     error: function (e) {
 
-                        alert("Failed to save data. Please try again");
+                        alert("Failed to update data. Please try again");
 
                     }
                 });
-        	}
+				
+			}
+    		
     	}
-    
     }
 }
-
 
 
 
