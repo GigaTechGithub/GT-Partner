@@ -49,6 +49,7 @@
 		               <th>Web site</th>
 		               <th>Address</th>
 		               <th>Status</th>
+		               <th>Active/Inactive</th>
 		               <th>Action</th>
 		            </tr>                                       
 		        </thead>
@@ -60,6 +61,15 @@
 	                    <td th:text="${p.mobile}"></td>
 	                    <td th:text="${p.website}"></td>
 	                    <td th:text="${p.address}"></td>
+					    <td>
+					    	<span th:if="${p.profileStatus == 10}">Company completed</span>
+					    	<span th:if="${p.profileStatus == 20}">Legal completed</span>
+					    	<span th:if="${p.profileStatus == 30}">Financial completed</span>
+					    	<span th:if="${p.profileStatus == 40}">Revenue completed</span>
+					    	<span th:if="${p.profileStatus == 50}">Technology completed</span>
+					    	<span th:if="${p.profileStatus == 60}">IP completed</span>
+					    	<span th:if="${p.profileStatus == 90}">All completed !</span>
+					    </td>
 					    <td>
 					    	<span th:if="${p.status == 0}">Inactive</span>
 					    	<span th:if="${p.status == 1}">Active</span>
