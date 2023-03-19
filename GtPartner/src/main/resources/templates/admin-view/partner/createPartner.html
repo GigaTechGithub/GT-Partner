@@ -228,11 +228,13 @@
 	                            if(data["message"]=="Failed"){
 	                            	alert("Failed to save data. Please try again");
 	                            }
-	                            
+	                            else if(data["message"]=="Duplicate Name"){
+	                            	alert("Duplicate Company Name does not allow.");
+	                            }
 	                            else{
 	                            	var rowId = data["message"];
 
-	                                t.row.add([rowId, nameVal, emailVal, mobileVal, websiteVal, addressVal, statusVal==1?"Active":"Inactive", '<input type="button" value="Edit" class="editPartnerBtn" />' +' '+ '<input type="button" value="Delete" id="deletePartnerBtn" style="background-color: yellow" />']).draw();
+	                                t.row.add([rowId, nameVal, emailVal, mobileVal, websiteVal, addressVal,"", statusVal==1?"Active":"Inactive", '<input type="button" value="Edit" class="editPartnerBtn" />' +' '+ '<input type="button" value="Delete" id="deletePartnerBtn" style="background-color: yellow" />']).draw();
 
 	                                $('#createPartnerModal').modal('hide');
 	                            }
@@ -364,7 +366,9 @@
                       if(data["message"]=="Failed"){
                       	alert("Failed to update data. Please try again");
                       }
-                      
+                      else if(data["message"]=="Duplicate Name"){
+                      	alert("Duplicate Company Name does not allow.");
+                      }
                       else{
 	                   	   	var rowId = data["message"];
 	
@@ -377,7 +381,7 @@
                           	});
                           
                           	t.draw();
-                          	t.row.add([rowId, nameVal, emailVal, mobileVal, websiteVal, addressVal, statusVal==1?'<span>Active</span>':'<span>Inactive</span>', '<input type="button" value="Edit" class="editPartnerBtn" />' +' '+ '<input type="button" value="Delete" id="deletePartnerBtn" style="background-color: yellow" />']).draw();
+                          	t.row.add([rowId, nameVal, emailVal, mobileVal, websiteVal, addressVal,"", statusVal==1?'<span>Active</span>':'<span>Inactive</span>', '<input type="button" value="Edit" class="editPartnerBtn" />' +' '+ '<input type="button" value="Delete" id="deletePartnerBtn" style="background-color: yellow" />']).draw();
 							$('#editPartnerModal').modal('hide');
                          	
                       }

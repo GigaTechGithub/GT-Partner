@@ -16,7 +16,7 @@ public class Diligence {
  	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
      
-    @Column(name="DILIGENCE_NAME")
+    @Column(name="DILIGENCE_NAME", unique = true)
     private String name;
     
     @Column(name="STATUS")

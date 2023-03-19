@@ -265,24 +265,38 @@ public class AdminController {
 	
 	@PostMapping({"/creatOrUpdateeDiligence"})
     public ResponseEntity<?> addDiligence(@RequestBody Diligence request, Errors errors) {
-		
+		String result = null;
 		AjaxResponse response = new AjaxResponse();
+		
 		try {
+			List<Diligence> diligenceName = diligenceService.findByname(request.getName());
+			
 			if(request.getId() != null) {
 				List<Diligence> dbDiligence = diligenceService.findByid(request.getId());
 				
 				request.setCreatedBy(dbDiligence.get(0).getCreatedBy().toString());
 				request.setUpadatedBy(getLoginUser().toString());
 				request.setProfileStatus(dbDiligence.get(0).getProfileStatus());
+				
+				if (diligenceName != null && !diligenceName.isEmpty() && !diligenceName.get(0).getName().equals(dbDiligence.get(0).getName())) {
+					result = "Duplicate Name";
+				}else {
+					result = diligenceService.saveDiligence(request);
+				}
+				
 			}else {
 				request.setCreatedBy(getLoginUser().toString());
 				request.setUpadatedBy(getLoginUser().toString());
 				request.setProfileStatus(0);
+				
+				if (diligenceName == null || diligenceName.isEmpty()) {
+					result = diligenceService.saveDiligence(request);
+				}else {
+					result = "Duplicate Name";
+				}
 			}
 			
 			
-	    	
-	    	String result = diligenceService.saveDiligence(request);
 	    	
 	    	response.setMessage(result);
 	    	

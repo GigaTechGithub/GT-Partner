@@ -54,5 +54,10 @@ public class DiligenceServiceImpl implements DiligenceService{
 		 diligenceRepository.deleteById(id);
 		 return "Success";
 	}
+
+	@Override
+	public List<Diligence> findByname(String name) {
+		return diligenceRepository.findByname(name);
+	}
 	
 }
