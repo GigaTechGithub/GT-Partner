@@ -1,15 +1,14 @@
 
 
-function isValidPassword(password) {
+function isValidPassword(password, passwordMsgLabel, confirmPassword, confirmPasswordLabel) {
 	
-	const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
-	const passwordMsgLabel = $("#passwordMsgLabel");
-	passwordMsgLabel.get(0).style.display = "None";
+	passwordMsgLabel.style.display = "None";
+	confirmPasswordLabel.display = "None";
   // Check if password meets minimum length requirement
   if (password.length < 8) {
-	  passwordMsgLabel.get(0).style.display = "block";
-	  passwordMsgLabel.get(0).textContent = 'Password must include 8 characters';
-	  passwordMsgLabel.get(0).style.color = "red";
+	  passwordMsgLabel.style.display = "block";
+	  passwordMsgLabel.textContent = 'Password must include 8 characters eg, Abc@123';
+	  passwordMsgLabel.style.color = "red";
 	  return false;
   }
   
@@ -17,34 +16,43 @@ function isValidPassword(password) {
   const hasLowerCase = /[a-z]/.test(password);
   const hasUpperCase = /[A-Z]/.test(password);
   const hasDigit = /\d/.test(password);
-		
+  const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+	
   if (!hasLowerCase) {
-	  passwordMsgLabel.get(0).style.display = "block";
-	  passwordMsgLabel.get(0).textContent = 'Password must include a lowercase letter';
-	  passwordMsgLabel.get(0).style.color = "red";
+	  passwordMsgLabel.style.display = "block";
+	  passwordMsgLabel.textContent = 'Password must include a lowercase letter eg, Abc@123';
+	  passwordMsgLabel.style.color = "red";
 	  return false;
   }
   if (!hasUpperCase) {
-	  passwordMsgLabel.get(0).style.display = "block";
-	  passwordMsgLabel.get(0).textContent = 'Password must include an uppercase letter';
-	  passwordMsgLabel.get(0).style.color = "red";
+	  passwordMsgLabel.style.display = "block";
+	  passwordMsgLabel.textContent = 'Password must include an uppercase letter eg, Abc@123';
+	  passwordMsgLabel.style.color = "red";
 	  return false;
   }
   if (!hasDigit) {
-	  passwordMsgLabel.get(0).style.display = "block";
-	  passwordMsgLabel.get(0).textContent = 'Password must include a digit';
-	  passwordMsgLabel.get(0).style.color = "red";
+	  passwordMsgLabel.style.display = "block";
+	  passwordMsgLabel.textContent = 'Password must include a digit eg, Abc@123';
+	  passwordMsgLabel.style.color = "red";
 	  return false;
   }
   if (!hasSpecialChar) {
-	  passwordMsgLabel.get(0).style.display = "block";
-	  passwordMsgLabel.get(0).textContent = 'Password must include a special character';
-	  passwordMsgLabel.get(0).style.color = "red";
+	  passwordMsgLabel.style.display = "block";
+	  passwordMsgLabel.textContent = 'Password must include a special character eg, Abc@123';
+	  passwordMsgLabel.style.color = "red";
 	  return false;
   }
   
-  passwordMsgLabel.get(0).style.display = "None";
-  // Password meets all requirements
+  if (password != confirmPassword) {
+	  confirmPasswordLabel.style.display = "block";
+	  confirmPasswordLabel.textContent = 'Password and Confirm Password does not match';
+	  confirmPasswordLabel.style.color = "red";
+	  return false;
+  }
+  
+  passwordMsgLabel.style.display = "None";
+  confirmPasswordLabel.style.display = "None";
+  
   return true;
 }
 
@@ -58,8 +66,11 @@ function addUser() {
     var admin = document.querySelector('input[name = "mRadio1"]:checked') == null ? "" : document.querySelector('input[name = "mRadio1"]:checked').value;
     var selectCompany = $("#selectCompany").val();
     var selectStatus = $("#selectStatus").val();
+    var passwordMsgLabel = $("#passwordMsgLabel").get(0);
+    var confirmPassword = $("#confirmPassword").val();
+    var confirmPasswordLabel = $("#confirmedPasswordMsgLabel").get(0);
     
-    const isValid = isValidPassword(password);
+    const isValid = isValidPassword(password, passwordMsgLabel, confirmPassword, confirmPasswordLabel);
     
     if (isValid) {
     	if(fullName == "" || userName == "" || password == "" || email == "" || admin == "" || selectStatus == ""){
