@@ -1,6 +1,7 @@
 package com.gt.controllers;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -8,9 +9,17 @@ import java.nio.file.Paths;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
+import org.springframework.http.ContentDisposition;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -1711,6 +1720,119 @@ public class ProfileFormController {
 	    	return ResponseEntity.ok(response);
 			
 		}
-    }	
+    }
+	
+	@GetMapping("/viewUploadedFile")
+	public ResponseEntity<Resource> viewFile(@RequestParam("row") Long row, @RequestParam("type") String type) throws IOException {
+	    String filepath;
+		if(type.contentEquals("fin1Table")) {
+	    	filepath = finDoc1Service.findById(row).getFilePath();
+	    }
+		
+		else if(type.contentEquals("fin2Table")) {
+	    	filepath = finDoc2Service.findById(row).getFilePath();
+	    }
+		
+		else if(type.contentEquals("fin3Table")) {
+	    	filepath = finDoc3Service.findById(row).getFilePath();
+	    }
+		
+		else if(type.contentEquals("fin4Table")) {
+	    	filepath = finDoc4Service.findById(row).getFilePath();
+	    }
+		
+		else if(type.contentEquals("fin5Table")) {
+	    	filepath = finDoc5Service.findById(row).getFilePath();
+	    }
+		
+		else if(type.contentEquals("fin6Table")) {
+	    	filepath = finDoc6Service.findById(row).getFilePath();
+	    }
+		
+		else if(type.contentEquals("fin7Table")) {
+	    	filepath = finDoc7Service.findById(row).getFilePath();
+	    }
+		
+		else if(type.contentEquals("fin8Table")) {
+	    	filepath = finDoc8Service.findById(row).getFilePath();
+	    }
+		
+		else if(type.contentEquals("fin9Table")) {
+	    	filepath = finDoc9Service.findById(row).getFilePath();
+	    }
+		
+		else if(type.contentEquals("fin10Table")) {
+	    	filepath = finDoc10Service.findById(row).getFilePath();
+	    }
+		
+		else if(type.contentEquals("fin11Table")) {
+	    	filepath = finDoc11Service.findById(row).getFilePath();
+	    }
+		
+		else if(type.contentEquals("fin12Table")) {
+	    	filepath = finDoc12Service.findById(row).getFilePath();
+	    }
+		
+		else if(type.contentEquals("fin13Table")) {
+	    	filepath = finDoc13Service.findById(row).getFilePath();
+	    }
+		
+		else if(type.contentEquals("revTable")) {
+	    	filepath = contractsService.findById(row).getFilePath();
+	    }
+		
+		else if(type.contentEquals("techTable")) {
+	    	filepath = incorporationDocService.findById(row).getFilePath();
+	    }
+		
+		else if(type.contentEquals("ipTable")) {
+	    	filepath = ipDoc1Service.findById(row).getFilePath();
+	    }
+		
+		else {
+	    	filepath = ipDoc2Service.findById(row).getFilePath();
+	    }
+		
+		
+		// Read the file from the file system or database
+	    Path filePath = Paths.get(filepath);
+	    Resource resource = new UrlResource(filePath.toUri());
+
+	    // Determine the file's content type based on its extension
+	    String contentType;
+	    String extension = FilenameUtils.getExtension(filepath).toLowerCase();
+	    switch (extension) {
+	        case "pdf":
+	            contentType = MediaType.APPLICATION_PDF_VALUE;
+	            break;
+	        case "xls":
+	        case "xlsx":
+	            contentType = "application/vnd.ms-excel";
+	            break;
+	        case "doc":
+	        case "docx":
+	            contentType = "application/msword";
+	            break;
+	        case "png":
+	            contentType = "image/png";
+	            break;
+	        case "jpg":
+	        case "jpeg":
+	            contentType = "image/jpeg";
+	            break;
+	        // Add more cases for additional file types as needed
+	        default:
+	            contentType = MediaType.APPLICATION_OCTET_STREAM_VALUE;
+	            break;
+	    }
+
+	    // Set the response headers to display the file in a new tab
+	    HttpHeaders headers = new HttpHeaders();
+	    headers.setContentType(MediaType.parseMediaType(contentType));
+	    headers.setContentDisposition(ContentDisposition.inline().filename(filepath).build());
+
+	    // Return the file contents as a response
+	    return new ResponseEntity<>(resource, headers, HttpStatus.OK);
+	}
 	
 }

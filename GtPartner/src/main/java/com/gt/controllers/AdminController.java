@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -525,17 +526,45 @@ public class AdminController {
 	  
 	  @GetMapping("/viewFile")
 	  public ResponseEntity<Resource> viewFile(@RequestParam("filepath") String filepath) throws IOException {
-	      // Read the file from the file system or database
-	      Path filePath = Paths.get(filepath);
-	      Resource resource = new UrlResource(filePath.toUri());
-	
-	      // Set the response headers to display the file in a new tab
-	      HttpHeaders headers = new HttpHeaders();
-	      headers.setContentType(MediaType.APPLICATION_PDF);
-	      headers.set(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=" + filepath);
-	
-	      // Return the file contents as a response
-	      return new ResponseEntity<>(resource, headers, HttpStatus.OK);
+		// Read the file from the file system or database
+		    Path filePath = Paths.get(filepath);
+		    Resource resource = new UrlResource(filePath.toUri());
+
+		    // Determine the file's content type based on its extension
+		    String contentType;
+		    String extension = FilenameUtils.getExtension(filepath).toLowerCase();
+		    switch (extension) {
+		        case "pdf":
+		            contentType = MediaType.APPLICATION_PDF_VALUE;
+		            break;
+		        case "xls":
+		        case "xlsx":
+		            contentType = "application/vnd.ms-excel";
+		            break;
+		        case "doc":
+		        case "docx":
+		            contentType = "application/msword";
+		            break;
+		        case "png":
+		            contentType = "image/png";
+		            break;
+		        case "jpg":
+		        case "jpeg":
+		            contentType = "image/jpeg";
+		            break;
+		        // Add more cases for additional file types as needed
+		        default:
+		            contentType = MediaType.APPLICATION_OCTET_STREAM_VALUE;
+		            break;
+		    }
+
+		    // Set the response headers to display the file in a new tab
+		    HttpHeaders headers = new HttpHeaders();
+		    headers.setContentType(MediaType.parseMediaType(contentType));
+		    headers.setContentDisposition(ContentDisposition.inline().filename(filepath).build());
+
+		    // Return the file contents as a response
+		    return new ResponseEntity<>(resource, headers, HttpStatus.OK);
 	  }
 	
 }

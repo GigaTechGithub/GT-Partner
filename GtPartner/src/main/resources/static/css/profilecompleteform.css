@@ -250,3 +250,7 @@ p {
   width: 60%;
   margin: 0 auto;
 }
+
+.clickable-cell:hover {
+  cursor: pointer;
+}
