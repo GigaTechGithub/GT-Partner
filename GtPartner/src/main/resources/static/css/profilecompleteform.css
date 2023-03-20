@@ -254,3 +254,10 @@ p {
 .clickable-cell:hover {
   cursor: pointer;
 }
+
+#it10 {
+  resize: vertical;
+  overflow: hidden;
+  height: auto;
+  min-height: 30px;
+}
