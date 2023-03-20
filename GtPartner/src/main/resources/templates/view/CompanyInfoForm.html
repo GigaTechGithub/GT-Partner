@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">  
 </head>
 
-<body style=" background-color: #e3edfd;">
+<body class="body-image">
 
 <div layout:fragment="content">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -386,7 +386,7 @@
 								<table id="fin1Table">
 									<tr th:each="finDoc1 : ${finDoc1List}">
 								      <td th:text="${finDoc1.id}" style="display: none"></td>
-								      <td th:text="${finDoc1.fileName}"></td>
+								      <td class="clickable-cell" th:text="${finDoc1.fileName}"></td>
 								      <td style="width: 5%"></td>
 								      <td>
 								      	<button type="button" name ="fin1DltBtn" id ="fin1DltBtn" style= "border:none; color: red;">X</button>
@@ -400,7 +400,7 @@
 								<table id="fin2Table">
 									<tr th:each="finDoc2 : ${finDoc2List}">
 								      <td th:text="${finDoc2.id}" style="display: none"></td>
-								      <td th:text="${finDoc2.fileName}"></td>
+								      <td class="clickable-cell" th:text="${finDoc2.fileName}"></td>
 								      <td style="width: 5%"></td>
 								      <td>
 								      	<button type="button" name ="fin2DltBtn" id ="fin2DltBtn" style= "border:none; color: red;">X</button>
@@ -414,7 +414,7 @@
 								<table id="fin3Table">
 									<tr th:each="finDoc3 : ${finDoc3List}">
 								      <td th:text="${finDoc3.id}" style="display: none"></td>
-								      <td th:text="${finDoc3.fileName}"></td>
+								      <td class="clickable-cell" th:text="${finDoc3.fileName}"></td>
 								      <td style="width: 5%"></td>
 								      <td>
 								      	<button type="button" name ="fin3DltBtn" id ="fin3DltBtn" style= "border:none; color: red;">X</button>
@@ -428,7 +428,7 @@
 								<table id="fin4Table">
 									<tr th:each="finDoc4 : ${finDoc4List}">
 								      <td th:text="${finDoc4.id}" style="display: none"></td>
-								      <td th:text="${finDoc4.fileName}"></td>
+								      <td class="clickable-cell" th:text="${finDoc4.fileName}"></td>
 								      <td style="width: 5%"></td>
 								      <td>
 								      	<button type="button" name ="fin4DltBtn" id ="fin4DltBtn" style= "border:none; color: red;">X</button>
@@ -442,7 +442,7 @@
 								<table id="fin5Table">
 									<tr th:each="finDoc5 : ${finDoc5List}">
 								      <td th:text="${finDoc5.id}" style="display: none"></td>
-								      <td th:text="${finDoc5.fileName}"></td>
+								      <td class="clickable-cell" th:text="${finDoc5.fileName}"></td>
 								      <td style="width: 5%"></td>
 								      <td>
 								      	<button type="button" name ="fin5DltBtn" id ="fin5DltBtn" style= "border:none; color: red;">X</button>
@@ -456,7 +456,7 @@
 								<table id="fin6Table">
 									<tr th:each="finDoc6 : ${finDoc6List}">
 								      <td th:text="${finDoc6.id}" style="display: none"></td>
-								      <td th:text="${finDoc6.fileName}"></td>
+								      <td class="clickable-cell" th:text="${finDoc6.fileName}"></td>
 								      <td style="width: 5%"></td>
 								      <td>
 								      	<button type="button" name ="fin6DltBtn" id ="fin6DltBtn" style= "border:none; color: red;">X</button>
@@ -470,7 +470,7 @@
 								<table id="fin7Table">
 									<tr th:each="finDoc7 : ${finDoc7List}">
 								      <td th:text="${finDoc7.id}" style="display: none"></td>
-								      <td th:text="${finDoc7.fileName}"></td>
+								      <td class="clickable-cell" th:text="${finDoc7.fileName}"></td>
 								      <td style="width: 5%"></td>
 								      <td>
 								      	<button type="button" name ="fin7DltBtn" id ="fin7DltBtn" style= "border:none; color: red;">X</button>
@@ -484,7 +484,7 @@
 								<table id="fin8Table">
 									<tr th:each="finDoc8 : ${finDoc8List}">
 								      <td th:text="${finDoc8.id}" style="display: none"></td>
-								      <td th:text="${finDoc8.fileName}"></td>
+								      <td class="clickable-cell" th:text="${finDoc8.fileName}"></td>
 								      <td style="width: 5%"></td>
 								      <td>
 								      	<button type="button" name ="fin8DltBtn" id ="fin8DltBtn" style= "border:none; color: red;">X</button>
@@ -498,7 +498,7 @@
 								<table id="fin9Table">
 									<tr th:each="finDoc9 : ${finDoc9List}">
 								      <td th:text="${finDoc9.id}" style="display: none"></td>
-								      <td th:text="${finDoc9.fileName}"></td>
+								      <td class="clickable-cell" th:text="${finDoc9.fileName}"></td>
 								      <td style="width: 5%"></td>
 								      <td>
 								      	<button type="button" name ="fin9DltBtn" id ="fin9DltBtn" style= "border:none; color: red;">X</button>
@@ -512,7 +512,7 @@
 								<table id="fin10Table">
 									<tr th:each="finDoc10 : ${finDoc10List}">
 								      <td th:text="${finDoc10.id}" style="display: none"></td>
-								      <td th:text="${finDoc10.fileName}"></td>
+								      <td class="clickable-cell" th:text="${finDoc10.fileName}"></td>
 								      <td style="width: 5%"></td>
 								      <td>
 								      	<button type="button" name ="fin10DltBtn" id ="fin10DltBtn" style= "border:none; color: red;">X</button>
@@ -526,7 +526,7 @@
 								<table id="fin11Table">
 									<tr th:each="finDoc11 : ${finDoc11List}">
 								      <td th:text="${finDoc11.id}" style="display: none"></td>
-								      <td th:text="${finDoc11.fileName}"></td>
+								      <td class="clickable-cell" th:text="${finDoc11.fileName}"></td>
 								      <td style="width: 5%"></td>
 								      <td>
 								      	<button type="button" name ="fin11DltBtn" id ="fin11DltBtn" style= "border:none; color: red;">X</button>
@@ -540,7 +540,7 @@
 								<table id="fin12Table">
 									<tr th:each="finDoc12 : ${finDoc12List}">
 								      <td th:text="${finDoc12.id}" style="display: none"></td>
-								      <td th:text="${finDoc12.fileName}"></td>
+								      <td class="clickable-cell" th:text="${finDoc12.fileName}"></td>
 								      <td style="width: 5%"></td>
 								      <td>
 								      	<button type="button" name ="fin12DltBtn" id ="fin12DltBtn" style= "border:none; color: red;">X</button>
@@ -554,7 +554,7 @@
 								<table id="fin13Table">
 									<tr th:each="finDoc13 : ${finDoc13List}">
 								      <td th:text="${finDoc13.id}" style="display: none"></td>
-								      <td th:text="${finDoc13.fileName}"></td>
+								      <td class="clickable-cell" th:text="${finDoc13.fileName}"></td>
 								      <td style="width: 5%"></td>
 								      <td>
 								      	<button type="button" name ="fin13DltBtn" id ="fin13DltBtn" style= "border:none; color: red;">X</button>
@@ -583,7 +583,7 @@
 								<table id="revTable">
 									<tr th:each="contracts : ${contractsList}">
 								      <td th:text="${contracts.id}" style="display: none"></td>
-								      <td th:text="${contracts.fileName}"></td>
+								      <td class="clickable-cell" th:text="${contracts.fileName}"></td>
 								      <td style="width: 5%"></td>
 								      <td>
 								      	<button type="button" name ="revBtn" id ="revBtn" style= "border:none; color: red;">X</button>
@@ -622,7 +622,7 @@
 								<table id="techTable">
 									<tr th:each="incorporationDoc : ${incorporationDocList}">
 								      <td th:text="${incorporationDoc.id}" style="display: none"></td>
-								      <td th:text="${incorporationDoc.fileName}"></td>
+								      <td class="clickable-cell" th:text="${incorporationDoc.fileName}"></td>
 								      <td style="width: 5%"></td>
 								      <td>
 								      	<button type="button" name ="techBtn" id ="techBtn" style= "border:none; color: red;">X</button>
@@ -743,7 +743,7 @@
 								<table id="ipTable">
 									<tr th:each="ipDoc1 : ${ipDoc1List}">
 								      <td th:text="${ipDoc1.id}" style="display: none"></td>
-								      <td th:text="${ipDoc1.fileName}"></td>
+								      <td class="clickable-cell" th:text="${ipDoc1.fileName}"></td>
 								      <td style="width: 5%"></td>
 								      <td>
 								      	<button type="button" name ="ipBtn1" id ="ipBtn1" style= "border:none; color: red">X</button>
@@ -756,7 +756,7 @@
 								<table id="ipTable2">
 									<tr th:each="ipDoc2 : ${ipDoc2List}">
 								      <td th:text="${ipDoc2.id}" style="display: none"></td>
-								      <td th:text="${ipDoc2.fileName}"></td>
+								      <td class="clickable-cell" th:text="${ipDoc2.fileName}"></td>
 								      <td style="width: 5%"></td>
 								      <td>
 								      	<button type="button" name ="ipBtn2" id ="ipBtn2" style= "border:none; color: red">X</button>
@@ -1730,6 +1730,7 @@
             			 cell1.innerHTML = rowId;
             			 cell1.style.display = "none";
             			 cell2.innerHTML = selectFile;
+            			 cell2.classList.add("clickable-cell");
             			 cell3.innerHTML = "";
             			 cell3.style.width = "5%";
             			 cell4.innerHTML = '<button type= "button" name = "revBtn" id = "revBtn" style= "border:none; color: red">X</button>';
@@ -1784,6 +1785,7 @@
             			 cell1.innerHTML = rowId;
             			 cell1.style.display = "none";
             			 cell2.innerHTML = selectFile;
+            			 cell2.classList.add("clickable-cell");
             			 cell3.innerHTML = "";
             			 cell3.style.width = "5%";
             			 cell4.innerHTML = '<button type= "button" name = "techBtn" id = "techBtn" style= "border:none; color: red">X</button>';
@@ -1839,6 +1841,7 @@
             			 cell1.innerHTML = rowId;
             			 cell1.style.display = "none";
             			 cell2.innerHTML = selectFile;
+            			 cell2.classList.add("clickable-cell");
             			 cell3.innerHTML = "";
             			 cell3.style.width = "5%";
             			 cell4.innerHTML = '<button type= "button" name = "ipBtn1" id = "ipBtn1" style= "border:none; color: red">X</button>';;
@@ -1894,6 +1897,7 @@
             			 cell1.innerHTML = rowId;
             			 cell1.style.display = "none";
             			 cell2.innerHTML = selectFile;
+            			 cell2.classList.add("clickable-cell");
             			 cell3.innerHTML = "";
             			 cell3.style.width = "5%";
             			 cell4.innerHTML = '<button type= "button" name = "ipBtn2" id = "ipBtn2" style= "border:none; color: red">X</button>';            			 
@@ -1948,6 +1952,7 @@
                			 cell1.innerHTML = rowId;
                			 cell1.style.display = "none";
                			 cell2.innerHTML = selectFile;
+               			 cell2.classList.add("clickable-cell");
 	               		 cell3.innerHTML = "";
 	           			 cell3.style.width = "5%";
                			 cell4.innerHTML = '<button type= "button" name = "fin1DltBtn" id = "fin1DltBtn" style= "border:none; color: red">X</button>';
@@ -2002,6 +2007,7 @@
                			 cell1.innerHTML = rowId;
                			 cell1.style.display = "none";
                			 cell2.innerHTML = selectFile;
+               			 cell2.classList.add("clickable-cell");
                			 cell3.innerHTML = "";
             			 cell3.style.width = "5%";
             			 cell4.innerHTML = '<button type= "button" name = "fin2DltBtn" id = "fin2DltBtn" style= "border:none; color: red">X</button>';
@@ -2056,6 +2062,7 @@
             			 cell1.innerHTML = rowId;
             			 cell1.style.display = "none";
             			 cell2.innerHTML = selectFile;
+            			 cell2.classList.add("clickable-cell");
             			 cell3.innerHTML = "";
             			 cell3.style.width = "5%";
             			 cell4.innerHTML = '<button type= "button" name = "fin3DltBtn" id = "fin3DltBtn" style= "border:none; color: red">X</button>';               			
@@ -2110,6 +2117,7 @@
             			 cell1.innerHTML = rowId;
             			 cell1.style.display = "none";
             			 cell2.innerHTML = selectFile;
+            			 cell2.classList.add("clickable-cell");
             			 cell3.innerHTML = "";
             			 cell3.style.width = "5%";
             			 cell4.innerHTML = '<button type= "button" name = "fin4DltBtn" id = "fin4DltBtn" style= "border:none; color: red">X</button>';
@@ -2163,6 +2171,7 @@
             			 cell1.innerHTML = rowId;
             			 cell1.style.display = "none";
             			 cell2.innerHTML = selectFile;
+            			 cell2.classList.add("clickable-cell");
             			 cell3.innerHTML = "";
             			 cell3.style.width = "5%";
             			 cell4.innerHTML = '<button type= "button" name = "fin5DltBtn" id = "fin5DltBtn" style= "border:none; color: red">X</button>';
@@ -2216,6 +2225,7 @@
             			 cell1.innerHTML = rowId;
             			 cell1.style.display = "none";
             			 cell2.innerHTML = selectFile;
+            			 cell2.classList.add("clickable-cell");
             			 cell3.innerHTML = "";
             			 cell3.style.width = "5%";
             			 cell4.innerHTML = '<button type= "button" name = "fin6DltBtn" id = "fin6DltBtn" style= "border:none; color: red">X</button>';
@@ -2270,6 +2280,7 @@
             			 cell1.innerHTML = rowId;
             			 cell1.style.display = "none";
             			 cell2.innerHTML = selectFile;
+            			 cell2.classList.add("clickable-cell");
             			 cell3.innerHTML = "";
             			 cell3.style.width = "5%";
             			 cell4.innerHTML = '<button type= "button" name = "fin7DltBtn" id = "fin7DltBtn" style= "border:none; color: red">X</button>';
@@ -2323,6 +2334,7 @@
             			 cell1.innerHTML = rowId;
             			 cell1.style.display = "none";
             			 cell2.innerHTML = selectFile;
+            			 cell2.classList.add("clickable-cell");
             			 cell3.innerHTML = "";
             			 cell3.style.width = "5%";
             			 cell4.innerHTML = '<button type= "button" name = "fin8DltBtn" id = "fin8DltBtn" style= "border:none; color: red">X</button>';
@@ -2376,6 +2388,7 @@
             			 cell1.innerHTML = rowId;
             			 cell1.style.display = "none";
             			 cell2.innerHTML = selectFile;
+            			 cell2.classList.add("clickable-cell");
             			 cell3.innerHTML = "";
             			 cell3.style.width = "5%";
             			 cell4.innerHTML = '<button type= "button" name = "fin9DltBtn" id = "fin9DltBtn" style= "border:none; color: red">X</button>';
@@ -2429,6 +2442,7 @@
             			 cell1.innerHTML = rowId;
             			 cell1.style.display = "none";
             			 cell2.innerHTML = selectFile;
+            			 cell2.classList.add("clickable-cell");
             			 cell3.innerHTML = "";
             			 cell3.style.width = "5%";
             			 cell4.innerHTML = '<button type= "button" name = "fin10DltBtn" id = "fin10DltBtn" style= "border:none; color: red">X</button>';             			
@@ -2483,6 +2497,7 @@
             			 cell1.innerHTML = rowId;
             			 cell1.style.display = "none";
             			 cell2.innerHTML = selectFile;
+            			 cell2.classList.add("clickable-cell");
             			 cell3.innerHTML = "";
             			 cell3.style.width = "5%";
             			 cell4.innerHTML = '<button type= "button" name = "fin11DltBtn" id = "fin11DltBtn" style= "border:none; color: red">X</button>';            			
@@ -2536,6 +2551,7 @@
             			var cell4 = row.insertCell(3);
             			 cell1.innerHTML = rowId;
             			 cell2.innerHTML = selectFile;
+            			 cell2.classList.add("clickable-cell");
             			 cell3.innerHTML = "";
             			 cell3.style.width = "5%";
             			 cell4.innerHTML = '<button type= "button" name = "fin12DltBtn" id = "fin12DltBtn" style= "border:none; color: red">X</button>';            			
@@ -2590,6 +2606,7 @@
             			 cell1.innerHTML = rowId;
             			 cell1.style.display = "none";
             			 cell2.innerHTML = selectFile;
+            			 cell2.classList.add("clickable-cell");
             			 cell3.innerHTML = "";
             			 cell3.style.width = "5%";
             			 cell4.innerHTML = '<button type= "button" name = "fin13DltBtn" id = "fin13DltBtn" style= "border:none; color: red">X</button>';            			
@@ -2657,7 +2674,131 @@
             $("#bodAltName").hide();
         });
         
+        
+        $(document).on('click', '#fin1Table .clickable-cell', function() {
+            var row = $(this).prev().text();
+            var type = 'fin1Table';
+            var url = '/viewUploadedFile?row=' + encodeURIComponent(row) + '&type=' + encodeURIComponent(type);
+            window.open(url, '_blank');
+          });
+        
+        $(document).on('click', '#fin2Table .clickable-cell', function() {
+    	    	var row = $(this).prev().text();
+    	    	var type = 'fin2Table';
+    			var url = '/viewUploadedFile?row=' + encodeURIComponent(row)+'&type=' + encodeURIComponent(type);
+    		    window.open(url, '_blank');
+        	});
+        
+        $(document).on('click', '#fin3Table .clickable-cell', function() {
+    	    	var row = $(this).prev().text();
+    	    	var type = 'fin3Table';
+    			var url = '/viewUploadedFile?row=' + encodeURIComponent(row)+'&type=' + encodeURIComponent(type);
+    		    window.open(url, '_blank');
+        	});
+        
+        $(document).on('click', '#fin4Table .clickable-cell', function() {
+    	    	var row = $(this).prev().text();
+    	    	var type = 'fin4Table';
+    			var url = '/viewUploadedFile?row=' + encodeURIComponent(row)+'&type=' + encodeURIComponent(type);
+    		    window.open(url, '_blank');
+        	});
+        
+        $(document).on('click', '#fin5Table .clickable-cell', function() {
+    	    	var row = $(this).prev().text();
+    	    	var type = 'fin5Table';
+    			var url = '/viewUploadedFile?row=' + encodeURIComponent(row)+'&type=' + encodeURIComponent(type);
+    		    window.open(url, '_blank');
+        	});
+        
+        $(document).on('click', '#fin6Table .clickable-cell', function() {
+    	    	var row = $(this).prev().text();
+    	    	var type = 'fin6Table';
+    			var url = '/viewUploadedFile?row=' + encodeURIComponent(row)+'&type=' + encodeURIComponent(type);
+    		    window.open(url, '_blank');
+        	});
+        
+        $(document).on('click', '#fin7Table .clickable-cell', function() {
+    	    	var row = $(this).prev().text();
+    	    	var type = 'fin7Table';
+    			var url = '/viewUploadedFile?row=' + encodeURIComponent(row)+'&type=' + encodeURIComponent(type);
+    		    window.open(url, '_blank');
+        	});
+        
+        $(document).on('click', '#fin8Table .clickable-cell', function() {
+    	    	var row = $(this).prev().text();
+    	    	var type = 'fin8Table';
+    			var url = '/viewUploadedFile?row=' + encodeURIComponent(row)+'&type=' + encodeURIComponent(type);
+    		    window.open(url, '_blank');
+        	});
+        
+        $(document).on('click', '#fin9Table .clickable-cell', function() {
+    	    	var row = $(this).prev().text();
+    	    	var type = 'fin9Table';
+    			var url = '/viewUploadedFile?row=' + encodeURIComponent(row)+'&type=' + encodeURIComponent(type);
+    		    window.open(url, '_blank');
+        	});
+        
+        $(document).on('click', '#fin10Table .clickable-cell', function() {
+    	    	var row = $(this).prev().text();
+    	    	var type = 'fin10Table';
+    			var url = '/viewUploadedFile?row=' + encodeURIComponent(row)+'&type=' + encodeURIComponent(type);
+    		    window.open(url, '_blank');
+        	});
+        
+        $(document).on('click', '#fin11Table .clickable-cell', function() {
+    	    	var row = $(this).prev().text();
+    	    	var type = 'fin11Table';
+    			var url = '/viewUploadedFile?row=' + encodeURIComponent(row)+'&type=' + encodeURIComponent(type);
+    		    window.open(url, '_blank');
+        	});
+        
+        $(document).on('click', '#fin12Table .clickable-cell', function() {
+    	    	var row = $(this).prev().text();
+    	    	var type = 'fin12Table';
+    			var url = '/viewUploadedFile?row=' + encodeURIComponent(row)+'&type=' + encodeURIComponent(type);
+    		    window.open(url, '_blank');
+        	});
+        
+        $(document).on('click', '#fin13Table .clickable-cell', function() {
+    	    	var row = $(this).prev().text();
+    	    	var type = 'fin13Table';
+    			var url = '/viewUploadedFile?row=' + encodeURIComponent(row)+'&type=' + encodeURIComponent(type);
+    		    window.open(url, '_blank');
+        	});
+        
+        $(document).on('click', '#revTable .clickable-cell', function() {
+    	    	var row = $(this).prev().text();
+    	    	var type = 'revTable';
+    			var url = '/viewUploadedFile?row=' + encodeURIComponent(row)+'&type=' + encodeURIComponent(type);
+    		    window.open(url, '_blank');
+        	});
+        
+        $(document).on('click', '#techTable .clickable-cell', function() {
+    	    	var row = $(this).prev().text();
+    	    	var type = 'techTable';
+    			var url = '/viewUploadedFile?row=' + encodeURIComponent(row)+'&type=' + encodeURIComponent(type);
+    		    window.open(url, '_blank');
+        	});
+        
+        $(document).on('click', '#ipTable .clickable-cell', function() {
+
+    	    	var row = $(this).prev().text();
+    	    	var type = 'ipTable';
+    			var url = '/viewUploadedFile?row=' + encodeURIComponent(row)+'&type=' + encodeURIComponent(type);
+    		    window.open(url, '_blank');
+        	});
+        
+        $(document).on('click', '#ipTable2 .clickable-cell', function() {
+
+    	    	var row = $(this).prev().text();
+    	    	var type = 'ipTable2';
+    			var url = '/viewUploadedFile?row=' + encodeURIComponent(row)+'&type=' + encodeURIComponent(type);
+    		    window.open(url, '_blank');
+        	});
+        
     });
+    
+    
 
     $('#ownerTable tbody').on( 'click', '#oRmBtn', function () {
         var r=confirm("Are you sure want to remove?");
