@@ -183,7 +183,7 @@
 							</div> 
 							<label for="password" id="editPasswordMsgLabel" style="display:none">Password msg Label</label>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" id="editConfirmPass">
                             <label for="editPassword">Confirm Password <span style="color: red;">*</span> </label>
                             <div class="input-group">
 							    <input type="password" class="form-control" id="editConfirmPassword" name="editConfirmPassword" />
@@ -212,7 +212,7 @@
                             </div>                            
                         </div>
                         
-                        <div class="form-group" id="editCompanyDiv" style="display: none">
+                        <div class="form-group" id="editCompanyDiv">
                             <label for="editSelectCompany">Please select company <span style="color: red;">*</span></label>
                             <select class="editSelectCompany" id="editSelectCompany" name="editSelectCompany" style="width: 100%">
 					             <option value=""> -- </option>
@@ -390,7 +390,10 @@
 			  var mobile = rowData[5];
 			  var admin = rowData[9];
 			  var company = rowData[8];
-			  var status = (rowData[6]=="Active"? 1: 0);
+			  //var status = (rowData[6]=="Active"? 1: 0); (rowData[7]=="<span>Active</span>"? 1: 0);
+			  var status = (rowData[6]=="<span>Active</span>"? 1: 0);
+			  
+			  firstPassword = password;
 			  
 			  $('#modalWindow2').modal('show');
 			  
@@ -398,10 +401,12 @@
 			  $('.modal-body #editFullName').val(fullName);
 			  $('.modal-body #editUserName').val(username);
 			  $('.modal-body #editPassword').val(password);
+			  $('.modal-body #editConfirmPassword').val("");
+			  $('.modal-body #editConfirmPass').hide();
 			  $('.modal-body #editEmail').val(email);
 			  $('.modal-body #editMobile').val(mobile);			  
 			  $('.modal-body #editSelectCompany').val(company);
-			  $('.modal-body #editSelectCompanyStatus').val(status);
+			  $('.modal-body #editSelectStatus').val(status);
 			  
 			  if(admin == "N"){
 				  $("#editCompanyDiv").show();
