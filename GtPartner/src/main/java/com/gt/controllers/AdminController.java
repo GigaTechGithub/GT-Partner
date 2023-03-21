@@ -239,7 +239,7 @@ public class AdminController {
 	        return "redirect:/logout";
 	    }
 		
-		List<Diligence> diligenceList = diligenceService.findByStatusAndProfileStatus(1, 90);
+		List<Diligence> diligenceList = diligenceService.findBystatus(1);
 		
 		model.addAttribute("diligenceList", diligenceList);
 		

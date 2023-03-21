@@ -28,6 +28,7 @@
 		           <tr>
 			           <th style="display: none">ID</th>
 			           <th>Company Name</th>
+			           <th>Status</th>
 		               <th>Action</th>
 		           </tr>                                        
 		       </thead>
@@ -35,6 +36,16 @@
 			        <tr th:each="diligence : ${diligenceList}">
 			           	<td th:text="${diligence.id}" style="display:none"></td>
 					    <td th:text="${diligence.name}"></td>
+					     <td>
+					    	<span th:if="${diligence.profileStatus == 0}">Started</span>
+					    	<span th:if="${diligence.profileStatus == 10}">Company completed</span>
+					    	<span th:if="${diligence.profileStatus == 20}">Legal completed</span>
+					    	<span th:if="${diligence.profileStatus == 30}">Financial completed</span>
+					    	<span th:if="${diligence.profileStatus == 40}">Revenue completed</span>
+					    	<span th:if="${diligence.profileStatus == 50}">Technology completed</span>
+					    	<span th:if="${diligence.profileStatus == 60}">IP completed</span>
+					    	<span th:if="${diligence.profileStatus == 90}">All completed !</span>
+					    </td>
 					    <td>
 					    	<button type="submit" name="viewPartnerInfo" class="viewPartnerInfo" th:value="${diligence.id}">View</button>
 					    </td>

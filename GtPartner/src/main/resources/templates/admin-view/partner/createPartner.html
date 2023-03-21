@@ -62,6 +62,7 @@
 	                    <td th:text="${p.website}"></td>
 	                    <td th:text="${p.address}"></td>
 					    <td>
+					    	<span th:if="${p.profileStatus == 0}">Started</span>
 					    	<span th:if="${p.profileStatus == 10}">Company completed</span>
 					    	<span th:if="${p.profileStatus == 20}">Legal completed</span>
 					    	<span th:if="${p.profileStatus == 30}">Financial completed</span>
