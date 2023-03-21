@@ -382,6 +382,9 @@
 	                   	   	t.rows().eq(0).each(function (index) { // loop through all the rows
                               var row = t.row(index);
                               var rowData = row.data(); // get the data for the current row
+                              if (typeof rowData === 'undefined') {
+                                  return; // skip this iteration of the loop
+                              }
                               if (rowData[0] === idVal) { // check if the current row has the desired column value
                                   row.remove(); // remove the row from the DataTable
                               }
