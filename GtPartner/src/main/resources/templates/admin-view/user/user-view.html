@@ -35,7 +35,7 @@
 			<table id="userList" class="display" cellspacing="0" width="100%">
 		       <thead>
 		           <tr>
-			           <th style="display: none">ID</th>
+			           <th>ID</th>
 			           <th>Name</th>
 		               <th>UserName</th>
 		               <th>Company Name</th>
@@ -390,8 +390,8 @@
 			  var mobile = rowData[5];
 			  var admin = rowData[9];
 			  var company = rowData[8];
-			  //var status = (rowData[6]=="Active"? 1: 0); (rowData[7]=="<span>Active</span>"? 1: 0);
-			  var status = (rowData[6]=="<span>Active</span>"? 1: 0);
+			  //var status = (rowData[6]=="Active"? 1: 0);
+			  var status = (rowData[6]=="<span>Active</span>" ||  rowData[6]=="Active"? 1: 0);
 			  
 			  firstPassword = password;
 			  
